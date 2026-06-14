@@ -100,3 +100,100 @@ body {
   color: rgba(244, 246, 250, 0.7);
   font-style: italic;
 }
+
+/* Markdown-rendered content (whitepaper, changelog) — bypass the > h2 selector
+   because the rendered HTML wraps content in a sibling structure. */
+.prose-doc-rendered h1 {
+  font-family: "Space Grotesk", Inter, sans-serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  scroll-margin-top: 100px;
+}
+.prose-doc-rendered h2 {
+  font-family: "Space Grotesk", Inter, sans-serif;
+  font-size: 1.625rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  scroll-margin-top: 100px;
+}
+.prose-doc-rendered h3 {
+  font-family: "Space Grotesk", Inter, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+  scroll-margin-top: 100px;
+}
+.prose-doc-rendered p,
+.prose-doc-rendered ul,
+.prose-doc-rendered ol {
+  color: rgba(244, 246, 250, 0.78);
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+}
+.prose-doc-rendered ul,
+.prose-doc-rendered ol {
+  padding-left: 1.5rem;
+}
+.prose-doc-rendered ul {
+  list-style-type: disc;
+}
+.prose-doc-rendered ol {
+  list-style-type: decimal;
+}
+.prose-doc-rendered li {
+  margin-bottom: 0.5rem;
+}
+.prose-doc-rendered code {
+  background: rgba(255, 255, 255, 0.08);
+  color: #c9a84c;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.875em;
+}
+.prose-doc-rendered a {
+  color: #c9a84c;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-doc-rendered strong {
+  color: #fff;
+  font-weight: 600;
+}
+.prose-doc-rendered table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+}
+.prose-doc-rendered th,
+.prose-doc-rendered td {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+.prose-doc-rendered th {
+  background: rgba(255, 255, 255, 0.03);
+  font-weight: 600;
+  color: #fff;
+  font-family: "Space Grotesk", Inter, sans-serif;
+}
+.prose-doc-rendered hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 2rem 0;
+}
+.prose-doc-rendered em {
+  color: rgba(244, 246, 250, 0.85);
+  font-style: italic;
+}
