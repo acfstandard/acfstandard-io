@@ -11,6 +11,16 @@ export type NavGroup = {
 
 export const docsNav: NavGroup[] = [
   {
+    title: { en: "For executives", fr: "Pour dirigeants" },
+    items: [
+      {
+        title: { en: "Why ACF in 90 s", fr: "Pourquoi ACF en 90 s" },
+        href: "/why-acf",
+        badge: "EXEC",
+      },
+    ],
+  },
+  {
     title: { en: "Sovereignty Score™", fr: "Sovereignty Score™" },
     items: [
       {

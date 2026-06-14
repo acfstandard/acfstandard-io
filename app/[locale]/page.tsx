@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Topbar } from "@/components/Topbar";
+import { HeroVisual } from "@/components/HeroVisual";
 
 type Params = { locale: string };
 
@@ -60,37 +61,45 @@ export default async function Home({ params }: { params: Promise<Params> }) {
               "radial-gradient(ellipse 90% 80% at 50% 50%,black 20%,transparent 100%)",
           }}
         />
-        <div className="relative mx-auto max-w-page px-6 pb-20 pt-24 md:pt-32 lg:px-8">
-          <div className="inline-flex items-center gap-2 rounded-full border border-bd bg-gold-dim px-4 py-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-gold">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold" />
-            {t("tagline")}
-          </div>
-          <h1 className="display-h1 mt-6 text-[clamp(40px,5vw,72px)] text-white">
-            {t("title1")}
-            <br />
-            <span className="text-gold">{t("title2")}</span>
-          </h1>
-          <p className="mt-7 max-w-2xl text-[16px] leading-[1.8] text-gr-2">
-            {t.rich("intro_p1", rich)}
-          </p>
-          <p className="mt-4 max-w-2xl text-[16px] leading-[1.8] text-gr-2">
-            {t.rich("intro_p2", rich)}
-          </p>
-          <div className="mt-10 flex flex-wrap gap-3.5">
-            <Link
-              href="/docs/quickstart"
-              className="inline-flex items-center gap-2 rounded-lg bg-gold px-7 py-3.5 font-display text-[14px] font-bold text-navy-900 transition hover:bg-gold-light hover:shadow-[0_8px_30px_var(--gold-glow)]"
-            >
-              {t("cta_primary")}
-            </Link>
-            <a
-              href="https://github.com/acfstandard/acf-mcp"
-              target="_blank"
-              rel="noopener"
-              className="inline-flex items-center gap-2 rounded-lg border border-white/[0.18] px-7 py-3.5 font-display text-[14px] font-semibold text-white transition hover:border-gold hover:text-gold"
-            >
-              {t("cta_secondary")}
-            </a>
+        <div className="relative mx-auto max-w-page px-6 pb-16 pt-10 lg:px-8">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_1fr]">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-bd bg-gold-dim px-4 py-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-gold">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold" />
+                {t("tagline")}
+              </div>
+              <h1 className="display-h1 mt-6 text-[clamp(36px,4.5vw,64px)] text-white">
+                {t("title1")}
+                <br />
+                <span className="text-gold">{t("title2")}</span>
+                <span className="acf-cursor" />
+              </h1>
+              <p className="mt-7 max-w-2xl text-[16px] leading-[1.8] text-gr-2">
+                {t.rich("intro_p1", rich)}
+              </p>
+              <p className="mt-4 max-w-2xl text-[16px] leading-[1.8] text-gr-2">
+                {t.rich("intro_p2", rich)}
+              </p>
+              <div className="mt-10 flex flex-wrap gap-3.5">
+                <Link
+                  href="/docs/quickstart"
+                  className="inline-flex items-center gap-2 rounded-lg bg-gold px-7 py-3.5 font-display text-[14px] font-bold text-navy-900 transition hover:bg-gold-light hover:shadow-[0_8px_30px_var(--gold-glow)]"
+                >
+                  {t("cta_primary")}
+                </Link>
+                <Link
+                  href="/why-acf"
+                  className="inline-flex items-center gap-2 rounded-lg border border-white/[0.18] px-7 py-3.5 font-display text-[14px] font-semibold text-white transition hover:border-gold hover:text-gold"
+                >
+                  {locale === "fr" ? "Pourquoi ACF en 90 s →" : "Why ACF in 90 s →"}
+                </Link>
+              </div>
+            </div>
+
+            {/* Animated hero visual — central ACF orb + 4 satellites, .com style */}
+            <div className="hidden lg:block">
+              <HeroVisual />
+            </div>
           </div>
 
           {/* Stats row */}
@@ -113,6 +122,30 @@ export default async function Home({ params }: { params: Promise<Params> }) {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ WHY ACF EXECUTIVE STRIP ═══ */}
+      <section className="border-y border-bd bg-navy-800">
+        <div className="mx-auto max-w-page px-6 py-12 lg:px-8">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div className="flex-1">
+              <p className="eyebrow mb-2">
+                {locale === "fr" ? "Pour les dirigeants" : "For executives"}
+              </p>
+              <p className="text-[16px] leading-[1.65] text-gr-2 md:text-[17px]">
+                {locale === "fr"
+                  ? "« Montrez-moi, maintenant, la trace cryptographique de la décision prise par votre agent IA à 3h14 du matin. » — Votre auditeur, le 2 décembre 2027."
+                  : "“Show me, right now, the cryptographic trace of the decision your AI agent took at 3:14 AM.” — Your auditor, December 2, 2027."}
+              </p>
+            </div>
+            <Link
+              href="/why-acf"
+              className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-gold px-6 py-3 font-display text-[13.5px] font-bold text-gold transition hover:bg-gold hover:text-navy-900"
+            >
+              {locale === "fr" ? "Pourquoi ACF existe →" : "Why ACF exists →"}
+            </Link>
           </div>
         </div>
       </section>

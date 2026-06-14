@@ -37,6 +37,12 @@ export function Topbar({ labels }: { labels: Labels }) {
         {/* Center nav */}
         <nav className="ml-10 hidden gap-7 text-[13px] font-medium md:flex">
           <Link
+            href="/why-acf"
+            className={`transition hover:text-gold ${pathname.startsWith("/why-acf") ? "text-gold" : "text-gr-2"}`}
+          >
+            {locale === "fr" ? "Pourquoi ACF" : "Why ACF"}
+          </Link>
+          <Link
             href="/sovereignty-score"
             className={`flex items-center gap-1.5 transition hover:text-gold ${pathname.startsWith("/sovereignty") ? "text-gold" : "text-gr-2"}`}
           >
