@@ -149,11 +149,11 @@ export default async function Home({ params }: { params: Promise<Params> }) {
                 href: "/sovereignty-score",
               },
               {
-                key: "cert",
+                key: "compliance",
                 role: locale === "fr" ? "La preuve" : "The proof",
-                name: "ACF Certification",
-                desc: locale === "fr" ? "Attestation indépendante en trois niveaux (Level 1, 2, 3). Badge publiquement vérifiable." : "Independent third-party attestation in three levels (Level 1, 2, 3). Publicly verifiable badge.",
-                href: "https://acfstandard.com/acf-certification",
+                name: "ACF Compliance",
+                desc: locale === "fr" ? "La plateforme SaaS qui produit la trace cryptographique opposable. Registre signé Ed25519, chaîne SHA-256, horodatage RFC 3161." : "The SaaS platform that produces the opposable cryptographic trace. Ed25519-signed register, SHA-256 chain, RFC 3161 timestamping.",
+                href: "https://compliance.acfstandard.com",
                 external: true,
               },
               {
