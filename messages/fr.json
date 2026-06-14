@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "title": "ACF® — Documentation développeur",
+    "description": "Documentation développeur officielle de l’Agentic Commerce Framework® (ACF®) — le standard européen de gouvernance agentique. Serveur MCP, outils REASON, signatures de doctrine, guides d’intégration."
+  },
+  "nav": {
+    "quickstart": "Démarrage",
+    "docs": "Docs",
+    "tools": "Outils",
+    "resources": "Ressources",
+    "mappings": "Correspondances",
+    "signatures": "Signatures",
+    "whitepaper": "Livre blanc",
+    "changelog": "Changelog",
+    "github": "GitHub",
+    "openSource": "Open source"
+  },
+  "home": {
+    "tagline": "Documentation développeur officielle",
+    "title1": "Construisez des systèmes agentiques",
+    "title2": "que votre auditeur peut vérifier.",
+    "intro_p1": "<code>acf-mcp</code> est le serveur Model Context Protocol officiel de l’<strong>Agentic Commerce Framework®</strong> — le standard européen de gouvernance des agents IA en production.",
+    "intro_p2": "Huit outils REASON déterministes, trente-quatre ressources signées, et une chaîne de doctrine vérifiable — directement dans Claude Desktop, Cursor, Windsurf, Continue, Zed.",
+    "cta_primary": "Démarrer →",
+    "cta_secondary": "Voir le code sur GitHub",
+    "quickstart_eyebrow": "Démarrage · 30 secondes",
+    "quickstart_title": "Installer acf-mcp dans votre client IA",
+    "quickstart_body": "Ajoutez ce bloc à votre <code>claude_desktop_config.json</code> (ou équivalent pour Cursor / Windsurf / Continue / Zed), redémarrez le client, et la doctrine ACF® devient disponible pour votre agent.",
+    "quickstart_meta": "Dernière version : <strong>acf-mcp@1.1.0</strong> · Identité MCP registry : <strong>io.github.acfstandard/acf-mcp</strong>",
+    "tools_eyebrow": "Outils MCP",
+    "tools_title": "Huit outils REASON déterministes",
+    "tools_body": "Chaque outil s’appuie sur une base de connaissance versionnée et signée — sans appel LLM interne. Chaque sortie embarque <code>doctrine_version</code>, <code>doctrine_hash</code>, <code>doctrine_signature</code> et <code>generated_at</code>. Chaque sortie est explicitement positionnée comme qualification préliminaire, pas conseil juridique.",
+    "signatures_eyebrow": "Signatures de doctrine",
+    "signatures_title": "Cryptographiquement vérifiable",
+    "signatures_body": "Chaque release d’<code>acf-mcp</code> embarque une signature Ed25519 sur le hash de contenu de la doctrine. Épinglez la clé publique ci-dessous dans votre pipeline d’audit et vérifiez chaque réponse hors-ligne, sans contacter aucun serveur.",
+    "signatures_pubkey_label": "Clé publique de doctrine (Ed25519, base64 SPKI)",
+    "signatures_pubkey_note": "Vérifiez n’importe quelle réponse avec <code>npm run verify-doctrine</code> depuis le repo, ou implémentez la vérification Ed25519 dans votre langage — la clé privée n’est jamais requise.",
+    "resources_eyebrow": "Pour aller plus loin",
+    "resources_title": "Ressources",
+    "resources_whitepaper_label": "Livre blanc",
+    "resources_whitepaper_title": "Le livre blanc ACF® V2",
+    "resources_whitepaper_body": "Édition juin 2026 — 17 fiches, 4 niveaux d’autonomie, matrice 17×5.",
+    "resources_source_label": "Code source",
+    "resources_source_title": "github.com/acfstandard/acf-mcp",
+    "resources_source_body": "Licence MIT. PRs bienvenues sur l’outillage et les guides d’intégration.",
+    "resources_changelog_label": "Changelog",
+    "resources_changelog_title": "Historique des versions",
+    "resources_changelog_body": "Toutes les releases, avec hash de doctrine et notes de signature.",
+    "footer_copyright": "© 2026 Agentic Commerce Framework® — Vincent Dorange. ACF® est une marque déposée."
+  },
+  "tools": {
+    "advisor": "Conseil structuré à partir d’un cas générique",
+    "classifyAgent": "Qualification préliminaire d’agent (10 champs énumérés)",
+    "assessAutonomy": "Recommandation N0–N3, go/no-go, design du kill switch",
+    "identifyGovernanceGaps": "Maturité 6 dimensions + remédiations priorisées",
+    "mapAiActObligations": "Obligations AI Act ventilées par phase du cycle de vie",
+    "assignDdaoControls": "Contrôles DDAO selon niveau d’autonomie et risque",
+    "evaluateAgentMandate": "Audit en huit checks d’un mandat existant",
+    "mapToStandards": "ACF® × AI Act / ISO 42001 / NIST RMF / RGPD / COBIT"
+  }
+}

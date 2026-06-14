@@ -1,0 +1,61 @@
+{
+  "metadata": {
+    "title": "ACF® Developer Documentation",
+    "description": "Official developer documentation for the Agentic Commerce Framework® (ACF®) — the European standard for agentic governance. MCP server, REASON tools, doctrine signatures, integration guides."
+  },
+  "nav": {
+    "quickstart": "Quickstart",
+    "docs": "Docs",
+    "tools": "Tools",
+    "resources": "Resources",
+    "mappings": "Mappings",
+    "signatures": "Signatures",
+    "whitepaper": "Whitepaper",
+    "changelog": "Changelog",
+    "github": "GitHub",
+    "openSource": "Open source"
+  },
+  "home": {
+    "tagline": "Official developer documentation",
+    "title1": "Build agentic systems",
+    "title2": "your auditor can verify.",
+    "intro_p1": "<code>acf-mcp</code> is the official Model Context Protocol server of the <strong>Agentic Commerce Framework®</strong> — the European standard for governing AI agents in production.",
+    "intro_p2": "Eight deterministic REASON tools, thirty-four signed resources, and a verifiable doctrine chain — directly inside Claude Desktop, Cursor, Windsurf, Continue, Zed.",
+    "cta_primary": "Quickstart →",
+    "cta_secondary": "View source on GitHub",
+    "quickstart_eyebrow": "Quickstart · 30 seconds",
+    "quickstart_title": "Install acf-mcp in your AI client",
+    "quickstart_body": "Add this block to your <code>claude_desktop_config.json</code> (or equivalent for Cursor / Windsurf / Continue / Zed), restart the client, and the ACF® doctrine becomes available to your agent.",
+    "quickstart_meta": "Latest version: <strong>acf-mcp@1.1.0</strong> · MCP registry identity: <strong>io.github.acfstandard/acf-mcp</strong>",
+    "tools_eyebrow": "MCP tools",
+    "tools_title": "Eight deterministic REASON tools",
+    "tools_body": "Each tool runs on a versioned, signed knowledge base — no internal LLM call. Every output ships with <code>doctrine_version</code>, <code>doctrine_hash</code>, <code>doctrine_signature</code> and <code>generated_at</code>. Every output is positioned as preliminary qualification, not legal advice.",
+    "signatures_eyebrow": "Doctrine signatures",
+    "signatures_title": "Cryptographically verifiable",
+    "signatures_body": "Every release of <code>acf-mcp</code> embeds an Ed25519 signature over the content hash of the doctrine. Pin the public key below in your audit pipeline and verify every reply offline, without contacting any server.",
+    "signatures_pubkey_label": "Doctrine public key (Ed25519, base64 SPKI)",
+    "signatures_pubkey_note": "Verify any reply with <code>npm run verify-doctrine</code> from the repo, or implement Ed25519 verification in your own language — no private key needed.",
+    "resources_eyebrow": "Further reading",
+    "resources_title": "Resources",
+    "resources_whitepaper_label": "Whitepaper",
+    "resources_whitepaper_title": "The ACF® whitepaper, V2",
+    "resources_whitepaper_body": "June 2026 edition — 17 fiches, 4 autonomy levels, 17×5 standards mapping matrix.",
+    "resources_source_label": "Source code",
+    "resources_source_title": "github.com/acfstandard/acf-mcp",
+    "resources_source_body": "MIT licence. PRs welcome on tooling and integration guides.",
+    "resources_changelog_label": "Changelog",
+    "resources_changelog_title": "Version history",
+    "resources_changelog_body": "All releases, with doctrine hash and signature notes.",
+    "footer_copyright": "© 2026 Agentic Commerce Framework® — Vincent Dorange. ACF® is a registered trademark."
+  },
+  "tools": {
+    "advisor": "Structured advice from a generic case",
+    "classifyAgent": "Preliminary agent qualification (10 enum fields)",
+    "assessAutonomy": "N0–N3 recommendation, go/no-go, kill switch design",
+    "identifyGovernanceGaps": "6-dim maturity + prioritised remediations",
+    "mapAiActObligations": "AI Act obligations ventilated by lifecycle phase",
+    "assignDdaoControls": "DDAO controls per autonomy level and risk",
+    "evaluateAgentMandate": "Eight-check audit of an existing mandate",
+    "mapToStandards": "ACF® × AI Act / ISO 42001 / NIST RMF / GDPR / COBIT"
+  }
+}
