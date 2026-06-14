@@ -47,62 +47,19 @@ export const docsNav: NavGroup[] = [
   {
     title: { en: "Tools reference", fr: "Référence des outils" },
     items: [
-      {
-        title: { en: "Overview", fr: "Vue d’ensemble" },
-        href: "/tools",
-      },
-      {
-        title: { en: "acf.advisor", fr: "acf.advisor" },
-        href: "/tools/acf.advisor",
-        badge: "REASON",
-      },
-      {
-        title: { en: "acf.classify-agent", fr: "acf.classify-agent" },
-        href: "/tools/acf.classify-agent",
-        badge: "REASON",
-      },
-      {
-        title: { en: "acf.assess-autonomy", fr: "acf.assess-autonomy" },
-        href: "/tools/acf.assess-autonomy",
-        badge: "REASON",
-      },
-      {
-        title: {
-          en: "acf.identify-governance-gaps",
-          fr: "acf.identify-governance-gaps",
-        },
-        href: "/tools/acf.identify-governance-gaps",
-        badge: "REASON",
-      },
-      {
-        title: {
-          en: "acf.map-ai-act-obligations",
-          fr: "acf.map-ai-act-obligations",
-        },
-        href: "/tools/acf.map-ai-act-obligations",
-        badge: "REASON",
-      },
-      {
-        title: {
-          en: "acf.assign-ddao-controls",
-          fr: "acf.assign-ddao-controls",
-        },
-        href: "/tools/acf.assign-ddao-controls",
-        badge: "REASON",
-      },
-      {
-        title: {
-          en: "acf.evaluate-agent-mandate",
-          fr: "acf.evaluate-agent-mandate",
-        },
-        href: "/tools/acf.evaluate-agent-mandate",
-        badge: "REASON",
-      },
-      {
-        title: { en: "acf.map-to-standards", fr: "acf.map-to-standards" },
-        href: "/tools/acf.map-to-standards",
-        badge: "REASON",
-      },
+      { title: { en: "Overview", fr: "Vue d’ensemble" }, href: "/tools" },
+      { title: { en: "acf.advisor", fr: "acf.advisor" }, href: "/tools/acf.advisor", badge: "REASON" },
+      { title: { en: "acf.classify-agent", fr: "acf.classify-agent" }, href: "/tools/acf.classify-agent", badge: "REASON" },
+      { title: { en: "acf.assess-autonomy", fr: "acf.assess-autonomy" }, href: "/tools/acf.assess-autonomy", badge: "REASON" },
+      { title: { en: "acf.identify-governance-gaps", fr: "acf.identify-governance-gaps" }, href: "/tools/acf.identify-governance-gaps", badge: "REASON" },
+      { title: { en: "acf.map-ai-act-obligations", fr: "acf.map-ai-act-obligations" }, href: "/tools/acf.map-ai-act-obligations", badge: "REASON" },
+      { title: { en: "acf.assign-ddao-controls", fr: "acf.assign-ddao-controls" }, href: "/tools/acf.assign-ddao-controls", badge: "REASON" },
+      { title: { en: "acf.evaluate-agent-mandate", fr: "acf.evaluate-agent-mandate" }, href: "/tools/acf.evaluate-agent-mandate", badge: "REASON" },
+      { title: { en: "acf.search", fr: "acf.search" }, href: "/tools/acf.search", badge: "READ" },
+      { title: { en: "acf.fiche.lookup", fr: "acf.fiche.lookup" }, href: "/tools/acf.fiche.lookup", badge: "READ" },
+      { title: { en: "acf.regulation.article", fr: "acf.regulation.article" }, href: "/tools/acf.regulation.article", badge: "READ" },
+      { title: { en: "acf.glossary.define", fr: "acf.glossary.define" }, href: "/tools/acf.glossary.define", badge: "READ" },
+      { title: { en: "acf.cite", fr: "acf.cite" }, href: "/tools/acf.cite", badge: "READ" },
     ],
   },
   {
