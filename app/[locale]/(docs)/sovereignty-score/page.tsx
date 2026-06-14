@@ -15,7 +15,7 @@ export default async function SovereigntyScorePage({
 
   return (
     <DocsPage
-      title="Sovereignty Score™"
+      title="ACF Sovereignty Score™"
       description={
         fr
           ? "Le KPI manquant de la gouvernance agentique. Une mesure 0-100 de la souveraineté décisionnelle effectivement conservée par votre organisation sur ses agents IA en production. Six dimensions pondérées, calibrées sur les fiches ACF® et les obligations EU AI Act."
@@ -29,7 +29,7 @@ export default async function SovereigntyScorePage({
             Tout le monde mesure son ROI, son NPS, son CAC. Personne ne mesure la
             <strong> souveraineté décisionnelle</strong> sur ses agents IA — et c’est
             exactement ce sur quoi les régulateurs vont demander des comptes à partir du
-            2 décembre 2027. Le <strong>Sovereignty Score™</strong> est conçu pour entrer
+            2 décembre 2027. Le <strong>ACF Sovereignty Score™</strong> est conçu pour entrer
             dans la conversation DAF / RSSI / DDAO comme un nombre qui se discute.
           </>
         ) : (
@@ -37,7 +37,7 @@ export default async function SovereigntyScorePage({
             Every organisation measures ROI, NPS, CAC. None measures the
             <strong> decisional sovereignty</strong> retained over its AI agents — and
             that is exactly what regulators will start asking for on December 2, 2027.
-            The <strong>Sovereignty Score™</strong> is designed to enter the CFO / CISO
+            The <strong>ACF Sovereignty Score™</strong> is designed to enter the CFO / CISO
             / DDAO conversation as a number that can be discussed.
           </>
         )}
@@ -51,8 +51,8 @@ export default async function SovereigntyScorePage({
       </p>
       <p>
         {fr
-          ? "Le Sovereignty Score™ rend cette question quantifiable et comparable. Comme NPS l’a fait pour la satisfaction client en 2003, comme l’eNPS l’a fait pour l’engagement collaborateur, le Sovereignty Score™ donne aux comités de gouvernance, aux conseils d’administration et aux régulateurs un nombre unique sur lequel raisonner."
-          : "The Sovereignty Score™ makes that question quantifiable and comparable. The way NPS did for customer satisfaction in 2003, the way eNPS did for employee engagement, the Sovereignty Score™ gives governance committees, boards and regulators a single number to reason about."}
+          ? "Le ACF Sovereignty Score™ rend cette question quantifiable et comparable. Comme NPS l’a fait pour la satisfaction client en 2003, comme l’eNPS l’a fait pour l’engagement collaborateur, le ACF Sovereignty Score™ donne aux comités de gouvernance, aux conseils d’administration et aux régulateurs un nombre unique sur lequel raisonner."
+          : "The ACF Sovereignty Score™ makes that question quantifiable and comparable. The way NPS did for customer satisfaction in 2003, the way eNPS did for employee engagement, the ACF Sovereignty Score™ gives governance committees, boards and regulators a single number to reason about."}
       </p>
 
       <h2 id="formula">{fr ? "La formule" : "The formula"}</h2>
@@ -73,7 +73,7 @@ export default async function SovereigntyScorePage({
         )}
       </p>
       <pre className="my-6 overflow-x-auto rounded-xl border border-bd-neutral bg-black/40 p-6 font-mono text-[14px] leading-relaxed text-gr-2">
-        <code>{`Sovereignty Score™ = Σ ( weight_i × dimension_i )
+        <code>{`ACF Sovereignty Score™ = Σ ( weight_i × dimension_i )
 
 where Σ weight_i = 1.00`}</code>
       </pre>

@@ -27,7 +27,7 @@ export const MAPPING: MappingRow[] = [
   {
     fiche: {
       code: "ACF-00",
-      titleEn: "Sovereignty Score",
+      titleEn: "ACF Sovereignty Score",
       titleFr: "Score de Souveraineté",
       summaryEn: "Evaluates the level of decisional sovereignty preserved by the organisation across the agent portfolio.",
       summaryFr: "Évalue le niveau de souveraineté décisionnelle conservé par l’organisation sur le portefeuille d’agents.",

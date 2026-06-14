@@ -14,7 +14,7 @@ export default async function CalculatePage({
 
   return (
     <DocsPage
-      title={fr ? "Calculez votre Sovereignty Score™" : "Calculate your Sovereignty Score™"}
+      title={fr ? "Calculez votre ACF Sovereignty Score™" : "Calculate your ACF Sovereignty Score™"}
       description={
         fr
           ? "Ajustez les six curseurs en suivant la question posée pour chaque dimension. Le score composite et sa décomposition se mettent à jour en temps réel. Aucune donnée n’est envoyée à un serveur — le calcul tourne entièrement dans votre navigateur."

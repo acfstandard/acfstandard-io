@@ -91,7 +91,7 @@ export function SovereigntyCalculator() {
           className={`rounded-2xl border ${colors.border} ${colors.bg} p-8 text-center`}
         >
           <p className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-gold">
-            {locale === "fr" ? "Sovereignty Score™" : "Sovereignty Score™"}
+            {locale === "fr" ? "ACF Sovereignty Score™" : "ACF Sovereignty Score™"}
           </p>
           <div className={`mt-4 font-display text-[88px] font-black leading-none ${colors.text}`}>
             {score}

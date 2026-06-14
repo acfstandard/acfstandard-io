@@ -17,8 +17,8 @@ export default async function SovereigntyIndexPage({
       title="Sovereignty Index"
       description={
         fr
-          ? "Le benchmark sectoriel annuel des Sovereignty Score™ — médianes par industrie, distribution, tendances. Premier rapport prévu Q4 2026."
-          : "The annual sector benchmark of Sovereignty Score™ — medians per industry, distribution, trends. First report scheduled Q4 2026."
+          ? "Le benchmark sectoriel annuel des ACF Sovereignty Score™ — médianes par industrie, distribution, tendances. Premier rapport prévu Q4 2026."
+          : "The annual sector benchmark of ACF Sovereignty Score™ — medians per industry, distribution, trends. First report scheduled Q4 2026."
       }
       badge={fr ? "Benchmark" : "Benchmark"}
     >
@@ -26,14 +26,14 @@ export default async function SovereigntyIndexPage({
         {fr ? (
           <>
             Le <strong>Sovereignty Index</strong> publiera chaque année la distribution
-            des <Link href="/sovereignty-score">Sovereignty Scores™</Link> observés par
+            des <Link href="/sovereignty-score">ACF Sovereignty Scores™</Link> observés par
             secteur sur un échantillon anonymisé d’organisations. Inscrivez-vous pour
             recevoir le premier rapport.
           </>
         ) : (
           <>
             The <strong>Sovereignty Index</strong> will publish, every year, the
-            distribution of <Link href="/sovereignty-score">Sovereignty Scores™</Link>{" "}
+            distribution of <Link href="/sovereignty-score">ACF Sovereignty Scores™</Link>{" "}
             observed by sector on an anonymised sample of organisations. Sign up to
             receive the first report.
           </>
@@ -69,7 +69,7 @@ export default async function SovereigntyIndexPage({
         {fr ? (
           <>
             La source unique est l’outil MCP <code>acf.identify-governance-gaps</code>,
-            qui produit un Sovereignty Score™ signé Ed25519 à chaque appel. Les
+            qui produit un ACF Sovereignty Score™ signé Ed25519 à chaque appel. Les
             organisations qui souhaitent contribuer publient leur score (et son
             doctrine_hash) au registre public sectoriel — sans révéler leur identité.
             L’index agrège ces signatures anonymes et calcule médiane et percentiles.
@@ -77,7 +77,7 @@ export default async function SovereigntyIndexPage({
         ) : (
           <>
             The single source is the <code>acf.identify-governance-gaps</code> MCP tool,
-            which produces an Ed25519-signed Sovereignty Score™ on every call.
+            which produces an Ed25519-signed ACF Sovereignty Score™ on every call.
             Organisations who choose to contribute publish their score (and its
             doctrine_hash) to the sector public register — without revealing their
             identity. The index aggregates these anonymous signatures and computes

@@ -46,7 +46,7 @@ export function Topbar({ labels }: { labels: Labels }) {
             href="/sovereignty-score"
             className={`flex items-center gap-1.5 transition hover:text-gold ${pathname.startsWith("/sovereignty") ? "text-gold" : "text-gr-2"}`}
           >
-            Sovereignty Score
+            ACF Sovereignty Score
             <span className="font-mono text-[9px] uppercase tracking-wider text-gold">™</span>
           </Link>
           <Link

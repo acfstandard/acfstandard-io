@@ -108,7 +108,7 @@ export function sumOfWeights() {
   return DIMENSIONS.reduce((s, d) => s + d.weight, 0);
 }
 
-// Compute the composite Sovereignty Score from per-dimension answers (each 0-100).
+// Compute the composite ACF Sovereignty Score from per-dimension answers (each 0-100).
 export function composite(answers: Record<string, number>): number {
   const total = DIMENSIONS.reduce((s, d) => {
     const v = Math.max(0, Math.min(100, answers[d.id] ?? 0));

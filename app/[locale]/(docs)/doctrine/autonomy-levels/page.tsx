@@ -82,7 +82,7 @@ export default async function AutonomyLevelsPage({
       description={
         fr
           ? "ACF® classe les agents par niveau d’autonomie. La progression recommandée est N0 → N1 → N2 → N3. Chaque passage à un niveau supérieur déclenche les contrôles de la fiche ACF-00 (Score de Souveraineté)."
-          : "ACF® classifies agents by autonomy level. The recommended progression is N0 → N1 → N2 → N3. Each upgrade triggers the controls of card ACF-00 (Sovereignty Score)."
+          : "ACF® classifies agents by autonomy level. The recommended progression is N0 → N1 → N2 → N3. Each upgrade triggers the controls of card ACF-00 (ACF Sovereignty Score)."
       }
       badge={fr ? "Doctrine" : "Doctrine"}
     >

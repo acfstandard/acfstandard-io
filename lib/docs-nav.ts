@@ -21,7 +21,7 @@ export const docsNav: NavGroup[] = [
     ],
   },
   {
-    title: { en: "Sovereignty Score™", fr: "Sovereignty Score™" },
+    title: { en: "ACF Sovereignty Score™", fr: "ACF Sovereignty Score™" },
     items: [
       {
         title: { en: "Overview", fr: "Vue d’ensemble" },

@@ -144,7 +144,7 @@ export default async function Home({ params }: { params: Promise<Params> }) {
               {
                 key: "score",
                 role: locale === "fr" ? "La métrique" : "The metric",
-                name: "Sovereignty Score™",
+                name: "ACF Sovereignty Score™",
                 desc: locale === "fr" ? "Mesure 0–100 de la souveraineté décisionnelle. Six dimensions, signée Ed25519." : "0–100 measure of decisional sovereignty. Six dimensions, Ed25519-signed.",
                 href: "/sovereignty-score",
               },
@@ -239,7 +239,7 @@ export default async function Home({ params }: { params: Promise<Params> }) {
                 {locale === "fr" ? "Le KPI manquant" : "The missing KPI"}
               </p>
               <h2 className="display-h2 text-[clamp(28px,3.5vw,46px)] text-white">
-                Sovereignty Score
+                ACF Sovereignty Score
                 <span className="ml-1 align-super font-mono text-[0.5em] text-gold">™</span>
               </h2>
               <div className="mt-3.5 h-[3px] w-11 bg-gradient-to-r from-gold to-transparent" />
@@ -251,14 +251,14 @@ export default async function Home({ params }: { params: Promise<Params> }) {
               <p className="mt-3 max-w-xl text-[16px] leading-[1.75] text-gr-2">
                 {locale === "fr" ? (
                   <>
-                    Le <strong className="font-semibold text-white">Sovereignty Score™</strong>{" "}
+                    Le <strong className="font-semibold text-white">ACF Sovereignty Score™</strong>{" "}
                     est la première métrique 0-100 conçue pour cette conversation —
                     six dimensions pondérées, calibrées sur les fiches ACF® et les
                     obligations AI Act.
                   </>
                 ) : (
                   <>
-                    The <strong className="font-semibold text-white">Sovereignty Score™</strong>{" "}
+                    The <strong className="font-semibold text-white">ACF Sovereignty Score™</strong>{" "}
                     is the first 0-100 metric designed for that conversation — six
                     weighted dimensions, calibrated on the ACF® cards and the AI Act
                     obligations.

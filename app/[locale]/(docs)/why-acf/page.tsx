@@ -16,7 +16,7 @@ const WITH_BULLETS: { fr: string; en: string }[] = [
   { fr: "La promesse de remboursement déclenche le kill switch de niveau 2, mappé sur la fiche ACF-11, archivé avant tout redéploiement.", en: "The refund commitment triggers the level 2 kill switch, mapped to card ACF-11, archived before any redeploy." },
   { fr: "Le contrat fournisseur est classifié N1 et non N3, ce qui rend la fiche ACF-09 « screening sanctions » obligatoire avant signature.", en: "The supplier contract is classified N1 not N3, making the ACF-09 sanctions-screening card mandatory before signature." },
   { fr: "L'auditeur reçoit en 30 secondes un PDF signé, mappé sur AI Act, ISO 42001, NIST AI RMF, RGPD et COBIT.", en: "The auditor receives a signed PDF in 30 seconds, mapped to EU AI Act, ISO 42001, NIST AI RMF, GDPR, and COBIT." },
-  { fr: "Votre Sovereignty Score™ progresse de 34 à 78 en six mois, et chaque décision agentique reste opposable des années plus tard.", en: "Your Sovereignty Score™ moves from 34 to 78 in six months, and every agentic decision remains opposable years later." },
+  { fr: "Votre ACF Sovereignty Score™ progresse de 34 à 78 en six mois, et chaque décision agentique reste opposable des années plus tard.", en: "Your ACF Sovereignty Score™ moves from 34 to 78 in six months, and every agentic decision remains opposable years later." },
 ];
 
 const THREE_ANSWERS = [
@@ -273,7 +273,7 @@ export default async function WhyAcfPage({
           href="/sovereignty-score/calculate"
           className="inline-flex items-center gap-2 rounded-lg bg-gold px-7 py-3.5 font-display text-[14px] font-bold text-navy-900 transition hover:bg-gold-light hover:shadow-[0_8px_30px_var(--gold-glow)]"
         >
-          {fr ? "Calculer notre Sovereignty Score™" : "Calculate our Sovereignty Score™"}
+          {fr ? "Calculer notre ACF Sovereignty Score™" : "Calculate our ACF Sovereignty Score™"}
         </Link>
         <Link
           href="/docs/introduction"
