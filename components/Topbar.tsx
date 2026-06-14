@@ -17,58 +17,72 @@ export function Topbar({ labels }: { labels: Labels }) {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-navy/85 backdrop-blur">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <div className="flex items-center gap-8">
-          <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded border border-gold/40 bg-gold/10 font-display text-sm font-bold text-gold">
-              ACF
-            </div>
-            <span className="font-display text-base font-semibold tracking-wide text-white">
+    <header className="sticky top-0 z-40 h-[72px] border-b border-bd bg-navy-900/[0.92] backdrop-blur-nav">
+      <div className="mx-auto flex h-full max-w-page items-center px-6 lg:px-8">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3">
+          <div className="flex h-[38px] w-[38px] items-center justify-center rounded-[7px] bg-gold font-display text-[13px] font-extrabold leading-none text-navy-900">
+            ACF
+          </div>
+          <div className="leading-tight">
+            <div className="font-display text-[14px] font-bold leading-tight text-white">
               acfstandard.io
-            </span>
+            </div>
+            <div className="font-mono text-[9.5px] uppercase tracking-[0.1em] text-gold">
+              Developer docs
+            </div>
+          </div>
+        </Link>
+
+        {/* Center nav */}
+        <nav className="ml-10 hidden gap-7 text-[13px] font-medium md:flex">
+          <Link
+            href="/docs/introduction"
+            className={`transition hover:text-gold ${pathname.startsWith("/docs") ? "text-gold" : "text-gr-2"}`}
+          >
+            {labels.docs}
           </Link>
-          <nav className="hidden gap-6 text-sm md:flex">
-            <Link
-              href="/docs/introduction"
-              className={`hover:text-gold ${pathname.startsWith("/docs") ? "text-gold" : "text-navy-50/80"}`}
-            >
-              {labels.docs}
-            </Link>
-            <Link
-              href="/tools"
-              className={`hover:text-gold ${pathname.startsWith("/tools") ? "text-gold" : "text-navy-50/80"}`}
-            >
-              {labels.tools}
-            </Link>
-            <Link
-              href="/signatures"
-              className={`hover:text-gold ${pathname.startsWith("/signatures") ? "text-gold" : "text-navy-50/80"}`}
-            >
-              {labels.signatures}
-            </Link>
-            <Link
-              href="/whitepaper"
-              className={`hover:text-gold ${pathname.startsWith("/whitepaper") ? "text-gold" : "text-navy-50/80"}`}
-            >
-              {labels.whitepaper}
-            </Link>
-          </nav>
-        </div>
-        <div className="flex items-center gap-3">
+          <Link
+            href="/tools"
+            className={`transition hover:text-gold ${pathname.startsWith("/tools") ? "text-gold" : "text-gr-2"}`}
+          >
+            {labels.tools}
+          </Link>
+          <Link
+            href="/mappings"
+            className={`transition hover:text-gold ${pathname.startsWith("/mappings") ? "text-gold" : "text-gr-2"}`}
+          >
+            {locale === "fr" ? "Correspondances" : "Mappings"}
+          </Link>
+          <Link
+            href="/signatures"
+            className={`transition hover:text-gold ${pathname.startsWith("/signatures") ? "text-gold" : "text-gr-2"}`}
+          >
+            {labels.signatures}
+          </Link>
+          <Link
+            href="/whitepaper"
+            className={`transition hover:text-gold ${pathname.startsWith("/whitepaper") ? "text-gold" : "text-gr-2"}`}
+          >
+            {labels.whitepaper}
+          </Link>
+        </nav>
+
+        {/* Right cluster */}
+        <div className="ml-auto flex items-center gap-3">
           <SearchTrigger />
           <a
             href="https://github.com/acfstandard/acf-mcp"
             target="_blank"
             rel="noopener"
-            className="hidden text-sm text-navy-50/80 hover:text-gold md:inline"
+            className="hidden rounded-md border border-bd-neutral px-3 py-1.5 font-mono text-[11px] font-semibold uppercase tracking-wider text-gr-2 transition hover:border-bd hover:text-gold md:inline-flex"
           >
-            {labels.github} ↗
+            GitHub
           </a>
           <Link
             href={pathname}
             locale={locale === "en" ? "fr" : "en"}
-            className="rounded border border-white/20 px-2 py-1 font-mono text-xs uppercase tracking-wider text-navy-50/80 hover:border-gold hover:text-gold"
+            className="rounded-md border border-bd-neutral px-2 py-1 font-mono text-[11px] font-semibold uppercase tracking-wider text-gr-2 transition hover:border-bd hover:text-gold"
           >
             {locale === "en" ? "FR" : "EN"}
           </Link>

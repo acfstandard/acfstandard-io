@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { Topbar } from "@/components/Topbar";
 
 type Params = { locale: string };
 
@@ -12,7 +13,7 @@ export default async function Home({ params }: { params: Promise<Params> }) {
 
   const rich = {
     code: (chunks: React.ReactNode) => (
-      <code className="rounded bg-white/10 px-1.5 py-0.5 font-mono text-sm text-gold">
+      <code className="rounded bg-white/[0.06] px-1.5 py-0.5 font-mono text-[0.875em] font-medium text-gold">
         {chunks}
       </code>
     ),
@@ -33,92 +34,101 @@ export default async function Home({ params }: { params: Promise<Params> }) {
   ];
 
   return (
-    <main className="min-h-screen bg-navy text-navy-50">
-      <header className="border-b border-white/10">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-          <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded border border-gold/40 bg-gold/10 font-display text-sm font-bold text-gold">
-              ACF
-            </div>
-            <span className="font-display text-base font-semibold tracking-wide">
-              acfstandard.io
-            </span>
-            <span className="ml-2 rounded border border-gold/30 px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-gold/80">
-              {tn("openSource")}
-            </span>
+    <>
+      <Topbar
+        labels={{
+          github: tn("github"),
+          docs: tn("docs"),
+          tools: tn("tools"),
+          signatures: tn("signatures"),
+          whitepaper: tn("whitepaper"),
+        }}
+      />
+
+      {/* ═══ HERO ═══ */}
+      <section className="relative overflow-hidden">
+        {/* Gold grid backdrop */}
+        <div
+          className="absolute inset-0 opacity-60"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(201,168,76,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.05) 1px,transparent 1px)",
+            backgroundSize: "60px 60px",
+            maskImage:
+              "radial-gradient(ellipse 90% 80% at 50% 50%,black 20%,transparent 100%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 90% 80% at 50% 50%,black 20%,transparent 100%)",
+          }}
+        />
+        <div className="relative mx-auto max-w-page px-6 pb-20 pt-24 md:pt-32 lg:px-8">
+          <div className="inline-flex items-center gap-2 rounded-full border border-bd bg-gold-dim px-4 py-1.5 font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-gold">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold" />
+            {t("tagline")}
           </div>
-          <nav className="hidden items-center gap-7 text-sm md:flex">
-            <a href="#quickstart" className="hover:text-gold">
-              {tn("quickstart")}
-            </a>
-            <a href="#tools" className="hover:text-gold">
-              {tn("tools")}
-            </a>
-            <a href="#signatures" className="hover:text-gold">
-              {tn("signatures")}
-            </a>
+          <h1 className="display-h1 mt-6 text-[clamp(40px,5vw,72px)] text-white">
+            {t("title1")}
+            <br />
+            <span className="text-gold">{t("title2")}</span>
+          </h1>
+          <p className="mt-7 max-w-2xl text-[16px] leading-[1.8] text-gr-2">
+            {t.rich("intro_p1", rich)}
+          </p>
+          <p className="mt-4 max-w-2xl text-[16px] leading-[1.8] text-gr-2">
+            {t.rich("intro_p2", rich)}
+          </p>
+          <div className="mt-10 flex flex-wrap gap-3.5">
+            <Link
+              href="/docs/quickstart"
+              className="inline-flex items-center gap-2 rounded-lg bg-gold px-7 py-3.5 font-display text-[14px] font-bold text-navy-900 transition hover:bg-gold-light hover:shadow-[0_8px_30px_var(--gold-glow)]"
+            >
+              {t("cta_primary")}
+            </Link>
             <a
               href="https://github.com/acfstandard/acf-mcp"
               target="_blank"
               rel="noopener"
-              className="hover:text-gold"
+              className="inline-flex items-center gap-2 rounded-lg border border-white/[0.18] px-7 py-3.5 font-display text-[14px] font-semibold text-white transition hover:border-gold hover:text-gold"
             >
-              {tn("github")} ↗
+              {t("cta_secondary")}
             </a>
-            <Link
-              href="/"
-              locale={locale === "en" ? "fr" : "en"}
-              className="rounded border border-white/20 px-2 py-0.5 font-mono text-xs uppercase tracking-wider hover:border-gold hover:text-gold"
-            >
-              {locale === "en" ? "FR" : "EN"}
-            </Link>
-          </nav>
-        </div>
-      </header>
+          </div>
 
-      <section className="mx-auto max-w-6xl px-6 py-24 md:py-32">
-        <p className="mb-6 font-mono text-xs uppercase tracking-widest text-gold">
-          {t("tagline")}
-        </p>
-        <h1 className="font-display text-5xl font-bold leading-tight tracking-tight md:text-6xl">
-          {t("title1")}
-          <br />
-          {t("title2")}
-        </h1>
-        <p className="mt-8 max-w-2xl text-lg leading-relaxed text-navy-50/80">
-          {t.rich("intro_p1", rich)}
-        </p>
-        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-navy-50/80">
-          {t.rich("intro_p2", rich)}
-        </p>
-        <div className="mt-12 flex flex-wrap gap-4">
-          <a
-            href="#quickstart"
-            className="rounded border border-gold bg-gold px-6 py-3 font-semibold text-navy hover:bg-gold-400"
-          >
-            {t("cta_primary")}
-          </a>
-          <a
-            href="https://github.com/acfstandard/acf-mcp"
-            target="_blank"
-            rel="noopener"
-            className="rounded border border-white/20 bg-white/5 px-6 py-3 font-semibold hover:bg-white/10"
-          >
-            {t("cta_secondary")}
-          </a>
+          {/* Stats row */}
+          <div className="mt-14 grid grid-cols-2 overflow-hidden rounded-xl border border-bd bg-navy-700/50 md:grid-cols-4">
+            {[
+              { value: "12", label: locale === "fr" ? "Outils MCP" : "MCP tools" },
+              { value: "34", label: locale === "fr" ? "Ressources signées" : "Signed resources" },
+              { value: "17×5", label: locale === "fr" ? "Matrice de mapping" : "Mapping matrix" },
+              { value: "Ed25519", label: locale === "fr" ? "Doctrine signée" : "Signed doctrine" },
+            ].map((s, i) => (
+              <div
+                key={s.label}
+                className={`px-3 py-5 text-center transition hover:bg-gold-dim ${i < 3 ? "border-r border-bd" : ""} ${i >= 2 ? "border-t border-bd md:border-t-0" : ""}`}
+              >
+                <div className="font-display text-[28px] font-extrabold leading-none text-gold md:text-[32px]">
+                  {s.value}
+                </div>
+                <div className="mt-2 font-mono text-[10px] uppercase tracking-wider text-gr">
+                  {s.label}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section id="quickstart" className="border-y border-white/10 bg-white/[0.02]">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">
-            {t("quickstart_eyebrow")}
-          </p>
-          <h2 className="font-display text-3xl font-bold md:text-4xl">
+      {/* ═══ QUICKSTART ═══ */}
+      <section id="quickstart" className="border-y border-bd-neutral bg-navy-800">
+        <div className="mx-auto max-w-page px-6 py-24 lg:px-8">
+          <p className="eyebrow mb-4">{t("quickstart_eyebrow")}</p>
+          <h2 className="display-h2 text-[clamp(28px,3.5vw,46px)] text-white">
             {t("quickstart_title")}
           </h2>
-          <p className="mt-4 max-w-2xl text-navy-50/70">{t.rich("quickstart_body", rich)}</p>
-          <pre className="mt-8 overflow-x-auto rounded-lg border border-white/10 bg-black/40 p-6 font-mono text-sm leading-relaxed text-navy-50/90">
+          <div className="mt-3.5 h-[3px] w-11 bg-gradient-to-r from-gold to-transparent" />
+          <p className="mt-7 max-w-2xl text-[16px] leading-[1.75] text-gr-2">
+            {t.rich("quickstart_body", rich)}
+          </p>
+          <pre className="mt-8 overflow-x-auto rounded-xl border border-bd-neutral bg-black/40 p-6 font-mono text-[13.5px] leading-relaxed text-gr-2">
             <code>{`{
   "mcpServers": {
     "acf": {
@@ -128,121 +138,149 @@ export default async function Home({ params }: { params: Promise<Params> }) {
   }
 }`}</code>
           </pre>
-          <p className="mt-6 text-sm text-navy-50/60">{t.rich("quickstart_meta", rich)}</p>
-        </div>
-      </section>
-
-      <section id="tools" className="mx-auto max-w-6xl px-6 py-20">
-        <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">
-          {t("tools_eyebrow")}
-        </p>
-        <h2 className="font-display text-3xl font-bold md:text-4xl">{t("tools_title")}</h2>
-        <p className="mt-4 max-w-2xl text-navy-50/70">{t.rich("tools_body", rich)}</p>
-        <div className="mt-10 grid gap-4 md:grid-cols-2">
-          {tools.map(([name, desc]) => (
-            <div
-              key={name}
-              className="rounded-lg border border-white/10 bg-white/[0.03] p-5 hover:border-gold/30"
-            >
-              <code className="font-mono text-sm font-semibold text-gold">{name}</code>
-              <p className="mt-2 text-sm text-navy-50/70">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section id="signatures" className="border-t border-white/10 bg-white/[0.02]">
-        <div className="mx-auto max-w-6xl px-6 py-20">
-          <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">
-            {t("signatures_eyebrow")}
+          <p className="mt-6 font-mono text-[12px] text-gr">
+            {t.rich("quickstart_meta", rich)}
           </p>
-          <h2 className="font-display text-3xl font-bold md:text-4xl">
+        </div>
+      </section>
+
+      {/* ═══ TOOLS ═══ */}
+      <section id="tools">
+        <div className="mx-auto max-w-page px-6 py-24 lg:px-8">
+          <p className="eyebrow mb-4">{t("tools_eyebrow")}</p>
+          <h2 className="display-h2 text-[clamp(28px,3.5vw,46px)] text-white">
+            {t("tools_title")}
+          </h2>
+          <div className="mt-3.5 h-[3px] w-11 bg-gradient-to-r from-gold to-transparent" />
+          <p className="mt-7 max-w-2xl text-[16px] leading-[1.75] text-gr-2">
+            {t.rich("tools_body", rich)}
+          </p>
+          <div className="mt-12 grid gap-3 md:grid-cols-2">
+            {tools.map(([name, desc]) => (
+              <Link
+                key={name}
+                href={`/tools/${name}` as never}
+                className="group rounded-xl border border-bd-neutral bg-navy-700 p-6 transition hover:-translate-y-1 hover:border-gold hover:shadow-[0_20px_50px_rgba(0,0,0,.3)]"
+              >
+                <div className="flex items-center justify-between">
+                  <code className="font-mono text-[13.5px] font-bold text-gold">{name}</code>
+                  <span className="rounded border border-gold/30 px-1.5 py-0.5 font-mono text-[9px] font-bold uppercase tracking-wider text-gold/80">
+                    REASON
+                  </span>
+                </div>
+                <p className="mt-3 text-[14px] leading-[1.65] text-gr-2">{desc}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ SIGNATURES ═══ */}
+      <section id="signatures" className="border-y border-bd-neutral bg-navy-800">
+        <div className="mx-auto max-w-page px-6 py-24 lg:px-8">
+          <p className="eyebrow mb-4">{t("signatures_eyebrow")}</p>
+          <h2 className="display-h2 text-[clamp(28px,3.5vw,46px)] text-white">
             {t("signatures_title")}
           </h2>
-          <p className="mt-4 max-w-2xl text-navy-50/70">{t.rich("signatures_body", rich)}</p>
-          <div className="mt-8 rounded-lg border border-gold/30 bg-gold/[0.04] p-6">
-            <p className="font-mono text-xs uppercase tracking-widest text-gold">
+          <div className="mt-3.5 h-[3px] w-11 bg-gradient-to-r from-gold to-transparent" />
+          <p className="mt-7 max-w-2xl text-[16px] leading-[1.75] text-gr-2">
+            {t.rich("signatures_body", rich)}
+          </p>
+          <div className="mt-10 rounded-xl border border-bd bg-gold-dim p-7">
+            <p className="font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-gold">
               {t("signatures_pubkey_label")}
             </p>
-            <pre className="mt-3 overflow-x-auto font-mono text-sm leading-relaxed text-white">
+            <pre className="mt-3 overflow-x-auto font-mono text-[14px] leading-relaxed text-white">
               <code>MCowBQYDK2VwAyEAojtKfh20SGGV63LMETjZBXRWo2tY0viAYziG/y3/L0s=</code>
             </pre>
-            <p className="mt-4 text-sm text-navy-50/60">
+            <p className="mt-4 text-[14px] text-gr-2">
               {t.rich("signatures_pubkey_note", rich)}
             </p>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <p className="mb-4 font-mono text-xs uppercase tracking-widest text-gold">
-          {t("resources_eyebrow")}
-        </p>
-        <h2 className="font-display text-3xl font-bold md:text-4xl">{t("resources_title")}</h2>
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
-          <a
-            href={
-              locale === "fr"
-                ? "https://github.com/acfstandard/acf-mcp/blob/main/content/whitepaper/fr.md"
-                : "https://github.com/acfstandard/acf-mcp/blob/main/content/whitepaper/en.md"
-            }
-            target="_blank"
-            rel="noopener"
-            className="rounded-lg border border-white/10 bg-white/[0.03] p-6 hover:border-gold/30"
-          >
-            <p className="font-mono text-xs uppercase tracking-widest text-gold">
-              {t("resources_whitepaper_label")}
-            </p>
-            <h3 className="mt-3 font-display text-lg font-semibold">
-              {t("resources_whitepaper_title")}
-            </h3>
-            <p className="mt-2 text-sm text-navy-50/70">{t("resources_whitepaper_body")}</p>
-          </a>
-          <a
-            href="https://github.com/acfstandard/acf-mcp"
-            target="_blank"
-            rel="noopener"
-            className="rounded-lg border border-white/10 bg-white/[0.03] p-6 hover:border-gold/30"
-          >
-            <p className="font-mono text-xs uppercase tracking-widest text-gold">
-              {t("resources_source_label")}
-            </p>
-            <h3 className="mt-3 font-display text-lg font-semibold">
-              {t("resources_source_title")}
-            </h3>
-            <p className="mt-2 text-sm text-navy-50/70">{t("resources_source_body")}</p>
-          </a>
-          <Link
-            href="/mappings"
-            className="rounded-lg border border-white/10 bg-white/[0.03] p-6 hover:border-gold/30"
-          >
-            <p className="font-mono text-xs uppercase tracking-widest text-gold">
-              {t("resources_matrix_label")}
-            </p>
-            <h3 className="mt-3 font-display text-lg font-semibold">
-              {t("resources_matrix_title")}
-            </h3>
-            <p className="mt-2 text-sm text-navy-50/70">{t("resources_matrix_body")}</p>
-          </Link>
+      {/* ═══ RESOURCES ═══ */}
+      <section>
+        <div className="mx-auto max-w-page px-6 py-24 lg:px-8">
+          <p className="eyebrow mb-4">{t("resources_eyebrow")}</p>
+          <h2 className="display-h2 text-[clamp(28px,3.5vw,46px)] text-white">
+            {t("resources_title")}
+          </h2>
+          <div className="mt-3.5 h-[3px] w-11 bg-gradient-to-r from-gold to-transparent" />
+          <div className="mt-12 grid gap-3 md:grid-cols-3">
+            <Link
+              href={"/whitepaper" as never}
+              className="group rounded-xl border border-bd-neutral bg-navy-700 p-7 transition hover:-translate-y-1 hover:border-gold"
+            >
+              <p className="font-mono text-[10.5px] font-bold uppercase tracking-[0.12em] text-gold">
+                {t("resources_whitepaper_label")}
+              </p>
+              <h3 className="mt-3 font-display text-[18px] font-bold text-white">
+                {t("resources_whitepaper_title")}
+              </h3>
+              <p className="mt-2 text-[14px] leading-[1.65] text-gr-2">
+                {t("resources_whitepaper_body")}
+              </p>
+            </Link>
+            <a
+              href="https://github.com/acfstandard/acf-mcp"
+              target="_blank"
+              rel="noopener"
+              className="group rounded-xl border border-bd-neutral bg-navy-700 p-7 transition hover:-translate-y-1 hover:border-gold"
+            >
+              <p className="font-mono text-[10.5px] font-bold uppercase tracking-[0.12em] text-gold">
+                {t("resources_source_label")}
+              </p>
+              <h3 className="mt-3 font-display text-[18px] font-bold text-white">
+                {t("resources_source_title")}
+              </h3>
+              <p className="mt-2 text-[14px] leading-[1.65] text-gr-2">
+                {t("resources_source_body")}
+              </p>
+            </a>
+            <Link
+              href={"/mappings" as never}
+              className="group rounded-xl border border-bd-neutral bg-navy-700 p-7 transition hover:-translate-y-1 hover:border-gold"
+            >
+              <p className="font-mono text-[10.5px] font-bold uppercase tracking-[0.12em] text-gold">
+                {t("resources_matrix_label")}
+              </p>
+              <h3 className="mt-3 font-display text-[18px] font-bold text-white">
+                {t("resources_matrix_title")}
+              </h3>
+              <p className="mt-2 text-[14px] leading-[1.65] text-gr-2">
+                {t("resources_matrix_body")}
+              </p>
+            </Link>
+          </div>
         </div>
       </section>
 
-      <footer className="border-t border-white/10 bg-black/30">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-10 md:flex-row md:items-center md:justify-between">
-          <p className="font-mono text-xs text-navy-50/50">{t("footer_copyright")}</p>
-          <div className="flex gap-6 font-mono text-xs text-navy-50/60">
-            <a href="https://acfstandard.com" className="hover:text-gold">
-              acfstandard.com
-            </a>
-            <a href="https://compliance.acfstandard.com" className="hover:text-gold">
-              ACF Compliance
-            </a>
-            <a href="https://acf-score.com" className="hover:text-gold">
-              ACF Score
-            </a>
+      {/* ═══ FOOTER ═══ */}
+      <footer className="border-t border-bd bg-navy-800">
+        <div className="mx-auto max-w-page px-6 py-12 lg:px-8">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-gr">
+              {t("footer_copyright")}
+            </p>
+            <div className="flex flex-wrap gap-6 font-mono text-[12px] text-gr">
+              <a href="https://acfstandard.com" className="transition hover:text-gold">
+                acfstandard.com
+              </a>
+              <a
+                href="https://compliance.acfstandard.com"
+                className="transition hover:text-gold"
+              >
+                ACF Compliance
+              </a>
+              <a href="https://acf-score.com" className="transition hover:text-gold">
+                ACF Score
+              </a>
+            </div>
           </div>
         </div>
       </footer>
-    </main>
+    </>
   );
 }

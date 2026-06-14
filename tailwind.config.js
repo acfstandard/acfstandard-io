@@ -10,21 +10,44 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Aligned with acfstandard.com (--navy / --navy2 / --navy3 from globals.css)
         navy: {
-          DEFAULT: "#0d1f3c",
-          50: "#f4f6fa",
-          100: "#e7ecf3",
-          900: "#0d1f3c",
+          DEFAULT: "#050c1a", // body background — deepest navy
+          50: "#9db0c8",      // body text light (--gr2)
+          100: "#9db0c8",
+          200: "#6b7fa0",      // labels, secondary text (--gr)
+          300: "#6b7fa0",
+          700: "#0d1f3c",      // surface cards (--navy3)
+          800: "#071122",      // surface sections (--navy2)
+          900: "#050c1a",      // base (--navy)
         },
         gold: {
           DEFAULT: "#c9a84c",
-          400: "#d8bd6f",
+          light: "#e8c96a",   // hover state (--gold2)
+          400: "#e8c96a",
+          dim: "rgba(201,168,76,0.14)",
+          glow: "rgba(201,168,76,0.35)",
+        },
+        // Border tokens
+        bd: {
+          DEFAULT: "rgba(201,168,76,0.2)",  // gold-tinted (--bd)
+          neutral: "rgba(255,255,255,0.07)", // (--bd2)
+        },
+        gr: {
+          DEFAULT: "#6b7fa0",  // primary gray (--gr)
+          2: "#9db0c8",         // lighter gray (--gr2)
         },
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['"Space Grotesk"', 'Inter', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
+      },
+      backdropBlur: {
+        nav: "24px",
+      },
+      maxWidth: {
+        page: "1320px",
       },
     },
   },

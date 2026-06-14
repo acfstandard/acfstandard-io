@@ -24,29 +24,34 @@ export default async function DocsLayout({
           whitepaper: tn("whitepaper"),
         }}
       />
-      <div className="mx-auto flex max-w-7xl gap-8 px-6">
+      <div className="mx-auto flex max-w-page gap-10 px-6 lg:px-8">
         <Sidebar />
-        <main className="min-w-0 flex-1 py-10">{children}</main>
+        <main className="min-w-0 flex-1 py-12">{children}</main>
         <TableOfContents />
       </div>
-      <footer className="border-t border-white/10 bg-black/30">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-8 md:flex-row md:items-center md:justify-between">
-          <p className="font-mono text-xs text-navy-50/50">
-            © 2026 Agentic Commerce Framework® — Vincent Dorange
-          </p>
-          <div className="flex gap-6 font-mono text-xs text-navy-50/60">
-            <a href="https://acfstandard.com" className="hover:text-gold">
-              acfstandard.com
-            </a>
-            <a href="https://compliance.acfstandard.com" className="hover:text-gold">
-              ACF Compliance
-            </a>
-            <a
-              href="https://github.com/acfstandard/acf-mcp"
-              className="hover:text-gold"
-            >
-              GitHub
-            </a>
+      <footer className="border-t border-bd bg-navy-800">
+        <div className="mx-auto max-w-page px-6 py-10 lg:px-8">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <p className="font-mono text-[11px] uppercase tracking-wider text-gr">
+              © 2026 Agentic Commerce Framework® — Vincent Dorange
+            </p>
+            <div className="flex flex-wrap gap-6 font-mono text-[12px] text-gr">
+              <a href="https://acfstandard.com" className="transition hover:text-gold">
+                acfstandard.com
+              </a>
+              <a href="https://compliance.acfstandard.com" className="transition hover:text-gold">
+                ACF Compliance
+              </a>
+              <a href="https://acf-score.com" className="transition hover:text-gold">
+                ACF Score
+              </a>
+              <a
+                href="https://github.com/acfstandard/acf-mcp"
+                className="transition hover:text-gold"
+              >
+                GitHub ↗
+              </a>
+            </div>
           </div>
         </div>
       </footer>

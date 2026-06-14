@@ -2,25 +2,76 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap");
+
+/* ═══ ACF® brand tokens — aligned with acfstandard.com ═══ */
+:root {
+  --navy: #050c1a;
+  --navy2: #071122;
+  --navy3: #0d1f3c;
+  --gold: #c9a84c;
+  --gold2: #e8c96a;
+  --gold-dim: rgba(201, 168, 76, 0.14);
+  --gold-glow: rgba(201, 168, 76, 0.35);
+  --w: #ffffff;
+  --gr: #6b7fa0;
+  --gr2: #9db0c8;
+  --bd: rgba(201, 168, 76, 0.2);
+  --bd2: rgba(255, 255, 255, 0.07);
+  --green: #22c55e;
+  --green-glow: rgba(34, 197, 94, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
 
 html {
   scroll-behavior: smooth;
+  background: #050c1a;
+  height: 100%;
 }
 
 body {
-  background: #0d1f3c;
-  color: #f4f6fa;
+  background: #050c1a;
+  color: #ffffff;
+  font-family: "Inter", system-ui, sans-serif;
+  line-height: 1.6;
   font-feature-settings: "ss01", "cv11";
+  min-height: 100vh;
 }
 
-/* Docs prose styling — tuned for technical content */
+/* ═══ Reusable brand utilities ═══ */
+.eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.display-h1 {
+  font-family: "Space Grotesk", Inter, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+
+.display-h2 {
+  font-family: "Space Grotesk", Inter, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* ═══ Docs typography — content inside .docs-content ═══ */
 .docs-content > h2 {
   scroll-margin-top: 100px;
   font-family: "Space Grotesk", Inter, sans-serif;
-  font-size: 1.625rem;
+  font-size: 1.75rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   color: #fff;
   margin-top: 3rem;
   margin-bottom: 1rem;
@@ -29,7 +80,7 @@ body {
   scroll-margin-top: 100px;
   font-family: "Space Grotesk", Inter, sans-serif;
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #fff;
   margin-top: 2.25rem;
   margin-bottom: 0.75rem;
@@ -37,7 +88,7 @@ body {
 .docs-content > p,
 .docs-content > ul,
 .docs-content > ol {
-  color: rgba(244, 246, 250, 0.78);
+  color: var(--gr2);
   line-height: 1.75;
   margin-bottom: 1.25rem;
   font-size: 1rem;
@@ -54,24 +105,26 @@ body {
 }
 .docs-content li {
   margin-bottom: 0.5rem;
+  color: var(--gr2);
 }
 .docs-content code {
-  background: rgba(255, 255, 255, 0.08);
-  color: #c9a84c;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--gold);
   padding: 0.125rem 0.375rem;
   border-radius: 0.25rem;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.875em;
+  font-weight: 500;
 }
 .docs-content a {
-  color: #c9a84c;
+  color: var(--gold);
   text-decoration: underline;
-  text-decoration-color: rgba(201, 168, 76, 0.4);
+  text-decoration-color: rgba(201, 168, 76, 0.35);
   text-underline-offset: 3px;
   transition: text-decoration-color 0.15s;
 }
 .docs-content a:hover {
-  text-decoration-color: #c9a84c;
+  text-decoration-color: var(--gold);
 }
 .docs-content strong {
   color: #fff;
@@ -79,7 +132,7 @@ body {
 }
 .docs-content pre {
   background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--bd2);
   border-radius: 0.5rem;
   padding: 1.25rem;
   font-family: "JetBrains Mono", monospace;
@@ -94,20 +147,19 @@ body {
   padding: 0;
 }
 .docs-content blockquote {
-  border-left: 3px solid #c9a84c;
+  border-left: 3px solid var(--gold);
   padding-left: 1rem;
   margin: 1.5rem 0;
-  color: rgba(244, 246, 250, 0.7);
+  color: var(--gr2);
   font-style: italic;
 }
 
-/* Markdown-rendered content (whitepaper, changelog) — bypass the > h2 selector
-   because the rendered HTML wraps content in a sibling structure. */
+/* ═══ Rendered Markdown (whitepaper, etc.) ═══ */
 .prose-doc-rendered h1 {
   font-family: "Space Grotesk", Inter, sans-serif;
   font-size: 2.25rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   color: #fff;
   margin-top: 3rem;
   margin-bottom: 1.5rem;
@@ -115,9 +167,9 @@ body {
 }
 .prose-doc-rendered h2 {
   font-family: "Space Grotesk", Inter, sans-serif;
-  font-size: 1.625rem;
+  font-size: 1.75rem;
   font-weight: 700;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   color: #fff;
   margin-top: 3rem;
   margin-bottom: 1rem;
@@ -126,7 +178,7 @@ body {
 .prose-doc-rendered h3 {
   font-family: "Space Grotesk", Inter, sans-serif;
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #fff;
   margin-top: 2.25rem;
   margin-bottom: 0.75rem;
@@ -135,7 +187,7 @@ body {
 .prose-doc-rendered p,
 .prose-doc-rendered ul,
 .prose-doc-rendered ol {
-  color: rgba(244, 246, 250, 0.78);
+  color: var(--gr2);
   line-height: 1.75;
   margin-bottom: 1.25rem;
   font-size: 1rem;
@@ -154,15 +206,16 @@ body {
   margin-bottom: 0.5rem;
 }
 .prose-doc-rendered code {
-  background: rgba(255, 255, 255, 0.08);
-  color: #c9a84c;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--gold);
   padding: 0.125rem 0.375rem;
   border-radius: 0.25rem;
   font-family: "JetBrains Mono", monospace;
   font-size: 0.875em;
+  font-weight: 500;
 }
 .prose-doc-rendered a {
-  color: #c9a84c;
+  color: var(--gold);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -178,19 +231,19 @@ body {
 }
 .prose-doc-rendered th,
 .prose-doc-rendered td {
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--bd2);
   padding: 0.5rem 0.75rem;
   text-align: left;
 }
 .prose-doc-rendered th {
   background: rgba(255, 255, 255, 0.03);
-  font-weight: 600;
+  font-weight: 700;
   color: #fff;
   font-family: "Space Grotesk", Inter, sans-serif;
 }
 .prose-doc-rendered hr {
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--bd2);
   margin: 2rem 0;
 }
 .prose-doc-rendered em {
