@@ -117,6 +117,79 @@ export default async function Home({ params }: { params: Promise<Params> }) {
         </div>
       </section>
 
+      {/* ═══ SOVEREIGNTY SCORE™ HIGHLIGHT ═══ */}
+      <section className="border-y border-bd bg-gradient-to-b from-navy-800 to-navy-900">
+        <div className="mx-auto max-w-page px-6 py-20 lg:px-8">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
+            <div>
+              <p className="eyebrow mb-4">
+                {locale === "fr" ? "Le KPI manquant" : "The missing KPI"}
+              </p>
+              <h2 className="display-h2 text-[clamp(28px,3.5vw,46px)] text-white">
+                Sovereignty Score
+                <span className="ml-1 align-super font-mono text-[0.5em] text-gold">™</span>
+              </h2>
+              <div className="mt-3.5 h-[3px] w-11 bg-gradient-to-r from-gold to-transparent" />
+              <p className="mt-7 max-w-xl text-[16px] leading-[1.75] text-gr-2">
+                {locale === "fr"
+                  ? "Tout le monde mesure son ROI, son NPS, son CAC. Personne ne mesure la souveraineté décisionnelle conservée sur ses agents IA. C’est exactement ce sur quoi les régulateurs vont demander des comptes à partir de décembre 2027."
+                  : "Every organisation measures its ROI, NPS, CAC. None measures the decisional sovereignty retained over its AI agents. That is exactly what regulators will start asking for from December 2027."}
+              </p>
+              <p className="mt-3 max-w-xl text-[16px] leading-[1.75] text-gr-2">
+                {locale === "fr" ? (
+                  <>
+                    Le <strong className="font-semibold text-white">Sovereignty Score™</strong>{" "}
+                    est la première métrique 0-100 conçue pour cette conversation —
+                    six dimensions pondérées, calibrées sur les fiches ACF® et les
+                    obligations AI Act.
+                  </>
+                ) : (
+                  <>
+                    The <strong className="font-semibold text-white">Sovereignty Score™</strong>{" "}
+                    is the first 0-100 metric designed for that conversation — six
+                    weighted dimensions, calibrated on the ACF® cards and the AI Act
+                    obligations.
+                  </>
+                )}
+              </p>
+              <div className="mt-9 flex flex-wrap gap-3.5">
+                <Link
+                  href="/sovereignty-score/calculate"
+                  className="inline-flex items-center gap-2 rounded-lg bg-gold px-7 py-3.5 font-display text-[14px] font-bold text-navy-900 transition hover:bg-gold-light hover:shadow-[0_8px_30px_var(--gold-glow)]"
+                >
+                  {locale === "fr" ? "Calculer le mien →" : "Calculate mine →"}
+                </Link>
+                <Link
+                  href="/sovereignty-score"
+                  className="inline-flex items-center gap-2 rounded-lg border border-white/[0.18] px-7 py-3.5 font-display text-[14px] font-semibold text-white transition hover:border-gold hover:text-gold"
+                >
+                  {locale === "fr" ? "La méthodologie" : "The methodology"}
+                </Link>
+              </div>
+            </div>
+
+            {/* Mini score gauge */}
+            <div className="relative mx-auto w-full max-w-md rounded-2xl border border-gold/30 bg-gold-dim p-10 text-center">
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-gold">
+                {locale === "fr" ? "Exemple — agent de scoring crédit" : "Example — credit-scoring agent"}
+              </p>
+              <div className="mt-6 font-display text-[110px] font-black leading-none text-gold">
+                47
+              </div>
+              <p className="mt-1 font-mono text-[11px] uppercase tracking-wider text-gr-2">/ 100</p>
+              <p className="mt-5 font-display text-[15px] font-bold text-gold">
+                {locale === "fr" ? "Contrôle fragile" : "Fragile control"}
+              </p>
+              <p className="mt-4 font-mono text-[10.5px] leading-relaxed text-gr">
+                {locale === "fr"
+                  ? "Kill switch présent mais jamais testé · pas de DDAO nommé · journal non-signé"
+                  : "Kill switch exists but never tested · no named DDAO · unsigned log"}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ═══ QUICKSTART ═══ */}
       <section id="quickstart" className="border-y border-bd-neutral bg-navy-800">
         <div className="mx-auto max-w-page px-6 py-24 lg:px-8">

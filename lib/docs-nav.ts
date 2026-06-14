@@ -11,6 +11,26 @@ export type NavGroup = {
 
 export const docsNav: NavGroup[] = [
   {
+    title: { en: "Sovereignty Score™", fr: "Sovereignty Score™" },
+    items: [
+      {
+        title: { en: "Overview", fr: "Vue d’ensemble" },
+        href: "/sovereignty-score",
+        badge: "KPI",
+      },
+      {
+        title: { en: "Calculate", fr: "Calculer" },
+        href: "/sovereignty-score/calculate",
+        badge: "TOOL",
+      },
+      {
+        title: { en: "Sovereignty Index", fr: "Sovereignty Index" },
+        href: "/sovereignty-index",
+        badge: "Q4 26",
+      },
+    ],
+  },
+  {
     title: { en: "Get started", fr: "Démarrer" },
     items: [
       {

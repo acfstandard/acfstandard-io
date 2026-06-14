@@ -37,6 +37,13 @@ export function Topbar({ labels }: { labels: Labels }) {
         {/* Center nav */}
         <nav className="ml-10 hidden gap-7 text-[13px] font-medium md:flex">
           <Link
+            href="/sovereignty-score"
+            className={`flex items-center gap-1.5 transition hover:text-gold ${pathname.startsWith("/sovereignty") ? "text-gold" : "text-gr-2"}`}
+          >
+            Sovereignty Score
+            <span className="font-mono text-[9px] uppercase tracking-wider text-gold">™</span>
+          </Link>
+          <Link
             href="/docs/introduction"
             className={`transition hover:text-gold ${pathname.startsWith("/docs") ? "text-gold" : "text-gr-2"}`}
           >
@@ -53,12 +60,6 @@ export function Topbar({ labels }: { labels: Labels }) {
             className={`transition hover:text-gold ${pathname.startsWith("/mappings") ? "text-gold" : "text-gr-2"}`}
           >
             {locale === "fr" ? "Correspondances" : "Mappings"}
-          </Link>
-          <Link
-            href="/signatures"
-            className={`transition hover:text-gold ${pathname.startsWith("/signatures") ? "text-gold" : "text-gr-2"}`}
-          >
-            {labels.signatures}
           </Link>
           <Link
             href="/whitepaper"
