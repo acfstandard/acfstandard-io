@@ -11,7 +11,6 @@
     "mappings": "Correspondances",
     "signatures": "Signatures",
     "whitepaper": "Livre blanc",
-    "changelog": "Changelog",
     "github": "GitHub",
     "openSource": "Open source"
   },
@@ -43,9 +42,9 @@
     "resources_source_label": "Code source",
     "resources_source_title": "github.com/acfstandard/acf-mcp",
     "resources_source_body": "Licence MIT. PRs bienvenues sur l’outillage et les guides d’intégration.",
-    "resources_changelog_label": "Changelog",
-    "resources_changelog_title": "Historique des versions",
-    "resources_changelog_body": "Toutes les releases, avec hash de doctrine et notes de signature.",
+    "resources_matrix_label": "Correspondances standards",
+    "resources_matrix_title": "Matrice 17×5 interactive",
+    "resources_matrix_body": "ACF® × EU AI Act / ISO 42001 / NIST AI RMF / RGPD / COBIT — filtrez, togglez, cliquez n’importe quelle cellule.",
     "footer_copyright": "© 2026 Agentic Commerce Framework® — Vincent Dorange. ACF® est une marque déposée."
   },
   "tools": {

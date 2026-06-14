@@ -212,20 +212,18 @@ export default async function Home({ params }: { params: Promise<Params> }) {
             </h3>
             <p className="mt-2 text-sm text-navy-50/70">{t("resources_source_body")}</p>
           </a>
-          <a
-            href="https://github.com/acfstandard/acf-mcp/blob/main/CHANGELOG.md"
-            target="_blank"
-            rel="noopener"
+          <Link
+            href="/mappings"
             className="rounded-lg border border-white/10 bg-white/[0.03] p-6 hover:border-gold/30"
           >
             <p className="font-mono text-xs uppercase tracking-widest text-gold">
-              {t("resources_changelog_label")}
+              {t("resources_matrix_label")}
             </p>
             <h3 className="mt-3 font-display text-lg font-semibold">
-              {t("resources_changelog_title")}
+              {t("resources_matrix_title")}
             </h3>
-            <p className="mt-2 text-sm text-navy-50/70">{t("resources_changelog_body")}</p>
-          </a>
+            <p className="mt-2 text-sm text-navy-50/70">{t("resources_matrix_body")}</p>
+          </Link>
         </div>
       </section>
 

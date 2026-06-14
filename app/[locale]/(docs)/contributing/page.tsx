@@ -193,8 +193,8 @@ export default async function ContributingPage({
         </li>
         <li>
           {fr
-            ? "Le CHANGELOG et la page changelog publient la traçabilité complète."
-            : "The CHANGELOG and the changelog page publish the full traceability."}
+            ? "Les release notes sur GitHub publient la traçabilité complète."
+            : "The GitHub release notes publish the full traceability."}
         </li>
       </ol>
 

@@ -41,8 +41,8 @@ export default async function SecurityPage({
       title={fr ? "Politique de sécurité" : "Security policy"}
       description={
         fr
-          ? "Comment signaler une vulnérabilité acf-mcp, fenêtre de divulgation responsable, clé PGP et reconnaissance. Pas de bug bounty financier ; reconnaissance publique dans le CHANGELOG."
-          : "How to report an acf-mcp vulnerability, responsible disclosure window, PGP key and recognition. No paid bug bounty; public recognition in the CHANGELOG."
+          ? "Comment signaler une vulnérabilité acf-mcp, fenêtre de divulgation responsable, clé PGP et reconnaissance. Pas de bug bounty financier ; reconnaissance publique dans les release notes."
+          : "How to report an acf-mcp vulnerability, responsible disclosure window, PGP key and recognition. No paid bug bounty; public recognition in the release notes."
       }
       badge={fr ? "Sécurité" : "Security"}
     >
@@ -142,8 +142,8 @@ export default async function SecurityPage({
         >
           <p>
             {fr
-              ? "Fenêtre standard de divulgation responsable : 90 jours après la soumission. La version corrigée est publiée, suivie de l’advisory public et de votre reconnaissance dans le CHANGELOG (si vous le souhaitez)."
-              : "Standard responsible disclosure window: 90 days after submission. The fixed release ships, followed by the public advisory and your recognition in the CHANGELOG (if you wish)."}
+              ? "Fenêtre standard de divulgation responsable : 90 jours après la soumission. La version corrigée est publiée, suivie de l’advisory public et de votre reconnaissance dans les release notes (si vous le souhaitez)."
+              : "Standard responsible disclosure window: 90 days after submission. The fixed release ships, followed by the public advisory and your recognition in the release notes (if you wish)."}
           </p>
         </Step>
       </Steps>
@@ -187,15 +187,14 @@ export default async function SecurityPage({
         {fr ? (
           <>
             Aucun programme rémunéré actuellement. Les reporters qui suivent ce
-            processus sont crédités nominativement dans le{" "}
-            <Link href="/changelog">CHANGELOG</Link> de la version corrigée, sauf
-            demande explicite d’anonymat.
+            processus sont crédités nominativement dans les release notes GitHub
+            de la version corrigée, sauf demande explicite d’anonymat.
           </>
         ) : (
           <>
             No paid programme currently. Reporters who follow this process are
-            credited by name in the <Link href="/changelog">CHANGELOG</Link> of
-            the fixed release, unless they explicitly request anonymity.
+            credited by name in the GitHub release notes of the fixed release,
+            unless they explicitly request anonymity.
           </>
         )}
       </p>

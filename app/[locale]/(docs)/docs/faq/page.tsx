@@ -59,8 +59,8 @@ export default async function FaqPage({
       </h3>
       <p>
         {fr
-          ? "Non. La doctrine est versionnée, chaînée par hash et signée Ed25519. Chaque release publie un doctrine_version, un doctrine_hash et une signature. Voir la page changelog pour l’historique."
-          : "No. The doctrine is versioned, hash-chained and Ed25519-signed. Every release publishes a doctrine_version, a doctrine_hash and a signature. See the changelog page for the history."}
+          ? "Non. La doctrine est versionnée, chaînée par hash et signée Ed25519. Chaque release publie un doctrine_version, un doctrine_hash et une signature. La version courante est exposée par la ressource MCP acf://meta."
+          : "No. The doctrine is versioned, hash-chained and Ed25519-signed. Every release publishes a doctrine_version, a doctrine_hash and a signature. The current version is exposed by the MCP resource acf://meta."}
       </p>
 
       <h2 id="signing">
