@@ -15,9 +15,10 @@
     "openSource": "Open source"
   },
   "home": {
-    "tagline": "Official developer documentation",
-    "title1": "Build agentic systems",
-    "title2": "your auditor can verify.",
+    "tagline": "The decision trust infrastructure",
+    "title1": "Govern. Measure.",
+    "title2": "Prove.",
+    "subhero": "The trust infrastructure for AI decision sovereignty. ACF® governs, the Sovereignty Score™ measures, ACF Certification proves.",
     "intro_p1": "<code>acf-mcp</code> is the official Model Context Protocol server of the <strong>Agentic Commerce Framework®</strong> — the European standard for governing AI agents in production.",
     "intro_p2": "Eight deterministic REASON tools, thirty-four signed resources, and a verifiable doctrine chain — directly inside Claude Desktop, Cursor, Windsurf, Continue, Zed.",
     "cta_primary": "Quickstart →",

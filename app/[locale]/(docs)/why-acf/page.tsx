@@ -8,7 +8,7 @@ const WITHOUT_BULLETS: { fr: string; en: string }[] = [
   { fr: "L'agent service client a promis un remboursement de 4 200 € à un client, puis le redéploiement a effacé la trace de la promesse.", en: "The customer service agent promised a 4,200 euros refund, then the redeploy wiped any trace of the commitment." },
   { fr: "Votre agent achats vient de signer un contrat de 540 000 € avec un fournisseur sous sanctions UE, sans contrôle préalable documenté.", en: "Your procurement agent just signed a 540,000 euros contract with an EU-sanctioned supplier, with no documented pre-screening." },
   { fr: "Quand l'auditeur demande qui répond civilement, la réponse part en boucle de blâme entre la DSI, le fournisseur du modèle et le métier.", en: "When the auditor asks who bears civil liability, the answer loops between IT, the model vendor, and the business unit." },
-  { fr: "Votre assureur D&O relève la prime de 38 % au 2 décembre 2027, faute de pouvoir évaluer le risque agentique de manière indépendante.", en: "Your D&O insurer raises the premium by 38 percent on December 2, 2027, unable to assess agentic risk independently." },
+  { fr: "Aucune trace ne permet de démontrer que la décision a respecté l'AI Act, l'ISO 42001 ou les obligations de votre secteur.", en: "No trace exists to demonstrate the decision complied with the AI Act, ISO 42001, or your sector's obligations." },
 ];
 
 const WITH_BULLETS: { fr: string; en: string }[] = [
@@ -16,13 +16,13 @@ const WITH_BULLETS: { fr: string; en: string }[] = [
   { fr: "La promesse de remboursement déclenche le kill switch de niveau 2, mappé sur la fiche ACF-11, archivé avant tout redéploiement.", en: "The refund commitment triggers the level 2 kill switch, mapped to card ACF-11, archived before any redeploy." },
   { fr: "Le contrat fournisseur est classifié N1 et non N3, ce qui rend la fiche ACF-09 « screening sanctions » obligatoire avant signature.", en: "The supplier contract is classified N1 not N3, making the ACF-09 sanctions-screening card mandatory before signature." },
   { fr: "L'auditeur reçoit en 30 secondes un PDF signé, mappé sur AI Act, ISO 42001, NIST AI RMF, RGPD et COBIT.", en: "The auditor receives a signed PDF in 30 seconds, mapped to EU AI Act, ISO 42001, NIST AI RMF, GDPR, and COBIT." },
-  { fr: "Votre Sovereignty Score passe de 34 à 78 en six mois, et l'assureur D&O maintient la prime au niveau de 2026.", en: "Your Sovereignty Score moves from 34 to 78 in six months, and the D&O insurer holds the premium at 2026 levels." },
+  { fr: "Votre Sovereignty Score™ progresse de 34 à 78 en six mois, et chaque décision agentique reste opposable des années plus tard.", en: "Your Sovereignty Score™ moves from 34 to 78 in six months, and every agentic decision remains opposable years later." },
 ];
 
 const THREE_ANSWERS = [
-  { levelFr: "Niveau 1 — Le silence", levelEn: "Level 1 — Silence", answerFr: "« On va voir avec les équipes d'ingénierie et on vous revient. »", answerEn: "“We'll check with the engineering team and get back to you.”", consequenceFr: "Amende AI Act jusqu'à 35 M€ ou 7 % du chiffre d'affaires mondial, Les Echos sous 72 heures, démission du DPO la semaine suivante.", consequenceEn: "EU AI Act fine up to 35 million euros or 7 percent of global turnover, front page of Les Echos within 72 hours, DPO resignation the following week.", band: "red" },
-  { levelFr: "Niveau 2 — Les logs applicatifs", levelEn: "Level 2 — Application logs", answerFr: "« Nous avons des logs applicatifs, on peut vous les exporter. »", answerEn: "“We have application logs, we can export them for you.”", consequenceFr: "Logs inopposables au titre de l'article 1366 du Code civil, audit forensique imposé à 400 K€, dossier de défense de 18 mois.", consequenceEn: "Logs inadmissible under article 1366 of the French Civil Code, forced forensic audit at 400,000 euros, 18-month defense file.", band: "yellow" },
-  { levelFr: "Niveau 3 — La preuve cryptographique", levelEn: "Level 3 — Cryptographic proof", answerFr: "« Voici le PDF signé Ed25519, vous pouvez le vérifier indépendamment avec la clé publique. »", answerEn: "“Here is the Ed25519-signed PDF, you can verify it independently with the public key.”", consequenceFr: "Dossier clos en 12 minutes au lieu de 12 semaines, aucune provision comptable, prime D&O maintenue par l'assureur.", consequenceEn: "Case closed in 12 minutes instead of 12 weeks, zero accounting provision, D&O premium held by the insurer.", band: "green" },
+  { levelFr: "Niveau 1 — Le silence", levelEn: "Level 1 — Silence", answerFr: "« On va voir avec les équipes d'ingénierie et on vous revient. »", answerEn: "“We'll check with the engineering team and get back to you.”", consequenceFr: "Enquête réglementaire ouverte, exposition à une sanction AI Act pouvant atteindre 35 M€ ou 7 % du chiffre d'affaires mondial, mise en cause de la responsabilité dirigeante, incertitude juridique prolongée.", consequenceEn: "Regulatory investigation opened, exposure to an AI Act sanction of up to 35 million euros or 7 percent of global turnover, executive accountability triggered, prolonged legal uncertainty.", band: "red" },
+  { levelFr: "Niveau 2 — Les logs applicatifs", levelEn: "Level 2 — Application logs", answerFr: "« Nous avons des logs applicatifs, on peut vous les exporter. »", answerEn: "“We have application logs, we can export them for you.”", consequenceFr: "Logs réputés non probants au titre de l'article 1366 du Code civil, audit forensique externe imposé, contradictoire de plusieurs mois, défense par construction reconstituée a posteriori.", consequenceEn: "Logs deemed non-probative under article 1366 of the French Civil Code, external forensic audit imposed, multi-month adversarial process, defense reconstructed after the fact.", band: "yellow" },
+  { levelFr: "Niveau 3 — La preuve cryptographique", levelEn: "Level 3 — Cryptographic proof", answerFr: "« Voici le PDF signé Ed25519, vous pouvez le vérifier indépendamment avec la clé publique. »", answerEn: "“Here is the Ed25519-signed PDF, you can verify it independently with the public key.”", consequenceFr: "Trace opposable produite immédiatement, vérifiable par l'auditeur sans dépendre de vos systèmes, conformité démontrée sur cinq référentiels (AI Act, ISO 42001, NIST AI RMF, RGPD, COBIT).", consequenceEn: "Opposable trace produced immediately, verifiable by the auditor independently of your systems, compliance demonstrated across five frameworks (AI Act, ISO 42001, NIST AI RMF, GDPR, COBIT).", band: "green" },
 ] as const;
 
 const TRUST_PROPERTIES = [
@@ -161,8 +161,72 @@ export default async function WhyAcfPage({
         })}
       </div>
 
+      <h2 id="flow-diagram">
+        {fr ? "Le flux d'une décision agentique" : "The flow of an agentic decision"}
+      </h2>
+      <p>
+        {fr
+          ? "Sans cadre de gouvernance, une décision agentique passe directement de l'agent à l'action. Avec ACF, deux étapes s'intercalent — une gouvernance préalable et une signature — et une étape s'ajoute après : la vérification réplicable des années plus tard. Trois boîtes en plus suffisent à rendre la décision opposable."
+          : "Without a governance frame, an agentic decision flows straight from the agent to the action. With ACF, two steps are inserted upstream — governance and signature — and one is added downstream: replicable verification, years later. Three extra boxes are enough to make the decision opposable."}
+      </p>
+      <div className="not-prose my-8 grid gap-6 lg:grid-cols-2">
+        {/* WITHOUT */}
+        <div className="rounded-xl border border-red-400/40 bg-red-400/[0.04] p-6">
+          <p className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-red-300">
+            {fr ? "Sans ACF" : "Without ACF"}
+          </p>
+          <div className="mt-5 space-y-2">
+            {[
+              fr ? "Agent" : "Agent",
+              fr ? "Décision" : "Decision",
+              fr ? "Action" : "Action",
+              fr ? "Enquête" : "Investigation",
+            ].map((step, i, arr) => (
+              <div key={step}>
+                <div className="rounded-lg border border-white/[0.08] bg-navy-900 px-4 py-3 text-center font-display text-[14px] font-bold text-white">
+                  {step}
+                </div>
+                {i < arr.length - 1 && (
+                  <div className="flex justify-center py-1.5 text-gr/60">↓</div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* WITH */}
+        <div className="rounded-xl border border-gold/40 bg-gold/[0.04] p-6">
+          <p className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-gold">
+            {fr ? "Avec ACF" : "With ACF"}
+          </p>
+          <div className="mt-5 space-y-2">
+            {[
+              { label: fr ? "Agent" : "Agent",                accent: false },
+              { label: fr ? "Gouvernance" : "Governance",      accent: true  },
+              { label: fr ? "Signature" : "Signature",         accent: true  },
+              { label: fr ? "Décision" : "Decision",           accent: false },
+              { label: fr ? "Vérification" : "Verification",   accent: true  },
+            ].map((step, i, arr) => (
+              <div key={step.label}>
+                <div
+                  className={`rounded-lg border px-4 py-3 text-center font-display text-[14px] font-bold ${
+                    step.accent
+                      ? "border-gold/50 bg-gold-dim text-gold"
+                      : "border-white/[0.08] bg-navy-900 text-white"
+                  }`}
+                >
+                  {step.label}
+                </div>
+                {i < arr.length - 1 && (
+                  <div className="flex justify-center py-1.5 text-gold/60">↓</div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <h2 id="trust-infrastructure">
-        {fr ? "ACF est une infrastructure de confiance" : "ACF is a trust infrastructure"}
+        {fr ? "ACF est une Decision Trust Infrastructure" : "ACF is a Decision Trust Infrastructure"}
       </h2>
       <p>
         {fr
@@ -185,11 +249,23 @@ export default async function WhyAcfPage({
         ))}
       </div>
 
-      <h2 id="closing">{fr ? "Le choix au 2 décembre 2027" : "The choice on December 2, 2027"}</h2>
+      <h2 id="closing">{fr ? "La vraie question" : "The real question"}</h2>
+      <div className="not-prose my-8 rounded-xl border border-gold/40 bg-gold/[0.04] p-8">
+        <p className="font-display text-[20px] font-bold leading-[1.4] text-white md:text-[24px]">
+          {fr
+            ? "La question n'est plus de savoir si les agents IA prendront des décisions."
+            : "The question is no longer whether AI agents will make decisions."}
+        </p>
+        <p className="mt-3 font-display text-[20px] font-bold leading-[1.4] text-gold md:text-[24px]">
+          {fr
+            ? "La question est de savoir si ces décisions resteront opposables des années plus tard."
+            : "The question is whether those decisions will still be defensible years later."}
+        </p>
+      </div>
       <p>
         {fr
-          ? "Au 2 décembre 2027, deux groupes d'entreprises coexisteront : celles qui auront tenté de construire seules leur audit trail, lentes et contestées à chaque inspection, et celles qui auront rejoint la couche de confiance et seront opposables en 12 minutes. ACF vous met dans le second groupe par construction, et non par chance."
-          : "By December 2, 2027, two groups of companies will coexist: those who tried to build their audit trail alone, slow and contested at every inspection, and those who joined the trust layer and stand opposable in 12 minutes. ACF puts you in the second group by construction, not by luck."}
+          ? "ACF® est l'infrastructure qui répond oui à cette deuxième question, par construction et non par chance — du jour de la décision au jour où un tiers la conteste."
+          : "ACF® is the infrastructure that answers yes to that second question, by construction and not by luck — from the day the decision is made to the day a third party challenges it."}
       </p>
 
       <div className="not-prose my-10 flex flex-wrap gap-4">

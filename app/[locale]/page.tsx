@@ -68,17 +68,17 @@ export default async function Home({ params }: { params: Promise<Params> }) {
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-gold" />
                 {t("tagline")}
               </div>
-              <h1 className="display-h1 mt-6 text-[clamp(36px,4.5vw,64px)] text-white">
+              <h1 className="display-h1 mt-6 text-[clamp(40px,5vw,72px)] text-white">
                 {t("title1")}
                 <br />
                 <span className="text-gold">{t("title2")}</span>
                 <span className="acf-cursor" />
               </h1>
-              <p className="mt-7 max-w-2xl text-[16px] leading-[1.8] text-gr-2">
-                {t.rich("intro_p1", rich)}
+              <p className="mt-6 max-w-2xl font-display text-[18px] font-semibold leading-[1.5] text-white md:text-[20px]">
+                {t("subhero")}
               </p>
-              <p className="mt-4 max-w-2xl text-[16px] leading-[1.8] text-gr-2">
-                {t.rich("intro_p2", rich)}
+              <p className="mt-6 max-w-2xl text-[15.5px] leading-[1.75] text-gr-2">
+                {t.rich("intro_p1", rich)}
               </p>
               <div className="mt-10 flex flex-wrap gap-3.5">
                 <Link
@@ -122,6 +122,86 @@ export default async function Home({ params }: { params: Promise<Params> }) {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ ACF HIERARCHY ═══ */}
+      <section className="border-y border-bd-neutral">
+        <div className="mx-auto max-w-page px-6 py-16 lg:px-8">
+          <p className="eyebrow mb-3 text-center">
+            {locale === "fr" ? "Une infrastructure, quatre manifestations" : "One infrastructure, four manifestations"}
+          </p>
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="font-display text-[clamp(22px,2.5vw,32px)] font-bold leading-[1.2] text-white">
+              {locale === "fr"
+                ? "ACF® est le standard. Tout le reste en est une manifestation."
+                : "ACF® is the standard. Everything else is a manifestation of it."}
+            </h2>
+          </div>
+          <div className="mt-12 grid gap-3 md:grid-cols-4">
+            {[
+              {
+                key: "score",
+                role: locale === "fr" ? "La métrique" : "The metric",
+                name: "Sovereignty Score™",
+                desc: locale === "fr" ? "Mesure 0–100 de la souveraineté décisionnelle. Six dimensions, signée Ed25519." : "0–100 measure of decisional sovereignty. Six dimensions, Ed25519-signed.",
+                href: "/sovereignty-score",
+              },
+              {
+                key: "cert",
+                role: locale === "fr" ? "La preuve" : "The proof",
+                name: "ACF Certification",
+                desc: locale === "fr" ? "Attestation indépendante en trois niveaux (Level 1, 2, 3). Badge publiquement vérifiable." : "Independent third-party attestation in three levels (Level 1, 2, 3). Publicly verifiable badge.",
+                href: "https://acfstandard.com/acf-certification",
+                external: true,
+              },
+              {
+                key: "mcp",
+                role: locale === "fr" ? "Le moteur" : "The engine",
+                name: "acf-mcp",
+                desc: locale === "fr" ? "Serveur MCP officiel. 12 outils, 34 ressources signées, doctrine Ed25519." : "Official MCP server. 12 tools, 34 signed resources, Ed25519 doctrine.",
+                href: "/docs/introduction",
+              },
+              {
+                key: "doctrine",
+                role: locale === "fr" ? "La doctrine" : "The doctrine",
+                name: locale === "fr" ? "17 fiches × 4 couches × N0–N3" : "17 cards × 4 layers × N0–N3",
+                desc: locale === "fr" ? "Le corpus opérationnel. Cartographié sur AI Act / ISO 42001 / NIST / RGPD / COBIT." : "The operational corpus. Mapped to AI Act / ISO 42001 / NIST / GDPR / COBIT.",
+                href: "/doctrine/principles",
+              },
+            ].map((m) => {
+              const inner = (
+                <>
+                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-gold">
+                    {m.role}
+                  </p>
+                  <h3 className="mt-2.5 font-display text-[15px] font-bold leading-tight text-white">
+                    {m.name}
+                  </h3>
+                  <p className="mt-2.5 text-[12.5px] leading-relaxed text-gr-2">{m.desc}</p>
+                </>
+              );
+              return m.external ? (
+                <a
+                  key={m.key}
+                  href={m.href}
+                  target="_blank"
+                  rel="noopener"
+                  className="group rounded-xl border border-bd-neutral bg-navy-700 p-5 transition hover:-translate-y-1 hover:border-gold"
+                >
+                  {inner}
+                </a>
+              ) : (
+                <Link
+                  key={m.key}
+                  href={m.href as never}
+                  className="group rounded-xl border border-bd-neutral bg-navy-700 p-5 transition hover:-translate-y-1 hover:border-gold"
+                >
+                  {inner}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
