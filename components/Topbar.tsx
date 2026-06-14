@@ -2,6 +2,7 @@
 
 import { Link, usePathname } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
+import { SearchTrigger } from "./SearchModal";
 
 type Labels = {
   github: string;
@@ -54,7 +55,8 @@ export function Topbar({ labels }: { labels: Labels }) {
             </Link>
           </nav>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
+          <SearchTrigger />
           <a
             href="https://github.com/acfstandard/acf-mcp"
             target="_blank"
