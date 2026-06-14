@@ -14,20 +14,28 @@ export default async function WhitepaperPage({
   setRequestLocale(locale);
   const fr = locale === "fr";
 
-  // Currently only FR is shipped — EN is shown as "coming"
-  const md = await readFile(
-    path.join(process.cwd(), "content", "whitepaper", "fr.md"),
-    "utf8",
-  );
-  const { html } = await renderMarkdown(md);
+  const file = fr ? "fr.md" : "en.md";
+  let raw: string;
+  try {
+    raw = await readFile(
+      path.join(process.cwd(), "content", "whitepaper", file),
+      "utf8",
+    );
+  } catch {
+    raw = await readFile(
+      path.join(process.cwd(), "content", "whitepaper", "fr.md"),
+      "utf8",
+    );
+  }
+  const { html } = await renderMarkdown(raw);
 
   return (
     <DocsPage
-      title={fr ? "Livre blanc ACF® V2" : "ACF® Whitepaper V2"}
+      title={fr ? "Livre blanc ACF® V2.1" : "ACF® Whitepaper V2.1"}
       description={
         fr
-          ? "Édition juin 2026 — 4 principes, 4 couches, N0–N3, DDAO, 17 fiches méthodologiques, matrice 17×5, écosystème en neuf vecteurs, preuve cryptographique Ed25519. Version FR rendue ci-dessous, EN en cours de traduction."
-          : "June 2026 edition — 4 principles, 4 layers, N0–N3, DDAO, 17 methodological cards, 17×5 standards mapping matrix, nine-vector ecosystem, Ed25519 cryptographic proof. FR version rendered below, EN translation in progress."
+          ? "Édition juin 2026 — Govern. Measure. Prove. Decision Trust Infrastructure pour la décision agentique. 4 principes, 4 couches, N0–N3, DDAO, 17 fiches méthodologiques, matrice 17×5, ACF Sovereignty Score™, preuve cryptographique Ed25519."
+          : "June 2026 edition — Govern. Measure. Prove. Decision Trust Infrastructure for agentic decisions. 4 principles, 4 layers, N0–N3, DDAO, 17 methodological cards, 17×5 standards mapping matrix, ACF Sovereignty Score™, Ed25519 cryptographic proof."
       }
       badge={fr ? "Document" : "Document"}
     >
