@@ -16,8 +16,8 @@ export default async function DdaoPage({
       title={fr ? "Le rôle DDAO" : "The DDAO role"}
       description={
         fr
-          ? "DDAO — Designated Delegated Agent Officer. Pierre angulaire humaine d’ACF®. Personne physique (ou organe collégial) nommément désignée comme responsable d’un agent (ou d’un portefeuille d’agents) en production. Inspirée du DPO (RGPD art. 37-39) et du CISO."
-          : "DDAO — Designated Delegated Agent Officer. The human cornerstone of ACF®. A named individual (or collegial body) responsible for an agent (or a portfolio of agents) in production. Inspired by the DPO (GDPR art. 37-39) and the CISO."
+          ? "DDAO — Delegated Decision Agent Officer. Pierre angulaire humaine d’ACF®. Personne physique (ou organe collégial) nommément désignée comme responsable d’un agent (ou d’un portefeuille d’agents) en production. Inspirée du DPO (RGPD art. 37-39) et du CISO."
+          : "DDAO — Delegated Decision Agent Officer. The human cornerstone of ACF®. A named individual (or collegial body) responsible for an agent (or a portfolio of agents) in production. Inspired by the DPO (GDPR art. 37-39) and the CISO."
       }
       badge={fr ? "Doctrine" : "Doctrine"}
     >
