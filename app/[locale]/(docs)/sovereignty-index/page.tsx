@@ -105,14 +105,14 @@ export default async function SovereigntyIndexPage({
             Le premier <strong>State of Agentic Sovereignty 2026</strong> est attendu
             pour le <strong>Q4 2026</strong>. La fenêtre de contribution ouvre en
             septembre 2026. Pour recevoir l’avis de publication, contactez l’éditeur à{" "}
-            <code>dorange.vincent@gmail.com</code> avec le sujet « Sovereignty Index — opt-in ».
+            <code>contact@acfstandard.com</code> avec le sujet « Sovereignty Index — opt-in ».
           </>
         ) : (
           <>
             The first <strong>State of Agentic Sovereignty 2026</strong> is expected for{" "}
             <strong>Q4 2026</strong>. The contribution window opens in September 2026.
             To receive the publication notice, contact the editor at{" "}
-            <code>dorange.vincent@gmail.com</code> with the subject “Sovereignty Index — opt-in”.
+            <code>contact@acfstandard.com</code> with the subject “Sovereignty Index — opt-in”.
           </>
         )}
       </p>

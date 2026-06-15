@@ -155,7 +155,7 @@ export default async function LegalPage({
         </li>
         <li>
           <strong>{fr ? "Contact" : "Contact"}</strong>:{" "}
-          <a href="mailto:dorange.vincent@gmail.com">dorange.vincent@gmail.com</a>
+          <a href="mailto:contact@acfstandard.com">contact@acfstandard.com</a>
         </li>
         <li>
           <strong>{fr ? "Sécurité" : "Security"}</strong>:{" "}

@@ -69,8 +69,8 @@ export default async function SecurityPage({
         {fr ? (
           <>
             Envoyez un email à{" "}
-            <a href="mailto:dorange.vincent@gmail.com">
-              dorange.vincent@gmail.com
+            <a href="mailto:security@acfstandard.com">
+              security@acfstandard.com
             </a>{" "}
             avec l’objet exact <code>[acf-mcp security]</code>. Chiffrez les
             détails sensibles avec la clé PGP du projet (cf. section dédiée).
@@ -79,8 +79,8 @@ export default async function SecurityPage({
         ) : (
           <>
             Send an email to{" "}
-            <a href="mailto:dorange.vincent@gmail.com">
-              dorange.vincent@gmail.com
+            <a href="mailto:security@acfstandard.com">
+              security@acfstandard.com
             </a>{" "}
             with the exact subject <code>[acf-mcp security]</code>. Encrypt
             sensitive details with the project PGP key (see dedicated section).
