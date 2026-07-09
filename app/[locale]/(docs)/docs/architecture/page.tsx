@@ -46,8 +46,8 @@ export default async function ArchitecturePage({
       title={fr ? "Architecture" : "Architecture"}
       description={
         fr
-          ? "acf-mcp est un serveur stdio local-first, déterministe, sans appel LLM interne. Base de connaissances versionnée et signée Ed25519. Trois modules en pipeline : entrée → moteur de règles → pied de page signé. Latence typique inférieure à 10 ms par appel."
-          : "acf-mcp is a local-first stdio server, deterministic, with no internal LLM call. Versioned and Ed25519-signed knowledge base. Three-module pipeline: input → rule engine → signed footer. Typical latency below 10 ms per call."
+          ? "acf-mcp est un serveur stdio local-first, déterministe, sans appel LLM interne. Base de connaissances versionnée et signée Ed25519. Le traitement est entièrement local (validation, moteur de règles, signature) — aucun appel réseau, aucun modèle : la sortie est produite de façon déterministe et signée."
+          : "acf-mcp is a local-first stdio server, deterministic, with no internal LLM call. Versioned and Ed25519-signed knowledge base. Processing is fully local (validation, rule engine, signing) — no network call, no model: output is produced deterministically and signed."
       }
       badge={fr ? "Démarrer" : "Get started"}
     >
@@ -104,8 +104,8 @@ export default async function ArchitecturePage({
       </h2>
       <p>
         {fr
-          ? "Chaque appel d’outil traverse trois modules dans cet ordre strict. La latence cumulée typique est inférieure à 10 ms (lecture disque mise en cache, index lunr en mémoire, signature Ed25519 constante)."
-          : "Every tool call passes through three modules in this strict order. Typical end-to-end latency is below 10 ms (cached disk reads, in-memory lunr index, constant-time Ed25519 signing)."}
+          ? "Chaque appel d’outil traverse un pipeline de traitement déterministe, dans cet ordre strict : validation d’entrée, moteur de règles, puis signature. Tout s’exécute localement (lecture disque mise en cache, index lunr en mémoire, signature Ed25519) — aucun appel réseau, aucun modèle."
+          : "Every tool call goes through a deterministic processing pipeline, in this strict order: input validation, rule engine, then signing. Everything runs locally (cached disk reads, in-memory lunr index, Ed25519 signing) — no network call, no model."}
       </p>
       <CodeBlock language="text" code={PIPELINE_FLOW} />
 
@@ -167,13 +167,8 @@ export default async function ArchitecturePage({
       <ul>
         <li>
           {fr
-            ? "Latence typique outil REASON : 2–6 ms (validation + lookup + signature)."
-            : "Typical REASON tool latency: 2–6 ms (validation + lookup + signing)."}
-        </li>
-        <li>
-          {fr
-            ? "Latence typique outil READ : 4–9 ms (requête lunr + sérialisation)."
-            : "Typical READ tool latency: 4–9 ms (lunr query + serialisation)."}
+            ? "Traitement entièrement local et déterministe : validation, lookup de règles ou requête lunr, puis signature — sans appel réseau ni modèle sur le chemin nominal."
+            : "Fully local, deterministic processing: validation, rule lookup or lunr query, then signing — no network call or model on the nominal path."}
         </li>
         <li>
           {fr
