@@ -76,15 +76,15 @@ export default async function SignaturesOverviewPage({
       <h3 id="hash-chain">2. {fr ? "Chaîne de hachage SHA-256" : "SHA-256 hash chain"}</h3>
       <p>
         {fr
-          ? "À l’intérieur du registre de décisions (fiche ACF-08), chaque entrée intègre le hash SHA-256 de l’entrée précédente. Réécrire une entrée passée détecte immédiatement une rupture de chaîne en recalculant. C’est ce qui rend le registre opposable à un auditeur ou un tribunal."
+          ? "À l’intérieur du registre de décisions (fiche ACF-08), chaque entrée intègre le hash SHA-256 de l’entrée précédente. Réécrire une entrée passée détecte immédiatement une rupture de chaîne en recalculant. C’est ce qui rend le registre vérifiable et défendable devant un auditeur ou un tribunal."
           : "Inside the decision register (fiche ACF-08), each entry embeds the SHA-256 of the previous entry. Rewriting a past entry breaks the chain immediately on recompute. That is what makes the register defensible to an auditor or a court."}
       </p>
 
-      <h3 id="rfc-3161">3. {fr ? "Horodatage qualifié RFC 3161" : "RFC 3161 qualified timestamping"}</h3>
+      <h3 id="rfc-3161">3. {fr ? "Horodatage RFC 3161 (roadmap)" : "RFC 3161 timestamping (roadmap)"}</h3>
       <p>
         {fr
-          ? "Chaque entrée du registre est horodatée par une Time Stamp Authority qualifiée eIDAS (par exemple Universign PSCE référencée par l’ANSSI). Cela donne à chaque décision une date opposable, vérifiable indépendamment du déployeur."
-          : "Each register entry is timestamped by an eIDAS-qualified Time Stamp Authority (e.g. Universign PSCE referenced by France’s ANSSI). This gives every decision a defensible date, verifiable independently of the deployer."}
+          ? "Chaque entrée du registre est signée Ed25519 et horodatée, vérifiable indépendamment du déployeur. Un horodatage RFC 3161 via un tiers de confiance européen est prévu en option (roadmap)."
+          : "Each register entry is Ed25519-signed and timestamped, verifiable independently of the deployer. RFC 3161 timestamping via a European trust service provider is planned as an option (roadmap)."}
       </p>
 
       <h2 id="public-key">{fr ? "La clé publique courante" : "The current public key"}</h2>
