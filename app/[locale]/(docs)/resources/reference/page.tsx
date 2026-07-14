@@ -18,7 +18,7 @@ export default async function ReferenceResourcesPage({
       title={fr ? "Ressources — Référence" : "Resources — Reference"}
       description={
         fr
-          ? "Les ressources transverses : index du glossaire ACF®, métadonnées de la doctrine (version, hash, signature, URL d’archive, langues supportées) et bundle d’archive permanente. La couche infrastructure du corpus, indispensable pour vérifier qu’une sortie d’outil est opposable."
+          ? "Les ressources transverses : index du glossaire ACF®, métadonnées de la doctrine (version, hash, signature, URL d’archive, langues supportées) et bundle d’archive permanente. La couche infrastructure du corpus, indispensable pour vérifier qu’une sortie d’outil est vérifiable indépendamment."
           : "Cross-cutting resources: ACF® glossary index, doctrine metadata (version, hash, signature, archive URL, supported locales) and permanent archive bundle. The corpus infrastructure layer — indispensable to verify that a tool output is defensible."
       }
       badge={fr ? "Ressources" : "Resources"}
@@ -142,7 +142,7 @@ export default async function ReferenceResourcesPage({
         </p>
         <p className="mt-1 text-[14px] leading-relaxed text-navy-50/75">
           {fr
-            ? "Le bundle d’archive n’est pas une ressource MCP au sens du protocole (pas d’URI acf://) — c’est une URL HTTPS gelée et signée qui contient tout le corpus de la version concernée (whitepaper, fiches, guides, manuel, principes, dimensions, glossaire, meta). Pin-la dans votre audit pipeline pour avoir une racine de confiance opposable indépendamment de la disponibilité du serveur MCP."
+            ? "Le bundle d’archive n’est pas une ressource MCP au sens du protocole (pas d’URI acf://) — c’est une URL HTTPS gelée et signée qui contient tout le corpus de la version concernée (whitepaper, fiches, guides, manuel, principes, dimensions, glossaire, meta). Pin-la dans votre audit pipeline pour avoir une racine de confiance vérifiable indépendamment de la disponibilité du serveur MCP."
             : "The archive bundle is not an MCP resource in the protocol sense (no acf:// URI) — it is a frozen, signed HTTPS URL containing the full corpus for the version (whitepaper, cards, guides, manual, principles, dimensions, glossary, meta). Pin it in your audit pipeline to keep a defensible root of trust independent of MCP server availability."}
         </p>
       </div>

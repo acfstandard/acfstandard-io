@@ -18,7 +18,7 @@ export default async function SignaturesOverviewPage({
       title={fr ? "Signatures de doctrine" : "Doctrine signatures"}
       description={
         fr
-          ? "Chaque sortie d’un outil acf-mcp est cryptographiquement signée. Vérifiez-la hors-ligne avec la clé publique Ed25519 d’ACF® et pin-la dans votre pipeline d’audit pour avoir une racine de confiance opposable."
+          ? "Chaque sortie d’un outil acf-mcp est cryptographiquement signée. Vérifiez-la hors-ligne avec la clé publique Ed25519 d’ACF® et pin-la dans votre pipeline d’audit pour avoir une racine de confiance vérifiable indépendamment."
           : "Every acf-mcp tool output is cryptographically signed. Verify it offline against the ACF® Ed25519 public key and pin it in your audit pipeline for a defensible root of trust."
       }
       badge={fr ? "Sécurité" : "Security"}

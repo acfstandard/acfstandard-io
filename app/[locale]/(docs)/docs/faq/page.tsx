@@ -39,7 +39,7 @@ export default async function FaqPage({
       </h3>
       <p>
         {fr
-          ? "Non. Aucun appel LLM, jamais. Le moteur est un pattern matcher déterministe sur une base de connaissances signée. Même entrée canonique ⇒ même sortie, byte-pour-byte. C’est la propriété qui rend la trace opposable à un auditeur."
+          ? "Non. Aucun appel LLM, jamais. Le moteur est un pattern matcher déterministe sur une base de connaissances signée. Même entrée canonique ⇒ même sortie, byte-pour-byte. C’est la propriété qui rend la trace vérifiable indépendamment par un auditeur."
           : "No. No LLM call, ever. The engine is a deterministic pattern matcher over a signed knowledge base. Same canonical input ⇒ same output, byte-for-byte. That property is what makes the trace defensible to an auditor."}
       </p>
 
