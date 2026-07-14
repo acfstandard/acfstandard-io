@@ -35,16 +35,16 @@ export default async function CalculatePage({
         {fr ? (
           <>
             Le score que vous venez d’estimer est utile pour une conversation interne
-            (comité, DG, RSSI). Pour le rendre <strong>opposable</strong>, c’est-à-dire
-            signé par un DDAO et inscrit au registre cryptographique de votre
-            organisation, deux chemins :
+            (comité, DG, RSSI). Pour en faire un enregistrement gouverné et{" "}
+            <strong>vérifiable indépendamment</strong> — porté par votre DDAO et inscrit
+            au registre de décisions de votre organisation — deux chemins :
           </>
         ) : (
           <>
             The score you just estimated is useful for an internal conversation
-            (committee, CEO, CISO). To make it <strong>opposable</strong> — that is,
-            signed by a DDAO and recorded in your organisation’s cryptographic register
-            — two paths:
+            (committee, CEO, CISO). To turn it into a governed,{" "}
+            <strong>independently verifiable</strong> record — carried by your DDAO and
+            entered in your organisation’s decision register — two paths:
           </>
         )}
       </p>
@@ -53,15 +53,20 @@ export default async function CalculatePage({
           {fr ? (
             <>
               Utilisez l’outil <code>acf.identify-governance-gaps</code> du serveur MCP{" "}
-              <code>acf-mcp</code> — il retourne le score, le rationale par dimension,
-              et la signature Ed25519 prêts à être inscrits au registre ACF-08.
+              <code>acf-mcp</code> — il retourne une analyse de gaps par dimension, un
+              score de maturité et le rationale, authentifiés par la signature Ed25519
+              de la doctrine ACF® (vérifiable hors-ligne). C’est la base à verser à votre
+              registre ACF-08 ; la signature par votre DDAO et l’horodatage de
+              l’enregistrement relèvent d’ACF Compliance, pas du serveur MCP.
             </>
           ) : (
             <>
               Use the <code>acf.identify-governance-gaps</code> tool from the{" "}
-              <code>acf-mcp</code> MCP server — it returns the score, the per-dimension
-              rationale and the Ed25519 signature, ready to be recorded in the ACF-08
-              register.
+              <code>acf-mcp</code> MCP server — it returns a per-dimension gap analysis,
+              a maturity score and the rationale, authenticated by ACF®’s Ed25519
+              doctrine signature (verifiable offline). That’s the input for your ACF-08
+              register; signing by your DDAO and timestamping of the record are handled
+              by ACF Compliance, not the MCP server.
             </>
           )}
         </li>

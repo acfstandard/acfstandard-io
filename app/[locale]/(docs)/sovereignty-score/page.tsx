@@ -147,17 +147,21 @@ where Σ weight_i = 1.00`}</code>
           <>
             La page <Link href="/sovereignty-score/calculate">/sovereignty-score/calculate</Link>{" "}
             propose un calculateur interactif avec les six dimensions. C’est un outil
-            d’estimation rapide — pour un score opposable signé par le DDAO, utilisez
+            d’estimation rapide — pour une analyse plus complète, authentifiée par la
+            signature Ed25519 de la doctrine ACF® (vérifiable hors-ligne), utilisez
             l’outil MCP <code>acf.identify-governance-gaps</code> qui retourne en plus
-            le rationale par dimension et la signature Ed25519.
+            le rationale par dimension. La signature par votre DDAO et l’inscription à
+            votre registre relèvent d’ACF Compliance.
           </>
         ) : (
           <>
             The <Link href="/sovereignty-score/calculate">/sovereignty-score/calculate</Link>{" "}
             page offers an interactive calculator across the six dimensions. It’s a
-            quick estimation tool — for an opposable, DDAO-signed score, use the MCP
-            tool <code>acf.identify-governance-gaps</code>, which also returns the
-            per-dimension rationale and the Ed25519 signature.
+            quick estimation tool — for a fuller analysis, authenticated by ACF®’s
+            Ed25519 doctrine signature (verifiable offline), use the MCP tool{" "}
+            <code>acf.identify-governance-gaps</code>, which also returns the
+            per-dimension rationale. DDAO signing and recording in your registry are
+            handled by ACF Compliance.
           </>
         )}
       </p>
