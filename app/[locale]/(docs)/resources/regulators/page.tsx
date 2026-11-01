@@ -19,8 +19,8 @@ type Guide = {
 const GUIDES: Guide[] = [
   {
     slug: "ai-act",
-    labelEn: "AI Act — Regulation (EU) 2024/1689",
-    labelFr: "AI Act — Règlement (UE) 2024/1689",
+    labelEn: "AI Act: Regulation (EU) 2024/1689",
+    labelFr: "AI Act : Règlement (UE) 2024/1689",
     scopeEn:
       "Providers and deployers of AI systems placed on the EU market, with reinforced obligations for high-risk systems.",
     scopeFr:
@@ -59,8 +59,8 @@ const GUIDES: Guide[] = [
   },
   {
     slug: "gdpr",
-    labelEn: "GDPR — Regulation (EU) 2016/679",
-    labelFr: "RGPD — Règlement (UE) 2016/679",
+    labelEn: "GDPR: Regulation (EU) 2016/679",
+    labelFr: "RGPD : Règlement (UE) 2016/679",
     scopeEn: "Any processing of personal data of EU data subjects.",
     scopeFr:
       "Tout traitement de données personnelles de personnes concernées dans l’UE.",
@@ -96,12 +96,12 @@ const GUIDES: Guide[] = [
   },
   {
     slug: "dora",
-    labelEn: "DORA — Regulation (EU) 2022/2554",
-    labelFr: "DORA — Règlement (UE) 2022/2554",
+    labelEn: "DORA: Regulation (EU) 2022/2554",
+    labelFr: "DORA : Règlement (UE) 2022/2554",
     scopeEn:
-      "EU financial entities — banks, insurers, investment firms, crypto-asset service providers, critical ICT third parties.",
+      "EU financial entities, banks, insurers, investment firms, crypto-asset service providers, critical ICT third parties.",
     scopeFr:
-      "Entités financières de l’UE — banques, assureurs, sociétés d’investissement, prestataires crypto-actifs, tiers TIC critiques.",
+      "Entités financières de l’UE, banques, assureurs, sociétés d’investissement, prestataires crypto-actifs, tiers TIC critiques.",
     applicableEn: "Applicable since 17 January 2025.",
     applicableFr: "Applicable depuis le 17 janvier 2025.",
     articles: [
@@ -134,12 +134,12 @@ const GUIDES: Guide[] = [
   },
   {
     slug: "nis2",
-    labelEn: "NIS2 — Directive (EU) 2022/2555",
-    labelFr: "NIS2 — Directive (UE) 2022/2555",
+    labelEn: "NIS2: Directive (EU) 2022/2555",
+    labelFr: "NIS2: Directive (UE) 2022/2555",
     scopeEn:
-      "Essential and important entities across 18 sectors — transposed into national law (deadline 17 October 2024).",
+      "Essential and important entities across 18 sectors, transposed into national law (deadline 17 October 2024).",
     scopeFr:
-      "Entités essentielles et importantes sur 18 secteurs — transposée en droit national (échéance 17 octobre 2024).",
+      "Entités essentielles et importantes sur 18 secteurs, transposée en droit national (échéance 17 octobre 2024).",
     applicableEn:
       "Applicable as transposed by member state legislation.",
     applicableFr:
@@ -147,8 +147,8 @@ const GUIDES: Guide[] = [
     articles: [
       {
         id: "20",
-        titleEn: "Governance — management bodies' responsibility",
-        titleFr: "Gouvernance — responsabilité des organes de direction",
+        titleEn: "Governance, management bodies' responsibility",
+        titleFr: "Gouvernance, responsabilité des organes de direction",
       },
       {
         id: "21",
@@ -164,12 +164,12 @@ const GUIDES: Guide[] = [
   },
   {
     slug: "iso-42001",
-    labelEn: "ISO/IEC 42001:2023 — AI management system (AIMS)",
-    labelFr: "ISO/IEC 42001:2023 — Système de management de l’IA (SMIA)",
+    labelEn: "ISO/IEC 42001:2023: AI management system (AIMS)",
+    labelFr: "ISO/IEC 42001:2023 : Système de management de l’IA (SMIA)",
     scopeEn:
-      "Voluntary management-system standard — certifiable, suited to organisations claiming a mature AI governance posture.",
+      "Voluntary management-system standard, certifiable, suited to organisations claiming a mature AI governance posture.",
     scopeFr:
-      "Norme de système de management volontaire — certifiable, adaptée aux organisations affichant une gouvernance IA mature.",
+      "Norme de système de management volontaire, certifiable, adaptée aux organisations affichant une gouvernance IA mature.",
     applicableEn:
       "Voluntary; usable as a baseline AI Act demonstrability scheme.",
     applicableFr:
@@ -177,8 +177,8 @@ const GUIDES: Guide[] = [
     articles: [
       {
         id: "6",
-        titleEn: "Planning — risks, opportunities, AI impact assessment",
-        titleFr: "Planification — risques, opportunités, évaluation d’impact IA",
+        titleEn: "Planning, risks, opportunities, AI impact assessment",
+        titleFr: "Planification, risques, opportunités, évaluation d’impact IA",
       },
       {
         id: "8",
@@ -192,8 +192,8 @@ const GUIDES: Guide[] = [
       },
       {
         id: "A",
-        titleEn: "Annex A — reference controls",
-        titleFr: "Annexe A — mesures de référence",
+        titleEn: "Annex A, reference controls",
+        titleFr: "Annexe A, mesures de référence",
       },
     ],
   },
@@ -210,11 +210,11 @@ export default async function RegulatorsResourcesPage({
 
   return (
     <DocsPage
-      title={fr ? "Ressources — Guides régulateurs" : "Resources — Regulator guides"}
+      title={fr ? "Ressources : Guides régulateurs" : "Resources : Regulator guides"}
       description={
         fr
-          ? "Cinq guides opérationnels — AI Act, RGPD, DORA, NIS2, ISO 42001 — qui traduisent le texte régulateur en obligations agentiques cartographiées sur les principes, dimensions et fiches ACF®. Vingt-deux articles individuellement adressables via l’outil acf.regulation.article."
-          : "Five operational guides — AI Act, GDPR, DORA, NIS2, ISO 42001 — that translate regulator text into agentic obligations mapped onto ACF® principles, dimensions and cards. Twenty-two individually addressable articles through the acf.regulation.article tool."
+          ? "Cinq guides opérationnels : AI Act, RGPD, DORA, NIS2, ISO 42001, qui traduisent le texte régulateur en obligations agentiques cartographiées sur les principes et fiches ACF®. Vingt-deux articles individuellement adressables via l’outil acf.regulation.article."
+          : "Five operational guides: AI Act, GDPR, DORA, NIS2, ISO 42001, that translate regulator text into agentic obligations mapped onto ACF® principles and cards. Twenty-two individually addressable articles through the acf.regulation.article tool."
       }
       badge={fr ? "Ressources" : "Resources"}
     >
@@ -222,7 +222,7 @@ export default async function RegulatorsResourcesPage({
         {fr ? (
           <>
             Les guides ACF® <strong>ne sont pas un conseil juridique</strong>. Le
-            champ <code>text</code> de chaque article est un résumé fidèle — pas
+            champ <code>text</code> de chaque article est un résumé fidèle, pas
             une reproduction littérale. Le champ <code>mapping</code> /{" "}
             <code>operational_note</code> est de la doctrine ACF®, pas une lecture
             officielle d’un régulateur. Toute qualification produite par les
@@ -231,7 +231,7 @@ export default async function RegulatorsResourcesPage({
         ) : (
           <>
             ACF® guides are <strong>not legal advice</strong>. Each article’s{" "}
-            <code>text</code> field is a faithful summary — not the verbatim legal
+            <code>text</code> field is a faithful summary, not the verbatim legal
             text. The <code>mapping</code> / <code>operational_note</code> fields
             are ACF® doctrine, not an official regulator reading. Any
             qualification produced by REASON tools ships marked{" "}
@@ -245,13 +245,13 @@ export default async function RegulatorsResourcesPage({
       </h2>
       <p>
         {fr
-          ? "Cinq ressources guide au niveau régulateur (URIs acf://guide/{slug}) servies en Markdown bilingue. À l’intérieur de chaque guide, vingt-deux articles individuels sont indexés et accessibles par l’outil READ acf.regulation.article. Chaque article expose son texte résumé, sa source officielle, sa date d’applicabilité, et un mapping vers les principes / dimensions / fiches ACF®."
-          : "Five regulator-level guide resources (URIs acf://guide/{slug}) served as bilingual Markdown. Inside each guide, twenty-two individual articles are indexed and accessed through the acf.regulation.article READ tool. Each article exposes its summary text, its official source, its applicable date, and a mapping onto ACF® principles / dimensions / cards."}
+          ? "Cinq ressources guide au niveau régulateur (URIs acf://guide/{slug}) servies en Markdown bilingue. À l’intérieur de chaque guide, vingt-deux articles individuels sont indexés et accessibles par l’outil READ acf.regulation.article. Chaque article expose son texte résumé, sa source officielle, sa date d’applicabilité, et un mapping vers les principes et fiches ACF®."
+          : "Five regulator-level guide resources (URIs acf://guide/{slug}) served as bilingual Markdown. Inside each guide, twenty-two individual articles are indexed and accessed through the acf.regulation.article READ tool. Each article exposes its summary text, its official source, its applicable date, and a mapping onto ACF® principles and cards."}
       </p>
       <p>
         {fr ? (
           <>
-            See also — outils READ{" "}
+            See also, outils READ{" "}
             <Link href={"/tools/acf.regulation.article" as never}>
               <code>acf.regulation.article</code>
             </Link>{" "}
@@ -263,7 +263,7 @@ export default async function RegulatorsResourcesPage({
           </>
         ) : (
           <>
-            See also — READ tool{" "}
+            See also: READ tool{" "}
             <Link href={"/tools/acf.regulation.article" as never}>
               <code>acf.regulation.article</code>
             </Link>{" "}
@@ -300,13 +300,13 @@ export default async function RegulatorsResourcesPage({
             </div>
             <p className="mt-3 text-[14px] leading-relaxed text-navy-50/75">
               <strong className="text-navy-50/90">
-                {fr ? "Périmètre — " : "Scope — "}
+                {fr ? "Périmètre : " : "Scope : "}
               </strong>
               {fr ? g.scopeFr : g.scopeEn}
             </p>
             <p className="mt-1 text-[14px] leading-relaxed text-navy-50/75">
               <strong className="text-navy-50/90">
-                {fr ? "Applicabilité — " : "Applicability — "}
+                {fr ? "Applicabilité : " : "Applicability : "}
               </strong>
               {fr ? g.applicableFr : g.applicableEn}
             </p>
@@ -346,7 +346,7 @@ const guide = await client.readResource({
 });
 console.log(guide.contents[0].mimeType); // "text/markdown"
 
-// Cited an article precisely — use the READ tool instead
+// Cited an article precisely, use the READ tool instead
 const article = await client.callTool({
   name: "acf.regulation.article",
   arguments: { regulation: "ai-act", article: "14" },
@@ -359,8 +359,7 @@ const article = await client.callTool({
 //   applicable_date: "2027-12-02",
 //   mapping: {
 //     principles: ["P3"],
-//     dimensions: ["D3", "D4"],
-//     fiches: ["ACF-07", "ACF-09", "ACF-14"],
+//     fiches: ["ACF-07", "ACF-P6", "ACF-P7"],
 //     operational_note: "ACF operationalises Art. 14 via P3 (ultimate human control)..."
 //   },
 //   requires_human_review: true,

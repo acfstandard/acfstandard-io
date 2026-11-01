@@ -34,8 +34,8 @@ export default async function LegalPage({
       title={fr ? "Mentions légales et licences" : "Legal notice and licences"}
       description={
         fr
-          ? "Le code acf-mcp est sous licence MIT. La doctrine et les supports pédagogiques sont sous Creative Commons BY-NC-SA. Les marques ACF®, Agentic Commerce Framework® et Souveraineté Agentique® appartiennent à Vincent Dorange — l’usage commercial du nom requiert une autorisation écrite."
-          : "The acf-mcp code is MIT-licensed. The doctrine and the pedagogical materials are Creative Commons BY-NC-SA. The trademarks ACF®, Agentic Commerce Framework® and Souveraineté Agentique® belong to Vincent Dorange — commercial use of the name requires written permission."
+          ? "Le code acf-mcp est sous licence MIT. La doctrine et les supports pédagogiques sont sous Creative Commons BY-NC-SA. Les marques ACF®, Agentic Commerce Framework® et Souveraineté Agentique® appartiennent à Vincent Dorange, l’usage commercial du nom requiert une autorisation écrite."
+          : "The acf-mcp code is MIT-licensed. The doctrine and the pedagogical materials are Creative Commons BY-NC-SA. The trademarks ACF®, Agentic Commerce Framework® and Souveraineté Agentique® belong to Vincent Dorange, commercial use of the name requires written permission."
       }
       badge={fr ? "Mentions légales" : "Legal notice"}
     >
@@ -75,14 +75,14 @@ export default async function LegalPage({
       <p>
         {fr ? (
           <>
-            Le whitepaper ACF®, les 17 fiches méthodologiques et l’ensemble des
+            Le livre blanc ACF®, les 45 fiches du toolkit et l’ensemble des
             supports pédagogiques sont distribués sous{" "}
             <a
               href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Creative Commons Attribution — Non Commercial — Share Alike 4.0
+              Creative Commons Attribution: Non Commercial: Share Alike 4.0
               International
             </a>
             . Trois obligations : attribution explicite, pas d’usage commercial
@@ -90,14 +90,14 @@ export default async function LegalPage({
           </>
         ) : (
           <>
-            The ACF® whitepaper, the 17 methodological cards and all
+            The ACF® white paper, the 45 toolkit cards and all
             pedagogical materials are distributed under{" "}
             <a
               href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Creative Commons Attribution — Non Commercial — Share Alike 4.0
+              Creative Commons Attribution: Non Commercial: Share Alike 4.0
               International
             </a>
             . Three obligations: explicit attribution, no commercial use without
@@ -142,8 +142,8 @@ export default async function LegalPage({
       </h2>
       <p>
         {fr
-          ? "Le serveur acf-mcp produit une qualification préliminaire opposable, pas un avis juridique et pas une certification de conformité. La décision finale appartient au DDAO (Designated Deployer of Autonomous Operations) ou au juriste compétent. Aucune garantie n’est accordée au-delà de ce que prévoit la licence MIT."
-          : "The acf-mcp server produces a defensible preliminary qualification, not legal advice and not a compliance certification. The final decision belongs to the DDAO (Designated Deployer of Autonomous Operations) or the competent counsel. No warranty is granted beyond what the MIT licence provides."}
+          ? "Le serveur acf-mcp produit une qualification préliminaire, pas un avis juridique et pas une certification de conformité. La décision finale appartient au DDAO (Delegated Decision Agent Officer) ou au juriste compétent. Aucune garantie n’est accordée au-delà de ce que prévoit la licence MIT."
+          : "The acf-mcp server produces a preliminary qualification, not legal advice and not a compliance certification. The final decision belongs to the DDAO (Delegated Decision Agent Officer) or the competent counsel. No warranty is granted beyond what the MIT licence provides."}
       </p>
 
       <h2 id="contact">

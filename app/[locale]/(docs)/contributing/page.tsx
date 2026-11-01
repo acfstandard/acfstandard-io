@@ -30,8 +30,8 @@ export default async function ContributingPage({
       title={fr ? "Contribuer" : "Contributing"}
       description={
         fr
-          ? "Comment ouvrir une issue, proposer une pull request et — séparément — proposer une modification de doctrine. Les contributions de tooling et de guides d’intégration sont les bienvenues. Les modifications de doctrine passent par une revue mainteneur dédiée."
-          : "How to open an issue, propose a pull request and — separately — propose a doctrine modification. Tooling and integration-guide contributions are welcome. Doctrine modifications go through a dedicated maintainer review."
+          ? "Comment ouvrir une issue, proposer une pull request et, séparément, proposer une modification de doctrine. Les contributions de tooling et de guides d’intégration sont les bienvenues. Les modifications de doctrine passent par une revue mainteneur dédiée."
+          : "How to open an issue, propose a pull request and, separately, propose a doctrine modification. Tooling and integration-guide contributions are welcome. Doctrine modifications go through a dedicated maintainer review."
       }
       badge={fr ? "Communauté" : "Community"}
     >
@@ -40,14 +40,14 @@ export default async function ContributingPage({
           <>
             Le code du serveur et les guides sont ouverts aux PR. La{" "}
             <strong>doctrine ACF®</strong> (4 principes, 4 niveaux d’autonomie,
-            17 fiches méthodologiques) n’est pas modifiable par PR ouverte :
+            45 fiches du toolkit) n’est pas modifiable par PR ouverte :
             elle passe par une procédure de revue mainteneur, décrite plus bas.
           </>
         ) : (
           <>
             The server code and the guides are open to PRs. The{" "}
-            <strong>ACF® doctrine</strong> (4 principles, 4 autonomy levels, 17
-            methodological cards) is not modifiable via open PR: it goes through
+            <strong>ACF® doctrine</strong> (4 principles, 4 autonomy levels, 45
+            toolkit cards) is not modifiable via open PR: it goes through
             a maintainer-review procedure, described below.
           </>
         )}
@@ -138,8 +138,8 @@ export default async function ContributingPage({
         >
           <p>
             {fr
-              ? "Chaque commit doit porter un trailer Signed-off-by, obtenu via le flag -s. C’est la Developer Certificate of Origin — vous certifiez que vous avez le droit de soumettre le code."
-              : "Every commit must carry a Signed-off-by trailer, obtained via the -s flag. This is the Developer Certificate of Origin — you certify you have the right to submit the code."}
+              ? "Chaque commit doit porter un trailer Signed-off-by, obtenu via le flag -s. C’est la Developer Certificate of Origin, vous certifiez que vous avez le droit de soumettre le code."
+              : "Every commit must carry a Signed-off-by trailer, obtained via the -s flag. This is the Developer Certificate of Origin, you certify you have the right to submit the code."}
           </p>
           <CodeBlock code={DCO_LINE} language="bash" />
         </Step>
@@ -161,8 +161,8 @@ export default async function ContributingPage({
         >
           <p>
             {fr
-              ? "Délai cible 7 jours. Les remarques portent sur la cohérence avec la doctrine, la conservation du déterminisme et la couverture de tests. Pas de revue purement stylistique — c’est le job de Prettier."
-              : "Target window 7 days. Feedback focuses on doctrine consistency, determinism preservation and test coverage. No purely stylistic review — that’s Prettier’s job."}
+              ? "Délai cible 7 jours. Les remarques portent sur la cohérence avec la doctrine, la conservation du déterminisme et la couverture de tests. Pas de revue purement stylistique, c’est le job de Prettier."
+              : "Target window 7 days. Feedback focuses on doctrine consistency, determinism preservation and test coverage. No purely stylistic review, that’s Prettier’s job."}
           </p>
         </Step>
       </Steps>
@@ -214,15 +214,15 @@ export default async function ContributingPage({
         <li>
           <Link href="/security">
             {fr ? "Politique de sécurité" : "Security policy"}
-          </Link>{" "}
-          —{" "}
+          </Link>
+          {": "}
           {fr
             ? "voie privée pour les vulnérabilités."
             : "private channel for vulnerabilities."}
         </li>
         <li>
           <Link href="/legal">{fr ? "Licences et marques" : "Licences and trademarks"}</Link>{" "}
-          — {fr ? "MIT, CC BY-NC-SA, marque ACF®." : "MIT, CC BY-NC-SA, ACF® trademark."}
+          {fr ? "MIT, CC BY-NC-SA, marque ACF®." : "MIT, CC BY-NC-SA, ACF® trademark."}
         </li>
       </ul>
     </DocsPage>

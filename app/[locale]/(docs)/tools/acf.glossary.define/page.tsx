@@ -47,19 +47,18 @@ asyncio.run(main())`;
 
 const RESPONSE_SAMPLE = `{
   "term": "DDAO",
-  "expansion": "Délégué à la Décision Agentique Officielle",
-  "definition": "Named accountable officer for an autonomous agent's mandate. The DDAO owns the agent's go/no-go, the kill-switch design, the escalation thresholds, and the periodic mandate review. Cannot be a function — must be a named individual with documented authority and a documented backup.",
+  "expansion": "Delegated Decision Agent Officer",
+  "definition": "ACF®-defined governance role acting as legal guardian of one or more autonomous AI agents. The DDAO approves the mandate, arbitrates out-of-threshold escalations and carries operational accountability for the agent. Not to be confused with the Chief Data & AI Officer (CDAIO), who creates value from AI: the DDAO is its accountability counterpart, independent as the DPO is from the data controller.",
   "related": {
-    "principles": ["P3", "P5"],
-    "fiches": ["ACF-04", "ACF-06", "ACF-12"]
+    "principles": [
+      "P3",
+      "P2"
+    ],
+    "fiches": [
+      "ACF-13"
+    ]
   },
-  "served_locale": "en",
-  "doctrine_version": "ACF framework v1.0 / rules 2026-06",
-  "doctrine_hash": "sha256:bf0b6d8e4731ebdc58f6d6338702c5b74af47874cf0ad3dc958cde5c5b30b9dc",
-  "doctrine_signature": "ed25519:…",
-  "doctrine_archive_url": "https://acfstandard.io/doctrine/v1.0/archive.json",
-  "generated_at": "2026-06-14T11:47:22.318Z",
-  "disclaimer": "Canonical ACF® definition — for governance and academic use. Not legal advice."
+  "served_locale": "en"
 }`;
 
 export default async function GlossaryDefineToolPage({
@@ -76,8 +75,8 @@ export default async function GlossaryDefineToolPage({
       title="acf.glossary.define"
       description={
         fr
-          ? "Définition canonique d’un terme du vocabulaire ACF® — un mot ou un acronyme en entrée, une définition signée + ses connexions au reste de la doctrine (principes, fiches) en sortie."
-          : "Canonical definition of an ACF® vocabulary term — one word or acronym in, one signed definition + its connections to the rest of the doctrine (principles, fiches) out."
+          ? "Définition canonique d’un terme du vocabulaire ACF®, un mot ou un acronyme en entrée, une définition signée + ses connexions au reste de la doctrine (principes, fiches) en sortie."
+          : "Canonical definition of an ACF® vocabulary term, one word or acronym in, one signed definition + its connections to the rest of the doctrine (principles, fiches) out."
       }
       badge="READ"
     >
@@ -85,7 +84,7 @@ export default async function GlossaryDefineToolPage({
         {fr ? (
           <>
             Outil de <strong>lecture</strong> du glossaire officiel. Aucune
-            inférence, aucune reformulation — la définition retournée est
+            inférence, aucune reformulation, la définition retournée est
             l’entrée exacte du glossaire, avec son hash de doctrine et ses
             cross-références. Utilisez-le quand un terme doit être cité tel
             quel dans un dossier, un mémo board ou une thèse.
@@ -93,7 +92,7 @@ export default async function GlossaryDefineToolPage({
         ) : (
           <>
             <strong>Read</strong> tool over the official glossary. No
-            inference, no rewording — the returned definition is the verbatim
+            inference, no rewording, the returned definition is the verbatim
             glossary entry, with its doctrine hash and cross-references. Use
             it when a term must be cited as-is in a filing, board memo or
             thesis.
@@ -104,8 +103,8 @@ export default async function GlossaryDefineToolPage({
       <h2 id="when-to-use">{fr ? "Quand l’utiliser" : "When to use"}</h2>
       <p>
         {fr
-          ? "Utilisez cet outil quand le vocabulaire de gouvernance devient ambigu : qu’est-ce qu’un DDAO ? Que recouvre exactement la Souveraineté Décisionnelle ? Quand un agent passe-t-il de N1 à N2 ? Plutôt que d’improviser une définition (qui dérivera entre deux documents), l’outil renvoie la version canonique signée — le même texte que vous trouverez dans le white paper ACF® et dans les fiches."
-          : "Use this tool when governance vocabulary turns ambiguous: what is a DDAO? What does Decision Sovereignty exactly cover? When does an agent transition from N1 to N2? Instead of improvising a definition (which will drift between two documents), the tool returns the canonical signed version — the same text you will find in the ACF® white paper and in the fiches."}
+          ? "Utilisez cet outil quand le vocabulaire de gouvernance devient ambigu : qu’est-ce qu’un DDAO ? Que recouvre exactement la Souveraineté Décisionnelle ? Qu’est-ce qui distingue la co-décision de l’autonomie supervisée ? Plutôt que d’improviser une définition (qui dérivera entre deux documents), l’outil renvoie la version canonique signée, le même texte que vous trouverez dans le white paper ACF® et dans les fiches."
+          : "Use this tool when governance vocabulary turns ambiguous: what is a DDAO? What does Decision Sovereignty exactly cover? What separates co-decision from supervised autonomy? Instead of improvising a definition (which will drift between two documents), the tool returns the canonical signed version, the same text you will find in the ACF® white paper and in the fiches."}
       </p>
       <p>
         {fr
@@ -122,8 +121,8 @@ export default async function GlossaryDefineToolPage({
       <ParamGroup>
         <Param name="term" type="string (1-80)" required>
           {fr
-            ? "Terme ou acronyme à définir. Exemples : « DDAO », « Souveraineté Décisionnelle », « N2 », « kill switch », « mandat »."
-            : "Term or acronym to define. Examples: “DDAO”, “Decision Sovereignty”, “N2”, “kill switch”, “mandate”."}
+            ? "Terme ou acronyme à définir. Exemples : « DDAO », « Souveraineté décisionnelle », « Autonomie déléguée », « Kill switch », « Mandat »."
+            : "Term or acronym to define. Examples: “DDAO”, “Decision Sovereignty”, “Delegated autonomy”, “Kill switch”, “Mandate”."}
         </Param>
         <Param name="locale" type='"en" | "fr"' defaultValue='"en"'>
           {fr
@@ -151,13 +150,13 @@ export default async function GlossaryDefineToolPage({
         </Param>
         <Param name="definition" type="string">
           {fr
-            ? "La définition canonique. Texte verbatim du glossaire — aucune reformulation."
-            : "The canonical definition. Verbatim text from the glossary — no rewording."}
+            ? "La définition canonique. Texte verbatim du glossaire, aucune reformulation."
+            : "The canonical definition. Verbatim text from the glossary, no rewording."}
         </Param>
         <Param name="related" type="{ principles: string[], fiches: string[] }">
           {fr
-            ? "Cross-références : codes des principes ACF® (P1-P7) et des fiches méthodologiques (ACF-00 à ACF-16) liés au terme."
-            : "Cross-references: codes of the ACF® principles (P1-P7) and methodological cards (ACF-00 to ACF-16) tied to the term."}
+            ? "Cross-références : codes des principes ACF® (P1 à P4) et des fiches du toolkit liés au terme."
+            : "Cross-references: codes of the ACF® principles (P1 to P4) and toolkit cards tied to the term."}
         </Param>
         <Param name="served_locale" type='"en" | "fr"'>
           {fr
@@ -195,22 +194,14 @@ export default async function GlossaryDefineToolPage({
       <h2 id="errors">{fr ? "Erreurs courantes" : "Common errors"}</h2>
       <ul>
         <li>
-          <code>GlossaryEntryNotFound</code> —{" "}
           {fr
-            ? "le terme demandé n’existe pas dans le glossaire. Essayez une variante (« DDAO » plutôt que « Officier de Décision Agentique ») ou utilisez acf.search pour identifier le terme canonique."
-            : "the requested term does not exist in the glossary. Try a variant (“DDAO” rather than “Agentic Decision Officer”) or use acf.search to identify the canonical term."}
+            ? "« Glossary entry not found: <terme> » : le terme n’est pas une entrée du glossaire. Essayez son acronyme ou sa forme développée, ou passez par acf.search."
+            : "“Glossary entry not found: <term>”: the term is not a glossary entry. Try its acronym or expanded form, or go through acf.search."}
         </li>
         <li>
-          <code>InputTooLong</code> —{" "}
           {fr
-            ? "le champ term dépasse 80 caractères. L’outil cherche un terme, pas une phrase — raccourcissez."
-            : "the term field exceeds 80 characters. The tool looks up a term, not a sentence — shorten it."}
-        </li>
-        <li>
-          <code>DoctrineSnapshotMismatch</code> —{" "}
-          {fr
-            ? "le doctrine_hash demandé n’est pas chargé. Mettez acf-mcp à jour ou pointez vers la version archivée."
-            : "the requested doctrine_hash is not loaded. Update acf-mcp or point at the archived version."}
+            ? "Terme vide ou trop long : la validation des paramètres échoue et l’erreur JSON-RPC indique le champ term."
+            : "Empty or overlong term: parameter validation fails and the JSON-RPC error names the term field."}
         </li>
       </ul>
 
@@ -219,8 +210,8 @@ export default async function GlossaryDefineToolPage({
         <li>
           <a href={fr ? "/fr/tools/acf.search" : "/tools/acf.search"}>
             <code>acf.search</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "trouver le terme canonique quand on ne connaît pas l’intitulé exact."
             : "find the canonical term when the exact label is unknown."}
@@ -228,8 +219,8 @@ export default async function GlossaryDefineToolPage({
         <li>
           <a href={fr ? "/fr/tools/acf.fiche.lookup" : "/tools/acf.fiche.lookup"}>
             <code>acf.fiche.lookup</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "lire intégralement les fiches méthodologiques citées dans related.fiches."
             : "read in full the methodological cards listed in related.fiches."}
@@ -237,8 +228,8 @@ export default async function GlossaryDefineToolPage({
         <li>
           <a href={fr ? "/fr/tools/acf.cite" : "/tools/acf.cite"}>
             <code>acf.cite</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "produire une citation académique formatée pour réutiliser la définition dans un document."
             : "produce a formatted academic citation to reuse the definition in a document."}

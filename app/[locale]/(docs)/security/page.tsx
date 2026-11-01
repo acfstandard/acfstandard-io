@@ -41,8 +41,8 @@ export default async function SecurityPage({
       title={fr ? "Politique de sécurité" : "Security policy"}
       description={
         fr
-          ? "Comment signaler une vulnérabilité acf-mcp, fenêtre de divulgation responsable, clé PGP et reconnaissance. Pas de bug bounty financier ; reconnaissance publique dans les release notes."
-          : "How to report an acf-mcp vulnerability, responsible disclosure window, PGP key and recognition. No paid bug bounty; public recognition in the release notes."
+          ? "Comment signaler une vulnérabilité acf-mcp, fenêtre de divulgation responsable et reconnaissance. Pas de bug bounty financier ; reconnaissance publique dans les release notes."
+          : "How to report an acf-mcp vulnerability, responsible disclosure window and recognition. No paid bug bounty; public recognition in the release notes."
       }
       badge={fr ? "Sécurité" : "Security"}
     >
@@ -69,21 +69,21 @@ export default async function SecurityPage({
         {fr ? (
           <>
             Envoyez un email à{" "}
-            <a href="mailto:security@acfstandard.com">
-              security@acfstandard.com
+            <a href="mailto:contact@acfstandard.com">
+              contact@acfstandard.com
             </a>{" "}
-            avec l’objet exact <code>[acf-mcp security]</code>. Chiffrez les
-            détails sensibles avec la clé PGP du projet (cf. section dédiée).
+            avec l’objet exact <code>[acf-mcp security]</code>. N’envoyez pas
+            de secret ni de donnée personnelle en clair dans le premier message.
             Utilisez le gabarit ci-dessous pour accélérer le triage.
           </>
         ) : (
           <>
             Send an email to{" "}
-            <a href="mailto:security@acfstandard.com">
-              security@acfstandard.com
+            <a href="mailto:contact@acfstandard.com">
+              contact@acfstandard.com
             </a>{" "}
-            with the exact subject <code>[acf-mcp security]</code>. Encrypt
-            sensitive details with the project PGP key (see dedicated section).
+            with the exact subject <code>[acf-mcp security]</code>. Do not send
+            secrets or personal data in clear in the first message.
             Use the template below to speed up triage.
           </>
         )}
@@ -147,29 +147,6 @@ export default async function SecurityPage({
           </p>
         </Step>
       </Steps>
-
-      <h2 id="pgp">
-        {fr ? "Clé PGP du projet" : "Project PGP key"}
-      </h2>
-      <p>
-        {fr ? (
-          <>
-            La clé PGP courante du projet est disponible sur demande à la même
-            adresse email. Empreinte :{" "}
-            <code>PGP key fingerprint: TBD — request via email</code>. Une
-            distribution automatisée via <code>WKD</code> et{" "}
-            <code>keys.openpgp.org</code> est planifiée.
-          </>
-        ) : (
-          <>
-            The current project PGP key is available on request from the same
-            email address. Fingerprint:{" "}
-            <code>PGP key fingerprint: TBD — request via email</code>.
-            Automated distribution via <code>WKD</code> and{" "}
-            <code>keys.openpgp.org</code> is planned.
-          </>
-        )}
-      </p>
 
       <h2 id="scope">
         {fr ? "Périmètre" : "Scope"}

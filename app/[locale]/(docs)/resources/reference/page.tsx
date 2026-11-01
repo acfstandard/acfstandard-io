@@ -15,11 +15,11 @@ export default async function ReferenceResourcesPage({
 
   return (
     <DocsPage
-      title={fr ? "Ressources — Référence" : "Resources — Reference"}
+      title={fr ? "Ressources : référence" : "Resources: reference"}
       description={
         fr
-          ? "Les ressources transverses : index du glossaire ACF®, métadonnées de la doctrine (version, hash, signature, URL d’archive, langues supportées) et bundle d’archive permanente. La couche infrastructure du corpus, indispensable pour vérifier qu’une sortie d’outil est vérifiable indépendamment."
-          : "Cross-cutting resources: ACF® glossary index, doctrine metadata (version, hash, signature, archive URL, supported locales) and permanent archive bundle. The corpus infrastructure layer — indispensable to verify that a tool output is defensible."
+          ? "Les ressources transverses : index du glossaire ACF®, métadonnées de la doctrine (version, hash, signature, URL d’archive, langues supportées) et bundle d’archive livré avec le paquet. La couche infrastructure du corpus, celle qui permet de vérifier sur quelle doctrine une sortie d’outil s’appuie."
+          : "Cross-cutting resources: ACF® glossary index, doctrine metadata (version, hash, signature, archive URL, supported locales) and the archive bundle shipped with the package. The corpus infrastructure layer, the one that lets you check which doctrine a tool output relies on."
       }
       badge={fr ? "Ressources" : "Resources"}
     >
@@ -48,8 +48,8 @@ export default async function ReferenceResourcesPage({
       </h2>
       <p>
         {fr
-          ? "Trois ressources transverses : (1) acf://glossary, l’index canonique des termes ACF® ; (2) acf://meta, les métadonnées techniques de la doctrine ; (3) le bundle d’archive permanente exposé hors-MCP via une URL HTTPS gelée. Aucune n’est volumineuse — elles tiennent toutes dans un cache client."
-          : "Three cross-cutting resources: (1) acf://glossary, the canonical ACF® term index; (2) acf://meta, the doctrine’s technical metadata; (3) the permanent archive bundle exposed outside MCP via a frozen HTTPS URL. None is bulky — they all fit in a client cache."}
+          ? "Trois ressources transverses : (1) acf://glossary, l’index canonique des termes ACF® ; (2) acf://meta, les métadonnées techniques de la doctrine ; (3) le bundle d’archive, un fichier JSON livré dans le paquet npm. Aucune n’est volumineuse : elles tiennent toutes dans un cache client."
+          : "Three cross-cutting resources: (1) acf://glossary, the canonical ACF® term index; (2) acf://meta, the doctrine’s technical metadata; (3) the archive bundle, a JSON file shipped in the npm package. None is bulky: they all fit in a client cache."}
       </p>
 
       <h2 id="list">{fr ? "Liste exhaustive" : "Exhaustive list"}</h2>
@@ -74,13 +74,13 @@ export default async function ReferenceResourcesPage({
         </p>
         <p className="mt-1 text-[14px] leading-relaxed text-navy-50/75">
           {fr
-            ? "Liste structurée des termes officiels (DDAO, Souveraineté décisionnelle, niveaux N0–N3, kill switch, mandat, registre de décisions, etc.) avec définitions bilingues et cross-refs vers les principes, fiches et articles régulateurs."
-            : "Structured list of official terms (DDAO, Decision Sovereignty, N0–N3 levels, kill switch, mandate, decision register, etc.) with bilingual definitions and cross-refs to principles, cards and regulator articles."}
+            ? "Liste structurée des termes officiels (DDAO, Souveraineté décisionnelle, autonomie déléguée, maturité N0 à N3, kill switch, mandat, registre de décisions, etc.) avec définitions bilingues et cross-refs vers les principes, fiches et articles régulateurs."
+            : "Structured list of official terms (DDAO, Decision Sovereignty, delegated autonomy, N0 to N3 maturity, kill switch, mandate, decision register, etc.) with bilingual definitions and cross-refs to principles, cards and regulator articles."}
         </p>
         <p className="mt-2 text-[13px] text-navy-50/65">
           {fr ? (
             <>
-              See also — outil READ{" "}
+              See also, outil READ{" "}
               <Link href={"/tools/acf.glossary.define" as never}>
                 <code>acf.glossary.define</code>
               </Link>{" "}
@@ -88,7 +88,7 @@ export default async function ReferenceResourcesPage({
             </>
           ) : (
             <>
-              See also — READ tool{" "}
+              See also: READ tool{" "}
               <Link href={"/tools/acf.glossary.define" as never}>
                 <code>acf.glossary.define</code>
               </Link>{" "}
@@ -113,37 +113,35 @@ export default async function ReferenceResourcesPage({
         </div>
         <p className="mt-2 font-mono text-[11px] uppercase tracking-widest text-navy-50/50">
           {fr
-            ? "Version, hash, signature, URL d’archive, langues supportées"
-            : "Version, hash, signature, archive URL, supported locales"}
+            ? "Version, empreinte, signature, URL d’archive prévue, langues servies"
+            : "Version, hash, signature, planned archive URL, served locales"}
         </p>
         <p className="mt-1 text-[14px] leading-relaxed text-navy-50/75">
           {fr
-            ? "Document court (JSON, ~1 Ko) qui décrit la version de doctrine actuellement servie : framework_version sémantique, content_build ISO 8601, content_hash SHA-256, doctrine_signature Ed25519, doctrine_public_key, permanent_archive_url, rules_version, fallback_locale et la liste exhaustive des locales supportées (V1.0 : fr, en, es, de, pt, it, nl, ru, ar, tr, ja, zh, ko — seuls fr et en sont effectivement servis, le reste tombe en fallback en)."
-            : "Short document (JSON, ~1 KB) describing the doctrine version currently served: semantic framework_version, ISO 8601 content_build, SHA-256 content_hash, Ed25519 doctrine_signature, doctrine_public_key, permanent_archive_url, rules_version, fallback_locale and the exhaustive list of supported locales (V1.0: fr, en, es, de, pt, it, nl, ru, ar, tr, ja, zh, ko — only fr and en are actually served, the rest fall back to en)."}
+            ? "Document court (JSON, ~1 Ko) qui décrit la version de doctrine actuellement servie : framework_version sémantique, content_build ISO 8601, content_hash SHA-256, doctrine_signature Ed25519, doctrine_public_key, permanent_archive_url, rules_version, fallback_locale et la liste exhaustive des locales supportées (V1.0 : fr, en, es, de, pt, it, nl, ru, ar, tr, ja, zh, ko, seuls fr et en sont effectivement servis, le reste tombe en fallback en)."
+            : "Short document (JSON, ~1 KB) describing the doctrine version currently served: semantic framework_version, ISO 8601 content_build, SHA-256 content_hash, Ed25519 doctrine_signature, doctrine_public_key, permanent_archive_url, rules_version, fallback_locale and the exhaustive list of supported locales (V1.0: fr, en, es, de, pt, it, nl, ru, ar, tr, ja, zh, ko, only fr and en are actually served, the rest fall back to en)."}
         </p>
       </div>
 
       <h3 id="archive">
-        {fr ? "Bundle d’archive permanente" : "Permanent archive bundle"}
+        {fr ? "Bundle d’archive" : "Archive bundle"}
       </h3>
       <div className="not-prose mb-4 rounded-lg border border-white/10 bg-white/[0.02] p-4">
         <div className="flex flex-wrap items-center gap-2">
           <code className="font-mono text-[13px] font-semibold text-gold">
-            https://archive.acfstandard.com/doctrine/v1.0/
+            node_modules/acf-mcp/dist/archive/doctrine-v1.0.json
           </code>
           <span className="rounded border border-gold/30 px-1.5 py-0.5 font-mono text-[10px] uppercase tracking-wider text-gold/80">
-            HTTPS
+            JSON
           </span>
         </div>
         <p className="mt-2 font-mono text-[11px] uppercase tracking-widest text-navy-50/50">
-          {fr
-            ? "URL gelée hors-MCP, servie par CDN immutable"
-            : "Frozen URL outside MCP, served by an immutable CDN"}
+          {fr ? "Livré dans chaque version npm, avec son manifeste" : "Shipped in every npm release, with its manifest"}
         </p>
         <p className="mt-1 text-[14px] leading-relaxed text-navy-50/75">
           {fr
-            ? "Le bundle d’archive n’est pas une ressource MCP au sens du protocole (pas d’URI acf://) — c’est une URL HTTPS gelée et signée qui contient tout le corpus de la version concernée (whitepaper, fiches, guides, manuel, principes, dimensions, glossaire, meta). Pin-la dans votre audit pipeline pour avoir une racine de confiance vérifiable indépendamment de la disponibilité du serveur MCP."
-            : "The archive bundle is not an MCP resource in the protocol sense (no acf:// URI) — it is a frozen, signed HTTPS URL containing the full corpus for the version (whitepaper, cards, guides, manual, principles, dimensions, glossary, meta). Pin it in your audit pipeline to keep a defensible root of trust independent of MCP server availability."}
+            ? "Le bundle d’archive n’est pas une ressource MCP (pas d’URI acf://) : c’est un fichier qui contient tout le corpus de la version, chaque fichier avec son empreinte SHA-256, ainsi que l’empreinte globale, la signature Ed25519 et la clé publique. Le manifeste (manifest-v1.0.json) reprend les mêmes empreintes sans le contenu. Conservez-le dans votre dossier d’audit : il se vérifie hors ligne, sans le serveur MCP."
+            : "The archive bundle is not an MCP resource (no acf:// URI): it is a file holding the full corpus of the release, each file with its SHA-256 hash, plus the global hash, the Ed25519 signature and the public key. The manifest (manifest-v1.0.json) carries the same hashes without the content. Keep it in your audit file: it verifies offline, without the MCP server."}
         </p>
       </div>
 
@@ -152,21 +150,24 @@ export default async function ReferenceResourcesPage({
       </h2>
       <p>
         {fr
-          ? "Ce que acf://meta renvoie en V1.0 (chiffres et timestamp réels) :"
-          : "What acf://meta returns in V1.0 (real values and timestamp):"}
+          ? "Ce que acf://meta renvoie (valeurs réelles d’acf-mcp 2.0.1) :"
+          : "What acf://meta returns (real values of acf-mcp 2.0.1):"}
       </p>
       <CodeBlock
         language="json"
         filename="meta.json"
         code={`{
   "framework_version": "1.0",
-  "content_build": "2026-06-14T10:47:44.384Z",
-  "content_hash": "sha256:bf0b6d8e4731ebdc58f6d6338702c5b74af47874cf0ad3dc958cde5c5b30b9dc",
-  "permanent_archive_url": "https://archive.acfstandard.com/doctrine/v1.0/",
+  "content_build": "2026-11-01T11:15:31.220Z",
+  "content_hash": "sha256:119819463363cde0649504ab8ed5a96982fdb8506441f2c5e76e7e3c3feb77f1",
+  "permanent_archive_url": "https://acfstandard.io/archive/doctrine/v1.0/doctrine-v1.0.json",
   "rules_version": "2026-06",
-  "locales": ["fr", "en", "es", "de", "pt", "it", "nl", "ru", "ar", "tr", "ja", "zh", "ko"],
+  "locales": [
+    "fr",
+    "en"
+  ],
   "fallback_locale": "en",
-  "doctrine_signature": "ed25519:yqySJDnYnXaAIC37LJXyw3D9F4dDX7Gt29Em7nn9/wW/EXt1Y8ychyrqnLnWqxDpC2Ek+FYsgPPGFm9q/11TCg==",
+  "doctrine_signature": "ed25519:3R0oIiqL3KgdVAemSy4oEprbUZnRWE4OEQQgD+2JnMzKhAL2xrmYjwrwbpkbew0T5B4YKvEYkycWFQ+paADFCQ==",
   "doctrine_public_key": "MCowBQYDK2VwAyEAojtKfh20SGGV63LMETjZBXRWo2tY0viAYziG/y3/L0s="
 }`}
       />
@@ -187,16 +188,15 @@ const metaResp = await client.readResource({ uri: "acf://meta" });
 const meta = JSON.parse(metaResp.contents[0].text);
 
 const pinnedVersion = meta.framework_version;        // "1.0"
-const pinnedHash = meta.content_hash;                // "sha256:bf0b..."
+const pinnedHash = meta.content_hash;                // "sha256:1198..."
 const verificationKey = meta.doctrine_public_key;    // base64 SPKI Ed25519
-const archiveUrl = meta.permanent_archive_url;       // immutable bundle
 
 // 2. Read the glossary index
 const glossaryResp = await client.readResource({ uri: "acf://glossary" });
 const glossary = JSON.parse(glossaryResp.contents[0].text);
-// Array of { term, expansion?, definition: { fr, en }, related_principles, related_fiches, ... }
+// Index of the terms; each one reads at acf://glossary/{term}
 
-// 3. Every later tool output must embed the same content_hash —
+// 3. Every later tool output must embed the same content_hash,
 //    otherwise the doctrine has shifted and the client must refresh.`}
       />
 

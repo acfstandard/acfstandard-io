@@ -13,22 +13,22 @@ const WITHOUT_BULLETS: { fr: string; en: string }[] = [
 
 const WITH_BULLETS: { fr: string; en: string }[] = [
   { fr: "La décision de 3h14 porte une signature Ed25519, un hash SHA-256 chaîné, et le nom du DDAO qui en répond civilement.", en: "The 3:14 AM decision carries an Ed25519 signature, a chained SHA-256 hash, and the name of the DDAO who bears civil liability." },
-  { fr: "La promesse de remboursement déclenche le kill switch de niveau 2, mappé sur la fiche ACF-11, archivé avant tout redéploiement.", en: "The refund commitment triggers the level 2 kill switch, mapped to card ACF-11, archived before any redeploy." },
-  { fr: "Le contrat fournisseur est classifié N1 et non N3, ce qui rend la fiche ACF-09 « screening sanctions » obligatoire avant signature.", en: "The supplier contract is classified N1 not N3, making the ACF-09 sanctions-screening card mandatory before signature." },
+  { fr: "La promesse de remboursement dépasse le seuil du mandat (ACF-13) : l'agent est suspendu par le kill switch (ACF-07) et l'incident est consigné avant tout redéploiement.", en: "The refund commitment exceeds the mandate threshold (ACF-13): the agent is suspended by the kill switch (ACF-07) and the incident is recorded before any redeploy." },
+  { fr: "La signature du contrat fournisseur est une décision en co-décision, pas en autonomie : l'agent prépare, un humain nommé signe, et la décision est inscrite au registre (ACF-09).", en: "Signing the supplier contract is a co-decision, not an autonomous one: the agent prepares, a named human signs, and the decision is entered in the register (ACF-09)." },
   { fr: "L'auditeur reçoit en 30 secondes un PDF signé, mappé sur AI Act, ISO 42001, NIST AI RMF, RGPD et COBIT.", en: "The auditor receives a signed PDF in 30 seconds, mapped to EU AI Act, ISO 42001, NIST AI RMF, GDPR, and COBIT." },
-  { fr: "Votre ACF Sovereignty Score™ progresse de 34 à 78 en six mois, et chaque décision agentique reste opposable des années plus tard.", en: "Your ACF Sovereignty Score™ moves from 34 to 78 in six months, and every agentic decision remains opposable years later." },
+  { fr: "Votre dépendance est mesurée avant d'automatiser (ACF Sovereignty Score™, fiche ACF-01), et chaque décision agentique reste vérifiable indépendamment des années plus tard.", en: "Your dependence is measured before automating (ACF Sovereignty Score™, card ACF-01), and every agentic decision remains independently verifiable years later." },
 ];
 
 const THREE_ANSWERS = [
-  { levelFr: "Niveau 1 — Le silence", levelEn: "Level 1 — Silence", answerFr: "« On va voir avec les équipes d'ingénierie et on vous revient. »", answerEn: "“We'll check with the engineering team and get back to you.”", consequenceFr: "Enquête réglementaire ouverte, exposition à une sanction AI Act pouvant atteindre 35 M€ ou 7 % du chiffre d'affaires mondial, mise en cause de la responsabilité dirigeante, incertitude juridique prolongée.", consequenceEn: "Regulatory investigation opened, exposure to an AI Act sanction of up to 35 million euros or 7 percent of global turnover, executive accountability triggered, prolonged legal uncertainty.", band: "red" },
-  { levelFr: "Niveau 2 — Les logs applicatifs", levelEn: "Level 2 — Application logs", answerFr: "« Nous avons des logs applicatifs, on peut vous les exporter. »", answerEn: "“We have application logs, we can export them for you.”", consequenceFr: "Logs réputés non probants au titre de l'article 1366 du Code civil, audit forensique externe imposé, contradictoire de plusieurs mois, défense par construction reconstituée a posteriori.", consequenceEn: "Logs deemed non-probative under article 1366 of the French Civil Code, external forensic audit imposed, multi-month adversarial process, defense reconstructed after the fact.", band: "yellow" },
-  { levelFr: "Niveau 3 — La preuve cryptographique", levelEn: "Level 3 — Cryptographic proof", answerFr: "« Voici le PDF signé Ed25519, vous pouvez le vérifier indépendamment avec la clé publique. »", answerEn: "“Here is the Ed25519-signed PDF, you can verify it independently with the public key.”", consequenceFr: "Trace opposable produite immédiatement, vérifiable par l'auditeur sans dépendre de vos systèmes, conformité démontrée sur cinq référentiels (AI Act, ISO 42001, NIST AI RMF, RGPD, COBIT).", consequenceEn: "Opposable trace produced immediately, verifiable by the auditor independently of your systems, compliance demonstrated across five frameworks (AI Act, ISO 42001, NIST AI RMF, GDPR, COBIT).", band: "green" },
+  { levelFr: "Niveau 1 : Le silence", levelEn: "Level 1: Silence", answerFr: "« On va voir avec les équipes d'ingénierie et on vous revient. »", answerEn: "“We'll check with the engineering team and get back to you.”", consequenceFr: "Enquête réglementaire ouverte, exposition à une sanction AI Act pouvant atteindre 35 M€ ou 7 % du chiffre d'affaires mondial, mise en cause de la responsabilité dirigeante, incertitude juridique prolongée.", consequenceEn: "Regulatory investigation opened, exposure to an AI Act sanction of up to 35 million euros or 7 percent of global turnover, executive accountability triggered, prolonged legal uncertainty.", band: "red" },
+  { levelFr: "Niveau 2 : Les logs applicatifs", levelEn: "Level 2: Application logs", answerFr: "« Nous avons des logs applicatifs, on peut vous les exporter. »", answerEn: "“We have application logs, we can export them for you.”", consequenceFr: "Logs réputés non probants au titre de l'article 1366 du Code civil, audit forensique externe imposé, contradictoire de plusieurs mois, défense par construction reconstituée a posteriori.", consequenceEn: "Logs deemed non-probative under article 1366 of the French Civil Code, external forensic audit imposed, multi-month adversarial process, defense reconstructed after the fact.", band: "yellow" },
+  { levelFr: "Niveau 3 : La preuve cryptographique", levelEn: "Level 3: Cryptographic proof", answerFr: "« Voici le PDF signé Ed25519, vous pouvez le vérifier indépendamment avec la clé publique. »", answerEn: "“Here is the Ed25519-signed PDF, you can verify it independently with the public key.”", consequenceFr: "Trace produite immédiatement, vérifiable par l'auditeur sans dépendre de vos systèmes, et rattachée aux obligations de cinq référentiels (AI Act, ISO 42001, NIST AI RMF, RGPD, COBIT).", consequenceEn: "Trace produced immediately, verifiable by the auditor independently of your systems, and tied to the obligations of five frameworks (AI Act, ISO 42001, NIST AI RMF, GDPR, COBIT).", band: "green" },
 ] as const;
 
 const TRUST_PROPERTIES = [
   { titleFr: "Identité signée", titleEn: "Signed identity", bodyFr: "Chaque décision agentique est signée Ed25519 et porte le nom du DDAO qui en répond civilement ; aucune autonomie anonyme n'est admise par le standard.", bodyEn: "Every agentic decision is Ed25519-signed and carries the name of the DDAO who bears civil liability; no anonymous autonomy is permitted by the standard." },
-  { titleFr: "Vérification réplicable", titleEn: "Replicable verification", bodyFr: "Le chaînage SHA-256 et les 34 ressources signées par acf-mcp permettent à un tiers, des années plus tard, de rejouer la vérification sans dépendre de vous.", bodyEn: "The SHA-256 hash chain and the 34 signed acf-mcp resources let a third party, years later, replay the verification without depending on you." },
-  { titleFr: "Trace opposable", titleEn: "Opposable trace", bodyFr: "Le mapping 17 × 5 sur AI Act, ISO 42001, NIST AI RMF, RGPD et COBIT transforme la trace en preuve juridique opposable, pas en simple log technique.", bodyEn: "The 17 by 5 mapping across EU AI Act, ISO 42001, NIST AI RMF, GDPR, and COBIT turns the trace into an opposable legal proof, not a mere technical log." },
+  { titleFr: "Vérification réplicable", titleEn: "Replicable verification", bodyFr: "La signature Ed25519 des décisions et la doctrine ACF® signée, publiée avec sa clé publique, permettent à un tiers, des années plus tard, de rejouer la vérification sans dépendre de vous.", bodyEn: "The Ed25519 signature of decisions and the signed ACF® doctrine, published with its public key, let a third party, years later, replay the verification without depending on you." },
+  { titleFr: "Trace rattachée au droit", titleEn: "Trace tied to the law", bodyFr: "La correspondance des fiches avec l'AI Act, l'ISO 42001, le NIST AI RMF, le RGPD et COBIT rattache chaque trace aux obligations qu'elle documente, là où un log technique reste muet.", bodyEn: "The mapping of the cards to the EU AI Act, ISO 42001, NIST AI RMF, GDPR and COBIT ties each trace to the obligations it documents, where a technical log says nothing." },
 ];
 
 const BAND_STYLES = {
@@ -67,7 +67,7 @@ export default async function WhyAcfPage({
             prise par votre agent IA à 3h14, lorsqu'il a révoqué la ligne de crédit du
             client Dupont-Mercier ; je veux le hash, la signature, le modèle, le prompt,
             et le nom de la personne physique qui en porte la responsabilité civile. »</strong>{" "}
-            — Votre auditeur, le 17 mars 2027, 14h12.
+            Votre auditeur, le 17 mars 2027, 14h12.
             <br />
             <br />
             Ce n'est pas une hypothèse : l'application des obligations « haut risque » de
@@ -79,7 +79,7 @@ export default async function WhyAcfPage({
             agent took at 3:14 AM when it revoked the credit line of customer
             Dupont-Mercier; I want the hash, the signature, the model, the prompt, and
             the name of the natural person bearing civil liability.”</strong>{" "}
-            — Your auditor, March 17, 2027, 2:12 PM.
+            Your auditor, March 17, 2027, 2:12 PM.
             <br />
             <br />
             This is not hypothetical: EU AI Act high-risk enforcement begins{" "}
@@ -134,8 +134,8 @@ export default async function WhyAcfPage({
       </h2>
       <p>
         {fr
-          ? "L'auditeur pose la question. Vous avez trois réponses possibles, dans l'ordre croissant de défendabilité — et trois conséquences financières correspondantes."
-          : "The auditor asks. You have three possible answers, in increasing order of defensibility — and three matching financial consequences."}
+          ? "L'auditeur pose la question. Vous avez trois réponses possibles, dans l'ordre croissant de défendabilité, et trois conséquences financières correspondantes."
+          : "The auditor asks. You have three possible answers, in increasing order of defensibility, and three matching financial consequences."}
       </p>
       <div className="not-prose my-8 space-y-4">
         {THREE_ANSWERS.map((a, i) => {
@@ -166,8 +166,8 @@ export default async function WhyAcfPage({
       </h2>
       <p>
         {fr
-          ? "Sans cadre de gouvernance, une décision agentique passe directement de l'agent à l'action. Avec ACF, deux étapes s'intercalent — une gouvernance préalable et une signature — et une étape s'ajoute après : la vérification réplicable des années plus tard. Trois boîtes en plus suffisent à rendre la décision opposable."
-          : "Without a governance frame, an agentic decision flows straight from the agent to the action. With ACF, two steps are inserted upstream — governance and signature — and one is added downstream: replicable verification, years later. Three extra boxes are enough to make the decision opposable."}
+          ? "Sans cadre de gouvernance, une décision agentique passe directement de l'agent à l'action. Avec ACF, deux étapes s'intercalent, une gouvernance préalable et une signature, et une étape s'ajoute après : la vérification réplicable des années plus tard. Trois boîtes en plus suffisent à rendre la décision vérifiable indépendamment."
+          : "Without a governance frame, an agentic decision flows straight from the agent to the action. With ACF, two steps are inserted upstream, governance and signature, and one is added downstream: replicable verification, years later. Three extra boxes are enough to make the decision independently verifiable."}
       </p>
       <div className="not-prose my-8 grid gap-6 lg:grid-cols-2">
         {/* WITHOUT */}
@@ -258,14 +258,14 @@ export default async function WhyAcfPage({
         </p>
         <p className="mt-3 font-display text-[20px] font-bold leading-[1.4] text-gold md:text-[24px]">
           {fr
-            ? "La question est de savoir si ces décisions resteront opposables des années plus tard."
+            ? "La question est de savoir si ces décisions resteront défendables des années plus tard."
             : "The question is whether those decisions will still be defensible years later."}
         </p>
       </div>
       <p>
         {fr
-          ? "ACF® est l'infrastructure qui répond oui à cette deuxième question, par construction et non par chance — du jour de la décision au jour où un tiers la conteste."
-          : "ACF® is the infrastructure that answers yes to that second question, by construction and not by luck — from the day the decision is made to the day a third party challenges it."}
+          ? "ACF® est l'infrastructure qui répond oui à cette deuxième question, par construction et non par chance, du jour de la décision au jour où un tiers la conteste."
+          : "ACF® is the infrastructure that answers yes to that second question, by construction and not by luck, from the day the decision is made to the day a third party challenges it."}
       </p>
 
       <div className="not-prose my-10 flex flex-wrap gap-4">
@@ -286,16 +286,16 @@ export default async function WhyAcfPage({
       <Callout variant="info" locale={fr ? "fr" : "en"}>
         {fr ? (
           <>
-            Pour vos équipes techniques : la signature Ed25519, la chaîne SHA-256, et le
-            protocole d'horodatage RFC 3161 sont documentés sur la page{" "}
-            <Link href="/signatures">/signatures</Link>. La cartographie 17 × 5 sur les
+            Pour vos équipes techniques : la signature Ed25519 de la doctrine et sa
+            vérification sont documentées sur la page{" "}
+            <Link href="/signatures">/signatures</Link>. La correspondance des fiches avec les
             cinq référentiels est sur la page <Link href="/mappings">/mappings</Link>.
           </>
         ) : (
           <>
-            For your technical teams: the Ed25519 signature, the SHA-256 hash chain, and
-            the RFC 3161 timestamping protocol are documented on the{" "}
-            <Link href="/signatures">/signatures</Link> page. The 17 × 5 mapping across
+            For your technical teams: the Ed25519 signature of the doctrine and its
+            verification are documented on the{" "}
+            <Link href="/signatures">/signatures</Link> page. The mapping of the cards to
             the five frameworks is on the <Link href="/mappings">/mappings</Link> page.
           </>
         )}

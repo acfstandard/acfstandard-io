@@ -16,8 +16,8 @@ export default async function NistMappingPage({
       title={fr ? "ACF® × NIST AI RMF" : "ACF® × NIST AI RMF"}
       description={
         fr
-          ? "Mapping des 17 fiches ACF® sur les fonctions et sous-fonctions du NIST AI Risk Management Framework 1.0 (GOVERN, MAP, MEASURE, MANAGE)."
-          : "Mapping of the 17 ACF® cards to the functions and sub-functions of the NIST AI Risk Management Framework 1.0 (GOVERN, MAP, MEASURE, MANAGE)."
+          ? "Mapping des 17 fiches ACF® de la famille Décider sur les fonctions et sous-fonctions du NIST AI Risk Management Framework 1.0 (GOVERN, MAP, MEASURE, MANAGE)."
+          : "Mapping of the 17 ACF® cards of the Decide family to the functions and sub-functions of the NIST AI Risk Management Framework 1.0 (GOVERN, MAP, MEASURE, MANAGE)."
       }
       badge={fr ? "Correspondance" : "Mapping"}
     >

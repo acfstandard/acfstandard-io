@@ -61,48 +61,34 @@ asyncio.run(main())`;
 
 const RESPONSE_SAMPLE = `{
   "autonomy_level": {
-    "level": "N1",
-    "rationale": "The recruiter validates each shortlist before action — supervised execution applies. Inferred from 'recruiter validates' in the description."
+    "level": "co_decision",
+    "rationale": "No clear autonomy threshold matched the declared inputs; defaulting to co-decision (the agent proposes, a human validates). Confirm with the team."
   },
   "risk_level": {
-    "level": "high",
-    "rationale": "HR scoring + GPAI + EU jurisdiction triggers AI Act Annex III §4 (employment). Personal data is standard but the use case is recruitment-related."
+    "level": "medium",
+    "rationale": "Combination of personal_data_level + financial_exposure not yet calibrated; defaulting to medium for safety."
   },
   "activated_principles": [
-    { "code": "P1", "why": "Decision sovereignty applies to every agentic deployment, regardless of autonomy." },
-    { "code": "P2", "why": "High-criticality decisions must be reconstructible after the fact." },
-    { "code": "P4", "why": "Reinforced governance must match the criticality." }
-  ],
-  "critical_dimensions": [
-    { "code": "D4", "why": "Role allocation (DDAO + sign-off) is required for N1+ autonomy." },
-    { "code": "D5", "why": "Regulatory compliance dimension is on the critical path." },
-    { "code": "D3", "why": "Technical control (kill switch, observability) is non-negotiable." },
-    { "code": "D2", "why": "Doctrine adoption is the entry gate before any agentic deployment." }
+    {
+      "code": "P1",
+      "why": "Decision sovereignty applies to every agentic deployment, regardless of autonomy."
+    }
   ],
   "priority_fiches": [
-    { "code": "ACF-00", "order": 1, "why": "Read first: framework introduction." },
-    { "code": "ACF-02", "order": 2, "why": "Calibrate criticality with the matrix." },
-    { "code": "ACF-09", "order": 3, "why": "Define escalation thresholds." },
-    { "code": "ACF-11", "order": 4, "why": "Run a formal risk assessment." }
+    {
+      "code": "ACF-01",
+      "order": 1,
+      "why": "Start here: the sovereignty score is the entry point of the toolkit."
+    }
   ],
-  "applicable_articles": [
-    { "regulation": "ai-act", "article": "Art. 9", "why": "Mobilised by category Annex III §4 — employment." },
-    { "regulation": "ai-act", "article": "Art. 14", "why": "Mobilised by category Annex III §4 — employment." },
-    { "regulation": "ai-act", "article": "Art. 26", "why": "Mobilised by category Annex III §4 — employment." },
-    { "regulation": "ai-act", "article": "Art. 51", "why": "GPAI obligation." }
-  ],
+  "applicable_articles": [],
   "first_actions": [
-    "Identify or appoint the DDAO accountable for the agent (cf. ACF-12).",
-    "Document the agent constitution (decision perimeter, allowed/forbidden actions — cf. ACF-03).",
-    "Open the decision register and define the retention policy (cf. ACF-05 + ACF-13).",
-    "Run the formal risk assessment + DPIA if PII (cf. ACF-11)."
+    "Identify or appoint the DDAO accountable for the agent (cf. ACF-13).",
+    "Document the agent constitution (decision perimeter, allowed/forbidden actions: cf. ACF-04).",
+    "Open the decision register and define the retention policy (cf. ACF-09 + ACF-P14)."
   ],
-  "operational_risks": [
-    "Audit chain breaks if the decision register is not immutable.",
-    "Sign-off bottleneck if DDAO is not available in escalation SLA.",
-    "Regulatory exposure escalates if Article 49 register is not maintained in sync with internal register."
-  ],
-  "confidence": "medium",
+  "operational_risks": [],
+  "confidence": "low",
   "assumptions": [
     "human_approval, external_actions and personal_data_level were inferred from the free-text description; pass classify-agent with qualified enums for higher confidence."
   ],
@@ -112,26 +98,104 @@ const RESPONSE_SAMPLE = `{
   "requires_human_review": true,
   "rationale_per_rule": [
     {
-      "rule_id": "ai-act.annex-iii.employment",
+      "rule_id": "ai-act-annex-iii.annex-iii-1a-biometric-identity",
       "rule_version": "2026-06",
-      "fired": true,
-      "evidence": "description mentions shortlist + ATS write in an HR context"
+      "fired": false,
+      "evidence": ""
     },
     {
-      "rule_id": "autonomy.inference.supervised",
+      "rule_id": "ai-act-annex-iii.annex-iii-2-critical-infrastructure",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-iii.annex-iii-3-educational",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-iii.annex-iii-4-employment",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-iii.annex-iii-5b-credit-scoring",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-iii.annex-iii-5c-insurance-pricing",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-iii.annex-iii-6-law-enforcement",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-iii.annex-iii-7-migration-asylum",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-iii.annex-iii-8-justice-democracy",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-i.annex-i-medical-device",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-i.annex-i-vehicle-safety",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-i.annex-i-machinery",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "gpai-triggers",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "autonomy-inference.default-co_decision",
       "rule_version": "2026-06",
       "fired": true,
-      "evidence": "inferred human_approval=always, external=limited_write from description"
+      "evidence": "inferred human_approval=sometimes, external=read_only from description"
+    },
+    {
+      "rule_id": "criticality-matrix.default-medium",
+      "rule_version": "2026-06",
+      "fired": true,
+      "evidence": "inferred pii=standard, financial=none from description"
     }
   ],
   "doctrine_version": "ACF framework v1.0 / rules 2026-06",
-  "doctrine_hash": "sha256:bf0b6d8e4731ebdc58f6d6338702c5b74af47874cf0ad3dc958cde5c5b30b9dc",
-  "doctrine_signature": "ed25519:…",
-  "doctrine_archive_url": "https://acfstandard.io/doctrine/v1.0/archive.json",
-  "regulatory_snapshot": "EU AI Act (Reg. 2024/1689, incl. Digital Omnibus deferral) + GDPR (Reg. 2016/679) + DORA (Reg. 2022/2554) + NIS2 (Dir. 2022/2555) + ISO 42001:2023 — as of 2026-06-07",
-  "generated_at": "2026-06-14T11:47:22.318Z",
-  "conversion_cta": "Continue this assessment with the auditable ACF® Compliance workspace at https://acfstandard.com/compliance?ref=mcp",
-  "disclaimer": "Preliminary qualification only — not legal advice. Human review required."
+  "doctrine_hash": "sha256:119819463363cde0649504ab8ed5a96982fdb8506441f2c5e76e7e3c3feb77f1",
+  "doctrine_signature": "ed25519:3R0oIiqL3Kgd…",
+  "doctrine_archive_url": "https://acfstandard.io/archive/doctrine/v1.0/doctrine-v1.0.json",
+  "regulatory_snapshot": "EU AI Act (Reg. 2024/1689, incl. Digital Omnibus deferral) + GDPR (Reg. 2016/679) + DORA (Reg. 2022/2554) + NIS2 (Dir. 2022/2555) + ISO 42001:2023: as of 2026-06-07",
+  "generated_at": "2026-11-01T12:06:31.037Z",
+  "disclaimer": "Preliminary qualification produced by the ACF® deterministic engine. Not legal advice. Human review required. Do not use for autonomous regulatory decision-making. See doctrine_archive_url for the version of the doctrine used.",
+  "conversion_cta": "Continue this assessment with the auditable ACF® Compliance workspace at https://acfstandard.com/compliance?ref=mcp"
 }`;
 
 export default async function AdvisorToolPage({
@@ -148,8 +212,8 @@ export default async function AdvisorToolPage({
       title="acf.advisor"
       description={
         fr
-          ? "Conseil de gouvernance ACF® à partir d’un cas en texte libre — un paragraphe en entrée, une évaluation structurée en sortie : principes activés, dimensions critiques, niveau d’autonomie, risque, articles applicables, premières actions, risques opérationnels. C’est l’outil de conversion de la bibliothèque ACF® vers le rôle d’advisor."
-          : "ACF® governance advice from a free-text case — one paragraph in, one structured evaluation out: activated principles, critical dimensions, autonomy level, risk class, applicable articles, first actions, operational risks. This is the conversion tool from documentation library to governance advisor."
+          ? "Conseil de gouvernance ACF® à partir d’un cas en texte libre, un paragraphe en entrée, une évaluation structurée en sortie : principes activés, niveau d’autonomie, risque, articles applicables, premières actions, risques opérationnels. C’est l’outil de conversion de la bibliothèque ACF® vers le rôle d’advisor."
+          : "ACF® governance advice from a free-text case, one paragraph in, one structured evaluation out: activated principles, autonomy level, risk class, applicable articles, first actions, operational risks. This is the conversion tool from documentation library to governance advisor."
       }
       badge="REASON"
     >
@@ -157,7 +221,7 @@ export default async function AdvisorToolPage({
         {fr ? (
           <>
             Cet outil produit une <strong>évaluation préliminaire</strong> à partir
-            d’heuristiques sur texte libre — pas un avis juridique.{" "}
+            d’heuristiques sur texte libre, pas un avis juridique.{" "}
             <code>requires_human_review</code> vaut toujours <code>true</code>.
             Pour une qualification plus défensive, repassez via{" "}
             <code>acf.classify-agent</code> avec des énumérations qualifiées.
@@ -165,7 +229,7 @@ export default async function AdvisorToolPage({
         ) : (
           <>
             This tool produces a <strong>preliminary evaluation</strong> from
-            free-text heuristics — not legal advice.{" "}
+            free-text heuristics, not legal advice.{" "}
             <code>requires_human_review</code> is always <code>true</code>. For a
             more defensible qualification, re-run through{" "}
             <code>acf.classify-agent</code> with qualified enums.
@@ -176,8 +240,8 @@ export default async function AdvisorToolPage({
       <h2 id="when-to-use">{fr ? "Quand l’utiliser" : "When to use"}</h2>
       <p>
         {fr
-          ? "Utilisez cet outil quand un porteur de cas (DSI, métier, conseil) arrive avec une description prose de son agent IA et a besoin d’un premier verdict structuré sur la gouvernance ACF® applicable : quels principes s’activent, quelles dimensions de maturité sont critiques, quel niveau d’autonomie est cohérent, quelles obligations réglementaires se déclenchent, quelles fiches mobiliser dans quel ordre. C’est l’outil « première étape » avant qualification rigoureuse."
-          : "Use this tool when a case owner (CIO, business line, consultant) arrives with a prose description of their AI agent and needs a structured first verdict on the applicable ACF® governance: which principles fire, which maturity dimensions are critical, which autonomy level fits, which regulatory obligations trigger, which fiches to mobilise in what order. It is the “first step” tool before rigorous qualification."}
+          ? "Utilisez cet outil quand un porteur de cas (DSI, métier, conseil) arrive avec une description prose de son agent IA et a besoin d’un premier verdict structuré sur la gouvernance ACF® applicable : quels principes s’activent, quel niveau d’autonomie déléguée est cohérent, quelles obligations réglementaires se déclenchent, quelles fiches mobiliser dans quel ordre. C’est l’outil « première étape » avant qualification rigoureuse."
+          : "Use this tool when a case owner (CIO, business line, consultant) arrives with a prose description of their AI agent and needs a structured first verdict on the applicable ACF® governance: which principles fire, which delegated autonomy level fits, which regulatory obligations trigger, which fiches to mobilise in what order. It is the “first step” tool before rigorous qualification."}
       </p>
       <p>
         {fr
@@ -228,13 +292,13 @@ export default async function AdvisorToolPage({
       <h2 id="output">{fr ? "Schéma de sortie" : "Output schema"}</h2>
       <p>
         {fr
-          ? "La sortie est un objet structuré avec niveau d’autonomie, niveau de risque, principes activés, dimensions critiques, fiches priorisées, articles applicables, premières actions, risques opérationnels, pied-de-page signé."
-          : "Output is a structured object with autonomy level, risk level, activated principles, critical dimensions, prioritised fiches, applicable articles, first actions, operational risks, signed footer."}
+          ? "La sortie est un objet structuré avec niveau d’autonomie, niveau de risque, principes activés, fiches priorisées, articles applicables, premières actions, risques opérationnels, pied-de-page signé."
+          : "Output is a structured object with autonomy level, risk level, activated principles, prioritised fiches, applicable articles, first actions, operational risks, signed footer."}
       </p>
       <ParamGroup>
         <Param
           name="autonomy_level"
-          type='{ level: "N0"|"N1"|"N2"|"N3", rationale: string }'
+          type='{ level: "suggestive"|"co_decision"|"supervised_autonomous"|"autonomous", rationale: string }'
         >
           {fr
             ? "Niveau d’autonomie ACF® inféré et sa justification."
@@ -245,18 +309,13 @@ export default async function AdvisorToolPage({
           type='{ level: "low"|"medium"|"high"|"unacceptable", rationale: string }'
         >
           {fr
-            ? "Classe de risque AI Act-compatible, dérivée de la criticité ACF-02."
-            : "AI Act-compatible risk class, derived from the ACF-02 criticality."}
+            ? "Classe de risque AI Act-compatible, dérivée de la criticité (fiche ACF-03, Matrice de Criticité)."
+            : "AI Act-compatible risk class, derived from the criticality (card ACF-03, Criticality Matrix)."}
         </Param>
         <Param name="activated_principles" type='{ code: string, why: string }[]'>
           {fr
             ? "Principes ACF® (P1 à P4) déclenchés par le cas, chacun motivé."
             : "ACF® principles (P1 to P4) triggered by the case, each justified."}
-        </Param>
-        <Param name="critical_dimensions" type='{ code: string, why: string }[]'>
-          {fr
-            ? "Dimensions de maturité (D1 à D6) sur le chemin critique pour ce cas."
-            : "Maturity dimensions (D1 to D6) on the critical path for this case."}
         </Param>
         <Param
           name="priority_fiches"
@@ -343,22 +402,14 @@ export default async function AdvisorToolPage({
       <h2 id="errors">{fr ? "Erreurs courantes" : "Common errors"}</h2>
       <ul>
         <li>
-          <code>InputTooShort</code> —{" "}
           {fr
-            ? "case_description &lt; 20 caractères. L’outil ne devine pas — fournissez une description prose minimale."
-            : "case_description &lt; 20 chars. The tool does not guess — provide a minimal prose description."}
+            ? "Paramètres invalides : case_description trop courte (moins de 20 caractères) : l’outil ne devine pas, fournissez une description minimale du cas. L’appel échoue avec une erreur JSON-RPC dont le message liste les champs en cause."
+            : "Invalid parameters: case_description too short (under 20 characters): the tool does not guess, provide a minimal description of the case. The call fails with a JSON-RPC error whose message lists the offending fields."}
         </li>
         <li>
-          <code>InvalidEnumValue</code> —{" "}
           {fr
-            ? "jurisdiction ou deployment_scale reçoit une valeur hors liste. Corrigez vers une valeur canonique ou omettez le champ."
-            : "jurisdiction or deployment_scale receives an out-of-list value. Fix to a canonical value or omit the field."}
-        </li>
-        <li>
-          <code>DoctrineSnapshotMismatch</code> —{" "}
-          {fr
-            ? "le doctrine_hash demandé n’est pas chargé. Mettez acf-mcp à jour ou pointez vers la version archivée."
-            : "the requested doctrine_hash is not loaded. Update acf-mcp or point at the archived version."}
+            ? "Confiance basse : quand peu de champs de contexte sont fournis, confidence vaut low et assumptions dit ce qui a été supposé. Complétez l’entrée avant de vous appuyer sur le résultat."
+            : "Low confidence: when few context fields are provided, confidence is low and assumptions states what was assumed. Complete the input before relying on the result."}
         </li>
       </ul>
 
@@ -367,8 +418,8 @@ export default async function AdvisorToolPage({
         <li>
           <a href={fr ? "/fr/tools/acf.classify-agent" : "/tools/acf.classify-agent"}>
             <code>acf.classify-agent</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "repasser avec des énumérations qualifiées dès que le cas est précisé, pour gagner en confiance."
             : "re-run with qualified enums as soon as the case is precise, to gain confidence."}
@@ -376,8 +427,8 @@ export default async function AdvisorToolPage({
         <li>
           <a href={fr ? "/fr/tools/acf.assess-autonomy" : "/tools/acf.assess-autonomy"}>
             <code>acf.assess-autonomy</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "creuser la seule décision de niveau d’autonomie quand c’est le point bloquant."
             : "drill into the autonomy-level decision alone when it is the blocking question."}
@@ -391,8 +442,8 @@ export default async function AdvisorToolPage({
             }
           >
             <code>acf.identify-governance-gaps</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "élargir du cas isolé à l’audit de gouvernance globale de l’organisation."
             : "broaden from the isolated case to a global governance audit of the organisation."}

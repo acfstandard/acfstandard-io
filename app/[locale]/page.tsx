@@ -96,7 +96,7 @@ export default async function Home({ params }: { params: Promise<Params> }) {
               </div>
             </div>
 
-            {/* Animated hero visual — central ACF orb + 4 satellites, .com style */}
+            {/* Animated hero visual, central ACF orb + 4 satellites, .com style */}
             <div className="hidden lg:block">
               <HeroVisual />
             </div>
@@ -105,9 +105,9 @@ export default async function Home({ params }: { params: Promise<Params> }) {
           {/* Stats row */}
           <div className="mt-14 grid grid-cols-2 overflow-hidden rounded-xl border border-bd bg-navy-700/50 md:grid-cols-4">
             {[
-              { value: "12", label: locale === "fr" ? "Outils MCP" : "MCP tools" },
-              { value: "34", label: locale === "fr" ? "Ressources signées" : "Signed resources" },
-              { value: "17×5", label: locale === "fr" ? "Matrice de mapping" : "Mapping matrix" },
+              { value: "13", label: locale === "fr" ? "Outils MCP" : "MCP tools" },
+              { value: "79", label: locale === "fr" ? "Ressources MCP" : "MCP resources" },
+              { value: "45", label: locale === "fr" ? "Fiches du toolkit" : "Toolkit cards" },
               { value: "Ed25519", label: locale === "fr" ? "Doctrine signée" : "Signed doctrine" },
             ].map((s, i) => (
               <div
@@ -145,14 +145,14 @@ export default async function Home({ params }: { params: Promise<Params> }) {
                 key: "score",
                 role: locale === "fr" ? "La métrique" : "The metric",
                 name: "ACF Sovereignty Score™",
-                desc: locale === "fr" ? "Mesure 0–100 de la souveraineté décisionnelle. Six dimensions, signée Ed25519." : "0–100 measure of decisional sovereignty. Six dimensions, Ed25519-signed.",
+                desc: locale === "fr" ? "Indice 0-100 de dépendance, sur 4 dimensions : technologique, acquisition, décisionnelle, financière (fiche ACF-01)." : "0-100 dependence index across 4 dimensions: technological, acquisition, decisional, financial (card ACF-01).",
                 href: "/sovereignty-score",
               },
               {
                 key: "compliance",
                 role: locale === "fr" ? "La preuve" : "The proof",
                 name: "ACF Compliance",
-                desc: locale === "fr" ? "La plateforme SaaS qui produit la trace cryptographique opposable. Registre signé Ed25519, chaîne SHA-256, horodatage RFC 3161." : "The SaaS platform that produces the opposable cryptographic trace. Ed25519-signed register, SHA-256 chain, RFC 3161 timestamping.",
+                desc: locale === "fr" ? "La plateforme qui produit la trace de chaque décision, vérifiable indépendamment. Registre signé Ed25519, empreintes SHA-256." : "The platform that produces the trace of every decision, independently verifiable. Ed25519-signed register, SHA-256 hashes.",
                 href: "https://compliance.acfstandard.com",
                 external: true,
               },
@@ -160,13 +160,13 @@ export default async function Home({ params }: { params: Promise<Params> }) {
                 key: "mcp",
                 role: locale === "fr" ? "Le moteur" : "The engine",
                 name: "acf-mcp",
-                desc: locale === "fr" ? "Serveur MCP officiel. 12 outils, 34 ressources signées, doctrine Ed25519." : "Official MCP server. 12 tools, 34 signed resources, Ed25519 doctrine.",
+                desc: locale === "fr" ? "Serveur MCP officiel. 13 outils, 79 ressources, doctrine signée Ed25519." : "Official MCP server. 13 tools, 79 resources, Ed25519-signed doctrine.",
                 href: "/docs/introduction",
               },
               {
                 key: "doctrine",
                 role: locale === "fr" ? "La doctrine" : "The doctrine",
-                name: locale === "fr" ? "17 fiches × 4 couches × N0–N3" : "17 cards × 4 layers × N0–N3",
+                name: locale === "fr" ? "45 fiches × 4 principes × 4 niveaux d’autonomie" : "45 cards × 4 principles × 4 autonomy levels",
                 desc: locale === "fr" ? "Le corpus opérationnel. Cartographié sur AI Act / ISO 42001 / NIST / RGPD / COBIT." : "The operational corpus. Mapped to AI Act / ISO 42001 / NIST / GDPR / COBIT.",
                 href: "/doctrine/principles",
               },
@@ -216,8 +216,8 @@ export default async function Home({ params }: { params: Promise<Params> }) {
               </p>
               <p className="text-[16px] leading-[1.65] text-gr-2 md:text-[17px]">
                 {locale === "fr"
-                  ? "« Montrez-moi, maintenant, la trace cryptographique de la décision prise par votre agent IA à 3h14 du matin. » — Votre auditeur, le 2 décembre 2027."
-                  : "“Show me, right now, the cryptographic trace of the decision your AI agent took at 3:14 AM.” — Your auditor, December 2, 2027."}
+                  ? "« Montrez-moi, maintenant, la trace cryptographique de la décision prise par votre agent IA à 3h14 du matin. » : Votre auditeur, le 2 décembre 2027."
+                  : "“Show me, right now, the cryptographic trace of the decision your AI agent took at 3:14 AM.”: Your auditor, December 2, 2027."}
               </p>
             </div>
             <Link
@@ -252,16 +252,16 @@ export default async function Home({ params }: { params: Promise<Params> }) {
                 {locale === "fr" ? (
                   <>
                     Le <strong className="font-semibold text-white">ACF Sovereignty Score™</strong>{" "}
-                    est la première métrique 0-100 conçue pour cette conversation —
-                    six dimensions pondérées, calibrées sur les fiches ACF® et les
-                    obligations AI Act.
+                    mesure en 0-100 la dépendance de l’organisation sur 4 dimensions,
+                    technologique, acquisition, décisionnelle et financière, avant
+                    toute automatisation.
                   </>
                 ) : (
                   <>
                     The <strong className="font-semibold text-white">ACF Sovereignty Score™</strong>{" "}
-                    is the first 0-100 metric designed for that conversation — six
-                    weighted dimensions, calibrated on the ACF® cards and the AI Act
-                    obligations.
+                    measures on 0-100 the organisation’s dependence across 4 dimensions,
+                    technological, acquisition, decisional and financial, before any
+                    automation.
                   </>
                 )}
               </p>
@@ -284,7 +284,7 @@ export default async function Home({ params }: { params: Promise<Params> }) {
             {/* Mini score gauge */}
             <div className="relative mx-auto w-full max-w-md rounded-2xl border border-gold/30 bg-gold-dim p-10 text-center">
               <p className="font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-gold">
-                {locale === "fr" ? "Exemple — agent de scoring crédit" : "Example — credit-scoring agent"}
+                {locale === "fr" ? "Exemple, agent de scoring crédit" : "Example, credit-scoring agent"}
               </p>
               <div className="mt-6 font-display text-[110px] font-black leading-none text-gold">
                 47

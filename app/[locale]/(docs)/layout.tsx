@@ -33,7 +33,7 @@ export default async function DocsLayout({
         <div className="mx-auto max-w-page px-6 py-10 lg:px-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <p className="font-mono text-[11px] uppercase tracking-wider text-gr">
-              © 2026 Agentic Commerce Framework® — Vincent Dorange
+              © 2026 Agentic Commerce Framework®: Vincent Dorange
             </p>
             <div className="flex flex-wrap gap-6 font-mono text-[12px] text-gr">
               <a href="https://acfstandard.com" className="transition hover:text-gold">

@@ -16,23 +16,23 @@ type Category = {
 const CATEGORIES: Category[] = [
   {
     slug: "doctrine",
-    count: "×15",
+    count: "×27",
     titleEn: "Doctrine",
     titleFr: "Doctrine",
     blurbEn:
-      "The founding corpus — whitepaper, four principles (P1–P4), four autonomy levels (N0–N3), six maturity dimensions (D1–D6), the DDAO role, the manual and the deck.",
+      "The founding corpus: white paper, 4 principles (P1 to P4), 4 delegated autonomy levels, the DDAO role, the toolkit manual and the deck.",
     blurbFr:
-      "Le corpus fondateur — whitepaper, quatre principes (P1–P4), quatre niveaux d’autonomie (N0–N3), six dimensions de maturité (D1–D6), le rôle DDAO, le manuel et le deck.",
+      "Le corpus fondateur : livre blanc, 4 principes (P1 à P4), 4 niveaux d’autonomie déléguée, le rôle DDAO, le manuel du toolkit et le deck.",
   },
   {
     slug: "fiches",
-    count: "×17",
-    titleEn: "Methodological cards",
-    titleFr: "Fiches méthodologiques",
+    count: "×45",
+    titleEn: "Toolkit cards",
+    titleFr: "Fiches du toolkit",
     blurbEn:
-      "The 17 canonical ACF® cards (ACF-00 to ACF-16), bilingual, served as Markdown with frontmatter. The operational backbone of the standard.",
+      "The 45 ACF® toolkit cards (Decide ACF-01 to ACF-20, Organise ACF-O1 to ACF-O10, Operate ACF-P1 to ACF-P15), bilingual, served as Markdown. The operational backbone of the standard.",
     blurbFr:
-      "Les 17 fiches ACF® canoniques (ACF-00 à ACF-16), bilingues, servies en Markdown avec frontmatter. La colonne vertébrale opérationnelle du standard.",
+      "Les 45 fiches du toolkit ACF® (Décider ACF-01 à ACF-20, Organiser ACF-O1 à ACF-O10, Opérer ACF-P1 à ACF-P15), bilingues, servies en Markdown. La colonne vertébrale opérationnelle du standard.",
   },
   {
     slug: "regulators",
@@ -40,9 +40,9 @@ const CATEGORIES: Category[] = [
     titleEn: "Regulator guides",
     titleFr: "Guides régulateurs",
     blurbEn:
-      "Operational reading of AI Act, GDPR, DORA, NIS2 and ISO 42001 — each guide cross-mapped to the relevant principles, dimensions and fiches.",
+      "Operational reading of AI Act, GDPR, DORA, NIS2 and ISO 42001, each guide cross-mapped to the relevant principles and cards.",
     blurbFr:
-      "Lecture opérationnelle de l’AI Act, du RGPD, de DORA, de NIS2 et de l’ISO 42001 — chaque guide cartographié vers les principes, dimensions et fiches pertinents.",
+      "Lecture opérationnelle de l’AI Act, du RGPD, de DORA, de NIS2 et de l’ISO 42001, chaque guide cartographié vers les principes et fiches pertinents.",
   },
   {
     slug: "reference",
@@ -70,8 +70,8 @@ export default async function ResourcesOverviewPage({
       title={fr ? "Référence des ressources" : "Resources reference"}
       description={
         fr
-          ? "Le serveur acf-mcp expose le corpus ACF® comme ressources MCP — URI canoniques, MIME typés, lectures seules, contenu signé. Chaque ressource est addressable par son URI acf://… et servable dans la langue négociée par le client."
-          : "The acf-mcp server exposes the ACF® corpus as MCP resources — canonical URIs, typed MIME, read-only access, signed content. Every resource is addressable by its acf://… URI and served in the locale negotiated with the client."
+          ? "Le serveur acf-mcp expose le corpus ACF® comme ressources MCP : URI canoniques, MIME typés, lectures seules, contenu signé. Chaque ressource est addressable par son URI acf://… et servable dans la langue négociée par le client."
+          : "The acf-mcp server exposes the ACF® corpus as MCP resources, canonical URIs, typed MIME, read-only access, signed content. Every resource is addressable by its acf://… URI and served in the locale negotiated with the client."
       }
       badge={fr ? "Ressources MCP" : "MCP resources"}
     >
@@ -102,8 +102,8 @@ export default async function ResourcesOverviewPage({
       </h2>
       <p>
         {fr
-          ? "Dans la spécification Model Context Protocol, une ressource est un contenu identifié par une URI, accompagné d’un MIME type et exposé en lecture seule via les méthodes resources/list et resources/read. Le client négocie le contenu, le serveur le sert. C’est l’équivalent d’un GET HTTP doctrinal — pas de mutation, pas d’effet de bord."
-          : "In the Model Context Protocol specification, a resource is content identified by a URI, accompanied by a MIME type and exposed read-only through the resources/list and resources/read methods. The client negotiates the content, the server serves it. It is the doctrinal equivalent of an HTTP GET — no mutation, no side effect."}
+          ? "Dans la spécification Model Context Protocol, une ressource est un contenu identifié par une URI, accompagné d’un MIME type et exposé en lecture seule via les méthodes resources/list et resources/read. Le client négocie le contenu, le serveur le sert. C’est l’équivalent d’un GET HTTP doctrinal, pas de mutation, pas d’effet de bord."
+          : "In the Model Context Protocol specification, a resource is content identified by a URI, accompanied by a MIME type and exposed read-only through the resources/list and resources/read methods. The client negotiates the content, the server serves it. It is the doctrinal equivalent of an HTTP GET, no mutation, no side effect."}
       </p>
       <p>
         {fr
@@ -142,76 +142,70 @@ export default async function ResourcesOverviewPage({
       </h2>
       <p>
         {fr
-          ? "Toutes les ressources sont adressées par une URI de la forme acf://catégorie/identifiant. La langue est négociée hors-URI via l’en-tête Accept-Language ou la variable ACF_MCP_LOCALE — pas dans l’URI elle-même, pour garder une seule URI canonique par contenu."
-          : "All resources are addressed by a URI of the form acf://category/identifier. The locale is negotiated outside the URI via the Accept-Language header or the ACF_MCP_LOCALE variable — not in the URI itself, so that each piece of content has a single canonical URI."}
+          ? "Toutes les ressources sont adressées par une URI de la forme acf://catégorie/identifiant. La langue est négociée hors-URI via l’en-tête Accept-Language ou la variable ACF_MCP_LOCALE, pas dans l’URI elle-même, pour garder une seule URI canonique par contenu."
+          : "All resources are addressed by a URI of the form acf://category/identifier. The locale is negotiated outside the URI via the Accept-Language header or the ACF_MCP_LOCALE variable, not in the URI itself, so that each piece of content has a single canonical URI."}
       </p>
       <ul>
         <li>
-          <code>acf://whitepaper</code> —{" "}
+          <code>acf://whitepaper</code>{": "}
           {fr
             ? "le whitepaper fondateur d’ACF® (Markdown)"
             : "the founding ACF® whitepaper (Markdown)"}
         </li>
         <li>
-          <code>acf://deck</code> —{" "}
+          <code>acf://deck</code>{": "}
           {fr
             ? "le deck de présentation du standard (Markdown)"
             : "the standard’s presentation deck (Markdown)"}
         </li>
         <li>
           <code>acf://manual</code>, <code>acf://manual/toc</code>,{" "}
-          <code>acf://manual/section/{`{N}`}</code> —{" "}
+          <code>acf://manual/section/{`{N}`}</code>{": "}
           {fr
             ? "le manuel pédagogique complet, sa table des matières, et chaque partie individuellement (9 parties)"
             : "the full pedagogical manual, its table of contents, and each part individually (9 parts)"}
         </li>
         <li>
-          <code>acf://framework/principle/{`{P1..P4}`}</code> —{" "}
+          <code>acf://framework/principle/{`{P1..P4}`}</code>{": "}
           {fr
             ? "les 4 principes fondateurs (JSON structuré)"
             : "the 4 founding principles (structured JSON)"}
         </li>
         <li>
-          <code>acf://framework/autonomy-level/{`{N0..N3}`}</code> —{" "}
+          <code>acf://framework/autonomy-level/{`{suggestive|co_decision|supervised_autonomous|autonomous}`}</code>{": "}
           {fr
-            ? "les 4 niveaux d’autonomie (JSON structuré)"
-            : "the 4 autonomy levels (structured JSON)"}
+            ? "les 4 niveaux d’autonomie déléguée (JSON structuré)"
+            : "the 4 delegated autonomy levels (structured JSON)"}
         </li>
         <li>
-          <code>acf://framework/dimension/{`{D1..D6}`}</code> —{" "}
-          {fr
-            ? "les 6 dimensions de maturité (JSON structuré)"
-            : "the 6 maturity dimensions (structured JSON)"}
-        </li>
-        <li>
-          <code>acf://framework/ddao</code> —{" "}
+          <code>acf://framework/ddao</code>{": "}
           {fr
             ? "la définition canonique du rôle DDAO"
             : "the canonical definition of the DDAO role"}
         </li>
         <li>
-          <code>acf://fiche/{`{ACF-00..ACF-16}`}</code> —{" "}
+          <code>acf://fiche/{`{ACF-01..ACF-20 | ACF-O1..ACF-O10 | ACF-P1..ACF-P15}`}</code>{": "}
           {fr
-            ? "une des 17 fiches méthodologiques (Markdown avec frontmatter)"
-            : "one of the 17 methodological cards (Markdown with frontmatter)"}
+            ? "une des 45 fiches du toolkit (Markdown)"
+            : "one of the 45 toolkit cards (Markdown)"}
         </li>
         <li>
-          <code>acf://guide/{`{ai-act|gdpr|dora|nis2|iso-42001}`}</code> —{" "}
+          <code>acf://guide/{`{ai-act|gdpr|dora|nis2|iso-42001}`}</code>{": "}
           {fr
             ? "le guide opérationnel d’un régulateur (Markdown)"
             : "the operational guide for a regulator (Markdown)"}
         </li>
         <li>
-          <code>acf://glossary</code> —{" "}
+          <code>acf://glossary</code>{": "}
           {fr
             ? "l’index canonique des termes ACF®"
             : "the canonical index of ACF® terms"}
         </li>
         <li>
-          <code>acf://meta</code> —{" "}
+          <code>acf://meta</code>{": "}
           {fr
-            ? "métadonnées de la doctrine — version, hash, URL d’archive, langues"
-            : "doctrine metadata — version, hash, archive URL, locales"}
+            ? "métadonnées de la doctrine, version, hash, URL d’archive, langues"
+            : "doctrine metadata, version, hash, archive URL, locales"}
         </li>
       </ul>
 
@@ -239,13 +233,13 @@ await client.connect(transport);
 // List every resource
 const { resources } = await client.listResources();
 
-// Read one — here ACF-07 (Kill switch)
+// Read one, here ACF-07 (Kill switch)
 const { contents } = await client.readResource({
   uri: "acf://fiche/ACF-07",
 });
 
 console.log(contents[0].mimeType);   // "text/markdown"
-console.log(contents[0].text);       // frontmatter + body`}
+console.log(contents[0].text);       // served_locale header + card body`}
       />
 
       <h2 id="signing">{fr ? "Signature" : "Signing"}</h2>
@@ -255,14 +249,14 @@ console.log(contents[0].text);       // frontmatter + body`}
             La signature ne porte pas sur chaque ressource individuelle mais sur le
             content_hash de la doctrine complète, exposé par <code>acf://meta</code>{" "}
             et embarqué dans le pied-de-page de chaque sortie d’outil. C’est ce hash
-            qui rend opposable l’ensemble du corpus : si une seule fiche change, le
+            qui rend l’ensemble du corpus vérifiable : si une seule fiche change, le
             hash change, et la doctrine entière reçoit une nouvelle version. Détails
             cryptographiques et code de vérification :{" "}
             <Link href="/signatures">page Signatures</Link>.
           </>
         ) : (
           <>
-            Signing does not target each resource individually — it targets the
+            Signing does not target each resource individually, it targets the
             content_hash of the full doctrine, exposed by <code>acf://meta</code> and
             embedded in every tool output footer. That hash is what makes the whole
             corpus defensible: if a single card changes, the hash changes, and the

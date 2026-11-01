@@ -35,7 +35,7 @@ function Satellite({
 export function HeroVisual() {
   return (
     <div className="acf-hero-vis relative mx-auto flex h-[420px] w-full max-w-[480px] items-center justify-center md:h-[480px]">
-      {/* Connector lines — subtle */}
+      {/* Connector lines, subtle */}
       <svg
         className="absolute inset-0 h-full w-full opacity-30"
         viewBox="0 0 480 480"
@@ -82,7 +82,7 @@ export function HeroVisual() {
       <Satellite
         pos="right"
         name="MCP tools"
-        sub="12 signed"
+        sub="13 tools"
         icon={
           <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8">
             <rect x="3" y="3" width="6" height="6" rx="1" />
@@ -95,7 +95,7 @@ export function HeroVisual() {
       <Satellite
         pos="bottom"
         name="Mappings"
-        sub="17×5 matrix"
+        sub="5 standards"
         icon={
           <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8">
             <path d="M3 10h14M10 3v14M3 5h6M3 15h6M11 5h6M11 15h6" />

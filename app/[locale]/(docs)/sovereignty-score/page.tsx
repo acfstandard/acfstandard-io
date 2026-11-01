@@ -2,7 +2,7 @@ import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { DocsPage } from "@/components/DocsPage";
 import { Callout } from "@/components/Callout";
-import { DIMENSIONS } from "@/lib/sovereignty-score";
+import { DIMENSIONS, SCORING_GUIDE } from "@/lib/sovereignty-score";
 
 export default async function SovereigntyScorePage({
   params,
@@ -18,118 +18,103 @@ export default async function SovereigntyScorePage({
       title="ACF Sovereignty Score™"
       description={
         fr
-          ? "Le KPI manquant de la gouvernance agentique. Une mesure 0-100 de la souveraineté décisionnelle effectivement conservée par votre organisation sur ses agents IA en production. Six dimensions pondérées, calibrées sur les fiches ACF® et les obligations EU AI Act."
-          : "The missing KPI of agentic governance. A 0-100 measure of the decisional sovereignty your organisation actually retains over its production AI agents. Six weighted dimensions, calibrated on the ACF® cards and the EU AI Act obligations."
+          ? "L’indice 0-100 de la fiche ACF-01. Il mesure la dépendance d’une organisation sur 4 dimensions notées chacune de 0 à 25 : technologique, acquisition, décisionnelle et financière. Plus il est élevé, plus l’organisation est exposée."
+          : "The 0-100 index of card ACF-01. It measures an organisation's dependence across 4 dimensions, each scored from 0 to 25: technological, acquisition, decisional and financial. The higher it is, the more exposed the organisation."
       }
       badge={fr ? "KPI" : "KPI"}
     >
       <Callout variant="tip" locale={fr ? "fr" : "en"}>
         {fr ? (
           <>
-            Tout le monde mesure son ROI, son NPS, son CAC. Personne ne mesure la
-            <strong> souveraineté décisionnelle</strong> sur ses agents IA — et c’est
-            exactement ce sur quoi les régulateurs vont demander des comptes à partir du
-            2 décembre 2027. Le <strong>ACF Sovereignty Score™</strong> est conçu pour entrer
-            dans la conversation DAF / RSSI / DDAO comme un nombre qui se discute.
+            On ne gouverne bien que ce que l'on a d'abord mesuré. Le{" "}
+            <strong>ACF Sovereignty Score™</strong> ouvre le toolkit ACF® : avant d’agentifier
+            quoi que ce soit, il dit jusqu’où l’organisation a déjà cédé du terrain, de sorte
+            que la gouvernance précède l’automatisation.
           </>
         ) : (
           <>
-            Every organisation measures ROI, NPS, CAC. None measures the
-            <strong> decisional sovereignty</strong> retained over its AI agents — and
-            that is exactly what regulators will start asking for on December 2, 2027.
-            The <strong>ACF Sovereignty Score™</strong> is designed to enter the CFO / CISO
-            / DDAO conversation as a number that can be discussed.
+            You can only govern well what you have first measured. The{" "}
+            <strong>ACF Sovereignty Score™</strong> opens the ACF® toolkit: before agentifying
+            anything, it shows how much ground the organisation has already ceded, so that
+            governance comes before automation.
           </>
         )}
       </Callout>
 
-      <h2 id="why">{fr ? "Pourquoi un nouveau KPI" : "Why a new KPI"}</h2>
+      <h2 id="why">{fr ? "Ce qu'il mesure" : "What it measures"}</h2>
       <p>
         {fr
-          ? "Une organisation déploie un agent qui qualifie ses leads, fixe ses prix, ouvre des crédits ou réserve des vols. La question stratégique n’est pas « combien fait-il économiser » — la réponse est facile et évolue chaque trimestre. La question stratégique est : combien de souveraineté décisionnelle avons-nous gardée sur lui ?"
-          : "An organisation deploys an agent that qualifies leads, sets prices, opens credit lines or books flights. The strategic question is not “how much money does it save” — that answer is easy and shifts every quarter. The strategic question is: how much decisional sovereignty have we kept over it?"}
-      </p>
-      <p>
-        {fr
-          ? "Le ACF Sovereignty Score™ rend cette question quantifiable et comparable. Comme NPS l’a fait pour la satisfaction client en 2003, comme l’eNPS l’a fait pour l’engagement collaborateur, le ACF Sovereignty Score™ donne aux comités de gouvernance, aux conseils d’administration et aux régulateurs un nombre unique sur lequel raisonner."
-          : "The ACF Sovereignty Score™ makes that question quantifiable and comparable. The way NPS did for customer satisfaction in 2003, the way eNPS did for employee engagement, the ACF Sovereignty Score™ gives governance committees, boards and regulators a single number to reason about."}
+          ? "Le score ne mesure pas la modernité de l’organisation mais sa dépendance. Une organisation qui confie ses modèles à un seul fournisseur, ses clients à une marketplace, ses arbitrages à des systèmes non supervisés et son chiffre à quelques acteurs a déjà perdu une part de sa souveraineté, avant même son premier agent. L’indice est donc l’inverse de la souveraineté : plus il est haut, plus l’exposition est forte."
+          : "The score measures dependence, not modernity. An organisation that entrusts its models to a single provider, its customers to a marketplace, its trade-offs to unsupervised systems and its revenue to a handful of players has already lost part of its sovereignty, before its first agent. The index is therefore the inverse of sovereignty: the higher it is, the greater the exposure."}
       </p>
 
       <h2 id="formula">{fr ? "La formule" : "The formula"}</h2>
       <p>
-        {fr ? (
-          <>
-            Score composite, échelle 0-100, calculé sur six dimensions pondérées. Chaque
-            dimension est ancrée à une <Link href="/doctrine/17-fiches">fiche ACF®</Link>{" "}
-            et notée 0-100. Le score final est la moyenne pondérée :
-          </>
-        ) : (
-          <>
-            Composite score, 0-100 scale, computed across six weighted dimensions. Each
-            dimension is anchored to an{" "}
-            <Link href="/doctrine/17-fiches">ACF® card</Link> and rated 0-100. The final
-            score is the weighted mean:
-          </>
-        )}
+        {fr
+          ? "Chaque dimension est notée de 0 (pleinement autonome) à 25 (totalement dépendant). L’indice est leur somme :"
+          : "Each dimension is scored from 0 (fully autonomous) to 25 (fully dependent). The index is their sum:"}
       </p>
       <pre className="my-6 overflow-x-auto rounded-xl border border-bd-neutral bg-black/40 p-6 font-mono text-[14px] leading-relaxed text-gr-2">
-        <code>{`ACF Sovereignty Score™ = Σ ( weight_i × dimension_i )
+        <code>{fr
+          ? `Indice de dépendance = technologique + acquisition + décisionnelle + financière
 
-where Σ weight_i = 1.00`}</code>
+chaque dimension de 0 à 25, indice de 0 à 100`
+          : `Dependence index = technological + acquisition + decisional + financial
+
+each dimension 0 to 25, index 0 to 100`}</code>
       </pre>
 
-      <h2 id="dimensions">{fr ? "Les six dimensions" : "The six dimensions"}</h2>
+      <h2 id="dimensions">{fr ? "Les 4 dimensions de dépendance" : "The 4 dimensions of dependence"}</h2>
       <div className="not-prose my-6 space-y-3">
         {DIMENSIONS.map((d) => (
-          <div
-            key={d.id}
-            className="rounded-xl border border-bd-neutral bg-navy-700 p-5"
-          >
-            <div className="flex items-start justify-between gap-4">
-              <div className="flex-1">
-                <div className="flex items-center gap-3">
-                  <code className="font-mono text-[11px] uppercase tracking-wider text-gold">
-                    {d.ficheRef}
-                  </code>
-                  <span className="font-mono text-[10px] uppercase tracking-wider text-gr">
-                    weight {(d.weight * 100).toFixed(0)}%
-                  </span>
-                </div>
-                <h3 className="mt-1 font-display text-[16px] font-bold text-white">
-                  {fr ? d.labelFr : d.labelEn}
-                </h3>
-              </div>
+          <div key={d.id} className="rounded-xl border border-bd-neutral bg-navy-700 p-5">
+            <div className="flex items-baseline justify-between gap-4">
+              <h3 className="font-display text-[16px] font-bold text-white">{fr ? d.labelFr : d.labelEn}</h3>
+              <span className="font-mono text-[11px] uppercase tracking-wider text-gold">/ 25</span>
             </div>
-            <p className="mt-3 text-[14px] leading-relaxed text-gr-2">
-              {fr ? d.questionFr : d.questionEn}
-            </p>
+            <p className="mt-2 text-[14px] leading-relaxed text-gr-2">{fr ? d.definitionFr : d.definitionEn}</p>
+            <ul className="mt-2 list-disc space-y-1 pl-5 text-[13px] leading-relaxed text-gr-2">
+              {(fr ? d.questionsFr : d.questionsEn).map((q) => (
+                <li key={q}>{q}</li>
+              ))}
+            </ul>
           </div>
         ))}
       </div>
+      <p>
+        {fr
+          ? "Repère de cotation de la fiche : pour chaque dimension, comptez les questions auxquelles vous répondez « oui »."
+          : "Scoring guide printed on the card: for each dimension, count the questions you answer “yes” to."}
+      </p>
+      <ul>
+        {SCORING_GUIDE.map((g) => (
+          <li key={g.range}>
+            <strong>{g.range}</strong> · {fr ? g.fr : g.en}
+          </li>
+        ))}
+      </ul>
 
-      <h2 id="reading">{fr ? "Lecture des scores" : "Reading the scores"}</h2>
+      <h2 id="reading">{fr ? "Lecture de l'indice" : "Reading the index"}</h2>
       <div className="not-prose my-6 overflow-x-auto rounded-xl border border-bd-neutral">
         <table className="w-full border-collapse text-sm">
           <thead>
             <tr className="border-b border-bd-neutral bg-white/[0.03]">
               <th className="px-4 py-3 text-left font-mono text-[10px] uppercase tracking-widest text-gold">
-                Score
+                {fr ? "Indice" : "Index"}
               </th>
               <th className="px-4 py-3 text-left font-mono text-[10px] uppercase tracking-widest text-gold">
-                {fr ? "Bande" : "Band"}
+                {fr ? "Zone" : "Zone"}
               </th>
               <th className="px-4 py-3 text-left font-mono text-[10px] uppercase tracking-widest text-gold">
-                {fr ? "Interprétation" : "Reading"}
+                {fr ? "Conduite à tenir" : "What to do"}
               </th>
             </tr>
           </thead>
           <tbody>
             {[
-              { range: "0–19",  band: fr ? "Exposition critique" : "Critical exposure",   note: fr ? "Aucun cadre. Risque AI Act et RGPD majeur."             : "No frame. Major AI Act and GDPR risk." },
-              { range: "20–39", band: fr ? "Souveraineté faible"  : "Weak sovereignty",   note: fr ? "Bouts de fiches isolés. Pas de DDAO actif."             : "Scattered cards. No active DDAO." },
-              { range: "40–59", band: fr ? "Contrôle fragile"     : "Fragile control",    note: fr ? "Cadre en construction. Audit blanc imminent recommandé." : "Frame under construction. Blind audit recommended." },
-              { range: "60–79", band: fr ? "Souveraineté contrôlée":"Controlled sovereignty",note: fr ? "Niveau N2 cible atteint. Optimisations possibles."     : "N2 target reached. Optimisations possible." },
-              { range: "80–100",band: fr ? "Souveraineté pleine"  : "Full sovereignty",   note: fr ? "Niveau de référence ACF® — éligible à la certification Level 2/3." : "ACF® reference level — eligible for Level 2/3 certification." },
+              { range: "0-33", band: fr ? "Souveraineté maîtrisée" : "Sovereignty under control", note: fr ? "Agentification possible avec une gouvernance légère. Avancez vers ACF-02." : "Agentification is possible with light-touch governance. Proceed to ACF-02." },
+              { range: "34-66", band: fr ? "Exposition modérée" : "Moderate exposure", note: fr ? "Gouvernez et réduisez les dépendances avant d’élargir l’autonomie des agents." : "Govern and reduce dependencies before expanding agent autonomy." },
+              { range: "67-100", band: fr ? "Dépendance critique" : "Critical dependence", note: fr ? "Réduisez l’exposition avant toute nouvelle automatisation. Priorité absolue." : "Reduce your exposure before any further automation. Top priority." },
             ].map((row, i) => (
               <tr key={i} className="border-b border-bd-neutral/50 last:border-0">
                 <td className="px-4 py-3 align-top font-mono text-[12px] text-white">{row.range}</td>
@@ -140,49 +125,34 @@ where Σ weight_i = 1.00`}</code>
           </tbody>
         </table>
       </div>
+      <p>
+        {fr
+          ? "La dimension la plus dépendante est celle où se joue la souveraineté : la fiche demande d’y fixer trois actions concrètes, avec une échéance, avant de cartographier les décisions clés avec ACF-02 et d’évaluer leur criticité avec ACF-03."
+          : "The most dependent dimension is where sovereignty is at stake: the card asks for three concrete actions on it, with a deadline, then for the key decisions to be mapped with ACF-02 and their criticality assessed with ACF-03."}
+      </p>
 
       <h2 id="calculate">{fr ? "Calculez le vôtre" : "Calculate yours"}</h2>
       <p>
         {fr ? (
           <>
             La page <Link href="/sovereignty-score/calculate">/sovereignty-score/calculate</Link>{" "}
-            propose un calculateur interactif avec les six dimensions. C’est un outil
-            d’estimation rapide — pour une analyse plus complète, authentifiée par la
-            signature Ed25519 de la doctrine ACF® (vérifiable hors-ligne), utilisez
-            l’outil MCP <code>acf.identify-governance-gaps</code> qui retourne en plus
-            le rationale par dimension. La signature par votre DDAO et l’inscription à
-            votre registre relèvent d’ACF Compliance.
+            reprend les 4 dimensions et les questions de la fiche. Le calcul se fait dans votre
+            navigateur ; la fiche ACF-01 imprimable, téléchargeable sur acfstandard.com, sert à
+            le consigner. Le serveur MCP expose la fiche par l’URI <code>acf://fiche/ACF-01</code>.
           </>
         ) : (
           <>
             The <Link href="/sovereignty-score/calculate">/sovereignty-score/calculate</Link>{" "}
-            page offers an interactive calculator across the six dimensions. It’s a
-            quick estimation tool — for a fuller analysis, authenticated by ACF®’s
-            Ed25519 doctrine signature (verifiable offline), use the MCP tool{" "}
-            <code>acf.identify-governance-gaps</code>, which also returns the
-            per-dimension rationale. DDAO signing and recording in your registry are
-            handled by ACF Compliance.
+            page takes the 4 dimensions and the questions of the card. The calculation runs in
+            your browser; the printable ACF-01 card, downloadable on acfstandard.com, is where
+            you record it. The MCP server exposes the card at <code>acf://fiche/ACF-01</code>.
           </>
         )}
       </p>
-
-      <h2 id="benchmark">{fr ? "Le Sovereignty Index" : "The Sovereignty Index"}</h2>
       <p>
-        {fr ? (
-          <>
-            Le <Link href="/sovereignty-index">Sovereignty Index</Link> publie chaque
-            année les scores médians par secteur (banque, assurance, retail, santé,
-            services publics…) à partir d’un échantillon anonymisé d’organisations qui
-            ont calculé leur score via l’outil MCP. Premier rapport prévu pour Q4 2026.
-          </>
-        ) : (
-          <>
-            The <Link href="/sovereignty-index">Sovereignty Index</Link> publishes the
-            median scores per industry (banking, insurance, retail, healthcare, public
-            services…) every year, from an anonymised sample of organisations who have
-            scored themselves via the MCP tool. First report scheduled for Q4 2026.
-          </>
-        )}
+        {fr
+          ? "Le score ne se confond pas avec l’ACF Score® d’acf-score.com, qui est un diagnostic de gouvernance agentique (maturité agentique, gouvernance et souveraineté, politique de décision, système d’agents, exécution et supervision, dépendances externes)."
+          : "The score is distinct from the ACF Score® of acf-score.com, which is an agentic governance diagnostic (agentic maturity, governance and sovereignty, decision policy, agent system, execution and supervision, external dependencies)."}
       </p>
     </DocsPage>
   );

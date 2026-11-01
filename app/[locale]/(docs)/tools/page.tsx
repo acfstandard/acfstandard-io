@@ -34,16 +34,16 @@ const TOOLS: Tool[] = [
     badge: "REASON",
     kindEn: "Autonomy level",
     kindFr: "Niveau d’autonomie",
-    blurbEn: "Should the agent propose, decide, or execute? Get the N0–N3 recommendation with go/no-go, gating, and kill switch design.",
-    blurbFr: "Propose, décide ou exécute ? Recommandation N0–N3 avec go/no-go, gating, et design du kill switch.",
+    blurbEn: "Should the agent suggest, propose or decide? Get the delegated autonomy level for a decision, with go/no-go, gating and kill switch design.",
+    blurbFr: "Suggère, propose ou décide ? Le niveau d’autonomie déléguée pour une décision, avec go/no-go, seuils et conception du kill switch.",
   },
   {
     name: "acf.identify-governance-gaps",
     badge: "REASON",
     kindEn: "Gap analysis",
     kindFr: "Analyse de gaps",
-    blurbEn: "What does ACF® say you should have that you don't? Gap analysis across 6 maturity dimensions, prioritised remediations.",
-    blurbFr: "Ce qu’ACF® dit que vous devriez avoir et que vous n’avez pas. Analyse 6 dimensions, remédiations priorisées.",
+    blurbEn: "What does ACF® say you should have that you don't? Gap analysis tied to the 4 principles, prioritised remediations.",
+    blurbFr: "Ce qu’ACF® dit que vous devriez avoir et que vous n’avez pas. Écarts rattachés aux 4 principes, remédiations priorisées.",
   },
   {
     name: "acf.map-ai-act-obligations",
@@ -128,8 +128,8 @@ export default async function ToolsOverviewPage({
       title={fr ? "Référence des outils" : "Tools reference"}
       description={
         fr
-          ? "Le serveur acf-mcp expose douze outils MCP — sept REASON (raisonnement déterministe signé sur la doctrine) et cinq READ (lecture des ressources du corpus). Aucun outil n’appelle de LLM en interne ; chaque sortie embarque doctrine_signature, doctrine_hash, doctrine_version et generated_at."
-          : "The acf-mcp server exposes twelve MCP tools — seven REASON (deterministic reasoning signed against the doctrine) and five READ (corpus resource lookup). No tool calls an internal LLM; every output embeds doctrine_signature, doctrine_hash, doctrine_version and generated_at."
+          ? "Le serveur acf-mcp expose douze outils MCP, sept REASON (raisonnement déterministe signé sur la doctrine) et cinq READ (lecture des ressources du corpus). Aucun outil n’appelle de LLM en interne ; chaque sortie embarque doctrine_signature, doctrine_hash, doctrine_version et generated_at."
+          : "The acf-mcp server exposes twelve MCP tools, seven REASON (deterministic reasoning signed against the doctrine) and five READ (corpus resource lookup). No tool calls an internal LLM; every output embeds doctrine_signature, doctrine_hash, doctrine_version and generated_at."
       }
       badge={fr ? "Outils MCP" : "MCP tools"}
     >
@@ -157,8 +157,8 @@ export default async function ToolsOverviewPage({
       </h2>
       <p>
         {fr
-          ? "Chaque outil REASON produit une qualification structurée à partir d’une entrée déclarée. La sortie est signée et explicitement positionnée comme préliminaire — requires_human_review: true est constant."
-          : "Each REASON tool produces a structured qualification from a declared input. The output is signed and explicitly positioned as preliminary — requires_human_review: true is always set."}
+          ? "Chaque outil REASON produit une qualification structurée à partir d’une entrée déclarée. La sortie est signée et explicitement positionnée comme préliminaire, requires_human_review: true est constant."
+          : "Each REASON tool produces a structured qualification from a declared input. The output is signed and explicitly positioned as preliminary, requires_human_review: true is always set."}
       </p>
       <div className="not-prose mt-4 grid gap-3 md:grid-cols-2">
         {reason.map((t) => (
@@ -220,46 +220,46 @@ export default async function ToolsOverviewPage({
       </h2>
       <p>
         {fr
-          ? "Quel que soit l’outil, la sortie embarque les mêmes champs de traçabilité — c’est le contrat d’audit d’ACF®."
-          : "Whichever tool, the output embeds the same traceability fields — this is ACF®'s audit contract."}
+          ? "Quel que soit l’outil, la sortie embarque les mêmes champs de traçabilité, c’est le contrat d’audit d’ACF®."
+          : "Whichever tool, the output embeds the same traceability fields, this is ACF®'s audit contract."}
       </p>
       <ul>
         <li>
-          <code>doctrine_version</code> —{" "}
+          <code>doctrine_version</code>{": "}
           {fr
             ? "version sémantique de la doctrine au moment de l’appel"
             : "semantic version of the doctrine at call time"}
         </li>
         <li>
-          <code>doctrine_hash</code> —{" "}
+          <code>doctrine_hash</code>{": "}
           {fr
             ? "sha256 du contenu signé"
             : "sha256 of the signed content"}
         </li>
         <li>
-          <code>doctrine_signature</code> —{" "}
+          <code>doctrine_signature</code>{": "}
           {fr
             ? "ed25519 du hash, vérifiable hors-ligne avec la clé publique"
             : "ed25519 over the hash, verifiable offline with the public key"}
         </li>
         <li>
-          <code>doctrine_archive_url</code> —{" "}
+          <code>doctrine_archive_url</code>{": "}
           {fr
             ? "URL d’archive permanente de la doctrine utilisée"
             : "permanent archive URL of the doctrine used"}
         </li>
         <li>
-          <code>regulatory_snapshot</code> —{" "}
+          <code>regulatory_snapshot</code>{": "}
           {fr
             ? "corpus régulateur contre lequel l’outil a raisonné"
             : "regulator corpus the tool reasoned against"}
         </li>
         <li>
-          <code>generated_at</code> —{" "}
+          <code>generated_at</code>{": "}
           {fr ? "timestamp ISO 8601" : "ISO 8601 timestamp"}
         </li>
         <li>
-          <code>requires_human_review: true</code> —{" "}
+          <code>requires_human_review: true</code>{": "}
           {fr
             ? "constant ; aucun outil ne se substitue à une décision humaine de gouvernance"
             : "constant; no tool substitutes for a human governance decision"}

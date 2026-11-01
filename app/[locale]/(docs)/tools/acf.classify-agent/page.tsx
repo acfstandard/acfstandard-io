@@ -83,14 +83,14 @@ async def main():
 asyncio.run(main())`;
 
 const RESPONSE_SAMPLE = `{
-  "acf_level": {
-    "level": "N1",
-    "rationale": "Decision is automated but a human sign-off remains in the loop for MQL routing. Tagged as N1 (assisted) — graduate to N2 only after a 30-day drift review."
+  "autonomy_level": {
+    "level": "supervised_autonomous",
+    "rationale": "Conditional human approval, write actions allowed within a bounded perimeter → conditional execution (mandate required)."
   },
   "criticality": {
     "score": "medium",
-    "rationale": "Limited financial exposure + standard personal data + internal audience. The risk is reputational and pipeline-quality, not life-safety or financial.",
-    "matrix_ref": "ACF-02 §3.2"
+    "rationale": "Standard personal data + low operational exposure → medium criticality (GDPR + operational impact).",
+    "matrix_ref": "cell(standard, low_operation)"
   },
   "regulatory_qualifications": {
     "likely_ai_act_role": "deployer",
@@ -102,63 +102,199 @@ const RESPONSE_SAMPLE = `{
   },
   "ai_act_obligations": {
     "pre_go_live": [
-      { "article": "Art. 50", "requirement": "Inform leads that an AI is involved in the scoring", "applicable_date": "2026-08-02" }
+      {
+        "article": "art-50",
+        "requirement": "Transparency obligations on AI systems intended to interact with natural persons (clear notice that the user is interacting with an AI system, unless obvious from context).",
+        "applicable_date": "2026-08-02"
+      }
     ],
     "continuous": [
-      { "article": "Art. 13", "requirement": "Maintain end-user transparency about the scoring logic", "applicable_date": "—" }
+      {
+        "article": "art-51",
+        "requirement": "Classification of GPAI models and identification of systemic-risk models.",
+        "applicable_date": "2026-08-02"
+      },
+      {
+        "article": "art-53",
+        "requirement": "Technical documentation, training data summary, copyright policy, instructions for downstream providers.",
+        "applicable_date": "2026-08-02"
+      },
+      {
+        "article": "art-54",
+        "requirement": "Authorised representative requirement for non-EU GPAI providers placing models on the EU market.",
+        "applicable_date": "2026-08-02"
+      }
     ],
     "on_incident": []
   },
   "applicable_fiches": [
-    { "code": "ACF-04", "why": "Defines the agent identity card — required for any production agent" },
-    { "code": "ACF-12", "why": "Mandate of the agent under a named DDAO" },
-    { "code": "ACF-06", "why": "Kill switch testing every quarter" },
-    { "code": "ACF-08", "why": "Signed decision register — six-month retention by deployer" }
+    {
+      "code": "ACF-13",
+      "why": "Formal mandate required once the agent decides on its own (supervised autonomous or autonomous)."
+    },
+    {
+      "code": "ACF-07",
+      "why": "Kill switch required once the agent decides on its own (supervised autonomous or autonomous)."
+    },
+    {
+      "code": "ACF-09",
+      "why": "Decision register required once the agent decides on its own (supervised autonomous or autonomous)."
+    }
   ],
   "recommended_controls": [
-    "Disclose AI involvement in the contact form",
-    "Log every score assignment with input and rationale",
-    "Quarterly drift review of MQL precision/recall"
+    "Formal agent mandate",
+    "Kill switch quarterly drill",
+    "Decision register",
+    "Quarterly risk review"
   ],
   "ddao_controls": [
-    "C-AUTONOMY-01 — N1 gating: every MQL → human review before SDR outreach",
-    "C-LOG-03 — Signed decision register branched to ACF-08",
-    "C-DRIFT-02 — Monthly drift dashboard for fit-score distribution"
+    "ACF-CTRL-101 (preventive, ACF-13): Mandate templates calibrated by sector; review frequency tied to criticality.",
+    "ACF-CTRL-102 (corrective, ACF-07): Kill switch with 3 levels: freeze (instant), redirect (≤5min), revoke (≤1h).",
+    "ACF-CTRL-103 (detective, ACF-09): Decision register format aligned with Article 49 register for high-risk systems."
   ],
   "ddao_escalation": {
-    "required": true,
+    "required": false,
     "trigger_thresholds": [
-      "fit-score distribution shifts by > 2σ vs baseline",
-      "MQL → SQL conversion drops by > 30% week over week",
-      "any complaint from a tagged lead"
+      "Action above bounded perimeter escalates to DDAO before execution.",
+      "Drift > 10% on key metric vs baseline escalates within 24h."
     ]
   },
   "sign_off_required": {
-    "security": false,
+    "security": true,
     "privacy": true,
-    "compliance": true,
+    "compliance": false,
     "legal": false,
     "business_sponsor": true,
     "board": false
   },
-  "confidence": "high",
-  "assumptions": [
-    "Lead enrichment uses only public LinkedIn data via official API",
-    "No special-category personal data is processed"
-  ],
-  "gaps_to_validate": [
-    "Confirm Salesforce write scope — the agent should NOT update opportunity stages",
-    "Confirm retention period of the signed register (six months minimum per Art. 26(6))"
-  ],
+  "confidence": "medium",
+  "assumptions": [],
+  "gaps_to_validate": [],
   "requires_human_review": true,
+  "rationale_per_rule": [
+    {
+      "rule_id": "ai-act-annex-iii.annex-iii-1a-biometric-identity",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-iii.annex-iii-2-critical-infrastructure",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-iii.annex-iii-3-educational",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-iii.annex-iii-4-employment",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-iii.annex-iii-5b-credit-scoring",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-iii.annex-iii-5c-insurance-pricing",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-iii.annex-iii-6-law-enforcement",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-iii.annex-iii-7-migration-asylum",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-iii.annex-iii-8-justice-democracy",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-i.annex-i-medical-device",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-i.annex-i-vehicle-safety",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "ai-act-annex-i.annex-i-machinery",
+      "rule_version": "2026-06",
+      "fired": false,
+      "evidence": ""
+    },
+    {
+      "rule_id": "gpai-triggers",
+      "rule_version": "2026-06",
+      "fired": true,
+      "evidence": "enum:gpai_used=true"
+    },
+    {
+      "rule_id": "ai-act-roles.ai-act-role-deployer-internal-use",
+      "rule_version": "2026-06",
+      "fired": true,
+      "evidence": "enum:usage_audience=internal"
+    },
+    {
+      "rule_id": "gdpr-qualification.gdpr-controller-internal-use",
+      "rule_version": "2026-06",
+      "fired": true,
+      "evidence": "enum:usage_audience=internal; enum:personal_data_level=standard"
+    },
+    {
+      "rule_id": "sign-off-matrix.medium-standard-low_operation",
+      "rule_version": "2026-06",
+      "fired": true,
+      "evidence": "criticality=medium, pii=standard, fin=low_operation"
+    },
+    {
+      "rule_id": "ddao-controls-mapping.supervised_autonomous-high",
+      "rule_version": "2026-06",
+      "fired": true,
+      "evidence": "level=supervised_autonomous, risk=medium"
+    },
+    {
+      "rule_id": "autonomy-inference.supervised_autonomous",
+      "rule_version": "2026-06",
+      "fired": true,
+      "evidence": "human_approval=sometimes, ext=limited_write"
+    },
+    {
+      "rule_id": "criticality-matrix.standard-low_operation",
+      "rule_version": "2026-06",
+      "fired": true,
+      "evidence": "pii=standard, fin=low_operation"
+    }
+  ],
   "doctrine_version": "ACF framework v1.0 / rules 2026-06",
-  "doctrine_hash": "sha256:bf0b6d8e4731ebdc58f6d6338702c5b74af47874cf0ad3dc958cde5c5b30b9dc",
-  "doctrine_signature": "ed25519:…",
-  "doctrine_archive_url": "https://acfstandard.io/doctrine/v1.0/archive.json",
-  "regulatory_snapshot": "EU AI Act 2024/1689 · GDPR 2016/679 · ISO 42001:2023 · NIST AI RMF 1.0 · COBIT 2019 — frozen 2026-06",
-  "generated_at": "2026-06-14T11:47:22.318Z",
-  "conversion_cta": "Generate the full auditable PDF report on https://acfstandard.com/compliance?ref=mcp",
-  "disclaimer": "Preliminary qualification only — not legal advice. Human review required."
+  "doctrine_hash": "sha256:119819463363cde0649504ab8ed5a96982fdb8506441f2c5e76e7e3c3feb77f1",
+  "doctrine_signature": "ed25519:3R0oIiqL3Kgd…",
+  "doctrine_archive_url": "https://acfstandard.io/archive/doctrine/v1.0/doctrine-v1.0.json",
+  "regulatory_snapshot": "EU AI Act (Reg. 2024/1689, incl. Digital Omnibus deferral) + GDPR (Reg. 2016/679) + DORA (Reg. 2022/2554) + NIS2 (Dir. 2022/2555) + ISO 42001:2023: as of 2026-06-07",
+  "generated_at": "2026-11-01T12:06:31.055Z",
+  "disclaimer": "Preliminary qualification produced by the ACF® deterministic engine. Not legal advice. Human review required. Do not use for autonomous regulatory decision-making. See doctrine_archive_url for the version of the doctrine used.",
+  "conversion_cta": "Generate the full auditable PDF report on https://acfstandard.com/compliance?ref=mcp"
 }`;
 
 export default async function ClassifyAgentToolPage({
@@ -175,8 +311,8 @@ export default async function ClassifyAgentToolPage({
       title="acf.classify-agent"
       description={
         fr
-          ? "Qualification préliminaire d’un agent IA avant go-live — dix champs énumérés en entrée, une évaluation structurée en sortie : niveau d’autonomie, criticité, rôle AI Act, obligations applicables, contrôles DDAO, sign-offs requis."
-          : "Pre-go-live qualification of an AI agent — ten qualified-enum input fields, one structured output: autonomy level, criticality, AI Act role, applicable obligations, DDAO controls, required sign-offs."
+          ? "Qualification préliminaire d’un agent IA avant go-live, dix champs énumérés en entrée, une évaluation structurée en sortie : niveau d’autonomie, criticité, rôle AI Act, obligations applicables, contrôles DDAO, sign-offs requis."
+          : "Pre-go-live qualification of an AI agent, ten qualified-enum input fields, one structured output: autonomy level, criticality, AI Act role, applicable obligations, DDAO controls, required sign-offs."
       }
       badge="REASON"
     >
@@ -185,14 +321,14 @@ export default async function ClassifyAgentToolPage({
           <>
             Cet outil produit une <strong>qualification préliminaire</strong>, pas un
             avis juridique. <code>requires_human_review</code> vaut toujours{" "}
-            <code>true</code> en sortie. Tous les champs énumérés sont stricts —
+            <code>true</code> en sortie. Tous les champs énumérés sont stricts,
             l’entrée est rejetée plutôt que devinée.
           </>
         ) : (
           <>
             This tool produces a <strong>preliminary qualification</strong>, not legal
             advice. <code>requires_human_review</code> is always <code>true</code> in
-            the output. All enum fields are strict — the call is rejected, not guessed.
+            the output. All enum fields are strict, the call is rejected, not guessed.
           </>
         )}
       </Callout>
@@ -205,15 +341,15 @@ export default async function ClassifyAgentToolPage({
       </p>
       <p>
         {fr
-          ? "Ce n’est pas un outil de production : c’est un outil de cadrage. La sortie est conçue pour entrer dans une fiche ACF-07 (Dossier Premier Agent) que le DDAO va revoir et compléter."
-          : "It is not a production-time tool: it is a scoping tool. The output is designed to land in an ACF-07 (First Agent Dossier) card that the DDAO will review and complete."}
+          ? "Ce n’est pas un outil de production : c’est un outil de cadrage. La sortie est conçue pour entrer dans une fiche ACF-08 (Dossier Premier Agent) que le DDAO va revoir et compléter."
+          : "It is not a production-time tool: it is a scoping tool. The output is designed to land in an ACF-08 (First Agent Dossier) card that the DDAO will review and complete."}
       </p>
 
       <h2 id="inputs">{fr ? "Paramètres d’entrée" : "Input parameters"}</h2>
       <p>
         {fr
-          ? "Dix champs principaux, tous obligatoires sauf indication contraire. Les énumérations sont strictes — l’outil rejette l’entrée plutôt que de deviner."
-          : "Ten core fields, all required unless noted. Enums are strict — the tool rejects the input rather than guessing."}
+          ? "Dix champs principaux, tous obligatoires sauf indication contraire. Les énumérations sont strictes, l’outil rejette l’entrée plutôt que de deviner."
+          : "Ten core fields, all required unless noted. Enums are strict, the tool rejects the input rather than guessing."}
       </p>
       <ParamGroup>
         <Param name="name" type="string (2-200)" required>
@@ -314,22 +450,22 @@ export default async function ClassifyAgentToolPage({
       <h2 id="output">{fr ? "Schéma de sortie" : "Output schema"}</h2>
       <p>
         {fr
-          ? "La sortie est un objet à dix-huit champs structurés + pied-de-page signé."
-          : "The output is an eighteen-field structured object + signed footer."}
+          ? "La sortie est un objet structuré, suivi du pied-de-page signé de la doctrine."
+          : "The output is a structured object, followed by the signed doctrine footer."}
       </p>
       <ParamGroup>
-        <Param name="acf_level" type='{ level: "N0"|"N1"|"N2"|"N3", rationale: string }'>
+        <Param name="autonomy_level" type='{ level: "suggestive"|"co_decision"|"supervised_autonomous"|"autonomous", rationale: string }'>
           {fr
-            ? "Niveau d’autonomie ACF® recommandé et son rationale."
-            : "Recommended ACF® autonomy level and its rationale."}
+            ? "Niveau d’autonomie déléguée recommandé pour les décisions de l’agent, et son rationale. Renommé depuis acf_level en 2.0.0 : N0 à N3 désigne désormais la maturité de l’agent, pas l’autonomie d’une décision."
+            : "Recommended delegated autonomy level for the agent’s decisions, and its rationale. Renamed from acf_level in 2.0.0: N0 to N3 now refers to agent maturity, not to the autonomy of a decision."}
         </Param>
         <Param
           name="criticality"
           type='{ score: "low"|"medium"|"high"|"critical", rationale, matrix_ref }'
         >
           {fr
-            ? "Score de criticité issu de la matrice ACF-02, avec référence à la cellule de la matrice."
-            : "Criticality score from the ACF-02 matrix, with a reference to the matrix cell."}
+            ? "Score de criticité issu de la Matrice de Criticité (ACF-03), avec référence à la cellule de la matrice."
+            : "Criticality score from the Criticality Matrix (ACF-03), with a reference to the matrix cell."}
         </Param>
         <Param
           name="regulatory_qualifications"
@@ -349,8 +485,8 @@ export default async function ClassifyAgentToolPage({
         </Param>
         <Param name="applicable_fiches" type='{ code: string, why: string }[]'>
           {fr
-            ? "Fiches méthodologiques ACF® à mobiliser (ACF-00 à ACF-16), avec la raison pour chaque fiche retenue."
-            : "ACF® methodological cards to mobilise (ACF-00 to ACF-16), with the reason for each retained card."}
+            ? "Fiches du toolkit ACF® à mobiliser (parmi les 45 : ACF-01 à ACF-20, ACF-O1 à ACF-O10, ACF-P1 à ACF-P15), avec la raison pour chaque fiche retenue."
+            : "ACF® toolkit cards to mobilise (among the 45: ACF-01 to ACF-20, ACF-O1 to ACF-O10, ACF-P1 to ACF-P15), with the reason for each retained card."}
         </Param>
         <Param name="recommended_controls" type="string[]">
           {fr
@@ -400,8 +536,8 @@ export default async function ClassifyAgentToolPage({
       <h2 id="example">{fr ? "Exemple d’appel" : "Example call"}</h2>
       <p>
         {fr
-          ? "Un agent SaaS qui qualifie des leads B2B entrants :"
-          : "A SaaS agent qualifying inbound B2B leads:"}
+          ? "Un agent qui qualifie les leads B2B entrants d’un éditeur de logiciel :"
+          : "An agent qualifying a software vendor’s inbound B2B leads:"}
       </p>
       <Tabs
         tabs={[
@@ -426,22 +562,14 @@ export default async function ClassifyAgentToolPage({
       <h2 id="errors">{fr ? "Erreurs courantes" : "Common errors"}</h2>
       <ul>
         <li>
-          <code>InvalidEnumValue</code> —{" "}
           {fr
-            ? "un champ énuméré reçoit une valeur hors liste (ex. financial_exposure: \"medium\"). Corrigez vers une des valeurs canoniques."
-            : "an enum field receives an out-of-list value (e.g. financial_exposure: \"medium\"). Fix to one of the canonical values."}
+            ? "Paramètres invalides : un des champs énumérés (human_approval_required, personal_data_level, financial_exposure, external_actions, usage_audience) hors de ses valeurs, ou decisions_taken vide. L’appel échoue avec une erreur JSON-RPC dont le message liste les champs en cause."
+            : "Invalid parameters: one of the enumerated fields (human_approval_required, personal_data_level, financial_exposure, external_actions, usage_audience) outside its values, or empty decisions_taken. The call fails with a JSON-RPC error whose message lists the offending fields."}
         </li>
         <li>
-          <code>InputTooShort</code> —{" "}
           {fr
-            ? "description &lt; 20 caractères ou decisions_taken vide. L’outil ne devine pas — corrigez l’entrée."
-            : "description &lt; 20 chars or decisions_taken empty. The tool does not guess — fix the input."}
-        </li>
-        <li>
-          <code>DoctrineSnapshotMismatch</code> —{" "}
-          {fr
-            ? "le doctrine_hash demandé n’est pas chargé. Mettez acf-mcp à jour ou pointez vers la version archivée."
-            : "the requested doctrine_hash is not loaded. Update acf-mcp or point at the archived version."}
+            ? "Confiance basse : quand peu de champs de contexte sont fournis, confidence vaut low et assumptions dit ce qui a été supposé. Complétez l’entrée avant de vous appuyer sur le résultat."
+            : "Low confidence: when few context fields are provided, confidence is low and assumptions states what was assumed. Complete the input before relying on the result."}
         </li>
       </ul>
 
@@ -450,8 +578,8 @@ export default async function ClassifyAgentToolPage({
         <li>
           <a href={fr ? "/fr/tools/acf.assess-autonomy" : "/tools/acf.assess-autonomy"}>
             <code>acf.assess-autonomy</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "creuser la décision de niveau d’autonomie en isolation."
             : "drill into the autonomy-level decision in isolation."}
@@ -463,8 +591,8 @@ export default async function ClassifyAgentToolPage({
             }
           >
             <code>acf.map-ai-act-obligations</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "obtenir l’ensemble exhaustif des obligations AI Act une fois la qualification stabilisée."
             : "get the exhaustive AI Act obligation set once the qualification is stable."}
@@ -474,8 +602,8 @@ export default async function ClassifyAgentToolPage({
             href={fr ? "/fr/tools/acf.assign-ddao-controls" : "/tools/acf.assign-ddao-controls"}
           >
             <code>acf.assign-ddao-controls</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "assigner les contrôles concrets que le DDAO doit imposer."
             : "assign the concrete controls the DDAO must enforce."}

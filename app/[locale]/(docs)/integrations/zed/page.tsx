@@ -56,7 +56,7 @@ export default async function ZedPage({
             Depuis fin 2025, il supporte MCP via la clé <code>context_servers</code> du
             fichier <code>~/.config/zed/settings.json</code> (macOS/Linux) ou{" "}
             <code>%APPDATA%\Zed\settings.json</code> (Windows). Le mappage interne traduit{" "}
-            <code>context_servers</code> en serveurs MCP — la sémantique est identique.
+            <code>context_servers</code> en serveurs MCP, la sémantique est identique.
           </>
         ) : (
           <>
@@ -64,7 +64,7 @@ export default async function ZedPage({
             late 2025 it supports MCP through the <code>context_servers</code> key of{" "}
             <code>~/.config/zed/settings.json</code> (macOS/Linux) or{" "}
             <code>%APPDATA%\Zed\settings.json</code> (Windows). Internally{" "}
-            <code>context_servers</code> maps to MCP servers — the semantics are
+            <code>context_servers</code> maps to MCP servers, the semantics are
             identical.
           </>
         )}
@@ -77,7 +77,7 @@ export default async function ZedPage({
           ({fr ? "vérifiez avec" : "check with"} <code>node --version</code>)
         </li>
         <li>
-          <strong>Zed</strong> —{" "}
+          <strong>Zed</strong>{": "}
           <a href="https://zed.dev" target="_blank" rel="noopener noreferrer">
             zed.dev
           </a>{" "}
@@ -135,8 +135,8 @@ export default async function ZedPage({
         >
           <p>
             {fr
-              ? "Fusionnez avec vos réglages existants. La forme est { command: { path, args, env? } } — pas { command: \"npx\", args: [...] } comme dans Cursor/Claude Desktop."
-              : "Merge with your existing settings. Shape is { command: { path, args, env? } } — not { command: \"npx\", args: [...] } as in Cursor/Claude Desktop."}
+              ? "Fusionnez avec vos réglages existants. La forme est { command: { path, args, env? } }, pas { command: \"npx\", args: [...] } comme dans Cursor/Claude Desktop."
+              : "Merge with your existing settings. Shape is { command: { path, args, env? } }, not { command: \"npx\", args: [...] } as in Cursor/Claude Desktop."}
           </p>
           <CodeBlock code={ZED_CONFIG} language="json" filename="settings.json" />
         </Step>
@@ -188,8 +188,8 @@ export default async function ZedPage({
           </p>
           <p>
             {fr
-              ? "La réponse insérée par l’assistant doit contenir le footer signé (doctrine_hash, doctrine_signature, generated_at) — Zed n’altère pas la sortie de l’outil."
-              : "The assistant’s inserted reply must contain the signed footer (doctrine_hash, doctrine_signature, generated_at) — Zed does not alter the tool output."}
+              ? "La réponse insérée par l’assistant doit contenir le footer signé (doctrine_hash, doctrine_signature, generated_at) : Zed n’altère pas la sortie de l’outil."
+              : "The assistant’s inserted reply must contain the signed footer (doctrine_hash, doctrine_signature, generated_at): Zed does not alter the tool output."}
           </p>
         </Step>
       </Steps>
@@ -256,8 +256,8 @@ export default async function ZedPage({
             {fr ? "JSON5 vs JSON strict." : "JSON5 vs strict JSON."}
           </strong>{" "}
           {fr
-            ? "Zed accepte JSON5 (commentaires, trailing commas) — mais le parser est strict sur les chaînes échappées. Préférez un éditeur qui colore JSON5 pour éviter les pièges."
-            : "Zed accepts JSON5 (comments, trailing commas) — but the parser is strict on escaped strings. Use a JSON5-aware editor to avoid pitfalls."}
+            ? "Zed accepte JSON5 (commentaires, trailing commas), mais le parser est strict sur les chaînes échappées. Préférez un éditeur qui colore JSON5 pour éviter les pièges."
+            : "Zed accepts JSON5 (comments, trailing commas), but the parser is strict on escaped strings. Use a JSON5-aware editor to avoid pitfalls."}
         </li>
         <li>
           <strong>

@@ -33,11 +33,6 @@ export const docsNav: NavGroup[] = [
         href: "/sovereignty-score/calculate",
         badge: "TOOL",
       },
-      {
-        title: { en: "Sovereignty Index", fr: "Sovereignty Index" },
-        href: "/sovereignty-index",
-        badge: "Q4 26",
-      },
     ],
   },
   {
@@ -62,7 +57,6 @@ export const docsNav: NavGroup[] = [
       {
         title: { en: "Authentication", fr: "Authentification" },
         href: "/docs/authentication",
-        badge: "HTTP",
       },
       {
         title: { en: "Errors", fr: "Erreurs" },
@@ -85,6 +79,7 @@ export const docsNav: NavGroup[] = [
       { title: { en: "acf.map-ai-act-obligations", fr: "acf.map-ai-act-obligations" }, href: "/tools/acf.map-ai-act-obligations", badge: "REASON" },
       { title: { en: "acf.assign-ddao-controls", fr: "acf.assign-ddao-controls" }, href: "/tools/acf.assign-ddao-controls", badge: "REASON" },
       { title: { en: "acf.evaluate-agent-mandate", fr: "acf.evaluate-agent-mandate" }, href: "/tools/acf.evaluate-agent-mandate", badge: "REASON" },
+      { title: { en: "acf.map-to-standards", fr: "acf.map-to-standards" }, href: "/tools/acf.map-to-standards", badge: "REASON" },
       { title: { en: "acf.search", fr: "acf.search" }, href: "/tools/acf.search", badge: "READ" },
       { title: { en: "acf.fiche.lookup", fr: "acf.fiche.lookup" }, href: "/tools/acf.fiche.lookup", badge: "READ" },
       { title: { en: "acf.regulation.article", fr: "acf.regulation.article" }, href: "/tools/acf.regulation.article", badge: "READ" },
@@ -123,7 +118,7 @@ export const docsNav: NavGroup[] = [
         href: "/doctrine/layers",
       },
       {
-        title: { en: "N0–N3 autonomy", fr: "Autonomie N0–N3" },
+        title: { en: "Autonomy and maturity", fr: "Autonomie et maturité" },
         href: "/doctrine/autonomy-levels",
       },
       {
@@ -135,8 +130,8 @@ export const docsNav: NavGroup[] = [
         href: "/doctrine/kill-switch",
       },
       {
-        title: { en: "17 fiches", fr: "17 fiches" },
-        href: "/doctrine/17-fiches",
+        title: { en: "45 cards", fr: "45 fiches" },
+        href: "/doctrine/fiches",
       },
     ],
   },
@@ -144,7 +139,7 @@ export const docsNav: NavGroup[] = [
     title: { en: "Standards mapping", fr: "Correspondances standards" },
     items: [
       {
-        title: { en: "17×5 matrix", fr: "Matrice 17×5" },
+        title: { en: "Mapping matrix", fr: "Matrice de correspondance" },
         href: "/mappings",
         badge: "MATRIX",
       },

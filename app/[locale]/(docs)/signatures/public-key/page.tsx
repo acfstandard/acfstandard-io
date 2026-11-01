@@ -60,13 +60,13 @@ export default async function PublicKeyHistoryPage({
         {fr ? (
           <>
             Pour vérifier une sortie 1.0.x, lisez directement la clé du champ{" "}
-            <code>doctrine_public_key</code> de la sortie — c’est la seule source qui fait
+            <code>doctrine_public_key</code> de la sortie, c’est la seule source qui fait
             foi pour cette époque.
           </>
         ) : (
           <>
             To verify a 1.0.x output, read the key directly from the output’s{" "}
-            <code>doctrine_public_key</code> field — that is the only authoritative
+            <code>doctrine_public_key</code> field, that is the only authoritative
             source for that era.
           </>
         )}

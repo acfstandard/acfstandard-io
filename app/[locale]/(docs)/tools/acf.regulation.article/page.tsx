@@ -19,7 +19,7 @@ const result = await client.callTool({
   name: "acf.regulation.article",
   arguments: {
     regulation: "ai-act",
-    article: "Art. 14",
+    article: "14",
     locale: "en",
   },
 });
@@ -39,7 +39,7 @@ async def main():
                 "acf.regulation.article",
                 arguments={
                     "regulation": "ai-act",
-                    "article": "Art. 14",
+                    "article": "14",
                     "locale": "en",
                 },
             )
@@ -49,36 +49,22 @@ asyncio.run(main())`;
 
 const RESPONSE_SAMPLE = `{
   "regulation": "ai-act",
-  "regulation_label": "EU AI Act (Regulation 2024/1689)",
-  "article": "Art. 14",
-  "article_title": "Human oversight",
-  "served_locale": "en",
-  "is_fallback": false,
-  "verified_text": "High-risk AI systems shall be designed and developed in such a way, including with appropriate human-machine interface tools, that they can be effectively overseen by natural persons during the period in which they are in use. […] Human oversight shall aim to prevent or minimise the risks to health, safety or fundamental rights that may emerge when a high-risk AI system is used in accordance with its intended purpose or under conditions of reasonably foreseeable misuse.",
-  "applicable_date": "2026-08-02",
-  "acf_translation": {
-    "summary": "Art. 14 mandates that any high-risk system be designed so a human operator can intervene effectively at run-time. In ACF® vocabulary, this is the kill-switch + escalation-thresholds duo, plus the design constraint that the interface itself must support oversight (not just allow it).",
-    "activates_principles": [
-      { "code": "P-04", "title": "Reversibility", "why": "Oversight is impossible without a bounded recovery window." },
-      { "code": "P-07", "title": "Human-in-the-loop integrity", "why": "Art. 14 is the regulatory anchor of P-07." }
+  "article": "14",
+  "title": "Human oversight (high-risk AI)",
+  "text": "High-risk AI systems shall be designed so they can be effectively overseen by natural persons during use, including through stop mechanisms. See Regulation (EU) 2024/1689, Article 14.",
+  "mapping": {
+    "principles": [
+      "P3"
     ],
-    "stresses_dimensions": [
-      { "code": "D-03", "title": "Operational control", "why": "Kill switch + degraded modes live here." },
-      { "code": "D-05", "title": "Human governance", "why": "Defines who has authority to intervene and when." }
+    "fiches": [
+      "ACF-07",
+      "ACF-P6",
+      "ACF-P7"
     ],
-    "operationalised_by_fiches": [
-      { "code": "ACF-06", "why": "Defines the kill switch and the degraded mode required by Art. 14(1)-(4)." },
-      { "code": "ACF-12", "why": "DDAO mandate — names the natural person empowered to oversee." },
-      { "code": "ACF-04", "why": "Agent identity card — declares the oversight surface to internal and external stakeholders." }
-    ],
-    "autonomy_level_ceiling": "N2 by default; N3 requires explicit derogation with reinforced oversight and is not recommended for high-risk under the AI Act."
+    "operational_note": "ACF operationalises Art. 14 via P3 (ultimate human control), ACF-07 (kill switch), ACF-P6 (escalation thresholds), ACF-P7 (human-takeover drills)."
   },
-  "doctrine_version": "ACF framework v1.0 / rules 2026-06",
-  "doctrine_hash": "sha256:bf0b6d8e4731ebdc58f6d6338702c5b74af47874cf0ad3dc958cde5c5b30b9dc",
-  "doctrine_signature": "ed25519:…",
-  "doctrine_archive_url": "https://acfstandard.io/doctrine/v1.0/archive.json",
-  "generated_at": "2026-06-14T11:47:22.318Z",
-  "disclaimer": "Verified text reproduced for reference — always read the official OJEU/CELEX source before quoting in a regulatory filing."
+  "source": "Regulation (EU) 2024/1689, Article 14",
+  "applicable_date": "2027-12-02"
 }`;
 
 export default async function RegulationArticleToolPage({
@@ -95,8 +81,8 @@ export default async function RegulationArticleToolPage({
       title="acf.regulation.article"
       description={
         fr
-          ? "Récupère le texte vérifié d’un article réglementaire (AI Act, RGPD, DORA, NIS2, ISO 42001) et sa traduction opérationnelle ACF® : principes activés, dimensions de maturité stressées, fiches qui l’opérationnalisent, plafond de niveau d’autonomie."
-          : "Fetch the verified text of a regulatory article (AI Act, GDPR, DORA, NIS2, ISO 42001) and its operational translation into ACF®: activated principles, stressed maturity dimensions, cards that operationalise it, autonomy-level ceiling."
+          ? "Récupère le texte vérifié d’un article réglementaire (AI Act, RGPD, DORA, NIS2, ISO 42001) et sa traduction opérationnelle ACF® : principes activés, fiches qui l’opérationnalisent, note de mise en œuvre et date d’application."
+          : "Fetch the verified text of a regulatory article (AI Act, GDPR, DORA, NIS2, ISO 42001) and its operational translation into ACF®: activated principles, cards that operationalise it, implementation note and date of application."
       }
       badge="READ"
     >
@@ -104,16 +90,16 @@ export default async function RegulationArticleToolPage({
         {fr ? (
           <>
             Les outils <strong>READ</strong> renvoient le contenu signé du corpus,
-            sans couche d’inférence. Le <code>verified_text</code> est reproduit{" "}
-            tel que le standard l’a horodaté — pour un dépôt réglementaire, citez
-            toujours en plus la source officielle (OJEU/CELEX, ISO, ANSSI…).
+            sans couche d’inférence. Le champ <code>text</code> est un résumé de
+            l’article, avec sa référence officielle dans <code>source</code> : pour un
+            dépôt réglementaire, citez toujours le texte officiel (JOUE/CELEX, ISO…).
           </>
         ) : (
           <>
             <strong>READ</strong> tools return signed corpus content with no
-            inference layer. <code>verified_text</code> is reproduced as the
-            standard timestamped it — for a regulatory filing, always cite the
-            official source (OJEU/CELEX, ISO, ANSSI…) in addition.
+            inference layer. The <code>text</code> field summarises the article, with its
+            official reference in <code>source</code>: for a regulatory filing, always
+            cite the official text (OJEU/CELEX, ISO…).
           </>
         )}
       </Callout>
@@ -121,20 +107,20 @@ export default async function RegulationArticleToolPage({
       <h2 id="when-to-use">{fr ? "Quand l’utiliser" : "When to use"}</h2>
       <p>
         {fr
-          ? "Utilisez cet outil quand un régulateur, un auditeur ou un comité de direction cite un article précis et qu’il faut renvoyer (a) le texte vérifié et (b) sa lecture opérationnelle ACF®. Exemples : « AI Act Art. 9 — comment vous le couvrez ? », « RGPD Art. 35 — votre AIPD intègre-t-elle l’agent ? », « DORA Art. 28 — tiers critiques ? ». L’outil donne en une réponse le texte et le pont vers vos fiches."
-          : "Use this tool when a regulator, auditor or board references a specific article and you have to return (a) the verified text and (b) its ACF® operational reading. Examples: “AI Act Art. 9 — how do you cover it?”, “GDPR Art. 35 — does your DPIA include the agent?”, “DORA Art. 28 — critical third parties?”. The tool returns the text and the bridge to your cards in one shot."}
+          ? "Utilisez cet outil quand un régulateur, un auditeur ou un comité de direction cite un article précis et qu’il faut renvoyer (a) le texte vérifié et (b) sa lecture opérationnelle ACF®. Exemples : « AI Act Art. 9, comment vous le couvrez ? », « RGPD Art. 35, votre AIPD intègre-t-elle l’agent ? », « DORA Art. 28, tiers critiques ? ». L’outil donne en une réponse le texte et le pont vers vos fiches."
+          : "Use this tool when a regulator, auditor or board references a specific article and you have to return (a) the verified text and (b) its ACF® operational reading. Examples: “AI Act Art. 9, how do you cover it?”, “GDPR Art. 35, does your DPIA include the agent?”, “DORA Art. 28, critical third parties?”. The tool returns the text and the bridge to your cards in one shot."}
       </p>
       <p>
         {fr
-          ? "La sortie a une vocation pédagogique et de cadrage : elle explique quels principes ACF® l’article active, quelles dimensions de maturité il stresse, et quelles fiches méthodologiques l’opérationnalisent. C’est l’angle « traducteur » entre droit dur et opérations — il ne remplace pas un avis juridique."
-          : "The output has a pedagogical and scoping intent: it explains which ACF® principles the article activates, which maturity dimensions it stresses, and which methodological cards operationalise it. This is the “translator” angle between hard law and operations — it does not replace legal advice."}
+          ? "La sortie a une vocation pédagogique et de cadrage : elle explique quels principes ACF® l’article active et quelles fiches du toolkit l’opérationnalisent. C’est l’angle « traducteur » entre droit dur et opérations, il ne remplace pas un avis juridique."
+          : "The output has a pedagogical and scoping intent: it explains which ACF® principles the article activates and which toolkit cards operationalise it. This is the “translator” angle between hard law and operations, it does not replace legal advice."}
       </p>
 
       <h2 id="inputs">{fr ? "Paramètres d’entrée" : "Input parameters"}</h2>
       <p>
         {fr
-          ? "Trois champs. regulation est strictement énuméré ; article suit le format canonique de chaque réglementation."
-          : "Three fields. regulation is a strict enum; article follows each regulation’s canonical format."}
+          ? "Trois champs. regulation est strictement énuméré ; article est le numéro seul, sans « Art. »."
+          : "Three fields. regulation is a strict enum; article is the bare number, without “Art.”."}
       </p>
       <ParamGroup>
         <Param
@@ -143,105 +129,50 @@ export default async function RegulationArticleToolPage({
           required
         >
           {fr
-            ? "Identifiant canonique de la réglementation. Cinq guides publiés en V1.0 ; toute autre valeur est rejetée."
-            : "Canonical regulation identifier. Five guides published in V1.0; any other value is rejected."}
+            ? "Identifiant canonique de la réglementation. Cinq guides publiés ; toute autre valeur est rejetée."
+            : "Canonical regulation identifier. Five guides published; any other value is rejected."}
         </Param>
-        <Param name="article" type="string (2-40)" required>
+        <Param name="article" type="string (1-20)" required>
           {fr
-            ? "Référence d’article au format canonique : « Art. 9 », « Art. 14(1) » (AI Act), « Art. 35 » (RGPD), « Art. 28 » (DORA), « Art. 21 » (NIS2), « §6.1 » (ISO 42001). La valeur est validée contre le mapping regulation-articles.json."
-            : "Article reference in canonical format: “Art. 9”, “Art. 14(1)” (AI Act), “Art. 35” (GDPR), “Art. 28” (DORA), “Art. 21” (NIS2), “§6.1” (ISO 42001). The value is validated against the regulation-articles.json mapping."}
+            ? "Numéro de l’article ou de la clause, sans préfixe. Articles couverts : AI Act 9, 10, 12, 13, 14 ; RGPD 5, 22, 25, 30, 35 ; DORA 5, 6, 11, 17, 28 ; NIS2 20, 21, 23 ; ISO 42001 6, 8, 9 et A (annexe A)."
+            : "Article or clause number, without prefix. Covered articles: AI Act 9, 10, 12, 13, 14; GDPR 5, 22, 25, 30, 35; DORA 5, 6, 11, 17, 28; NIS2 20, 21, 23; ISO 42001 6, 8, 9 and A (Annex A)."}
         </Param>
         <Param name="locale" type='"en" | "fr"' defaultValue='"en"'>
           {fr
-            ? "Langue du guide servi. La chaîne de fallback s’applique si la traduction n’est pas publiée."
-            : "Locale of the served guide. Fallback chain applies if the translation is not published."}
+            ? "Langue du titre, du texte et de la note opérationnelle."
+            : "Language of the title, text and operational note."}
         </Param>
       </ParamGroup>
 
       <h2 id="output">{fr ? "Schéma de sortie" : "Output schema"}</h2>
       <p>
         {fr
-          ? "Texte vérifié de l’article + traduction opérationnelle ACF® + pied-de-page signé. Tous les codes (P-XX, D-XX, ACF-XX) sont résolvables via les autres outils READ."
-          : "Verified article text + ACF® operational translation + signed footer. All codes (P-XX, D-XX, ACF-XX) are resolvable via the other READ tools."}
+          ? "Un objet JSON : l’article, son résumé, sa référence officielle et sa traduction ACF®."
+          : "A JSON object: the article, its summary, its official reference and its ACF® translation."}
       </p>
       <ParamGroup>
         <Param name="regulation" type="string">
-          {fr
-            ? "Identifiant canonique de la réglementation interrogée."
-            : "Canonical identifier of the queried regulation."}
-        </Param>
-        <Param name="regulation_label" type="string">
-          {fr
-            ? "Libellé long lisible (« EU AI Act (Regulation 2024/1689) »)."
-            : "Human-readable long label (“EU AI Act (Regulation 2024/1689)”)."}
+          {fr ? "Identifiant de la réglementation demandée." : "Identifier of the requested regulation."}
         </Param>
         <Param name="article" type="string">
-          {fr
-            ? "Référence de l’article telle que reçue."
-            : "Article reference as received."}
+          {fr ? "Numéro de l’article demandé." : "Number of the requested article."}
         </Param>
-        <Param name="article_title" type="string">
-          {fr
-            ? "Titre officiel de l’article (« Human oversight » pour AI Act Art. 14)."
-            : "Official article title (“Human oversight” for AI Act Art. 14)."}
+        <Param name="title" type="string">
+          {fr ? "Intitulé de l’article (« Contrôle humain » pour l’art. 14 de l’AI Act)." : "Article heading (“Human oversight” for AI Act Art. 14)."}
         </Param>
-        <Param name="served_locale" type='"en" | "fr"'>
-          {fr
-            ? "Langue effectivement servie après chaîne de fallback."
-            : "Locale actually served after fallback chain."}
+        <Param name="text" type="string">
+          {fr ? "Résumé de l’article, avec renvoi au texte officiel." : "Summary of the article, with a pointer to the official text."}
         </Param>
-        <Param name="is_fallback" type="boolean">
+        <Param name="mapping" type="{ principles: string[], fiches: string[], operational_note: string }">
           {fr
-            ? "true si la locale demandée n’est pas disponible."
-            : "true if the requested locale is not available."}
+            ? "Traduction ACF® : principes activés (P1 à P4), fiches du toolkit qui l’opérationnalisent et note de mise en œuvre."
+            : "ACF® translation: activated principles (P1 to P4), toolkit cards that operationalise it and implementation note."}
         </Param>
-        <Param name="verified_text" type="string">
-          {fr
-            ? "Texte de l’article tel qu’horodaté dans le snapshot doctrinal. À citer en miroir avec la source officielle."
-            : "Article text as timestamped in the doctrine snapshot. To be cited alongside the official source."}
+        <Param name="source" type="string">
+          {fr ? "Référence officielle (règlement, directive ou norme, et article)." : "Official reference (regulation, directive or standard, and article)."}
         </Param>
         <Param name="applicable_date" type="string (ISO date)">
-          {fr
-            ? "Date d’applicabilité effective (incluant les reports Digital Omnibus pour l’AI Act)."
-            : "Effective applicable date (Digital Omnibus deferrals included for the AI Act)."}
-        </Param>
-        <Param
-          name="acf_translation"
-          type="{ summary, activates_principles[], stresses_dimensions[], operationalised_by_fiches[], autonomy_level_ceiling }"
-        >
-          {fr
-            ? "Lecture opérationnelle ACF®. Chaque entrée des trois tableaux porte un code (P-XX / D-XX / ACF-XX) et un why explicite."
-            : "ACF® operational reading. Each entry in the three arrays carries a code (P-XX / D-XX / ACF-XX) and an explicit why."}
-        </Param>
-        <Param name="doctrine_version" type="string">
-          {fr
-            ? "Version doctrinale figée pour cet appel."
-            : "Doctrine version frozen for this call."}
-        </Param>
-        <Param name="doctrine_hash" type="string">
-          {fr
-            ? "Hash SHA-256 du corpus servi."
-            : "SHA-256 hash of the served corpus."}
-        </Param>
-        <Param name="doctrine_signature" type="string">
-          {fr
-            ? "Signature Ed25519 du hash + version."
-            : "Ed25519 signature of hash + version."}
-        </Param>
-        <Param name="doctrine_archive_url" type="string">
-          {fr
-            ? "URL de l’archive immuable correspondant à doctrine_hash."
-            : "URL of the immutable archive matching doctrine_hash."}
-        </Param>
-        <Param name="generated_at" type="string (ISO-8601)">
-          {fr
-            ? "Horodatage UTC de la réponse."
-            : "UTC timestamp of the response."}
-        </Param>
-        <Param name="disclaimer" type="string">
-          {fr
-            ? "Rappel constant : ce n’est pas un avis juridique."
-            : "Constant reminder: this is not legal advice."}
+          {fr ? "Date d’application de l’article quand elle est connue." : "Date of application of the article when known."}
         </Param>
       </ParamGroup>
 
@@ -282,22 +213,14 @@ export default async function RegulationArticleToolPage({
       <h2 id="errors">{fr ? "Erreurs courantes" : "Common errors"}</h2>
       <ul>
         <li>
-          <code>InvalidEnumValue</code> —{" "}
           {fr
-            ? "regulation hors énumération (ex. \"aiact\", \"rgpd\"). Utilisez \"ai-act\", \"gdpr\", \"dora\", \"nis2\" ou \"iso-42001\"."
-            : "regulation out of enum (e.g. \"aiact\", \"rgpd\"). Use \"ai-act\", \"gdpr\", \"dora\", \"nis2\" or \"iso-42001\"."}
+            ? "« Article ai-act Art. 15 not found. Available articles for ai-act: 9, 10, 12, 13, 14. » : l’article n’est pas couvert, le message liste ceux qui le sont. Passez le numéro seul, sans « Art. »."
+            : "“Article ai-act Art. 15 not found. Available articles for ai-act: 9, 10, 12, 13, 14.”: the article is not covered, the message lists the covered ones. Pass the bare number, without “Art.”."}
         </li>
         <li>
-          <code>ArticleNotMapped</code> —{" "}
           {fr
-            ? "l’article demandé n’est pas dans le mapping regulation-articles.json publié en V1.0. La couverture initiale cible les articles à fort impact agent ; le périmètre s’étend en V1.1."
-            : "the requested article is not in the regulation-articles.json mapping published in V1.0. Initial coverage targets agent-critical articles; scope expands in V1.1."}
-        </li>
-        <li>
-          <code>DoctrineSnapshotMismatch</code> —{" "}
-          {fr
-            ? "le doctrine_hash demandé n’est pas chargé. Mettez acf-mcp à jour ou pointez vers la version archivée."
-            : "the requested doctrine_hash is not loaded. Update acf-mcp or point at the archived version."}
+            ? "Réglementation inconnue : toute valeur hors des cinq identifiants fait échouer la validation des paramètres ; l’erreur JSON-RPC indique le champ regulation."
+            : "Unknown regulation: any value outside the five identifiers fails parameter validation; the JSON-RPC error names the regulation field."}
         </li>
       </ul>
 
@@ -306,17 +229,17 @@ export default async function RegulationArticleToolPage({
         <li>
           <a href={fr ? "/fr/tools/acf.fiche.lookup" : "/tools/acf.fiche.lookup"}>
             <code>acf.fiche.lookup</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
-            ? "lire les fiches listées dans acf_translation.operationalised_by_fiches."
-            : "fetch the cards listed in acf_translation.operationalised_by_fiches."}
+            ? "lire les fiches listées dans mapping.fiches."
+            : "fetch the cards listed in mapping.fiches."}
         </li>
         <li>
           <a href={fr ? "/fr/tools/acf.search" : "/tools/acf.search"}>
             <code>acf.search</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "quand l’article exact n’est pas connu, lancer une recherche textuelle pour le localiser."
             : "when the exact article is unknown, run a text search to locate it."}
@@ -330,8 +253,8 @@ export default async function RegulationArticleToolPage({
             }
           >
             <code>acf.map-ai-act-obligations</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "pour l’AI Act, obtenir l’ensemble exhaustif des articles applicables à un agent qualifié haut risque, pas un seul."
             : "for the AI Act, get the exhaustive set of articles applicable to a high-risk agent, not just one."}

@@ -60,7 +60,7 @@ export default async function FaqPage({
       <p>
         {fr
           ? "Non. La doctrine est versionnée, chaînée par hash et signée Ed25519. Chaque release publie un doctrine_version, un doctrine_hash et une signature. La version courante est exposée par la ressource MCP acf://meta."
-          : "No. The doctrine is versioned, hash-chained and Ed25519-signed. Every release publishes a doctrine_version, a doctrine_hash and a signature. The current version is exposed by the MCP resource acf://meta."}
+          : "No. The doctrine is versioned, hashed and Ed25519-signed. Every release publishes a doctrine_version, a doctrine_hash and a signature. The current version is exposed by the MCP resource acf://meta."}
       </p>
 
       <h2 id="signing">
@@ -72,8 +72,8 @@ export default async function FaqPage({
       </h3>
       <p>
         {fr
-          ? "Trois raisons : (1) compacité — 32 octets pour la clé publique, 64 pour la signature ; (2) vérification en temps constant, ce qui élimine une classe d’attaques par canal auxiliaire ; (3) aucun paramètre suspect (pas de courbe NIST contestée)."
-          : "Three reasons: (1) compactness — 32 bytes public key, 64 bytes signature; (2) constant-time verification, which removes a class of side-channel attacks; (3) no suspect parameters (no contested NIST curve)."}
+          ? "Trois raisons : (1) compacité, 32 octets pour la clé publique, 64 pour la signature ; (2) vérification en temps constant, ce qui élimine une classe d’attaques par canal auxiliaire ; (3) aucun paramètre suspect (pas de courbe NIST contestée)."
+          : "Three reasons: (1) compactness, 32 bytes public key, 64 bytes signature; (2) constant-time verification, which removes a class of side-channel attacks; (3) no suspect parameters (no contested NIST curve)."}
       </p>
 
       <h3 id="q-key-rotation">
@@ -123,31 +123,31 @@ export default async function FaqPage({
       </p>
 
       <h3 id="q-saas">
-        {fr ? "Y a-t-il un SaaS acf-mcp ?" : "Is there a SaaS for acf-mcp?"}
+        {fr ? "Existe-t-il une version hébergée d’acf-mcp ?" : "Is there a hosted version of acf-mcp?"}
       </h3>
       <p>
         {fr
-          ? "Non. Le transport stdio est local-first par construction. Le transport HTTP existe, mais vous l’hébergez derrière votre propre passerelle. Voir la page authentication."
-          : "No. The stdio transport is local-first by construction. The HTTP transport exists, but you host it behind your own gateway. See the authentication page."}
+          ? "Non. acf-mcp est un serveur local, lancé par votre client MCP sur votre poste via npx ; il n’existe pas de point d’accès hébergé. Voir la page Authentification."
+          : "No. acf-mcp is a local server, started by your MCP client on your machine via npx; there is no hosted endpoint. See the Authentication page."}
       </p>
 
       <h3 id="q-self-host-registry">
         {fr
-          ? "Peut-on auto-héberger le registre ?"
-          : "Can I self-host the registry?"}
+          ? "Peut-on conserver sa propre copie de la doctrine ?"
+          : "Can I keep my own copy of the doctrine?"}
       </h3>
       <p>
         {fr ? (
           <>
-            Oui. Mirroir l’archive de doctrine signée et pointez la variable{" "}
-            <code>ACF_DOCTRINE_ARCHIVE_URL</code> vers votre URL. La signature
-            reste valide tant que le fichier n’est pas modifié.
+            Oui pour l’archive : le bundle signé est livré dans le paquet
+            (<code>dist/archive/doctrine-v1.0.json</code>). Copiez-le où vous le
+            souhaitez ; la signature reste valide tant que le fichier n’est pas modifié.
           </>
         ) : (
           <>
-            Yes. Mirror the signed doctrine archive and point the{" "}
-            <code>ACF_DOCTRINE_ARCHIVE_URL</code> variable at your URL. The
-            signature remains valid as long as the file is not modified.
+            Yes for the archive: the signed bundle ships in the package
+            (<code>dist/archive/doctrine-v1.0.json</code>). Copy it wherever you
+            want; the signature stays valid as long as the file is not modified.
           </>
         )}
       </p>
@@ -161,8 +161,8 @@ export default async function FaqPage({
       </h3>
       <p>
         {fr
-          ? "Non. acf-mcp produit une qualification préliminaire opposable. La décision finale appartient au DDAO (Designated Deployer of Autonomous Operations) ou au juriste compétent."
-          : "No. acf-mcp produces a defensible preliminary qualification. The final decision belongs to the DDAO (Designated Deployer of Autonomous Operations) or the competent counsel."}
+          ? "Non. acf-mcp produit une qualification préliminaire. La décision finale appartient au DDAO (Delegated Decision Agent Officer) ou au juriste compétent."
+          : "No. acf-mcp produces a preliminary qualification. The final decision belongs to the DDAO (Delegated Decision Agent Officer) or the competent counsel."}
       </p>
 
       <h3 id="q-custom-tools">
@@ -172,8 +172,8 @@ export default async function FaqPage({
       </h3>
       <p>
         {fr
-          ? "Le serveur est open-source. Fork ou pull request — pas de mécanisme de plugin externe pour préserver le déterminisme et la signature. Voir contributing."
-          : "The server is open-source. Fork or pull request — no external plugin mechanism, to preserve determinism and signing. See contributing."}
+          ? "Le serveur est open-source. Fork ou pull request, pas de mécanisme de plugin externe pour préserver le déterminisme et la signature. Voir contributing."
+          : "The server is open-source. Fork or pull request, no external plugin mechanism, to preserve determinism and signing. See contributing."}
       </p>
 
       <h3 id="q-custom-doctrine">

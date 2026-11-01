@@ -12,23 +12,23 @@ export function GET() {
 
   const body = `# ACF® Developer Documentation
 
-> Official developer documentation for the Agentic Commerce Framework® (ACF®) — the European standard for governing AI agents in production. Covers the acf-mcp Model Context Protocol server, REASON tools, doctrine signatures (Ed25519), and integration with Claude Desktop, Cursor, Windsurf, Continue and Zed.
+> Official developer documentation for the Agentic Commerce Framework® (ACF®), a governance framework for AI agents in production. Covers the acf-mcp Model Context Protocol server, REASON tools, doctrine signatures (Ed25519), and integration with Claude Desktop, Cursor, Windsurf, Continue and Zed.
 
 ## Background
 
-acf-mcp is the official MCP server of the Agentic Commerce Framework® (ACF®), the European standard for agentic governance. It exposes eight deterministic REASON tools (no internal LLM call) and thirty-four signed resources covering the 17 ACF® methodological cards, five regulator guides (EU AI Act, GDPR, DORA, NIS2, ISO/IEC 42001), and a glossary. Every output ships with a cryptographic doctrine signature (Ed25519 over the content hash) and is positioned as preliminary qualification, not legal advice.
+acf-mcp is the official MCP server of the Agentic Commerce Framework® (ACF®), a governance framework for AI agents in production. It exposes 13 tools (8 deterministic REASON tools with no internal LLM call, 5 READ tools) and 79 resources covering the 45 ACF® toolkit cards, 5 regulatory guides (EU AI Act, GDPR, DORA, NIS2, ISO/IEC 42001), the white paper, the toolkit manual, the deck and a glossary. The doctrine is Ed25519-signed over its content hash; every reasoning output carries that hash and signature and is positioned as preliminary qualification, not legal advice. Delegated autonomy is set decision by decision on 4 levels (suggestive, co-decision, supervised autonomous, autonomous); N0 to N3 is the maturity of the agent.
 
-Latest stable version: acf-mcp@1.1.0 (June 2026).
+Latest stable version: acf-mcp@2.0.1 (November 2026).
 MCP registry identity: io.github.acfstandard/acf-mcp.
 Source: https://github.com/acfstandard/acf-mcp.
-Whitepaper: https://github.com/acfstandard/acf-mcp/blob/main/content/whitepaper/fr.md
+White paper: https://acfstandard.com/en/whitepaper
 
 ${sections}
 
 ## Other surfaces
 
 - Vitrine: https://acfstandard.com
-- SaaS: https://compliance.acfstandard.com
+- Compliance platform: https://compliance.acfstandard.com
 - Free diagnostic: https://acf-score.com
 - Source code: https://github.com/acfstandard/acf-mcp
 `;

@@ -19,7 +19,7 @@ export function CodeBlock({
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch {
-      // clipboard not available — fall back to no-op
+      // clipboard not available, fall back to no-op
     }
   };
 

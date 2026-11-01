@@ -17,8 +17,8 @@ export default async function MappingsOverviewPage({
       title={fr ? "Matrice de correspondance" : "Standards mapping matrix"}
       description={
         fr
-          ? "Chaque fiche méthodologique ACF® est cartographiée sur cinq référentiels majeurs : EU AI Act, ISO/IEC 42001, NIST AI RMF, RGPD, COBIT 2019. Le mapping est conservateur — seul l’article principal est cité. La matrice complète, machine-lisible, est exposée par l’outil acf.regulation.article du serveur MCP."
-          : "Every ACF® methodological card is mapped to five major standards: EU AI Act, ISO/IEC 42001, NIST AI RMF, GDPR, COBIT 2019. The mapping is conservative — only the principal article is cited. The full machine-readable matrix is exposed via the acf.regulation.article MCP tool."
+          ? "Chaque fiche méthodologique ACF® est cartographiée sur cinq référentiels majeurs : EU AI Act, ISO/IEC 42001, NIST AI RMF, RGPD, COBIT 2019. Le mapping est conservateur, seul l’article principal est cité. La matrice complète, machine-lisible, est exposée par l’outil acf.regulation.article du serveur MCP."
+          : "Every ACF® methodological card is mapped to five major standards: EU AI Act, ISO/IEC 42001, NIST AI RMF, GDPR, COBIT 2019. The mapping is conservative, only the principal article is cited. The full machine-readable matrix is exposed via the acf.regulation.article MCP tool."
       }
       badge={fr ? "Référence" : "Reference"}
     >
@@ -44,13 +44,13 @@ export default async function MappingsOverviewPage({
       <h2 id="how-to-read">{fr ? "Comment lire la matrice" : "How to read the matrix"}</h2>
       <p>
         {fr
-          ? "La fiche ACF-08 (Registre des Décisions Agentiques) implémente directement l’obligation de l’article 12 de l’EU AI Act sur l’enregistrement automatique des évènements et l’article 26(6) sur la conservation des logs pendant au moins six mois par le déployeur. Côté ISO/IEC 42001, elle relève de la clause 9.1 (monitoring, measurement, analysis, evaluation). Côté NIST AI RMF de la fonction MEASURE-2. Côté RGPD de l’article 30 (registre des activités de traitement). Côté COBIT de l’objectif MEA-01."
-          : "ACF-08 (Agentic Decision Register) directly implements the EU AI Act Art. 12 obligation on automatic event logging and Art. 26(6) on six-month log retention by the deployer. ISO/IEC 42001-side, it falls under clause 9.1 (monitoring, measurement, analysis, evaluation). NIST AI RMF-side, MEASURE-2. GDPR-side, Art. 30 (record of processing activities). COBIT-side, MEA-01."}
+          ? "La fiche ACF-09 (Registre des Décisions Agentiques) implémente directement l’obligation de l’article 12 de l’EU AI Act sur l’enregistrement automatique des évènements et l’article 26(6) sur la conservation des logs pendant au moins six mois par le déployeur. Côté ISO/IEC 42001, elle relève de la clause 9.1 (monitoring, measurement, analysis, evaluation). Côté NIST AI RMF de la fonction MEASURE-2. Côté RGPD de l’article 30 (registre des activités de traitement). Côté COBIT de l’objectif MEA-01."
+          : "ACF-09 (Agentic Decisions Register) directly implements the EU AI Act Art. 12 obligation on automatic event logging and Art. 26(6) on six-month log retention by the deployer. ISO/IEC 42001-side, it falls under clause 9.1 (monitoring, measurement, analysis, evaluation). NIST AI RMF-side, MEASURE-2. GDPR-side, Art. 30 (record of processing activities). COBIT-side, MEA-01."}
       </p>
       <p>
         {fr
-          ? "Une équipe conformité qui déploie ACF-08 produit en même temps les pièces que ces cinq référentiels exigent. C’est l’économie d’échelle que la matrice rend opérationnelle."
-          : "A compliance team that deploys ACF-08 produces, in one motion, the artifacts that all five standards demand. That is the economy of scale the matrix makes operational."}
+          ? "Une équipe conformité qui déploie ACF-09 produit en même temps les pièces que ces cinq référentiels exigent. C’est l’économie d’échelle que la matrice rend opérationnelle."
+          : "A compliance team that deploys ACF-09 produces, in one motion, the artifacts that all five standards demand. That is the economy of scale the matrix makes operational."}
       </p>
 
       <h2 id="api-access">{fr ? "Accès programmatique" : "Programmatic access"}</h2>

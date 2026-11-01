@@ -55,14 +55,14 @@ export default async function ContinuePage({
           <>
             <strong>Continue</strong> est un assistant IA open-source en extension VS
             Code et JetBrains. Le support MCP est <strong>expérimental</strong> et limité
-            à <strong>un seul serveur MCP par configuration</strong> à date — choisissez
+            à <strong>un seul serveur MCP par configuration</strong> à date, choisissez
             acf-mcp s’il s’agit de votre principal serveur de gouvernance.
           </>
         ) : (
           <>
             <strong>Continue</strong> is an open-source AI assistant available as a VS
             Code and JetBrains extension. MCP support is <strong>experimental</strong> and
-            limited to <strong>a single MCP server per configuration</strong> as of today —
+            limited to <strong>a single MCP server per configuration</strong> as of today,
             pick acf-mcp if it is your primary governance server.
           </>
         )}
@@ -105,7 +105,7 @@ export default async function ContinuePage({
           ({fr ? "vérifiez avec" : "check with"} <code>node --version</code>)
         </li>
         <li>
-          <strong>Continue</strong> —{" "}
+          <strong>Continue</strong>{": "}
           <a
             href="https://www.continue.dev"
             target="_blank"

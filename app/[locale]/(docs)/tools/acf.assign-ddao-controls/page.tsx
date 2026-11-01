@@ -20,7 +20,7 @@ const result = await client.callTool({
   arguments: {
     agent_description:
       "Autonomous procurement agent that places purchase orders up to 50k EUR against pre-approved suppliers and writes the result to SAP.",
-    acf_level: "N2",
+    autonomy_level: "supervised_autonomous",
     risk_level: "high",
     budget_constraint: "standard",
     locale: "en",
@@ -46,7 +46,7 @@ async def main():
                         "up to 50k EUR against pre-approved suppliers and writes "
                         "the result to SAP."
                     ),
-                    "acf_level": "N2",
+                    "autonomy_level": "supervised_autonomous",
                     "risk_level": "high",
                     "budget_constraint": "standard",
                     "locale": "en",
@@ -59,57 +59,58 @@ asyncio.run(main())`;
 const RESPONSE_SAMPLE = `{
   "recommended_controls": [
     {
-      "id": "REC-KILL-01",
-      "title": "Per-supplier kill switch",
-      "description": "Operations can suspend orders to any supplier within 5 minutes, no DDAO escalation required.",
-      "owner": "Procurement Ops",
-      "frequency": "on_event",
-      "evidence_storage": "ACF-07 register"
-    },
-    {
-      "id": "REC-CAP-02",
-      "title": "Hard per-order cap at 50k EUR",
-      "description": "Any order > 50k EUR is rejected at the agent layer; > 25k requires DDAO co-sign.",
-      "owner": "Finance + DDAO",
-      "frequency": "on_event",
-      "evidence_storage": "ACF-09 escalation log"
-    },
-    {
-      "id": "REC-DRIFT-03",
-      "title": "Monthly drift review of supplier mix",
-      "description": "Alert if any supplier exceeds 30% of monthly volume vs trailing 6-month baseline.",
-      "owner": "DDAO",
-      "frequency": "monthly",
-      "evidence_storage": "Drift dashboard + DDAO minutes"
-    },
-    {
-      "id": "REC-LOG-04",
-      "title": "Signed decision register",
-      "description": "Every order decision logged with input, supplier choice, rationale, and ed25519 signature.",
-      "owner": "Platform team",
-      "frequency": "on_event",
-      "evidence_storage": "ACF-08 register, 6-month retention"
-    },
-    {
-      "id": "REC-DRILL-05",
-      "title": "Quarterly kill-switch drill",
-      "description": "Simulate a supplier compromise; verify orders are halted in < 5 minutes.",
-      "owner": "Procurement Ops + DDAO",
+      "title": "Formal agent mandate",
+      "description": "Mandate document signed by DDAO defining decision perimeter, escalation thresholds and kill switch.",
+      "owner_role": "ddao",
       "frequency": "quarterly",
-      "evidence_storage": "ACF-07 drill report"
+      "evidence_artifact": "agent-mandate.pdf"
+    },
+    {
+      "title": "Kill switch quarterly drill",
+      "description": "Test the agent freeze/redirect/revoke path on a non-production replay every quarter.",
+      "owner_role": "ciso",
+      "frequency": "quarterly",
+      "evidence_artifact": "drill-report.pdf"
+    },
+    {
+      "title": "Decision register",
+      "description": "Immutable timestamped log of every decision with structured inputs, output, doctrine version.",
+      "owner_role": "ddao",
+      "frequency": "on_event",
+      "evidence_artifact": "decision-register.jsonl"
+    },
+    {
+      "title": "Quarterly risk review",
+      "description": "Review of risk profile, drift metrics and incidents over the quarter.",
+      "owner_role": "ddao",
+      "frequency": "quarterly",
+      "evidence_artifact": "risk-review-minutes.pdf"
     }
   ],
   "ddao_controls": [
-    "C-AUTONOMY-02 — N2 gating: orders 25k-50k EUR require DDAO co-sign before SAP write",
-    "C-LOG-03 — Signed decision register branched to ACF-08, 6-month retention",
-    "C-KILL-01 — Per-supplier kill switch, response time ≤ 5 min, drilled quarterly",
-    "C-DRIFT-02 — Monthly drift dashboard for supplier mix",
-    "C-ESC-04 — DDAO escalation on any single order > 25k EUR or supplier concentration > 30%"
+    {
+      "control_id": "ACF-CTRL-101",
+      "control_type": "preventive",
+      "fiche_reference": "ACF-13",
+      "implementation_note": "Mandate templates calibrated by sector; review frequency tied to criticality."
+    },
+    {
+      "control_id": "ACF-CTRL-102",
+      "control_type": "corrective",
+      "fiche_reference": "ACF-07",
+      "implementation_note": "Kill switch with 3 levels: freeze (instant), redirect (≤5min), revoke (≤1h)."
+    },
+    {
+      "control_id": "ACF-CTRL-103",
+      "control_type": "detective",
+      "fiche_reference": "ACF-09",
+      "implementation_note": "Decision register format aligned with Article 49 register for high-risk systems."
+    }
   ],
-  "total_count": 10,
-  "estimated_total_effort_days": 9,
-  "ddao_summary": "Control set scoped to ACF® N2 / risk=high (5 recommended controls, 5 ACF-canonical controls).",
-  "confidence": "high",
+  "total_count": 7,
+  "estimated_total_effort_days": 7,
+  "ddao_summary": "Control set scoped to ACF® supervised_autonomous / risk=high (4 recommended controls, 3 ACF-canonical controls).",
+  "confidence": "medium",
   "assumptions": [
     "Controls are derived from the canonical level × risk mapping; sector-specific overrides not applied in V1.0."
   ],
@@ -120,19 +121,19 @@ const RESPONSE_SAMPLE = `{
   "requires_human_review": true,
   "rationale_per_rule": [
     {
-      "rule_id": "ddao-mapping.N2-high",
+      "rule_id": "ddao-controls-mapping.supervised_autonomous-high",
       "rule_version": "2026-06",
       "fired": true,
-      "evidence": "level=N2, risk=high"
+      "evidence": "level=supervised_autonomous, risk=high"
     }
   ],
   "doctrine_version": "ACF framework v1.0 / rules 2026-06",
-  "doctrine_hash": "sha256:bf0b6d8e4731ebdc58f6d6338702c5b74af47874cf0ad3dc958cde5c5b30b9dc",
-  "doctrine_signature": "ed25519:…",
-  "doctrine_archive_url": "https://acfstandard.io/doctrine/v1.0/archive.json",
-  "regulatory_snapshot": "EU AI Act 2024/1689 · GDPR 2016/679 · ISO 42001:2023 · NIST AI RMF 1.0 · COBIT 2019 — frozen 2026-06",
-  "generated_at": "2026-06-14T12:03:47.501Z",
-  "disclaimer": "Preliminary qualification only — not legal advice. Human review required."
+  "doctrine_hash": "sha256:119819463363cde0649504ab8ed5a96982fdb8506441f2c5e76e7e3c3feb77f1",
+  "doctrine_signature": "ed25519:3R0oIiqL3Kgd…",
+  "doctrine_archive_url": "https://acfstandard.io/archive/doctrine/v1.0/doctrine-v1.0.json",
+  "regulatory_snapshot": "EU AI Act (Reg. 2024/1689, incl. Digital Omnibus deferral) + GDPR (Reg. 2016/679) + DORA (Reg. 2022/2554) + NIS2 (Dir. 2022/2555) + ISO 42001:2023: as of 2026-06-07",
+  "generated_at": "2026-11-01T12:06:31.046Z",
+  "disclaimer": "Preliminary qualification produced by the ACF® deterministic engine. Not legal advice. Human review required. Do not use for autonomous regulatory decision-making. See doctrine_archive_url for the version of the doctrine used."
 }`;
 
 export default async function AssignDdaoControlsToolPage({
@@ -149,8 +150,8 @@ export default async function AssignDdaoControlsToolPage({
       title="acf.assign-ddao-controls"
       description={
         fr
-          ? "Jeu de contrôles ACF® calé sur le niveau d’autonomie et la classe de risque d’un agent — double vocabulaire (recommended_controls en langage métier + ddao_controls canoniques), effort estimé en jours et propriétaires identifiés."
-          : "ACF® control set scoped to an agent’s autonomy level and risk class — dual vocabulary (plain-English recommended_controls + canonical ddao_controls), estimated effort in days, and identified owners."
+          ? "Jeu de contrôles ACF® calé sur le niveau d’autonomie et la classe de risque d’un agent, double vocabulaire (recommended_controls en langage métier + ddao_controls canoniques), effort estimé en jours et propriétaires identifiés."
+          : "ACF® control set scoped to an agent’s autonomy level and risk class, dual vocabulary (plain-English recommended_controls + canonical ddao_controls), estimated effort in days, and identified owners."
       }
       badge="REASON"
     >
@@ -161,7 +162,7 @@ export default async function AssignDdaoControlsToolPage({
             métier pour le sponsor et l’audit) de <code>ddao_controls</code> (vocabulaire
             canonique ACF® pour le DDAO). Cette dualité est ce qui rend l’assignation
             lisible en interne ET défendable en externe.
-            <code>requires_human_review</code> reste constant — le DDAO valide la cadence
+            <code>requires_human_review</code> reste constant, le DDAO valide la cadence
             réelle avant tout commit.
           </>
         ) : (
@@ -170,7 +171,7 @@ export default async function AssignDdaoControlsToolPage({
             language for sponsor and audit) from <code>ddao_controls</code> (canonical
             ACF® vocabulary for the DDAO). This duality is what makes the assignment
             legible internally AND defensible externally.{" "}
-            <code>requires_human_review</code> stays constant — the DDAO validates the
+            <code>requires_human_review</code> stays constant, the DDAO validates the
             actual cadence before any commit.
           </>
         )}
@@ -179,8 +180,8 @@ export default async function AssignDdaoControlsToolPage({
       <h2 id="when-to-use">{fr ? "Quand l’utiliser" : "When to use"}</h2>
       <p>
         {fr
-          ? "Utilisez cet outil quand un agent a déjà une qualification ACF® (acf_level) et un score de criticité (risk_level), et qu’il faut maintenant la liste exacte des contrôles à imposer — quelles kill switches, quels seuils d’escalade, quels logs, qui possède chaque contrôle, à quelle fréquence il s’exécute. C’est l’étape qui transforme une qualification en plan opérationnel."
-          : "Use this tool when an agent already has an ACF® qualification (acf_level) and a criticality score (risk_level), and you now need the exact list of controls to enforce — what kill switches, what escalation thresholds, what logs, who owns each control, at what cadence it runs. This is the step that turns a qualification into an operational plan."}
+          ? "Utilisez cet outil quand un agent a déjà un niveau d’autonomie déléguée (autonomy_level) et un score de criticité (risk_level), et qu’il faut maintenant la liste exacte des contrôles à imposer, quelles kill switches, quels seuils d’escalade, quels logs, qui possède chaque contrôle, à quelle fréquence il s’exécute. C’est l’étape qui transforme une qualification en plan opérationnel."
+          : "Use this tool when an agent already has a delegated autonomy level (autonomy_level) and a criticality score (risk_level), and you now need the exact list of controls to enforce, what kill switches, what escalation thresholds, what logs, who owns each control, at what cadence it runs. This is the step that turns a qualification into an operational plan."}
       </p>
       <p>
         {fr
@@ -191,8 +192,8 @@ export default async function AssignDdaoControlsToolPage({
       <h2 id="inputs">{fr ? "Paramètres d’entrée" : "Input parameters"}</h2>
       <p>
         {fr
-          ? "Cinq champs, dont trois obligatoires. Le acf_level et le risk_level doivent déjà avoir été tranchés en amont (typiquement par acf.classify-agent ou acf.assess-autonomy)."
-          : "Five fields, three required. The acf_level and risk_level must already be settled upstream (typically by acf.classify-agent or acf.assess-autonomy)."}
+          ? "Cinq champs, dont trois obligatoires. Le autonomy_level et le risk_level doivent déjà avoir été tranchés en amont (typiquement par acf.classify-agent ou acf.assess-autonomy)."
+          : "Five fields, three required. The autonomy_level and risk_level must already be settled upstream (typically by acf.classify-agent or acf.assess-autonomy)."}
       </p>
       <ParamGroup>
         <Param name="agent_description" type="string (10-500)" required>
@@ -200,10 +201,10 @@ export default async function AssignDdaoControlsToolPage({
             ? "Description courte de l’agent. Sert au DDAO summary et au rationale, ne pilote pas le choix des contrôles (c’est level × risk qui le fait)."
             : "Short agent description. Used in the DDAO summary and rationale; does not drive the control selection (that is driven by level × risk)."}
         </Param>
-        <Param name="acf_level" type='"N0" | "N1" | "N2" | "N3"' required>
+        <Param name="autonomy_level" type='"suggestive" | "co_decision" | "supervised_autonomous" | "autonomous"' required>
           {fr
-            ? "Niveau d’autonomie ACF®. N0 = observation pure, N1 = assisté, N2 = délégué borné, N3 = autonome. Pilote la sévérité du jeu de contrôles."
-            : "ACF® autonomy level. N0 = pure observation, N1 = assisted, N2 = bounded delegation, N3 = autonomous. Drives the severity of the control set."}
+            ? "Niveau d’autonomie déléguée pour la décision : suggestif (l’agent suggère, un humain décide), co-décision (l’agent propose, un humain valide), autonome supervisé (l’agent décide sous supervision), autonome (l’agent décide seul dans son mandat). Pilote la sévérité du jeu de contrôles. Renommé depuis acf_level en 2.0.0."
+            : "Delegated autonomy level for the decision: suggestive (the agent suggests, a human decides), co-decision (the agent proposes, a human validates), supervised autonomous (the agent decides under supervision), autonomous (the agent decides alone within its mandate). Drives the severity of the control set. Renamed from acf_level in 2.0.0."}
         </Param>
         <Param
           name="risk_level"
@@ -211,8 +212,8 @@ export default async function AssignDdaoControlsToolPage({
           required
         >
           {fr
-            ? "Classe de risque issue de la matrice ACF-02. Combinée à acf_level, elle détermine la cellule de mapping."
-            : "Risk class from the ACF-02 matrix. Combined with acf_level, it determines the mapping cell."}
+            ? "Classe de risque issue de la Matrice de Criticité (ACF-03). Combinée à autonomy_level, elle détermine la cellule de mapping."
+            : "Risk class from the Criticality Matrix (ACF-03). Combined with autonomy_level, it determines the mapping cell."}
         </Param>
         <Param
           name="budget_constraint"
@@ -232,19 +233,19 @@ export default async function AssignDdaoControlsToolPage({
       <h2 id="output">{fr ? "Schéma de sortie" : "Output schema"}</h2>
       <p>
         {fr
-          ? "La sortie est un objet structuré contenant deux listes parallèles de contrôles, l’effort estimé total et un résumé prêt à coller dans une fiche ACF-12."
-          : "The output is a structured object containing two parallel control lists, the total estimated effort, and a summary ready to paste into an ACF-12 card."}
+          ? "La sortie est un objet structuré contenant deux listes parallèles de contrôles, l’effort estimé total et un résumé prêt à coller dans le mandat (ACF-13)."
+          : "The output is a structured object containing two parallel control lists, the total estimated effort, and a summary ready to paste into the mandate (ACF-13)."}
       </p>
       <ParamGroup>
         <Param name="recommended_controls" type="RecommendedControl[]">
           {fr
-            ? "Contrôles en langage métier — id, title, description, owner, frequency (one_time / monthly / quarterly / annual / on_event), evidence_storage. Coupés à 2 si budget_constraint = minimal."
-            : "Controls in business language — id, title, description, owner, frequency (one_time / monthly / quarterly / annual / on_event), evidence_storage. Trimmed to 2 if budget_constraint = minimal."}
+            ? "Contrôles en langage métier, id, title, description, owner, frequency (one_time / monthly / quarterly / annual / on_event), evidence_storage. Coupés à 2 si budget_constraint = minimal."
+            : "Controls in business language, id, title, description, owner, frequency (one_time / monthly / quarterly / annual / on_event), evidence_storage. Trimmed to 2 if budget_constraint = minimal."}
         </Param>
         <Param name="ddao_controls" type="string[]">
           {fr
-            ? "Mêmes contrôles en vocabulaire canonique ACF® — codes C-AUTONOMY-XX, C-LOG-XX, C-KILL-XX, C-DRIFT-XX, C-ESC-XX. Format prêt à coller dans la fiche DDAO."
-            : "Same controls in canonical ACF® vocabulary — codes C-AUTONOMY-XX, C-LOG-XX, C-KILL-XX, C-DRIFT-XX, C-ESC-XX. Ready to paste into the DDAO card."}
+            ? "Mêmes contrôles en vocabulaire canonique ACF®, codes ACF-CTRL-XXX, chacun rattaché à sa fiche de référence. Format prêt à coller dans le mandat (ACF-13)."
+            : "Same controls in canonical ACF® vocabulary, codes ACF-CTRL-XXX, each tied to its reference card. Ready to paste into the mandate (ACF-13)."}
         </Param>
         <Param name="total_count" type="number">
           {fr
@@ -258,8 +259,8 @@ export default async function AssignDdaoControlsToolPage({
         </Param>
         <Param name="ddao_summary" type="string">
           {fr
-            ? "Phrase de synthèse prête à coller dans la fiche ACF-12 du DDAO."
-            : "Summary sentence ready to paste into the DDAO’s ACF-12 card."}
+            ? "Phrase de synthèse prête à coller dans le mandat (ACF-13) signé par le DDAO."
+            : "Summary sentence ready to paste into the mandate (ACF-13) signed by the DDAO."}
         </Param>
         <Param name="confidence" type='"low" | "medium" | "high"'>
           {fr
@@ -268,13 +269,13 @@ export default async function AssignDdaoControlsToolPage({
         </Param>
         <Param name="assumptions" type="string[]">
           {fr
-            ? "Hypothèses explicites — en V1.0, pas de surcharge sectorielle (un agent banque hérite des mêmes contrôles qu’un agent SaaS pour le même couple level/risk)."
-            : "Explicit assumptions — V1.0 does not yet apply sector-specific overrides (a banking agent inherits the same controls as a SaaS agent for the same level/risk pair)."}
+            ? "Hypothèses explicites, en V1.0, pas de surcharge sectorielle (un agent bancaire hérite des mêmes contrôles qu’un agent de e-commerce pour le même couple niveau/risque)."
+            : "Explicit assumptions: V1.0 does not yet apply sector-specific overrides (a banking agent inherits the same controls as an e-commerce agent for the same level/risk pair)."}
         </Param>
         <Param name="gaps_to_validate" type="string[]">
           {fr
-            ? "Trous à valider par le DDAO — disponibilité réelle pour la cadence proposée, lieu de stockage des preuves."
-            : "Gaps for the DDAO to validate — actual availability for the proposed cadence, evidence-storage location."}
+            ? "Trous à valider par le DDAO, disponibilité réelle pour la cadence proposée, lieu de stockage des preuves."
+            : "Gaps for the DDAO to validate, actual availability for the proposed cadence, evidence-storage location."}
         </Param>
         <Param name="requires_human_review" type="true">
           {fr
@@ -286,8 +287,8 @@ export default async function AssignDdaoControlsToolPage({
       <h2 id="example">{fr ? "Exemple d’appel" : "Example call"}</h2>
       <p>
         {fr
-          ? "Un agent d’achats autonome N2 avec cap à 50k EUR, criticité haute :"
-          : "An autonomous N2 procurement agent capped at 50k EUR, high criticality:"}
+          ? "Un agent d’achats en autonomie supervisée, plafonné à 50k EUR, criticité haute :"
+          : "A supervised autonomous procurement agent capped at 50k EUR, high criticality:"}
       </p>
       <Tabs
         tabs={[
@@ -320,22 +321,14 @@ export default async function AssignDdaoControlsToolPage({
       <h2 id="errors">{fr ? "Erreurs courantes" : "Common errors"}</h2>
       <ul>
         <li>
-          <code>InvalidEnumValue</code> —{" "}
           {fr
-            ? "acf_level reçoit autre chose que N0..N3, ou risk_level autre chose que low / medium / high / critical. L’outil ne devine pas — corrigez vers une valeur canonique."
-            : "acf_level receives something other than N0..N3, or risk_level something other than low / medium / high / critical. The tool does not guess — fix to a canonical value."}
+            ? "Paramètres invalides : autonomy_level hors des 4 niveaux (suggestive, co_decision, supervised_autonomous, autonomous), y compris l’ancien acf_level N0..N3, ou risk_level hors low / medium / high / critical. L’appel échoue avec une erreur JSON-RPC dont le message liste les champs en cause."
+            : "Invalid parameters: autonomy_level outside the 4 levels (suggestive, co_decision, supervised_autonomous, autonomous), including the former acf_level N0..N3, or risk_level outside low / medium / high / critical. The call fails with a JSON-RPC error whose message lists the offending fields."}
         </li>
         <li>
-          <code>InputTooShort</code> —{" "}
           {fr
-            ? "agent_description &lt; 10 caractères. Le DDAO summary n’aurait aucun contexte exploitable — précisez la description."
-            : "agent_description &lt; 10 chars. The DDAO summary would have no usable context — be specific."}
-        </li>
-        <li>
-          <code>MappingNotFound</code> —{" "}
-          {fr
-            ? "le couple (level, risk) n’est pas dans la matrice de mapping chargée. Probablement un mismatch de doctrine — mettez acf-mcp à jour."
-            : "the (level, risk) pair is not in the loaded mapping matrix. Likely a doctrine mismatch — update acf-mcp."}
+            ? "Confiance basse : quand peu de champs de contexte sont fournis, confidence vaut low et assumptions dit ce qui a été supposé. Complétez l’entrée avant de vous appuyer sur le résultat."
+            : "Low confidence: when few context fields are provided, confidence is low and assumptions states what was assumed. Complete the input before relying on the result."}
         </li>
       </ul>
 
@@ -344,11 +337,11 @@ export default async function AssignDdaoControlsToolPage({
         <li>
           <a href={fr ? "/fr/tools/acf.classify-agent" : "/tools/acf.classify-agent"}>
             <code>acf.classify-agent</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
-            ? "obtenir acf_level + risk_level en amont, en un seul appel."
-            : "obtain acf_level + risk_level upstream, in a single call."}
+            ? "obtenir autonomy_level + risk_level en amont, en un seul appel."
+            : "obtain autonomy_level + risk_level upstream, in a single call."}
         </li>
         <li>
           <a
@@ -359,8 +352,8 @@ export default async function AssignDdaoControlsToolPage({
             }
           >
             <code>acf.evaluate-agent-mandate</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "vérifier que les contrôles assignés sont bien repris dans le mandat avant sign-off DDAO."
             : "verify that the assigned controls are actually carried into the mandate before DDAO sign-off."}
@@ -374,8 +367,8 @@ export default async function AssignDdaoControlsToolPage({
             }
           >
             <code>acf.map-ai-act-obligations</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "croiser les contrôles avec les obligations AI Act applicables pour éviter les doublons et les trous."
             : "cross-check controls against applicable AI Act obligations to avoid duplicates and gaps."}

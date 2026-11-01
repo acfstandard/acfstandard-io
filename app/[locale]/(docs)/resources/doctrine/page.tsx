@@ -17,235 +17,166 @@ type Row = {
 const PRINCIPLES: Row[] = [
   {
     uri: "acf://framework/principle/P1",
-    titleEn: "P1 — Decision Sovereignty",
-    titleFr: "P1 — Souveraineté décisionnelle",
+    titleEn: "P1 · Decision Sovereignty",
+    titleFr: "P1 · Souveraineté décisionnelle",
     mime: "application/json",
     locales: "both",
     blurbEn:
-      "The organisation retains ultimate responsibility for every agentic decision, whatever the autonomy level.",
+      "Critical strategic decisions are never delegated to autonomous agents. The organisation keeps ultimate accountability for the decisions its agents take, whatever level of autonomy it delegates to them.",
     blurbFr:
-      "L’organisation garde la responsabilité ultime de chaque décision agentique, quel que soit le niveau d’autonomie.",
+      "Les décisions stratégiques critiques ne sont jamais déléguées à des agents autonomes. L'organisation conserve la responsabilité ultime des décisions prises par ses agents, quel que soit le niveau d'autonomie qu'elle leur délègue.",
   },
   {
     uri: "acf://framework/principle/P2",
-    titleEn: "P2 — Doctrinal Traceability",
-    titleFr: "P2 — Traçabilité doctrinale",
+    titleEn: "P2 · Governance by Design",
+    titleFr: "P2 · Gouvernance par conception",
     mime: "application/json",
     locales: "both",
     blurbEn:
-      "Every automated decision must be reconstructible by pointing to the doctrine, rules and data that produced it.",
+      "Governance frameworks are defined before deployment, not after, and their intensity is proportionate to the criticality of the decisions entrusted to the agent.",
     blurbFr:
-      "Toute décision automatisée doit être reconstituable en pointant la doctrine, les règles et les données qui l’ont produite.",
+      "Les cadres de gouvernance sont définis avant le déploiement, pas après ; leur intensité est proportionnée à la criticité des décisions confiées à l'agent.",
   },
   {
     uri: "acf://framework/principle/P3",
-    titleEn: "P3 — Ultimate Human Control",
-    titleFr: "P3 — Contrôle humain ultime",
+    titleEn: "P3 · Ultimate Human Control",
+    titleFr: "P3 · Contrôle humain ultime",
     mime: "application/json",
     locales: "both",
     blurbEn:
-      "Every autonomous agent ships with a human-takeover mechanism, activatable at any time and calibrated to criticality.",
+      "Every agentic system must preserve the ability for human intervention: a takeover mechanism that can be activated at any time and is calibrated to criticality.",
     blurbFr:
-      "Tout agent autonome embarque un dispositif de reprise humaine activable à tout moment, calibré sur la criticité.",
+      "Tout système agentique doit préserver la capacité d'intervention humaine : un dispositif de reprise activable à tout moment et calibré sur la criticité.",
   },
   {
     uri: "acf://framework/principle/P4",
-    titleEn: "P4 — Proportional Governance",
-    titleFr: "P4 — Proportionnalité de la gouvernance",
+    titleEn: "P4 · Traceable Accountability",
+    titleFr: "P4 · Responsabilité traçable",
     mime: "application/json",
     locales: "both",
     blurbEn:
-      "Control intensity is proportional to the agent’s real autonomy and to the criticality of the decisions it takes.",
+      "Every autonomous action must be auditable and attributable: any decision can be reconstructed after the fact by pointing to the doctrine, rules and data that produced it, and to the person who authorised it.",
     blurbFr:
-      "L’intensité du contrôle est proportionnelle à l’autonomie réelle de l’agent et à la criticité des décisions qu’il prend.",
+      "Chaque action autonome doit pouvoir être auditée et attribuée : toute décision se reconstitue a posteriori en pointant la doctrine, les règles et les données qui l'ont produite ainsi que le responsable qui l'a autorisée.",
   },
 ];
 
 const LEVELS: Row[] = [
   {
-    uri: "acf://framework/autonomy-level/N0",
-    titleEn: "N0 — Assistance",
-    titleFr: "N0 — Assistance",
+    uri: "acf://framework/autonomy-level/suggestive",
+    titleEn: "Suggestive",
+    titleFr: "Suggestif",
     mime: "application/json",
     locales: "both",
     blurbEn:
-      "The agent suggests; the human decides systematically. The human is the kill switch.",
+      "For a given decision, the agent suggests and the human decides. The human keeps hold of every executing action.",
     blurbFr:
-      "L’agent suggère, l’humain décide systématiquement. L’humain est le kill switch.",
+      "Pour une décision donnée, l'agent suggère et l'humain décide. L'humain garde la main sur chaque action exécutoire.",
   },
   {
-    uri: "acf://framework/autonomy-level/N1",
-    titleEn: "N1 — Supervised recommendation",
-    titleFr: "N1 — Recommandation supervisée",
+    uri: "acf://framework/autonomy-level/co_decision",
+    titleEn: "Co-decision",
+    titleFr: "Co-décision",
     mime: "application/json",
     locales: "both",
     blurbEn:
-      "The agent proposes a justified decision. The human validates or rejects on an already-shaped option.",
+      "For a given decision, the agent proposes a reasoned option and the human validates or rejects it. Every executing action goes through human validation, on an already framed option.",
     blurbFr:
-      "L’agent propose une décision argumentée. L’humain valide ou rejette sur une option déjà cadrée.",
+      "Pour une décision donnée, l'agent propose une option argumentée et l'humain valide ou rejette. Chaque action exécutoire passe par une validation humaine, sur une option déjà cadrée.",
   },
   {
-    uri: "acf://framework/autonomy-level/N2",
-    titleEn: "N2 — Conditional execution",
-    titleFr: "N2 — Exécution conditionnelle",
+    uri: "acf://framework/autonomy-level/supervised_autonomous",
+    titleEn: "Supervised autonomous",
+    titleFr: "Autonome supervisé",
     mime: "application/json",
     locales: "both",
     blurbEn:
-      "Bounded autonomous execution. Above mandate thresholds, escalation is mandatory.",
+      "For a given decision, the agent decides and executes within a bounded perimeter, under supervision. Beyond the thresholds defined in the mandate, it must escalate the decision to a human.",
     blurbFr:
-      "Exécution autonome bornée. Au-delà des seuils du mandat, l’escalade est obligatoire.",
+      "Pour une décision donnée, l'agent décide et exécute dans un périmètre borné, sous supervision. Au-delà des seuils définis dans le mandat, il remonte obligatoirement la décision à un humain.",
   },
   {
-    uri: "acf://framework/autonomy-level/N3",
-    titleEn: "N3 — Autonomous execution",
-    titleFr: "N3 — Exécution autonome",
+    uri: "acf://framework/autonomy-level/autonomous",
+    titleEn: "Autonomous",
+    titleFr: "Autonome",
     mime: "application/json",
     locales: "both",
     blurbEn:
-      "Full autonomous execution within mandate; human control remains a posteriori, kill switch stays active.",
+      "For a given decision, the agent decides and executes without prior human validation, within the mandate's perimeter. Human control remains possible after the fact and the stop mechanism remains active.",
     blurbFr:
-      "Exécution autonome dans le périmètre du mandat ; le contrôle humain reste a posteriori, le kill switch reste actif.",
-  },
-];
-
-const DIMENSIONS: Row[] = [
-  {
-    uri: "acf://framework/dimension/D1",
-    titleEn: "D1 — Strategy & governance",
-    titleFr: "D1 — Stratégie & gouvernance",
-    mime: "application/json",
-    locales: "both",
-    blurbEn:
-      "Alignment of agentic AI with business strategy, dedicated governance, executive sponsorship.",
-    blurbFr:
-      "Alignement de l’IA agentique avec la stratégie d’entreprise, gouvernance dédiée, sponsoring exécutif.",
-  },
-  {
-    uri: "acf://framework/dimension/D2",
-    titleEn: "D2 — Doctrine & framework",
-    titleFr: "D2 — Doctrine & cadre",
-    mime: "application/json",
-    locales: "both",
-    blurbEn:
-      "Adoption of a reference framework, published internal doctrine, team training.",
-    blurbFr:
-      "Adoption d’un cadre de référence, publication d’une doctrine interne, formation des équipes.",
-  },
-  {
-    uri: "acf://framework/dimension/D3",
-    titleEn: "D3 — Design & technical control",
-    titleFr: "D3 — Conception & contrôle technique",
-    mime: "application/json",
-    locales: "both",
-    blurbEn:
-      "Secure agent design — mandates, kill switches, observability, foundation-model mastery.",
-    blurbFr:
-      "Conception sécurisée des agents — mandats, kill switches, observabilité, maîtrise des modèles fondation.",
-  },
-  {
-    uri: "acf://framework/dimension/D4",
-    titleEn: "D4 — Accountability & roles",
-    titleFr: "D4 — Responsabilités & rôles",
-    mime: "application/json",
-    locales: "both",
-    blurbEn:
-      "Explicit role definitions (DDAO, DPO, CISO, Compliance, Business) with clear RACI on agentic decisions.",
-    blurbFr:
-      "Définition explicite des rôles (DDAO, DPO, RSSI, Compliance, Business) avec RACI clair sur les décisions agentiques.",
-  },
-  {
-    uri: "acf://framework/dimension/D5",
-    titleEn: "D5 — Regulatory compliance",
-    titleFr: "D5 — Conformité réglementaire",
-    mime: "application/json",
-    locales: "both",
-    blurbEn:
-      "Mastery of AI Act, GDPR, DORA, NIS2, ISO 42001 obligations by sector and jurisdiction.",
-    blurbFr:
-      "Maîtrise des obligations AI Act, RGPD, DORA, NIS2, ISO 42001 selon le secteur et la juridiction.",
-  },
-  {
-    uri: "acf://framework/dimension/D6",
-    titleEn: "D6 — Audit & continuous improvement",
-    titleFr: "D6 — Audit & amélioration continue",
-    mime: "application/json",
-    locales: "both",
-    blurbEn:
-      "Periodic internal audit, incident review, doctrine update cadence.",
-    blurbFr:
-      "Audit interne périodique, revue d’incidents, cadence de mise à jour de la doctrine.",
+      "Pour une décision donnée, l'agent décide et exécute sans validation humaine préalable, dans le périmètre du mandat. Le contrôle humain reste possible a posteriori et le dispositif d'arrêt reste actif.",
   },
 ];
 
 const TOP: Row[] = [
   {
     uri: "acf://whitepaper",
-    titleEn: "ACF® Whitepaper",
-    titleFr: "Whitepaper ACF®",
+    titleEn: "ACF® White paper",
+    titleFr: "Livre blanc ACF®",
     mime: "text/markdown",
     locales: "both",
     blurbEn:
-      "The founding doctrinal document. Served as a single Markdown (V1.0 flat PDF extract; no section anchors).",
+      "The ACF® white paper, same text as the edition published on acfstandard.com.",
     blurbFr:
-      "Le document doctrinal fondateur. Servi en Markdown unique (V1.0 extrait PDF plat ; pas d’ancres de section).",
+      "Le livre blanc ACF®, même texte que l'édition publiée sur acfstandard.com.",
   },
   {
     uri: "acf://framework/ddao",
-    titleEn: "DDAO — Delegated Decision Agent Officer",
-    titleFr: "DDAO — Delegated Decision Agent Officer",
+    titleEn: "DDAO · Delegated Decision Agent Officer",
+    titleFr: "DDAO · Delegated Decision Agent Officer",
     mime: "application/json",
     locales: "both",
     blurbEn:
-      "Canonical definition of the ACF® governance role responsible for autonomous-agent guardianship.",
+      "Definition of the ACF® role that carries accountability for delegated decisions, independent from the team that owns the agent.",
     blurbFr:
-      "Définition canonique du rôle de gouvernance ACF® responsable de la tutelle des agents autonomes.",
+      "Définition du rôle ACF® qui porte la responsabilité des décisions déléguées, indépendant de l'équipe propriétaire de l'agent.",
   },
   {
     uri: "acf://deck",
     titleEn: "ACF® Slide deck",
     titleFr: "Deck de présentation ACF®",
     mime: "text/markdown",
-    locales: "fr-only",
+    locales: "both",
     blurbEn:
-      "Presentation deck for the standard — V1.0 ships the French version; English will follow.",
+      "Introduction deck of the standard (27 slides), extracted from the version published on acfstandard.com.",
     blurbFr:
-      "Deck de présentation du standard — la V1.0 livre la version française ; l’anglaise suivra.",
+      "Deck d'introduction au standard (27 diapositives), extrait de la version publiée sur acfstandard.com.",
   },
 ];
 
 const MANUAL: Row[] = [
   {
     uri: "acf://manual",
-    titleEn: "ACF® Manual — full",
-    titleFr: "Manuel ACF® — complet",
+    titleEn: "ACF® Toolkit manual, full",
+    titleFr: "Manuel du toolkit ACF®, complet",
     mime: "text/markdown",
-    locales: "fr-only",
+    locales: "both",
     blurbEn:
-      "Full pedagogical manual concatenating all 9 parts. Large payload — prefer the TOC + sections for incremental reads.",
+      "The full toolkit manual (331 pages) in one payload. Large: prefer the table of contents and the sections.",
     blurbFr:
-      "Manuel pédagogique complet concaténant les 9 parties. Payload volumineux — préférer la TOC + sections pour des lectures incrémentales.",
+      "Le manuel complet du toolkit (331 pages) en un seul envoi. Volumineux : préférez la table des matières et les sections.",
   },
   {
     uri: "acf://manual/toc",
-    titleEn: "ACF® Manual — table of contents",
-    titleFr: "Manuel ACF® — table des matières",
+    titleEn: "ACF® Toolkit manual, table of contents",
+    titleFr: "Manuel du toolkit ACF®, table des matières",
     mime: "application/json",
-    locales: "fr-only",
+    locales: "both",
     blurbEn:
-      "Structured TOC of the manual — 9 parts with titles, page ranges and section URIs.",
+      "The 14 parts of the manual with their titles, page ranges and section URIs.",
     blurbFr:
-      "TOC structurée du manuel — 9 parties avec titres, intervalles de pages et URIs de section.",
+      "Les 14 parties du manuel avec leurs titres, plages de pages et URI de section.",
   },
   {
-    uri: "acf://manual/section/{1..9}",
-    titleEn: "ACF® Manual — individual section",
-    titleFr: "Manuel ACF® — section individuelle",
+    uri: "acf://manual/section/{1..14}",
+    titleEn: "ACF® Toolkit manual, one part",
+    titleFr: "Manuel du toolkit ACF®, une partie",
     mime: "text/markdown",
-    locales: "fr-only",
+    locales: "both",
     blurbEn:
-      "One of the 9 manual parts. Stable URI; useful for citing a precise passage in an audit reply.",
+      "One of the 14 parts of the manual. Stable URI, useful to quote a precise passage.",
     blurbFr:
-      "Une des 9 parties du manuel. URI stable ; utile pour citer un passage précis dans une réponse d’audit.",
+      "Une des 14 parties du manuel. URI stable, utile pour citer un passage précis.",
   },
 ];
 
@@ -326,11 +257,11 @@ export default async function DoctrineResourcesPage({
 
   return (
     <DocsPage
-      title={fr ? "Ressources — Doctrine" : "Resources — Doctrine"}
+      title={fr ? "Ressources : doctrine" : "Resources: doctrine"}
       description={
         fr
-          ? "Le corpus doctrinal : whitepaper, 4 principes, 4 niveaux d’autonomie, 6 dimensions de maturité, rôle DDAO, manuel pédagogique (9 parties) et deck. Le squelette du standard ACF®."
-          : "The doctrinal corpus: whitepaper, 4 principles, 4 autonomy levels, 6 maturity dimensions, DDAO role, pedagogical manual (9 parts) and deck. The skeleton of the ACF® standard."
+          ? "Le corpus doctrinal : livre blanc, 4 principes, 4 niveaux d’autonomie déléguée, rôle DDAO, glossaire, manuel du toolkit (14 parties) et deck. Le squelette du standard ACF®."
+          : "The doctrinal corpus: white paper, 4 principles, 4 delegated autonomy levels, DDAO role, glossary, toolkit manual (14 parts) and deck. The skeleton of the ACF® standard."
       }
       badge={fr ? "Ressources" : "Resources"}
     >
@@ -340,14 +271,14 @@ export default async function DoctrineResourcesPage({
             Les ressources doctrinales sont la racine de tout : les fiches y
             réfèrent, les guides régulateurs y mappent, et les outils REASON les
             invoquent dans leur rationale. Si un point reste flou, vous lisez
-            vraisemblablement la mauvaise couche — remontez ici.
+            vraisemblablement la mauvaise couche, remontez ici.
           </>
         ) : (
           <>
             Doctrinal resources are the root of everything: the cards reference
             them, the regulator guides map onto them, and REASON tools invoke them
             in their rationale. If something stays unclear, you are likely reading
-            the wrong layer — come back here.
+            the wrong layer, come back here.
           </>
         )}
       </Callout>
@@ -357,8 +288,8 @@ export default async function DoctrineResourcesPage({
       </h2>
       <p>
         {fr
-          ? "Quinze ressources canoniques au total : trois documents narratifs (whitepaper, deck, manuel), quatorze briques structurées (principes, niveaux, dimensions, DDAO). Le manuel se décompose en plus en une table des matières + neuf sections individuellement adressables."
-          : "Fifteen canonical resources in total: three narrative documents (whitepaper, deck, manual), fourteen structured bricks (principles, levels, dimensions, DDAO). The manual additionally breaks down into a TOC plus nine individually addressable sections."}
+          ? "27 ressources : 9 briques structurées en JSON (4 principes, 4 niveaux d’autonomie déléguée, le DDAO), le livre blanc, le deck, et le manuel complet avec sa table des matières et ses 14 parties adressables une à une."
+          : "27 resources: 9 structured JSON bricks (4 principles, 4 delegated autonomy levels, the DDAO), the white paper, the deck, and the full manual with its table of contents and its 14 individually addressable parts."}
       </p>
 
       <h2 id="list">
@@ -375,7 +306,7 @@ export default async function DoctrineResourcesPage({
       <p>
         {fr ? (
           <>
-            See also — outil READ{" "}
+            See also, outil READ{" "}
             <Link href={"/tools/acf.search" as never}>
               <code>acf.search</code>
             </Link>{" "}
@@ -383,7 +314,7 @@ export default async function DoctrineResourcesPage({
           </>
         ) : (
           <>
-            See also — READ tool{" "}
+            See also: READ tool{" "}
             <Link href={"/tools/acf.search" as never}>
               <code>acf.search</code>
             </Link>{" "}
@@ -394,66 +325,42 @@ export default async function DoctrineResourcesPage({
       <ResourceList rows={PRINCIPLES} fr={fr} />
 
       <h3 id="autonomy-levels">
-        {fr ? "Niveaux d’autonomie" : "Autonomy levels"}{" "}
+        {fr ? "Niveaux d’autonomie déléguée" : "Delegated autonomy levels"}{" "}
         <span className="ml-2 font-mono text-base text-gold/70">×4</span>
       </h3>
       <p>
         {fr ? (
           <>
-            See also — outil REASON{" "}
+            See also, outil REASON{" "}
             <Link href={"/tools/acf.assess-autonomy" as never}>
               <code>acf.assess-autonomy</code>
             </Link>{" "}
-            pour qu’un agent recommande un niveau N0–N3 à partir d’un cas
-            d’usage.
+            pour qu’un agent recommande un niveau d’autonomie pour une
+            décision donnée.
           </>
         ) : (
           <>
-            See also — REASON tool{" "}
+            See also: REASON tool{" "}
             <Link href={"/tools/acf.assess-autonomy" as never}>
               <code>acf.assess-autonomy</code>
             </Link>{" "}
-            for an agent to recommend an N0–N3 level from a use case.
+            for an agent to recommend an autonomy level for a given decision.
           </>
         )}
       </p>
       <ResourceList rows={LEVELS} fr={fr} />
 
-      <h3 id="dimensions">
-        {fr ? "Dimensions de maturité" : "Maturity dimensions"}{" "}
-        <span className="ml-2 font-mono text-base text-gold/70">×6</span>
-      </h3>
-      <p>
-        {fr ? (
-          <>
-            See also — outil REASON{" "}
-            <Link href={"/tools/acf.identify-governance-gaps" as never}>
-              <code>acf.identify-governance-gaps</code>
-            </Link>{" "}
-            pour une analyse de gaps cartographiée sur les six dimensions.
-          </>
-        ) : (
-          <>
-            See also — REASON tool{" "}
-            <Link href={"/tools/acf.identify-governance-gaps" as never}>
-              <code>acf.identify-governance-gaps</code>
-            </Link>{" "}
-            for a gap analysis mapped onto the six dimensions.
-          </>
-        )}
-      </p>
-      <ResourceList rows={DIMENSIONS} fr={fr} />
 
       <h3 id="manual">
         {fr ? "Manuel pédagogique" : "Pedagogical manual"}{" "}
         <span className="ml-2 font-mono text-base text-gold/70">
-          {fr ? "× 1 + TOC + 9 sections" : "× 1 + TOC + 9 sections"}
+          {fr ? "× 1 + TOC + 14 sections" : "× 1 + TOC + 14 sections"}
         </span>
       </h3>
       <p>
         {fr
-          ? "La V1.0 ne livre que la version française du manuel. Un client réclamant en (Accept-Language: en) reçoit le contenu français avec is_fallback: true."
-          : "V1.0 only ships the French manual. A client requesting English (Accept-Language: en) receives the French content with is_fallback: true."}
+          ? "Le manuel est servi en français et en anglais, extrait des fichiers publiés sur acfstandard.com."
+          : "The manual is served in French and English, extracted from the files published on acfstandard.com."}
       </p>
       <ResourceList rows={MANUAL} fr={fr} />
 
@@ -462,13 +369,13 @@ export default async function DoctrineResourcesPage({
       </h2>
       <p>
         {fr
-          ? "Les ressources framework retournent du JSON structuré (champs title, summary, doctrine, related_fiches, related_dimensions). Les ressources narratives retournent du Markdown avec un frontmatter served_locale et is_fallback en tête."
-          : "Framework resources return structured JSON (title, summary, doctrine, related_fiches, related_dimensions fields). Narrative resources return Markdown with a served_locale and is_fallback frontmatter at the top."}
+          ? "Les ressources framework retournent du JSON structuré (champs id, code, title, summary, doctrine, related_fiches). Les ressources narratives retournent du Markdown avec un frontmatter served_locale et is_fallback en tête."
+          : "Framework resources return structured JSON (id, code, title, summary, doctrine, related_fiches fields). Narrative resources return Markdown with a served_locale and is_fallback frontmatter at the top."}
       </p>
       <CodeBlock
         language="ts"
         filename="fetch-principle.ts"
-        code={`// Read principle P3 — Ultimate Human Control
+        code={`// Read principle P3: Ultimate Human Control
 const { contents } = await client.readResource({
   uri: "acf://framework/principle/P3",
 });
@@ -480,12 +387,11 @@ const payload = JSON.parse(contents[0].text);
 //   "title": { "fr": "Contrôle humain ultime", "en": "Ultimate Human Control" },
 //   "summary": { "fr": "...", "en": "..." },
 //   "doctrine": { "fr": "...", "en": "..." },
-//   "related_fiches": ["ACF-07", "ACF-09", "ACF-14"],
-//   "related_dimensions": ["D3", "D6"]
+//   "related_fiches": ["ACF-07", "ACF-P6", "ACF-P7"]
 // }
 
 // Read the whitepaper in French
-const wp = await client.readResource({ uri: "acf://whitepaper" });
+const wp = await client.readResource({ uri: "acf://whitepaper?lang=fr" });
 console.log(wp.contents[0].mimeType); // "text/markdown"
 console.log(wp.contents[0].text);     // ---\\nserved_locale: fr\\nis_fallback: false\\n---\\n...`}
       />

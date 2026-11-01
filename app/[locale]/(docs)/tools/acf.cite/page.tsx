@@ -48,30 +48,13 @@ async def main():
 asyncio.run(main())`;
 
 const RESPONSE_SAMPLE = `{
-  "apa": {
-    "citation": "Dorange, V. (2026). Agentic Commerce Framework® (ACF®) — acf://fiche/ACF-04. ACF Standard. https://acfstandard.com/doctrine/v1.0/fiche-ACF-04",
-    "structured": {
-      "author": "Dorange, V.",
-      "year": "2026",
-      "title": "Agentic Commerce Framework® (ACF®) — acf://fiche/ACF-04",
-      "url": "https://acfstandard.com/doctrine/v1.0/fiche-ACF-04"
-    }
-  },
-  "bibtex": {
-    "citation": "@misc{acf-fiche-ACF-04,\\n  author = {Dorange, V.},\\n  title = {Agentic Commerce Framework® (ACF®) — acf://fiche/ACF-04},\\n  year = {2026},\\n  url = {https://acfstandard.com/doctrine/v1.0/fiche-ACF-04}\\n}",
-    "structured": {
-      "author": "Dorange, V.",
-      "year": "2026",
-      "title": "Agentic Commerce Framework® (ACF®) — acf://fiche/ACF-04",
-      "url": "https://acfstandard.com/doctrine/v1.0/fiche-ACF-04"
-    }
-  },
-  "doctrine_version": "ACF framework v1.0 / rules 2026-06",
-  "doctrine_hash": "sha256:bf0b6d8e4731ebdc58f6d6338702c5b74af47874cf0ad3dc958cde5c5b30b9dc",
-  "doctrine_signature": "ed25519:…",
-  "doctrine_archive_url": "https://acfstandard.io/doctrine/v1.0/archive.json",
-  "generated_at": "2026-06-14T11:47:22.318Z",
-  "disclaimer": "Citation is generated from the URI and the frozen doctrine snapshot. Verify the URL resolves before publishing."
+  "citation": "Dorange, V. (2026). Agentic Commerce Framework® (ACF®): acf://fiche/ACF-04. ACF Standard. https://acfstandard.com/toolkit/en/ACF-04_agentic-constitution.pdf",
+  "structured": {
+    "author": "Dorange, V.",
+    "year": "2026",
+    "title": "Agentic Commerce Framework® (ACF®): acf://fiche/ACF-04",
+    "url": "https://acfstandard.com/toolkit/en/ACF-04_agentic-constitution.pdf"
+  }
 }`;
 
 export default async function CiteToolPage({
@@ -88,8 +71,8 @@ export default async function CiteToolPage({
       title="acf.cite"
       description={
         fr
-          ? "Génère une citation académique d’une ressource ACF® dans le style demandé — APA, MLA, Chicago, ISO 690 ou BibTeX. URI en entrée, citation formatée + version structurée en sortie."
-          : "Generates an academic citation of an ACF® resource in the requested style — APA, MLA, Chicago, ISO 690 or BibTeX. URI in, formatted citation + structured version out."
+          ? "Génère une citation académique d’une ressource ACF® dans le style demandé : APA, MLA, Chicago, ISO 690 ou BibTeX. URI en entrée, citation formatée + version structurée en sortie."
+          : "Generates an academic citation of an ACF® resource in the requested style: APA, MLA, Chicago, ISO 690 or BibTeX. URI in, formatted citation + structured version out."
       }
       badge="READ"
     >
@@ -98,7 +81,7 @@ export default async function CiteToolPage({
           <>
             Outil de <strong>lecture</strong>. Aucune inférence : la citation
             est dérivée déterministiquement de l’URI et du snapshot de
-            doctrine signé. Auteur, année, URL — tous ancrés sur la version
+            doctrine signé. Auteur, année, URL, tous ancrés sur la version
             archivée. Utilisez-le pour les thèses, mémoires, dossiers
             réglementaires, papiers académiques.
           </>
@@ -106,7 +89,7 @@ export default async function CiteToolPage({
           <>
             <strong>Read</strong> tool. No inference: the citation is
             deterministically derived from the URI and the signed doctrine
-            snapshot. Author, year, URL — all anchored on the archived
+            snapshot. Author, year, URL, all anchored on the archived
             version. Use it for theses, dissertations, regulatory filings,
             academic papers.
           </>
@@ -116,13 +99,13 @@ export default async function CiteToolPage({
       <h2 id="when-to-use">{fr ? "Quand l’utiliser" : "When to use"}</h2>
       <p>
         {fr
-          ? "Utilisez cet outil quand un livrable doit référencer ACF® de manière formelle : une thèse universitaire, un dossier de conformité soumis à un régulateur, un mémo board, un papier académique. Une citation maison dérive — versions, dates, attributions — et fait perdre la traçabilité. L’outil garantit que toutes les citations d’une même ressource pointent vers la même version figée."
-          : "Use this tool when a deliverable must reference ACF® formally: a university thesis, a compliance filing submitted to a regulator, a board memo, an academic paper. A hand-rolled citation drifts — versions, dates, attribution — and traceability breaks. The tool guarantees that every citation of a given resource points at the same frozen version."}
+          ? "Utilisez cet outil quand un livrable doit référencer ACF® de manière formelle : une thèse universitaire, un dossier de conformité soumis à un régulateur, un mémo board, un papier académique. Une citation maison dérive, versions, dates, attributions, et fait perdre la traçabilité. L’outil garantit que toutes les citations d’une même ressource pointent vers la même version figée."
+          : "Use this tool when a deliverable must reference ACF® formally: a university thesis, a compliance filing submitted to a regulator, a board memo, an academic paper. A hand-rolled citation drifts, versions, dates, attribution, and traceability breaks. The tool guarantees that every citation of a given resource points at the same frozen version."}
       </p>
       <p>
         {fr
-          ? "L’outil renvoie la citation formatée (chaîne prête à copier dans un document) ET sa forme structurée (auteur, année, titre, URL) — utile quand l’outil de gestion bibliographique attend des champs séparés (Zotero, Mendeley, EndNote, OBSIDIAN bibtex, etc.)."
-          : "The tool returns the formatted citation (a string ready to paste into a document) AND its structured form (author, year, title, URL) — useful when the reference manager expects discrete fields (Zotero, Mendeley, EndNote, OBSIDIAN bibtex, etc.)."}
+          ? "L’outil renvoie la citation formatée (chaîne prête à copier dans un document) ET sa forme structurée (auteur, année, titre, URL), utile quand l’outil de gestion bibliographique attend des champs séparés (Zotero, Mendeley, EndNote, OBSIDIAN bibtex, etc.)."
+          : "The tool returns the formatted citation (a string ready to paste into a document) AND its structured form (author, year, title, URL), useful when the reference manager expects discrete fields (Zotero, Mendeley, EndNote, OBSIDIAN bibtex, etc.)."}
       </p>
 
       <h2 id="inputs">{fr ? "Paramètres d’entrée" : "Input parameters"}</h2>
@@ -134,8 +117,8 @@ export default async function CiteToolPage({
       <ParamGroup>
         <Param name="uri" type="string (acf://…)" required>
           {fr
-            ? "URI de la ressource à citer. Exemples : acf://fiche/ACF-04, acf://framework/principle/P1, acf://glossary/DDAO, acf://whitepaper, acf://regulation/ai-act/9."
-            : "URI of the resource to cite. Examples: acf://fiche/ACF-04, acf://framework/principle/P1, acf://glossary/DDAO, acf://whitepaper, acf://regulation/ai-act/9."}
+            ? "URI de la ressource à citer. Exemples : acf://fiche/ACF-04, acf://framework/principle/P1, acf://glossary/DDAO, acf://whitepaper, acf://guide/ai-act."
+            : "URI of the resource to cite. Examples: acf://fiche/ACF-04, acf://framework/principle/P1, acf://glossary/DDAO, acf://whitepaper, acf://guide/ai-act."}
         </Param>
         <Param
           name="style"
@@ -178,8 +161,8 @@ export default async function CiteToolPage({
       <h2 id="example">{fr ? "Exemple d’appel" : "Example call"}</h2>
       <p>
         {fr
-          ? "Citer la fiche ACF-04 (Identité de l’agent) en APA :"
-          : "Citing fiche ACF-04 (Agent Identity) in APA:"}
+          ? "Citer la fiche ACF-04 (Constitution Agentique) en APA :"
+          : "Citing card ACF-04 (Agentic Constitution) in APA:"}
       </p>
       <Tabs
         tabs={[
@@ -205,22 +188,14 @@ export default async function CiteToolPage({
       <h2 id="errors">{fr ? "Erreurs courantes" : "Common errors"}</h2>
       <ul>
         <li>
-          <code>InvalidUriScheme</code> —{" "}
           {fr
-            ? "l’URI ne commence pas par acf://. L’outil n’accepte que des URI ACF® natifs, pas des URL https://."
-            : "the URI does not start with acf://. The tool only accepts native ACF® URIs, not https:// URLs."}
+            ? "« Invalid scheme: expected acf:// » : l’URI ne commence pas par acf://. Récupérez-la depuis acf.search ou resources/list."
+            : "“Invalid scheme: expected acf://”: the URI does not start with acf://. Get it from acf.search or resources/list."}
         </li>
         <li>
-          <code>InvalidEnumValue</code> —{" "}
           {fr
-            ? "style hors liste (« harvard », « vancouver »…). Utilisez une des cinq valeurs canoniques : apa, mla, chicago, iso-690, bibtex."
-            : "style out of list (“harvard”, “vancouver”…). Use one of the five canonical values: apa, mla, chicago, iso-690, bibtex."}
-        </li>
-        <li>
-          <code>DoctrineSnapshotMismatch</code> —{" "}
-          {fr
-            ? "le doctrine_hash demandé n’est pas chargé. Mettez acf-mcp à jour ou pointez vers la version archivée."
-            : "the requested doctrine_hash is not loaded. Update acf-mcp or point at the archived version."}
+            ? "style hors énumération : la validation des paramètres échoue et l’erreur JSON-RPC indique le champ style."
+            : "style outside the enum: parameter validation fails and the JSON-RPC error names the style field."}
         </li>
       </ul>
 
@@ -229,8 +204,8 @@ export default async function CiteToolPage({
         <li>
           <a href={fr ? "/fr/tools/acf.fiche.lookup" : "/tools/acf.fiche.lookup"}>
             <code>acf.fiche.lookup</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "lire la fiche complète avant de la citer."
             : "read the full fiche before citing it."}
@@ -238,8 +213,8 @@ export default async function CiteToolPage({
         <li>
           <a href={fr ? "/fr/tools/acf.glossary.define" : "/tools/acf.glossary.define"}>
             <code>acf.glossary.define</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "définir un terme avant de le citer dans un papier ou un dossier."
             : "define a term before citing it in a paper or filing."}
@@ -247,8 +222,8 @@ export default async function CiteToolPage({
         <li>
           <a href={fr ? "/fr/tools/acf.search" : "/tools/acf.search"}>
             <code>acf.search</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "trouver l’URI canonique d’une ressource à partir d’une requête en langage naturel."
             : "find the canonical URI of a resource from a natural-language query."}

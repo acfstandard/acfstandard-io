@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "*",
         allow: "/",
       },
-      // Explicit allow for AI crawlers — this is a developer documentation
+      // Explicit allow for AI crawlers, this is a developer documentation
       // site whose purpose is to be indexed by both human-readable and
       // machine-readable search.
       { userAgent: "GPTBot", allow: "/" },

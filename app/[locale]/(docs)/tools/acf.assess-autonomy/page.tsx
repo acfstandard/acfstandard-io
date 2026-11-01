@@ -68,26 +68,63 @@ asyncio.run(main())`;
 
 const RESPONSE_SAMPLE = `{
   "recommended_level": {
-    "level": "N2",
-    "rationale": "Partial reversibility with internal audit allows bounded N2 execution within a documented mandate."
+    "level": "supervised_autonomous",
+    "rationale": "Partial reversibility with internal audit allows supervised autonomy within a documented mandate."
   },
   "go_no_go_criteria": [
-    { "criterion": "Mandate signed by the named DDAO", "status": "conditional" },
-    { "criterion": "Kill switch documented and tested", "status": "fail" },
-    { "criterion": "Decision register format defined", "status": "conditional" },
-    { "criterion": "Escalation thresholds named in numeric terms", "status": "fail" },
-    { "criterion": "Sign-off from DPO if PII transits the agent", "status": "conditional" }
+    {
+      "criterion": "Mandate signed by the named DDAO",
+      "status": "conditional"
+    },
+    {
+      "criterion": "Kill switch documented and tested",
+      "status": "fail"
+    },
+    {
+      "criterion": "Decision register format defined",
+      "status": "conditional"
+    },
+    {
+      "criterion": "Escalation thresholds named in numeric terms",
+      "status": "fail"
+    },
+    {
+      "criterion": "Sign-off from DPO if PII transits the agent",
+      "status": "conditional"
+    }
   ],
   "gating_thresholds": [
-    { "condition": "Any action above bounded perimeter", "escalation": "Block + DDAO ack before execution" },
-    { "condition": "Drift > 10% on key metric vs baseline", "escalation": "Auto-suspend within 24h + post-mortem" },
-    { "condition": "3 consecutive incidents in 24h", "escalation": "Auto-suspend + immediate DDAO review" }
+    {
+      "condition": "Any action above bounded perimeter",
+      "escalation": "Block + DDAO ack before execution"
+    },
+    {
+      "condition": "Drift > 10% on key metric vs baseline",
+      "escalation": "Auto-suspend within 24h + post-mortem"
+    },
+    {
+      "condition": "3 consecutive incidents in 24h",
+      "escalation": "Auto-suspend + immediate DDAO review"
+    }
   ],
   "kill_switch_design": {
-    "levels": ["freeze (instant)", "redirect (≤5 min)", "revoke (≤1 h)"],
-    "response_time_s": [5, 300, 3600]
+    "levels": [
+      "freeze (instant)",
+      "redirect (≤5 min)",
+      "revoke (≤1 h)"
+    ],
+    "response_time_s": [
+      5,
+      300,
+      3600
+    ]
   },
-  "referenced_fiches": ["ACF-07", "ACF-09", "ACF-12", "ACF-05"],
+  "referenced_fiches": [
+    "ACF-07",
+    "ACF-P6",
+    "ACF-13",
+    "ACF-09"
+  ],
   "confidence": "medium",
   "assumptions": [
     "Inference is deterministic over the 4 supplied dimensions; sector calibration not included."
@@ -106,12 +143,12 @@ const RESPONSE_SAMPLE = `{
     }
   ],
   "doctrine_version": "ACF framework v1.0 / rules 2026-06",
-  "doctrine_hash": "sha256:bf0b6d8e4731ebdc58f6d6338702c5b74af47874cf0ad3dc958cde5c5b30b9dc",
-  "doctrine_signature": "ed25519:…",
-  "doctrine_archive_url": "https://acfstandard.io/doctrine/v1.0/archive.json",
-  "regulatory_snapshot": "EU AI Act (Reg. 2024/1689, incl. Digital Omnibus deferral) + GDPR (Reg. 2016/679) + DORA (Reg. 2022/2554) + NIS2 (Dir. 2022/2555) + ISO 42001:2023 — as of 2026-06-07",
-  "generated_at": "2026-06-14T11:47:22.318Z",
-  "disclaimer": "Preliminary qualification only — not legal advice. Human review required."
+  "doctrine_hash": "sha256:119819463363cde0649504ab8ed5a96982fdb8506441f2c5e76e7e3c3feb77f1",
+  "doctrine_signature": "ed25519:3R0oIiqL3Kgd…",
+  "doctrine_archive_url": "https://acfstandard.io/archive/doctrine/v1.0/doctrine-v1.0.json",
+  "regulatory_snapshot": "EU AI Act (Reg. 2024/1689, incl. Digital Omnibus deferral) + GDPR (Reg. 2016/679) + DORA (Reg. 2022/2554) + NIS2 (Dir. 2022/2555) + ISO 42001:2023: as of 2026-06-07",
+  "generated_at": "2026-11-01T12:06:31.043Z",
+  "disclaimer": "Preliminary qualification produced by the ACF® deterministic engine. Not legal advice. Human review required. Do not use for autonomous regulatory decision-making. See doctrine_archive_url for the version of the doctrine used."
 }`;
 
 export default async function AssessAutonomyToolPage({
@@ -128,8 +165,8 @@ export default async function AssessAutonomyToolPage({
       title="acf.assess-autonomy"
       description={
         fr
-          ? "Décision d’autonomie isolée : faut-il que l’agent propose, décide ou exécute ? Quatre champs en entrée, un niveau ACF® (N0-N3) en sortie, avec critères go/no-go, seuils de gating, et conception du kill switch."
-          : "Standalone autonomy decision: should the agent propose, decide or execute? Four input fields, one ACF® level (N0-N3) out, with go/no-go criteria, gating thresholds, and kill switch design."
+          ? "Décision d’autonomie isolée : faut-il que l’agent propose, décide ou exécute ? Quatre champs en entrée, un niveau d’autonomie déléguée en sortie (suggestif, co-décision, autonome supervisé ou autonome), avec critères go/no-go, seuils de gating, et conception du kill switch."
+          : "Standalone autonomy decision: should the agent propose, decide or execute? Four input fields, one delegated autonomy level out (suggestive, co-decision, supervised autonomous or autonomous), with go/no-go criteria, gating thresholds, and kill switch design."
       }
       badge="REASON"
     >
@@ -139,7 +176,7 @@ export default async function AssessAutonomyToolPage({
             Évaluation préliminaire fondée sur un arbre de décision déterministe
             à quatre dimensions. <code>requires_human_review</code> vaut toujours{" "}
             <code>true</code>. Les critères go/no-go en sortie ne sont valides
-            qu’après revue humaine — ce n’est pas un verdict de mise en
+            qu’après revue humaine, ce n’est pas un verdict de mise en
             production.
           </>
         ) : (
@@ -147,7 +184,7 @@ export default async function AssessAutonomyToolPage({
             Preliminary assessment based on a deterministic four-dimension
             decision tree. <code>requires_human_review</code> is always{" "}
             <code>true</code>. The go/no-go criteria in the output are only
-            valid after human review — this is not a go-live verdict.
+            valid after human review, this is not a go-live verdict.
           </>
         )}
       </Callout>
@@ -155,8 +192,8 @@ export default async function AssessAutonomyToolPage({
       <h2 id="when-to-use">{fr ? "Quand l’utiliser" : "When to use"}</h2>
       <p>
         {fr
-          ? "Utilisez cet outil quand la seule question qui bloque est : « quel niveau d’autonomie ACF® donner à cet agent ? ». Vous savez déjà ce qu’il fait, vous savez ce qui se passe en cas d’erreur — vous voulez un verdict structuré sur N0/N1/N2/N3 avec critères go/no-go associés. C’est la version chirurgicale de classify-agent quand seul l’axe autonomie est en débat."
-          : "Use this tool when the only blocking question is: “what ACF® autonomy level should this agent have?”. You already know what it does, you know what happens on error — you want a structured verdict on N0/N1/N2/N3 with the associated go/no-go criteria. It is the surgical version of classify-agent when only the autonomy axis is in debate."}
+          ? "Utilisez cet outil quand la seule question qui bloque est : « quel niveau d’autonomie ACF® donner à cet agent ? ». Vous savez déjà ce qu’il fait, vous savez ce qui se passe en cas d’erreur, vous voulez un verdict structuré sur le niveau d’autonomie déléguée (suggestif, co-décision, autonome supervisé, autonome) avec critères go/no-go associés. C’est la version chirurgicale de classify-agent quand seul l’axe autonomie est en débat."
+          : "Use this tool when the only blocking question is: “what ACF® autonomy level should this agent have?”. You already know what it does, you know what happens on error, you want a structured verdict on the delegated autonomy level (suggestive, co-decision, supervised autonomous, autonomous) with the associated go/no-go criteria. It is the surgical version of classify-agent when only the autonomy axis is in debate."}
       </p>
       <p>
         {fr
@@ -178,8 +215,8 @@ export default async function AssessAutonomyToolPage({
         </Param>
         <Param name="intended_actions" type="string[] (1-20)" required>
           {fr
-            ? "Liste des actions prévues. Les verbes comptent — « search », « summari* », « propose », « suggest » poussent vers N0 si l’auditabilité est interne et que la réversibilité est totale."
-            : "List of intended actions. Verbs matter — “search”, “summari*”, “propose”, “suggest” push toward N0 if audit is internal and reversibility is full."}
+            ? "Liste des actions prévues. Les verbes comptent : « search », « summari* », « propose », « suggest » donnent le niveau suggestif quand l’audit est interne et la réversibilité totale."
+            : "List of intended actions. Verbs matter: “search”, “summari*”, “propose”, “suggest” give the suggestive level when audit is internal and reversibility is full."}
         </Param>
         <Param
           name="reversibility"
@@ -187,8 +224,8 @@ export default async function AssessAutonomyToolPage({
           required
         >
           {fr
-            ? "Réversibilité des actions. « irreversible » + audit régulatoire pousse à N2 minimum."
-            : "Reversibility of actions. “irreversible” + regulatory audit pushes to N2 minimum."}
+            ? "Réversibilité des actions. « irreversible » sous audit réglementaire ou forensique garde la décision finale humaine : co-décision au plus."
+            : "Reversibility of actions. “irreversible” under regulatory or forensic audit keeps the final decision human: co-decision at most."}
         </Param>
         <Param
           name="audit_requirements"
@@ -196,16 +233,16 @@ export default async function AssessAutonomyToolPage({
           required
         >
           {fr
-            ? "Niveau d’auditabilité attendu. « regulatory » ou « forensic » pousse à N1 minimum."
-            : "Expected audit level. “regulatory” or “forensic” pushes to N1 minimum."}
+            ? "Niveau d’auditabilité attendu. « regulatory » ou « forensic » plafonne au niveau co-décision : l’agent propose, un humain valide."
+            : "Expected audit level. “regulatory” or “forensic” caps the level at co-decision: the agent proposes, a human validates."}
         </Param>
         <Param
           name="human_in_loop_cost"
           type='"low" | "medium" | "high"'
         >
           {fr
-            ? "Coût humain de la mise en boucle. « high » + actions réversibles + audit absent autorisent N3."
-            : "Cost of keeping a human in the loop. “high” + reversible actions + no audit allow N3."}
+            ? "Coût humain de la mise en boucle. « high » + actions réversibles + aucun audit autorisent le niveau autonome, dans le mandat."
+            : "Cost of keeping a human in the loop. “high” + reversible actions + no audit allow the autonomous level, within the mandate."}
         </Param>
         <Param name="locale" type='"en" | "fr"' defaultValue='"en"'>
           {fr
@@ -223,7 +260,7 @@ export default async function AssessAutonomyToolPage({
       <ParamGroup>
         <Param
           name="recommended_level"
-          type='{ level: "N0"|"N1"|"N2"|"N3", rationale: string }'
+          type='{ level: "suggestive"|"co_decision"|"supervised_autonomous"|"autonomous", rationale: string }'
         >
           {fr
             ? "Niveau ACF® recommandé par l’arbre de décision et sa justification."
@@ -242,8 +279,8 @@ export default async function AssessAutonomyToolPage({
           type='{ condition: string, escalation: string }[]'
         >
           {fr
-            ? "Conditions de blocage et l’escalade associée — directement utilisables dans le mandat ACF-12."
-            : "Blocking conditions and the matching escalation — directly usable in the ACF-12 mandate."}
+            ? "Conditions de blocage et l’escalade associée, directement utilisables dans le mandat (ACF-13)."
+            : "Blocking conditions and the matching escalation, directly usable in the mandate (ACF-13)."}
         </Param>
         <Param
           name="kill_switch_design"
@@ -255,8 +292,8 @@ export default async function AssessAutonomyToolPage({
         </Param>
         <Param name="referenced_fiches" type="string[]">
           {fr
-            ? "Fiches ACF® à mobiliser pour le niveau recommandé (ex. ACF-07, ACF-09, ACF-12)."
-            : "ACF® cards to mobilise for the recommended level (e.g. ACF-07, ACF-09, ACF-12)."}
+            ? "Fiches ACF® à mobiliser pour le niveau recommandé (ex. ACF-07, ACF-P6, ACF-13, ACF-09)."
+            : "ACF® cards to mobilise for the recommended level (e.g. ACF-07, ACF-P6, ACF-13, ACF-09)."}
         </Param>
         <Param name="confidence" type='"low" | "medium" | "high"'>
           {fr
@@ -317,22 +354,14 @@ export default async function AssessAutonomyToolPage({
       <h2 id="errors">{fr ? "Erreurs courantes" : "Common errors"}</h2>
       <ul>
         <li>
-          <code>InvalidEnumValue</code> —{" "}
           {fr
-            ? "reversibility ou audit_requirements reçoit une valeur hors liste (ex. reversibility: \"reversible\"). Corrigez vers une valeur canonique."
-            : "reversibility or audit_requirements receives an out-of-list value (e.g. reversibility: \"reversible\"). Fix to a canonical value."}
+            ? "Paramètres invalides : reversibility, audit_requirements ou human_in_loop_cost hors énumération, ou intended_actions vide. L’appel échoue avec une erreur JSON-RPC dont le message liste les champs en cause."
+            : "Invalid parameters: reversibility, audit_requirements or human_in_loop_cost outside their enums, or empty intended_actions. The call fails with a JSON-RPC error whose message lists the offending fields."}
         </li>
         <li>
-          <code>InputTooShort</code> —{" "}
           {fr
-            ? "agent_description &lt; 10 caractères ou intended_actions vide. L’outil ne devine pas — corrigez l’entrée."
-            : "agent_description &lt; 10 chars or intended_actions empty. The tool does not guess — fix the input."}
-        </li>
-        <li>
-          <code>DoctrineSnapshotMismatch</code> —{" "}
-          {fr
-            ? "le doctrine_hash demandé n’est pas chargé. Mettez acf-mcp à jour ou pointez vers la version archivée."
-            : "the requested doctrine_hash is not loaded. Update acf-mcp or point at the archived version."}
+            ? "Confiance basse : quand peu de champs de contexte sont fournis, confidence vaut low et assumptions dit ce qui a été supposé. Complétez l’entrée avant de vous appuyer sur le résultat."
+            : "Low confidence: when few context fields are provided, confidence is low and assumptions states what was assumed. Complete the input before relying on the result."}
         </li>
       </ul>
 
@@ -341,8 +370,8 @@ export default async function AssessAutonomyToolPage({
         <li>
           <a href={fr ? "/fr/tools/acf.classify-agent" : "/tools/acf.classify-agent"}>
             <code>acf.classify-agent</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "élargir au-delà de la seule décision d’autonomie pour obtenir criticité, rôle régulatoire et sign-offs."
             : "broaden beyond the autonomy decision alone to also get criticality, regulatory role and sign-offs."}
@@ -356,8 +385,8 @@ export default async function AssessAutonomyToolPage({
             }
           >
             <code>acf.assign-ddao-controls</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "transformer le niveau recommandé en contrôles concrets à imposer côté DDAO."
             : "turn the recommended level into concrete controls the DDAO must enforce."}
@@ -371,8 +400,8 @@ export default async function AssessAutonomyToolPage({
             }
           >
             <code>acf.evaluate-agent-mandate</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "auditer un mandat existant à la lumière du niveau d’autonomie recommandé."
             : "audit an existing mandate in the light of the recommended autonomy level."}

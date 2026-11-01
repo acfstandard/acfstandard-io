@@ -1,140 +1,127 @@
+// ACF Sovereignty Score™, as defined by toolkit card ACF-01.
+// Four dependency dimensions, each scored 0-25; the sum (0-100) is a
+// dependence index, the inverse of sovereignty: the higher, the more exposed.
+
 export type Dimension = {
   id: string;
-  weight: number; // 0-1, sums to 1.0 across all dims
   labelEn: string;
   labelFr: string;
-  questionEn: string;
-  questionFr: string;
-  hintEn: string;
-  hintFr: string;
-  ficheRef: string; // ACF-XX
+  definitionEn: string;
+  definitionFr: string;
+  questionsEn: [string, string];
+  questionsFr: [string, string];
 };
+
+export const DIMENSION_MAX = 25;
 
 export const DIMENSIONS: Dimension[] = [
   {
-    id: "identifiability",
-    weight: 0.18,
-    labelEn: "Decision identifiability",
-    labelFr: "Identifiabilité décisionnelle",
-    questionEn:
-      "For every consequential decision the agent makes, can you name — instantly — the human individual or governing body who carries responsibility?",
-    questionFr:
-      "Pour chaque décision à conséquence de l’agent, pouvez-vous nommer — instantanément — la personne ou l’organe humain qui en porte la responsabilité ?",
-    hintEn:
-      "0 = no one is named, 100 = a DDAO is formally designated and reachable for every agent in production.",
-    hintFr:
-      "0 = personne n’est nommée, 100 = un DDAO est formellement désigné et joignable pour chaque agent en production.",
-    ficheRef: "ACF-12",
+    id: "technological",
+    labelEn: "Technological",
+    labelFr: "Technologique",
+    definitionEn: "Actual control over your models, infrastructure and data.",
+    definitionFr: "Maîtrise réelle de vos modèles, de votre infrastructure et de vos données.",
+    questionsEn: [
+      "Would a change of provider (pricing, terms of service, shutdown) paralyze you?",
+      "Does your sensitive data flow outside your control?",
+    ],
+    questionsFr: [
+      "Un changement de fournisseur (prix, CGU, arrêt) vous paralyserait-il ?",
+      "Vos données sensibles transitent-elles hors de votre contrôle ?",
+    ],
   },
   {
-    id: "override",
-    weight: 0.18,
-    labelEn: "Override capability",
-    labelFr: "Capacité d’override",
-    questionEn:
-      "Can a single human override or reverse a specific agent decision in a bounded time (under 1 hour for critical, under 24 hours for non-critical)?",
-    questionFr:
-      "Un humain seul peut-il annuler ou inverser une décision spécifique de l’agent en un temps borné (moins d’1h pour critique, moins de 24h pour non-critique) ?",
-    hintEn:
-      "0 = the agent acts irreversibly on real assets, 100 = every decision is reversible by a single DDAO within SLA.",
-    hintFr:
-      "0 = l’agent agit irréversiblement sur des actifs réels, 100 = toute décision est annulable par un DDAO seul dans le SLA.",
-    ficheRef: "ACF-06",
+    id: "acquisition",
+    labelEn: "Acquisition",
+    labelFr: "Acquisition",
+    definitionEn: "Share of your customers reached through channels you do not own (e.g. marketplaces).",
+    definitionFr: "Part de vos clients qui dépend de canaux que vous ne possédez pas (ex. marketplaces).",
+    questionsEn: [
+      "Does a third-party platform capture the bulk of your customers?",
+      "Would delisting cut you off from the market?",
+    ],
+    questionsFr: [
+      "Une plateforme tierce capte-t-elle l’essentiel de vos clients ?",
+      "Un déréférencement vous couperait-il du marché ?",
+    ],
   },
   {
-    id: "traceability",
-    weight: 0.18,
-    labelEn: "Audit traceability",
-    labelFr: "Traçabilité audit",
-    questionEn:
-      "If a regulator asks for the full reasoning behind a specific decision made last Tuesday at 14:12, can you produce a cryptographically signed trace?",
-    questionFr:
-      "Si un régulateur demande le raisonnement complet d’une décision précise prise mardi dernier à 14h12, pouvez-vous produire une trace cryptographiquement signée ?",
-    hintEn:
-      "0 = no log, 100 = signed register with Ed25519 + hash chain + RFC 3161 timestamping.",
-    hintFr:
-      "0 = aucun journal, 100 = registre signé Ed25519 + chaîne de hachage + horodatage RFC 3161.",
-    ficheRef: "ACF-08",
+    id: "decisional",
+    labelEn: "Decisional",
+    labelFr: "Décisionnelle",
+    definitionEn: "Decisions already delegated to systems without human governance.",
+    definitionFr: "Décisions déjà déléguées à des systèmes sans gouvernance humaine.",
+    questionsEn: [
+      "Are binding decisions being made without review?",
+      "Could you justify a decision made by your AI?",
+    ],
+    questionsFr: [
+      "Des décisions engageantes sont-elles prises sans validation ?",
+      "Sauriez-vous justifier une décision prise par votre IA ?",
+    ],
   },
   {
-    id: "threshold-control",
-    weight: 0.14,
-    labelEn: "Threshold control",
-    labelFr: "Contrôle des seuils",
-    questionEn:
-      "Are the autonomy thresholds (financial caps, action types, recipient lists) controlled by humans via documented governance, not by the agent itself?",
-    questionFr:
-      "Les seuils d’autonomie (plafonds financiers, types d’action, listes de destinataires) sont-ils contrôlés par des humains via une gouvernance documentée, et non par l’agent lui-même ?",
-    hintEn:
-      "0 = the agent sets its own thresholds, 100 = thresholds are signed off by the governance committee and locked.",
-    hintFr:
-      "0 = l’agent fixe ses propres seuils, 100 = les seuils sont validés par le comité de gouvernance et verrouillés.",
-    ficheRef: "ACF-03",
-  },
-  {
-    id: "kill-switch",
-    weight: 0.18,
-    labelEn: "Kill switch effectiveness",
-    labelFr: "Effectivité du kill switch",
-    questionEn:
-      "Is the three-level kill switch tested in production every quarter, with the test result signed into the audit register?",
-    questionFr:
-      "Le kill switch à trois niveaux est-il testé en production chaque trimestre, avec le résultat du test signé dans le registre d’audit ?",
-    hintEn:
-      "0 = a button exists but has never been tested, 100 = L1/L2 drills every quarter, L3 annually, all signed.",
-    hintFr:
-      "0 = un bouton existe mais n’a jamais été testé, 100 = drills L1/L2 chaque trimestre, L3 annuel, tous signés.",
-    ficheRef: "ACF-06",
-  },
-  {
-    id: "drift",
-    weight: 0.14,
-    labelEn: "Drift visibility",
-    labelFr: "Visibilité de la dérive",
-    questionEn:
-      "Are model drift, case-distribution drift, and cost drift observable in real time, with alert thresholds owned by a DDAO?",
-    questionFr:
-      "La dérive du modèle, la dérive de distribution des cas et la dérive de coûts sont-elles observables en temps réel, avec des seuils d’alerte sous la responsabilité d’un DDAO ?",
-    hintEn:
-      "0 = no drift dashboard, 100 = real-time dashboard with DDAO-owned alert thresholds.",
-    hintFr:
-      "0 = aucun tableau de bord de dérive, 100 = dashboard temps réel avec seuils d’alerte sous responsabilité DDAO.",
-    ficheRef: "ACF-11",
+    id: "financial",
+    labelEn: "Financial",
+    labelFr: "Financière",
+    definitionEn: "Concentration of your revenue or funding among a small number of players.",
+    definitionFr: "Concentration de vos revenus ou de votre financement sur peu d’acteurs.",
+    questionsEn: [
+      "Does a single customer or channel account for a critical share of revenue?",
+      "Would its loss threaten business continuity?",
+    ],
+    questionsFr: [
+      "Un seul client ou canal pèse-t-il une part critique du chiffre ?",
+      "Sa perte menacerait-elle la continuité de l’activité ?",
+    ],
   },
 ];
 
-// Sanity check: weights sum to 1.00 (we accept 1.00 ± 0.01 for rounding)
-export function sumOfWeights() {
-  return DIMENSIONS.reduce((s, d) => s + d.weight, 0);
+// Scoring guide printed on ACF-01: count the "yes" answers per dimension.
+export const SCORING_GUIDE: { range: string; en: string; fr: string }[] = [
+  { range: "0-8", en: "none: you retain control", fr: "aucune : vous gardez la main" },
+  { range: "9-16", en: "one: partial dependence", fr: "une seule : dépendance partielle" },
+  { range: "17-25", en: "both: strong dependence", fr: "les deux : dépendance forte" },
+];
+
+// Dependence index: plain sum of the four dimension scores (0-100).
+export function dependenceIndex(answers: Record<string, number>): number {
+  return DIMENSIONS.reduce(
+    (s, d) => s + Math.max(0, Math.min(DIMENSION_MAX, answers[d.id] ?? 0)),
+    0,
+  );
 }
 
-// Compute the composite ACF Sovereignty Score from per-dimension answers (each 0-100).
-export function composite(answers: Record<string, number>): number {
-  const total = DIMENSIONS.reduce((s, d) => {
-    const v = Math.max(0, Math.min(100, answers[d.id] ?? 0));
-    return s + d.weight * v;
-  }, 0);
-  return Math.round(total);
-}
-
-// Bucket the score into a maturity label
-export function bucket(score: number): {
+// The three reading zones printed on ACF-01.
+export function zone(index: number): {
+  band: "controlled" | "moderate" | "critical";
   label: { en: string; fr: string };
-  band: "critical" | "weak" | "fragile" | "controlled" | "sovereign";
+  advice: { en: string; fr: string };
 } {
-  if (score < 20)
-    return { band: "critical", label: { en: "Critical exposure", fr: "Exposition critique" } };
-  if (score < 40)
-    return { band: "weak", label: { en: "Weak sovereignty", fr: "Souveraineté faible" } };
-  if (score < 60)
-    return { band: "fragile", label: { en: "Fragile control", fr: "Contrôle fragile" } };
-  if (score < 80)
+  if (index <= 33)
     return {
       band: "controlled",
-      label: { en: "Controlled sovereignty", fr: "Souveraineté contrôlée" },
+      label: { en: "Sovereignty under control", fr: "Souveraineté maîtrisée" },
+      advice: {
+        en: "Agentification is possible with light-touch governance. Proceed to ACF-02.",
+        fr: "Agentification possible avec une gouvernance légère. Avancez vers ACF-02.",
+      },
+    };
+  if (index <= 66)
+    return {
+      band: "moderate",
+      label: { en: "Moderate exposure", fr: "Exposition modérée" },
+      advice: {
+        en: "Govern and reduce dependencies before expanding agent autonomy.",
+        fr: "Gouvernez et réduisez les dépendances avant d’élargir l’autonomie des agents.",
+      },
     };
   return {
-    band: "sovereign",
-    label: { en: "Full sovereignty", fr: "Souveraineté pleine" },
+    band: "critical",
+    label: { en: "Critical dependence", fr: "Dépendance critique" },
+    advice: {
+      en: "Reduce your exposure before any further automation. Top priority.",
+      fr: "Réduisez l’exposition avant toute nouvelle automatisation. Priorité absolue.",
+    },
   };
 }

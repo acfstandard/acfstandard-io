@@ -1,0 +1,605 @@
+{
+  "schema": "acf-doctrine-manifest/1",
+  "framework_version": "1.0",
+  "rules_version": "2026-06",
+  "content_build": "2026-11-01T12:05:51.719Z",
+  "permanent_archive_url": "https://acfstandard.io/archive/doctrine/v1.0/doctrine-v1.0.json",
+  "content_hash": "sha256:119819463363cde0649504ab8ed5a96982fdb8506441f2c5e76e7e3c3feb77f1",
+  "doctrine_signature": "ed25519:3R0oIiqL3KgdVAemSy4oEprbUZnRWE4OEQQgD+2JnMzKhAL2xrmYjwrwbpkbew0T5B4YKvEYkycWFQ+paADFCQ==",
+  "doctrine_public_key": "MCowBQYDK2VwAyEAojtKfh20SGGV63LMETjZBXRWo2tY0viAYziG/y3/L0s=",
+  "file_count": 148,
+  "files": [
+    {
+      "path": "deck/en.md",
+      "sha256": "sha256:59b3cf2e9cc548920ab67f49892d21bbe2ca33fe8b7e6d38cc6a9a9ad548c74f"
+    },
+    {
+      "path": "deck/fr.md",
+      "sha256": "sha256:e5765d3cf82a621f702917128bb1d21caf212006f27f3e6452f92b72c0a2c73d"
+    },
+    {
+      "path": "fiches/ACF-01.en.md",
+      "sha256": "sha256:25a0ac8123390fb36fd5c8642f24481ccea08104b47b0dba4fa6f156d59a838b"
+    },
+    {
+      "path": "fiches/ACF-01.fr.md",
+      "sha256": "sha256:ec55542064e666243567200b19d9624c5eb22fe5f162f8644d5658f570b6a0d7"
+    },
+    {
+      "path": "fiches/ACF-02.en.md",
+      "sha256": "sha256:ef8ec38415a786c73f3c8168fd0a711cbf5d0e7eaf3431bdb10c27a5dbffe840"
+    },
+    {
+      "path": "fiches/ACF-02.fr.md",
+      "sha256": "sha256:e867f1414e8ce8876c5f0609c7fb75508db59fdfde3a94100eb578aeed76f33b"
+    },
+    {
+      "path": "fiches/ACF-03.en.md",
+      "sha256": "sha256:b47410f4ffa77d3679103b428defbdb29c37a4d63421441dc3c5ae474c5719d7"
+    },
+    {
+      "path": "fiches/ACF-03.fr.md",
+      "sha256": "sha256:ce77b8caa3946b645b624e6fa1fca61cecfeb1061479c1ed80344fb0c6e69cc4"
+    },
+    {
+      "path": "fiches/ACF-04.en.md",
+      "sha256": "sha256:803b8e487d5ceed15e9b88b4f305b4198f359a35c9e07b01be86f3fe028945d1"
+    },
+    {
+      "path": "fiches/ACF-04.fr.md",
+      "sha256": "sha256:cdda20045afe4f5dc7dc1df7b5e045f881f2fc203ccad41cfcb05ad8d9c86c7f"
+    },
+    {
+      "path": "fiches/ACF-05.en.md",
+      "sha256": "sha256:dcc277991eb178c16126b564338e6ca6d781d82d6ba13662eae310d44ac8d29d"
+    },
+    {
+      "path": "fiches/ACF-05.fr.md",
+      "sha256": "sha256:da57c4f357708efee3721c38930bfbc054b24a12c1ad4d70e1107875e5f58151"
+    },
+    {
+      "path": "fiches/ACF-06.en.md",
+      "sha256": "sha256:90bc09972f551b4eb9de46de36a47c73dfbfa02c124ccd25fd760d6614b04a93"
+    },
+    {
+      "path": "fiches/ACF-06.fr.md",
+      "sha256": "sha256:8c0d75d4290d44628f2d7304951398e7fd138d4ac75c1e1ba21e911d31024cfe"
+    },
+    {
+      "path": "fiches/ACF-07.en.md",
+      "sha256": "sha256:b38e3ab2ea3def5dc42ed85ab64a6782f927f801cd9781142a01ed70a92e2dd3"
+    },
+    {
+      "path": "fiches/ACF-07.fr.md",
+      "sha256": "sha256:0d073d5f9a30c1cb80889aab87c07c21806d75d142a21344334551b1caef2533"
+    },
+    {
+      "path": "fiches/ACF-08.en.md",
+      "sha256": "sha256:1681fc208b9e7688e96f158be866499466b7ad4223d2da9a96d26d88e6cbdcbc"
+    },
+    {
+      "path": "fiches/ACF-08.fr.md",
+      "sha256": "sha256:c7268efbc8d59c1bfb9ed335cf26448e4ba7dc9a955aa77f82fc76a85e5bf4cb"
+    },
+    {
+      "path": "fiches/ACF-09.en.md",
+      "sha256": "sha256:17c666d1af9e706ae3602be395b8c377e60d5cd9d4e99b9c82b2612dd20f69b5"
+    },
+    {
+      "path": "fiches/ACF-09.fr.md",
+      "sha256": "sha256:021063eba7cb29032165ea464691fa211df50d5487c36463337e7a017776e280"
+    },
+    {
+      "path": "fiches/ACF-10.en.md",
+      "sha256": "sha256:cda088fd39b1d2d19142f41aa75ffcbc17a98a4369abe2ad7d59bfdd8ba73e7b"
+    },
+    {
+      "path": "fiches/ACF-10.fr.md",
+      "sha256": "sha256:aaee13b562c64b178865ffff176077eae5eda2477a17caa7179d6f0c247b9746"
+    },
+    {
+      "path": "fiches/ACF-11.en.md",
+      "sha256": "sha256:b2c3f64ae2fc7645aaf9efeeacea801d1e217abe535b08b1e6a719a9f85e3ea7"
+    },
+    {
+      "path": "fiches/ACF-11.fr.md",
+      "sha256": "sha256:c58b119a544856113e89ec4c663dfe3950d5fcc6ad5dc1b955a591157676fb81"
+    },
+    {
+      "path": "fiches/ACF-12.en.md",
+      "sha256": "sha256:e923fc418a1f2bcfc92e94400a9abf71a0c6314ddba17509bd3e1819ad301881"
+    },
+    {
+      "path": "fiches/ACF-12.fr.md",
+      "sha256": "sha256:17c3fd38d1f6169e58a1e162ba504b980e9300a9ef00a2341c2761d65f4cd9f7"
+    },
+    {
+      "path": "fiches/ACF-13.en.md",
+      "sha256": "sha256:c1a78bb57191e27dfac3e8069e59ea61bfdb893b74d018584722075cf61e5d0c"
+    },
+    {
+      "path": "fiches/ACF-13.fr.md",
+      "sha256": "sha256:228d45f5b2cd907bcb4a017bbaa1d3d749577b2340124b43fd017d047a0a4b49"
+    },
+    {
+      "path": "fiches/ACF-14.en.md",
+      "sha256": "sha256:f74e7a41834cc5e1e774b2b1fae18c9b84ed62bf2da5916ba1e2a32b2d53d24d"
+    },
+    {
+      "path": "fiches/ACF-14.fr.md",
+      "sha256": "sha256:0157b9865d72a640a0325386398fcf6a2c03de39f1b4efa817cfbd916a5a9569"
+    },
+    {
+      "path": "fiches/ACF-15.en.md",
+      "sha256": "sha256:584244a32f9c68b448b64b0cab57776bf427161101a03f1052f16ec895954abe"
+    },
+    {
+      "path": "fiches/ACF-15.fr.md",
+      "sha256": "sha256:ac2595b6dd57db8565bd37005e169568c02545bc84e90f6039848e92668a9d9c"
+    },
+    {
+      "path": "fiches/ACF-16.en.md",
+      "sha256": "sha256:f6ba3ef9e32b31f712e6eef27c61dc88a66cd591faffd7d64ff8e5e56f474bb9"
+    },
+    {
+      "path": "fiches/ACF-16.fr.md",
+      "sha256": "sha256:01ea0ab219154fd74bae7d58cd183b982c4f158af648e044b673fc7bfad21cb8"
+    },
+    {
+      "path": "fiches/ACF-17.en.md",
+      "sha256": "sha256:7aba54fbf4ca00a3d9255e64b9754f438e3047c6dc53f81b1d9d32d174b6f5d9"
+    },
+    {
+      "path": "fiches/ACF-17.fr.md",
+      "sha256": "sha256:fd7d3067a207345befc41a1657cdd0e29be57bd4e9a6f84a35339f1df19f1950"
+    },
+    {
+      "path": "fiches/ACF-18.en.md",
+      "sha256": "sha256:4ff615c1f30afda577472e7ee1e694fddcc98854c3fc30196f2f034212967bb7"
+    },
+    {
+      "path": "fiches/ACF-18.fr.md",
+      "sha256": "sha256:d25736b127bf0bfdc75ee4eff23919874c14f8a7e983e605f0130fdd0309ac72"
+    },
+    {
+      "path": "fiches/ACF-19.en.md",
+      "sha256": "sha256:1a6578873b06351988a1edb1e71ee0833157a958e6c43afacbf1d78205cfacaf"
+    },
+    {
+      "path": "fiches/ACF-19.fr.md",
+      "sha256": "sha256:4bd2f4e11b398d271c793d10ee4f7fa640b31205afc8990c0dc3f7670e3bbf4f"
+    },
+    {
+      "path": "fiches/ACF-20.en.md",
+      "sha256": "sha256:0a51dc025cd243cf2868f71e7c626cf29cfb2b2a6020fcf28917dc0f1f133b19"
+    },
+    {
+      "path": "fiches/ACF-20.fr.md",
+      "sha256": "sha256:24809228d2de297498cce21b07e6c5cbc0cd9d1b91a8aabdcdc36952e4698967"
+    },
+    {
+      "path": "fiches/ACF-O1.en.md",
+      "sha256": "sha256:aefa0295a984228d2c6f50652b879219b2a56c806f4380ef0b2e7f1a1865e35f"
+    },
+    {
+      "path": "fiches/ACF-O1.fr.md",
+      "sha256": "sha256:1ca3eee089449f0be0f25a6faceffd52cb75abd8d594e7da65c38c59e45f847a"
+    },
+    {
+      "path": "fiches/ACF-O10.en.md",
+      "sha256": "sha256:a8788d953e8e4895db474ea4719d898a1f2ac1ce4973e2583f763d9618ab7133"
+    },
+    {
+      "path": "fiches/ACF-O10.fr.md",
+      "sha256": "sha256:1639087d72a3866d4468ef0f3e87557c30f237dd2280f432f38fd85aebbb682b"
+    },
+    {
+      "path": "fiches/ACF-O2.en.md",
+      "sha256": "sha256:4773339e2323d349bc1842387f81141043bceb9d80ad1bc68148808926c88e62"
+    },
+    {
+      "path": "fiches/ACF-O2.fr.md",
+      "sha256": "sha256:90b353911f6c441053303927fc659e08b7dc720556e7dccdc6fb73c31f741087"
+    },
+    {
+      "path": "fiches/ACF-O3.en.md",
+      "sha256": "sha256:2623f79f652224b3255d29ab3f7b5d8f41d1405e96193468e418d96152bf8aa4"
+    },
+    {
+      "path": "fiches/ACF-O3.fr.md",
+      "sha256": "sha256:51d6f757be84636cec76c1941e8105ae540b803378c4f6c8b4203f51175b07c1"
+    },
+    {
+      "path": "fiches/ACF-O4.en.md",
+      "sha256": "sha256:2a0569a306ec89decc6edb6c5a951309d47d0dfa6715f995d7752a9d7358cb0f"
+    },
+    {
+      "path": "fiches/ACF-O4.fr.md",
+      "sha256": "sha256:341b42030e02432d7ba1b7740d6603799fc6046e0dc0b61f3b3d9fab6e779e69"
+    },
+    {
+      "path": "fiches/ACF-O5.en.md",
+      "sha256": "sha256:91bba91b735874ebafe62ed873faf55f6e2a2f3c30ddf79ddcca2a3860983c47"
+    },
+    {
+      "path": "fiches/ACF-O5.fr.md",
+      "sha256": "sha256:c790d43a0411e866180454ae855c0744b15a1c3f9ac51dfa9df250f52f46ab4c"
+    },
+    {
+      "path": "fiches/ACF-O6.en.md",
+      "sha256": "sha256:e2326a5f5c922f553d30790ba1da1eeb53708a3ddeb05e4fb138576563b99a1e"
+    },
+    {
+      "path": "fiches/ACF-O6.fr.md",
+      "sha256": "sha256:a64366092a3aca08613e0f1990450dcf5039945aa90e5b69b810ee1bb141dac7"
+    },
+    {
+      "path": "fiches/ACF-O7.en.md",
+      "sha256": "sha256:101f226d99e8dd342169c866dcb75a5373696d49ef3a9e2f4874d5a500dca980"
+    },
+    {
+      "path": "fiches/ACF-O7.fr.md",
+      "sha256": "sha256:ad3942ef0fa612a33d6a2e645d77bfd86643a38784f51f52fb3588e4abd11772"
+    },
+    {
+      "path": "fiches/ACF-O8.en.md",
+      "sha256": "sha256:1de0fd6c14d1c111064ee7aa2b300ea12180b24a0cb5ab87c145fd4f5960e644"
+    },
+    {
+      "path": "fiches/ACF-O8.fr.md",
+      "sha256": "sha256:161baf2ce35554ec04ed85c6f4215edec60286eab0222c3a08b63a2bf563eac5"
+    },
+    {
+      "path": "fiches/ACF-O9.en.md",
+      "sha256": "sha256:66401fb2bd001472a6955b56d39566c2141b855c604f5e9c59e1c208eb621090"
+    },
+    {
+      "path": "fiches/ACF-O9.fr.md",
+      "sha256": "sha256:6f2664a8cfab07d59fdb03ccad641f6d2472411ac5db9d6e18f2e42b556eb17a"
+    },
+    {
+      "path": "fiches/ACF-P1.en.md",
+      "sha256": "sha256:eba6bdf1d15686a4008e302e44f7eb68e06b7c73bcc3753d033db02af9687a16"
+    },
+    {
+      "path": "fiches/ACF-P1.fr.md",
+      "sha256": "sha256:06af3be4bddc88f1351e3d5ef58fb3db1ba1e81454d8bfe05b52ca8055ba3eda"
+    },
+    {
+      "path": "fiches/ACF-P10.en.md",
+      "sha256": "sha256:0cb6767754e2aeee10098ae55b986b0ff97458d445f108ae022a25ad92c0ee27"
+    },
+    {
+      "path": "fiches/ACF-P10.fr.md",
+      "sha256": "sha256:f907eabdcdcb7f5f4ddbd19103c594de0d4dccab69d2bec9af2a682e9f7ed514"
+    },
+    {
+      "path": "fiches/ACF-P11.en.md",
+      "sha256": "sha256:ebe1e797a523f6216df982323b87d75653d77fefd283444d1cdef8ed3833a059"
+    },
+    {
+      "path": "fiches/ACF-P11.fr.md",
+      "sha256": "sha256:4bb27aa98ed70cb658b691a2be836460eb4c952fa4453a13d34a26268d5f5a8e"
+    },
+    {
+      "path": "fiches/ACF-P12.en.md",
+      "sha256": "sha256:d97ebdda9e14e77c3743841151505bef64068bd8f4c543bdd6518857f9ae1f83"
+    },
+    {
+      "path": "fiches/ACF-P12.fr.md",
+      "sha256": "sha256:d36531cde23616874fa4b7425bb7bbf042d80a45cc121f361488f686d6dda6ab"
+    },
+    {
+      "path": "fiches/ACF-P13.en.md",
+      "sha256": "sha256:5d85ed8780182bd4ade6c843c2199ad9dcb1ce8db07846ef54c66e70583cb00d"
+    },
+    {
+      "path": "fiches/ACF-P13.fr.md",
+      "sha256": "sha256:7052dde6a059ec2d6d127b974f84f19b6174c244bfbe64ce6b8f1b21cc1a6ca7"
+    },
+    {
+      "path": "fiches/ACF-P14.en.md",
+      "sha256": "sha256:89cee5a9ecd5e431ff244d58ad48d12cd5c1e8b7d1ed43c345c77a63c4323e98"
+    },
+    {
+      "path": "fiches/ACF-P14.fr.md",
+      "sha256": "sha256:99db03a0ba718419c842256ad5d041a6550111093cf9f9fd713643b21c4ece04"
+    },
+    {
+      "path": "fiches/ACF-P15.en.md",
+      "sha256": "sha256:b1e13f70be891316f45e2996ae1327105e1f3a081f209b0cdf2d59708edbe550"
+    },
+    {
+      "path": "fiches/ACF-P15.fr.md",
+      "sha256": "sha256:466b71167ce6c171de58a4ab69c228517fa46f7e27219deba1fb056a616cf910"
+    },
+    {
+      "path": "fiches/ACF-P2.en.md",
+      "sha256": "sha256:6b45cb0c9f2e17d5e9731ed97ea806475bb9c46bdb45e33a99fc7dcfe7ec71b0"
+    },
+    {
+      "path": "fiches/ACF-P2.fr.md",
+      "sha256": "sha256:b6930f033eb626d766ff2394581cc6bc4952922a14c8efecda8c0fe2ccbef72a"
+    },
+    {
+      "path": "fiches/ACF-P3.en.md",
+      "sha256": "sha256:b4bc66f742e4fcfec072c44a60dd80e9e45e9520dbf0584fd569f3d7d2aa8691"
+    },
+    {
+      "path": "fiches/ACF-P3.fr.md",
+      "sha256": "sha256:5b7c23df4c28cdf1db0ac3211779b0019c1eaeffbce022f3f4548af4da833d29"
+    },
+    {
+      "path": "fiches/ACF-P4.en.md",
+      "sha256": "sha256:4631efc0dbcd715679bf9a8d21f8add65e6e8ced29425ea4612b1003d724bfd7"
+    },
+    {
+      "path": "fiches/ACF-P4.fr.md",
+      "sha256": "sha256:6c414467f8dc462e48cbc7b523b4ab87bfc87d3370ddbe3a9c01a22f124f6f0b"
+    },
+    {
+      "path": "fiches/ACF-P5.en.md",
+      "sha256": "sha256:41239520a8a22a7cc4b1a8836104a79975523b5f13935608413e7b90546ef947"
+    },
+    {
+      "path": "fiches/ACF-P5.fr.md",
+      "sha256": "sha256:f10528c8965afcf8d18bafe7b8bc31d3bd8508741f79777adda60460f914786f"
+    },
+    {
+      "path": "fiches/ACF-P6.en.md",
+      "sha256": "sha256:c4fe79e45c6d0a98450e8d31530f00dbe417bf531c5da8cde2976a596af729f7"
+    },
+    {
+      "path": "fiches/ACF-P6.fr.md",
+      "sha256": "sha256:5273d0abed229fc6a8c0267fc314f10b0ea443ccb4a5ef418f53a9ea489d89ee"
+    },
+    {
+      "path": "fiches/ACF-P7.en.md",
+      "sha256": "sha256:7aa8cfd7308eda7d1a85bdd93c1f4d43b814129619c7d4fe27581956e73eb5cd"
+    },
+    {
+      "path": "fiches/ACF-P7.fr.md",
+      "sha256": "sha256:5ed1a8d34261fa75a7706156ad8980d0154ddf4c4095c4a88a60a5dadac3e728"
+    },
+    {
+      "path": "fiches/ACF-P8.en.md",
+      "sha256": "sha256:3b875d82be83d9c974738560edc1c3356fba0369707d3ebdeba826ed36941bfe"
+    },
+    {
+      "path": "fiches/ACF-P8.fr.md",
+      "sha256": "sha256:403b74ceea3e473c2f04e4121e7c9e73e4cf438c00e63c7b2ea1b81c96514cda"
+    },
+    {
+      "path": "fiches/ACF-P9.en.md",
+      "sha256": "sha256:4ed7f1379268550f5eb6bdb53ca0f057641ecf39c544e27de91b6de55d4e98e4"
+    },
+    {
+      "path": "fiches/ACF-P9.fr.md",
+      "sha256": "sha256:9d75771ca582efdf71e1f513c757c2485f93b0b4ae1fc365593b35ec4d6ca121"
+    },
+    {
+      "path": "framework/autonomy-levels.json",
+      "sha256": "sha256:4542f8fc863fbc1d591d5b6992485a0c00c2155aeac1492452d4f76064bcf6c8"
+    },
+    {
+      "path": "framework/ddao.json",
+      "sha256": "sha256:6e135e5ac4d0b26987680c76264306e7add28603d6e6ec51121336814379cda4"
+    },
+    {
+      "path": "framework/principles.json",
+      "sha256": "sha256:31c420006a5b666b4c17ca0265b11d6d49fbcd79a2fca4725d5dde7eea5f2553"
+    },
+    {
+      "path": "glossary/en.json",
+      "sha256": "sha256:0d324f697b1abcbc9cb876b86ec0159210fb180cf34ae4849d64fd18274bee83"
+    },
+    {
+      "path": "glossary/fr.json",
+      "sha256": "sha256:f536fc8a2f0366ccc6f5de9da87a14cd67e77c594d555564bae037f28b3e87ae"
+    },
+    {
+      "path": "guides/ai-act.en.md",
+      "sha256": "sha256:ae2d45e263175cfba2600e0c2dae309fd2b251812b137ce5c969cfab17d551d2"
+    },
+    {
+      "path": "guides/ai-act.fr.md",
+      "sha256": "sha256:b1f0988d184fbf23493a89f5fb904c1a87984be3a4d0188164fdab329ee74618"
+    },
+    {
+      "path": "guides/dora.en.md",
+      "sha256": "sha256:70445c80a937e253270021b284aeef6d338003f07f49ce4cab6ee5a8b2ab0d84"
+    },
+    {
+      "path": "guides/dora.fr.md",
+      "sha256": "sha256:233fcac6e8cf45bab31c2af0f18b8e763e04987fcf9da06db12b8f217eb70082"
+    },
+    {
+      "path": "guides/gdpr.en.md",
+      "sha256": "sha256:522f6c849c017a00c0895a323ae7e81952a9872fe1a4b03fad47af3bbc6ec351"
+    },
+    {
+      "path": "guides/gdpr.fr.md",
+      "sha256": "sha256:b84a58c5097e66d1d570a6568aa8221dc296e87c3c8669f5a1d1c96627d7410d"
+    },
+    {
+      "path": "guides/iso-42001.en.md",
+      "sha256": "sha256:1187c32ee4f57d231d036aeb576179a814ccf630219f126c2708b891535a75ac"
+    },
+    {
+      "path": "guides/iso-42001.fr.md",
+      "sha256": "sha256:2c18daf0e628dd913a68c1dc38c5224e582d7e7dd32439ccc88770e313a12671"
+    },
+    {
+      "path": "guides/nis2.en.md",
+      "sha256": "sha256:61fb0f83d40942b657010498de3b5a3717f480d5b0005b64ec98a32f5ac14d03"
+    },
+    {
+      "path": "guides/nis2.fr.md",
+      "sha256": "sha256:6668f58df9e6d1c2d752df85991f208c8f7882c8d470e89ae29a246eb2e03fc2"
+    },
+    {
+      "path": "guides/regulation-articles.json",
+      "sha256": "sha256:7224ab59d020263135896e223d8185582c061220c3cb126cd63ee3d8a268d509"
+    },
+    {
+      "path": "manual/en/part-01.md",
+      "sha256": "sha256:cb030d6765dc233a1a59eb3669784e2418849a197a52ae0840cea8f8c9768390"
+    },
+    {
+      "path": "manual/en/part-02.md",
+      "sha256": "sha256:1b482b0a5c932782014f92aba8a4c8a8534d89567881137c0444d7785dbc76ae"
+    },
+    {
+      "path": "manual/en/part-03.md",
+      "sha256": "sha256:3257a73b0564e6581dd18e60ab982bdd7c8fe89c88ce363462094a8aa2728863"
+    },
+    {
+      "path": "manual/en/part-04.md",
+      "sha256": "sha256:8f39d3e21af71bb6a7f712c5b7825599c0e273ab1e9a6187029be2f22b26cf9b"
+    },
+    {
+      "path": "manual/en/part-05.md",
+      "sha256": "sha256:0bcfbd0cfa826a45c401b1254b7280cf9b082b080392eaa50265b862de0016eb"
+    },
+    {
+      "path": "manual/en/part-06.md",
+      "sha256": "sha256:31793ef886b92b0f93735da75c83efb96178c1b5c41e14f7b05363fa8f08eecc"
+    },
+    {
+      "path": "manual/en/part-07.md",
+      "sha256": "sha256:0a9e67014c120066713dea98a558366289a5b18b803e5159b4b69f91f1621f9f"
+    },
+    {
+      "path": "manual/en/part-08.md",
+      "sha256": "sha256:dfba830cb2ace7609715277b165bba049b56cf3d7c7b1104e85992e08f75ff76"
+    },
+    {
+      "path": "manual/en/part-09.md",
+      "sha256": "sha256:5b159edd2cb9563ae3c85d333ef3031869c0e9b62ec744e5ed235395873899dd"
+    },
+    {
+      "path": "manual/en/part-10.md",
+      "sha256": "sha256:926a339ad4031dcff0582d28791d9b0885a095c3e1ffa023f2c583a5c7696b00"
+    },
+    {
+      "path": "manual/en/part-11.md",
+      "sha256": "sha256:d82ed45325d07d92ac5d1699856ab72e005f1006d22a12a5876746fa17e71e1c"
+    },
+    {
+      "path": "manual/en/part-12.md",
+      "sha256": "sha256:c93d0b88da7351eed9c6d95e30c29c921b1e3dcfdebdd7b9940038a28d9921da"
+    },
+    {
+      "path": "manual/en/part-13.md",
+      "sha256": "sha256:de20c1ec78fe73d889a4f3917cfce3bb06e482dfe1708742a47bfdc871a2d9ce"
+    },
+    {
+      "path": "manual/en/part-14.md",
+      "sha256": "sha256:a3692b053e8a5e6290f15595855aa38bc72d2f3ef42d689a2eebaa578169d0c9"
+    },
+    {
+      "path": "manual/fr/part-01.md",
+      "sha256": "sha256:0f3525644b68079026d4dafb0bf29fd18fea5f74a37246bb5e8509c9fd791f15"
+    },
+    {
+      "path": "manual/fr/part-02.md",
+      "sha256": "sha256:fa9df40e1ae7d14e6c28bf987d67c9814217b48ede771cb670bdce00ba9bd15f"
+    },
+    {
+      "path": "manual/fr/part-03.md",
+      "sha256": "sha256:863649998ca5dfdf3f6a4bc6a68a09a2919dd2d3f308dd81f4f49e3664d3f437"
+    },
+    {
+      "path": "manual/fr/part-04.md",
+      "sha256": "sha256:9e3aa72f19113f41307561592584585178e606c33140b7a249d234f4ae6aceb3"
+    },
+    {
+      "path": "manual/fr/part-05.md",
+      "sha256": "sha256:0e6e62c1d89b32ef90e7cfca079a106f8baf5a0bd89bc0bb7f89fc6b0ded597c"
+    },
+    {
+      "path": "manual/fr/part-06.md",
+      "sha256": "sha256:60fdb213e2c9b9673717f2b85d3d4008afdea6407488a4e3d26bde5113410011"
+    },
+    {
+      "path": "manual/fr/part-07.md",
+      "sha256": "sha256:c719daebb64f3e720cf4f6a4e42ec1034ad37bb5436249f82861612affc7056d"
+    },
+    {
+      "path": "manual/fr/part-08.md",
+      "sha256": "sha256:0f2e7afef9a0ae0be82b8051184c7ab24651b580e66e15df38b419b2097805c0"
+    },
+    {
+      "path": "manual/fr/part-09.md",
+      "sha256": "sha256:c3715c2e6a62a84915b8ff3efdfe0295d58ade21cff80f7da871141cdbde972e"
+    },
+    {
+      "path": "manual/fr/part-10.md",
+      "sha256": "sha256:c895ceb383490aa297eefddf5810c53802f13af979e8f4ed4b8b02e1cc1ca928"
+    },
+    {
+      "path": "manual/fr/part-11.md",
+      "sha256": "sha256:4abb2b863aaee0cb444a6f7d5f90c0e49ecab86843b6ce3a771761b8e5cdd434"
+    },
+    {
+      "path": "manual/fr/part-12.md",
+      "sha256": "sha256:3b8fe0e80160942fcf8c7e782096ad06b39b8a4d19891fb58bd3882c3049b8fd"
+    },
+    {
+      "path": "manual/fr/part-13.md",
+      "sha256": "sha256:d960c97bd76d6ba546f56c7ef3c83ba98df6503e175f72521207aa85d313c7a9"
+    },
+    {
+      "path": "manual/fr/part-14.md",
+      "sha256": "sha256:37def49b11f2204fa99d35965624739cf0c2dc63a4c03afdfc21b3f6d1cfe9da"
+    },
+    {
+      "path": "rules/ai-act-annex-i.json",
+      "sha256": "sha256:823217b866365a997e0766af12b947c60c294c9f5ca0e35695b8979bfe185e75"
+    },
+    {
+      "path": "rules/ai-act-annex-iii.json",
+      "sha256": "sha256:fadeaab074c87b7b08349efd99a1a7a847bff9680ed22a05d3a6aa98ae45b8e2"
+    },
+    {
+      "path": "rules/ai-act-roles.json",
+      "sha256": "sha256:8b08edfcf19912515ac30cf3c4ec538e8dec0b3ee4e6d9c689f2216f10ed500e"
+    },
+    {
+      "path": "rules/autonomy-inference.json",
+      "sha256": "sha256:f5c6671aeca5c4efb5cc4436d595ca30fc0f2df1b77a6cd6d823d8c62d618c3c"
+    },
+    {
+      "path": "rules/criticality-matrix.json",
+      "sha256": "sha256:a729710018608a2b033787d4aaea713e45b962abea72d311ba03cf148ccc0066"
+    },
+    {
+      "path": "rules/ddao-controls-mapping.json",
+      "sha256": "sha256:273ba0a27a9f69be58728afe25f57dfab329bb7d077f8d59245031f03b2cb926"
+    },
+    {
+      "path": "rules/gdpr-qualification.json",
+      "sha256": "sha256:93be0b5ca3597c4ecb678c9f4d9613aea8f8c287fffc0dae8625dd7e6d65f69d"
+    },
+    {
+      "path": "rules/gpai-triggers.json",
+      "sha256": "sha256:161da42e74cfec383f2dc5b428b18c9b982f0c23a877ec0d88ade4fe5a1f6150"
+    },
+    {
+      "path": "rules/rules-meta.json",
+      "sha256": "sha256:afc990fe5b39937066ef576c6e4b69d453104bc8c1b9c13d57212258e19e7603"
+    },
+    {
+      "path": "rules/sign-off-matrix.json",
+      "sha256": "sha256:a2c5632cdae52d026d0e2909ef686175ba8c32837d44aca3482f930b817ccb65"
+    },
+    {
+      "path": "whitepaper/en.md",
+      "sha256": "sha256:f3647fdaf4083e92a8dfefbecb45b86a3ebfd2029f24c51a61504c34283eba14"
+    },
+    {
+      "path": "whitepaper/fr.md",
+      "sha256": "sha256:27d59b48b9b475a027e3cb21a6c56183d2e4c81126cb1b10e010e5c792ebba9d"
+    }
+  ]
+}

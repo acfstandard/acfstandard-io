@@ -24,7 +24,7 @@ Decision perimeter (allowed): reconcile intra-day settlement breaks under 10k EU
 Forbidden actions: any FX trade, any payment instruction outside the pre-approved counterparty list, any change to the ledger structure.
 Escalation thresholds: any break > 10k EUR, any pattern of 3+ breaks from the same counterparty within 24h.
 Kill switch: Ops can suspend the agent within 2 minutes via the ACF-07 panel. Drilled quarterly.
-Audit log: every action logged with input, decision, signature; 6-month retention in the ACF-08 register.
+Audit log: every action logged with input, decision, signature; 6-month retention in the ACF-09 register.
 Sign-off: DDAO + CISO + Head of Compliance.
 \`;
 
@@ -54,7 +54,7 @@ Decision perimeter (allowed): reconcile intra-day settlement breaks under 10k EU
 Forbidden actions: any FX trade, any payment instruction outside the pre-approved counterparty list, any change to the ledger structure.
 Escalation thresholds: any break > 10k EUR, any pattern of 3+ breaks from the same counterparty within 24h.
 Kill switch: Ops can suspend the agent within 2 minutes via the ACF-07 panel. Drilled quarterly.
-Audit log: every action logged with input, decision, signature; 6-month retention in the ACF-08 register.
+Audit log: every action logged with input, decision, signature; 6-month retention in the ACF-09 register.
 Sign-off: DDAO + CISO + Head of Compliance.
 """
 
@@ -83,7 +83,6 @@ const RESPONSE_SAMPLE = `{
   "verdict": "approve",
   "rationale": "All canonical mandate sections are present; no critical placeholders detected.",
   "strengths": [
-    "Identification du DDAO: present.",
     "Périmètre de décision: present.",
     "Actions interdites: present.",
     "Seuils d'escalade: present.",
@@ -92,13 +91,30 @@ const RESPONSE_SAMPLE = `{
     "Doctrine version: present.",
     "Sign-off: present."
   ],
-  "identified_gaps": [],
-  "required_additions": [],
-  "reference_fiches": ["ACF-03", "ACF-07", "ACF-09", "ACF-12"],
-  "acf_compliance_score": 100,
-  "confidence": "high",
+  "identified_gaps": [
+    {
+      "area": "Identification du DDAO",
+      "severity": "high",
+      "description": "Identification du DDAO missing or insufficient."
+    }
+  ],
+  "required_additions": [
+    {
+      "section": "Identification du DDAO",
+      "suggested_text": "Name an actual DDAO (person or role): placeholders like 'TBD' are not acceptable.",
+      "fiche_reference": "ACF-13"
+    }
+  ],
+  "reference_fiches": [
+    "ACF-04",
+    "ACF-07",
+    "ACF-P6",
+    "ACF-13"
+  ],
+  "acf_compliance_score": 85,
+  "confidence": "low",
   "assumptions": [
-    "Mandate evaluation uses an 8-check canonical baseline — sector-specific extras not yet implemented."
+    "Mandate evaluation uses an 8-check canonical baseline: sector-specific extras not yet implemented."
   ],
   "gaps_to_validate": [
     "Confirm with the DDAO that the named escalation thresholds reflect real organisational SLAs.",
@@ -109,7 +125,7 @@ const RESPONSE_SAMPLE = `{
     {
       "rule_id": "evaluate-mandate.ddao_appointed",
       "rule_version": "2026-06",
-      "fired": true,
+      "fired": false,
       "evidence": "Identification du DDAO check"
     },
     {
@@ -156,12 +172,12 @@ const RESPONSE_SAMPLE = `{
     }
   ],
   "doctrine_version": "ACF framework v1.0 / rules 2026-06",
-  "doctrine_hash": "sha256:bf0b6d8e4731ebdc58f6d6338702c5b74af47874cf0ad3dc958cde5c5b30b9dc",
-  "doctrine_signature": "ed25519:…",
-  "doctrine_archive_url": "https://acfstandard.io/doctrine/v1.0/archive.json",
-  "regulatory_snapshot": "EU AI Act 2024/1689 · GDPR 2016/679 · ISO 42001:2023 · NIST AI RMF 1.0 · COBIT 2019 — frozen 2026-06",
-  "generated_at": "2026-06-14T12:14:52.778Z",
-  "disclaimer": "Preliminary qualification only — not legal advice. Human review required."
+  "doctrine_hash": "sha256:119819463363cde0649504ab8ed5a96982fdb8506441f2c5e76e7e3c3feb77f1",
+  "doctrine_signature": "ed25519:3R0oIiqL3Kgd…",
+  "doctrine_archive_url": "https://acfstandard.io/archive/doctrine/v1.0/doctrine-v1.0.json",
+  "regulatory_snapshot": "EU AI Act (Reg. 2024/1689, incl. Digital Omnibus deferral) + GDPR (Reg. 2016/679) + DORA (Reg. 2022/2554) + NIS2 (Dir. 2022/2555) + ISO 42001:2023: as of 2026-06-07",
+  "generated_at": "2026-11-01T12:06:31.493Z",
+  "disclaimer": "Preliminary qualification produced by the ACF® deterministic engine. Not legal advice. Human review required. Do not use for autonomous regulatory decision-making. See doctrine_archive_url for the version of the doctrine used."
 }`;
 
 export default async function EvaluateAgentMandateToolPage({
@@ -178,8 +194,8 @@ export default async function EvaluateAgentMandateToolPage({
       title="acf.evaluate-agent-mandate"
       description={
         fr
-          ? "Audit préliminaire d’un mandat d’agent existant — huit checks canoniques (DDAO nommé, périmètre, actions interdites, seuils d’escalade, kill switch, registre, version doctrine, sign-off) → verdict approve / approve_with_changes / reject + additions requises."
-          : "Preliminary audit of an existing agent mandate — eight canonical checks (DDAO appointed, perimeter, forbidden actions, escalation thresholds, kill switch, audit log, doctrine version, sign-off) → verdict approve / approve_with_changes / reject + required additions."
+          ? "Audit préliminaire d’un mandat d’agent existant, huit checks canoniques (DDAO nommé, périmètre, actions interdites, seuils d’escalade, kill switch, registre, version doctrine, sign-off) → verdict approve / approve_with_changes / reject + additions requises."
+          : "Preliminary audit of an existing agent mandate, eight canonical checks (DDAO appointed, perimeter, forbidden actions, escalation thresholds, kill switch, audit log, doctrine version, sign-off) → verdict approve / approve_with_changes / reject + required additions."
       }
       badge="REASON"
     >
@@ -190,7 +206,7 @@ export default async function EvaluateAgentMandateToolPage({
             existant, pas un avis juridique. La présence de <code>TBD</code>, «{" "}
             <code>à compléter</code> » ou <code>???</code> dans le texte abaisse
             automatiquement le score de 20 points et classe le mandat «{" "}
-            <code>non signable</code> » — c’est par design.{" "}
+            <code>non signable</code> », c’est par design.{" "}
             <code>requires_human_review</code> reste constant.
           </>
         ) : (
@@ -199,7 +215,7 @@ export default async function EvaluateAgentMandateToolPage({
             mandate, not legal advice. Presence of <code>TBD</code>, “{" "}
             <code>à compléter</code>” or <code>???</code> in the text automatically
             drops the score by 20 points and classes the mandate as “{" "}
-            <code>not signable</code>” — by design. <code>requires_human_review</code>{" "}
+            <code>not signable</code>”, by design. <code>requires_human_review</code>{" "}
             stays constant.
           </>
         )}
@@ -208,8 +224,8 @@ export default async function EvaluateAgentMandateToolPage({
       <h2 id="when-to-use">{fr ? "Quand l’utiliser" : "When to use"}</h2>
       <p>
         {fr
-          ? "Utilisez cet outil quand un mandat d’agent a déjà été rédigé — par une équipe métier, un cabinet, un DDAO — et qu’il faut le passer au filtre ACF® avant signature ou inspection. L’outil applique huit checks regex canoniques sur le texte et calcule un score de conformité 0-100 pondéré, puis tranche en approve / approve_with_changes / reject."
-          : "Use this tool when an agent mandate has already been drafted — by a business team, a law firm, a DDAO — and you need to filter it through ACF® before signature or inspection. The tool applies eight canonical regex checks on the text and computes a weighted 0-100 compliance score, then rules approve / approve_with_changes / reject."}
+          ? "Utilisez cet outil quand un mandat d’agent a déjà été rédigé, par une équipe métier, un cabinet, un DDAO, et qu’il faut le passer au filtre ACF® avant signature ou inspection. L’outil applique huit checks regex canoniques sur le texte et calcule un score de conformité 0-100 pondéré, puis tranche en approve / approve_with_changes / reject."
+          : "Use this tool when an agent mandate has already been drafted, by a business team, a law firm, a DDAO, and you need to filter it through ACF® before signature or inspection. The tool applies eight canonical regex checks on the text and computes a weighted 0-100 compliance score, then rules approve / approve_with_changes / reject."}
       </p>
       <p>
         {fr
@@ -220,8 +236,8 @@ export default async function EvaluateAgentMandateToolPage({
       <h2 id="inputs">{fr ? "Paramètres d’entrée" : "Input parameters"}</h2>
       <p>
         {fr
-          ? "Quatre champs, dont deux obligatoires. Le mandate_text est passé brut à l’évaluateur — pas de pré-nettoyage côté outil."
-          : "Four fields, two required. The mandate_text is passed raw to the evaluator — no upstream cleaning by the tool."}
+          ? "Quatre champs, dont deux obligatoires. Le mandate_text est passé brut à l’évaluateur, pas de pré-nettoyage côté outil."
+          : "Four fields, two required. The mandate_text is passed raw to the evaluator, no upstream cleaning by the tool."}
       </p>
       <ParamGroup>
         <Param name="mandate_text" type="string (50-10000)" required>
@@ -289,8 +305,8 @@ export default async function EvaluateAgentMandateToolPage({
         </Param>
         <Param name="reference_fiches" type="string[]">
           {fr
-            ? "Fiches ACF® systématiquement mobilisées par cette évaluation (ACF-03, ACF-07, ACF-09, ACF-12)."
-            : "ACF® cards systematically mobilised by this evaluation (ACF-03, ACF-07, ACF-09, ACF-12)."}
+            ? "Fiches ACF® systématiquement mobilisées par cette évaluation (ACF-04, ACF-07, ACF-P6, ACF-13)."
+            : "ACF® cards systematically mobilised by this evaluation (ACF-04, ACF-07, ACF-P6, ACF-13)."}
         </Param>
         <Param name="acf_compliance_score" type="number (0-100)">
           {fr
@@ -309,13 +325,13 @@ export default async function EvaluateAgentMandateToolPage({
         </Param>
         <Param name="gaps_to_validate" type="string[]">
           {fr
-            ? "Trous à valider avec le DDAO — SLA réels d’escalade, exécution effective du drill kill switch."
-            : "Gaps to validate with the DDAO — actual escalation SLAs, actual execution of the kill-switch drill."}
+            ? "Trous à valider avec le DDAO : SLA réels d’escalade, exécution effective du drill kill switch."
+            : "Gaps to validate with the DDAO, actual escalation SLAs, actual execution of the kill-switch drill."}
         </Param>
         <Param name="requires_human_review" type="true">
           {fr
-            ? "Constant. Aucun appel ne retourne false — même un verdict approve impose la signature humaine."
-            : "Constant. No call returns false — even an approve verdict requires a human signature."}
+            ? "Constant. Aucun appel ne retourne false, même un verdict approve impose la signature humaine."
+            : "Constant. No call returns false, even an approve verdict requires a human signature."}
         </Param>
       </ParamGroup>
 
@@ -356,22 +372,14 @@ export default async function EvaluateAgentMandateToolPage({
       <h2 id="errors">{fr ? "Erreurs courantes" : "Common errors"}</h2>
       <ul>
         <li>
-          <code>InputTooShort</code> —{" "}
           {fr
-            ? "mandate_text &lt; 50 caractères ou agent_purpose &lt; 10 caractères. Un mandat aussi court ne contient pas les huit sections canoniques — rédigez ou rejetez."
-            : "mandate_text &lt; 50 chars or agent_purpose &lt; 10 chars. A mandate that short cannot contain the eight canonical sections — draft or reject."}
+            ? "Paramètres invalides : mandate_text de moins de 50 ou de plus de 10 000 caractères, ou agent_purpose vide. L’appel échoue avec une erreur JSON-RPC dont le message liste les champs en cause."
+            : "Invalid parameters: mandate_text under 50 or over 10,000 characters, or empty agent_purpose. The call fails with a JSON-RPC error whose message lists the offending fields."}
         </li>
         <li>
-          <code>InputTooLong</code> —{" "}
           {fr
-            ? "mandate_text &gt; 10000 caractères. Découpez le mandat en sections évaluées séparément, ou retirez les annexes non auditables (ex. politiques internes citées en référence)."
-            : "mandate_text &gt; 10000 chars. Split the mandate into separately evaluated sections, or strip non-auditable appendices (e.g. internal policies cited by reference)."}
-        </li>
-        <li>
-          <code>DoctrineSnapshotMismatch</code> —{" "}
-          {fr
-            ? "le moteur de checks ne correspond pas au doctrine_hash demandé. Mettez acf-mcp à jour ou pointez vers la version archivée."
-            : "the check engine does not match the requested doctrine_hash. Update acf-mcp or point at the archived version."}
+            ? "Confiance basse : quand peu de champs de contexte sont fournis, confidence vaut low et assumptions dit ce qui a été supposé. Complétez l’entrée avant de vous appuyer sur le résultat."
+            : "Low confidence: when few context fields are provided, confidence is low and assumptions states what was assumed. Complete the input before relying on the result."}
         </li>
       </ul>
 
@@ -384,8 +392,8 @@ export default async function EvaluateAgentMandateToolPage({
             }
           >
             <code>acf.assign-ddao-controls</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "obtenir le jeu de contrôles à coller dans le mandat avant l’audit."
             : "obtain the control set to paste into the mandate before the audit."}
@@ -393,8 +401,8 @@ export default async function EvaluateAgentMandateToolPage({
         <li>
           <a href={fr ? "/fr/tools/acf.classify-agent" : "/tools/acf.classify-agent"}>
             <code>acf.classify-agent</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "qualifier l’agent en amont si le mandat ne précise pas encore son niveau d’autonomie ou son rôle régulatoire."
             : "qualify the agent upstream if the mandate does not yet specify its autonomy level or regulatory role."}
@@ -402,11 +410,11 @@ export default async function EvaluateAgentMandateToolPage({
         <li>
           <a href={fr ? "/fr/tools/acf.fiche.lookup" : "/tools/acf.fiche.lookup"}>
             <code>acf.fiche.lookup</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
-            ? "récupérer le détail des fiches référencées (ACF-03, ACF-07, ACF-09, ACF-12) pour rédiger les required_additions."
-            : "fetch the detail of referenced cards (ACF-03, ACF-07, ACF-09, ACF-12) when drafting required_additions."}
+            ? "récupérer le détail des fiches référencées (ACF-04, ACF-07, ACF-P6, ACF-13) pour rédiger les required_additions."
+            : "fetch the detail of referenced cards (ACF-04, ACF-07, ACF-P6, ACF-13) when drafting required_additions."}
         </li>
       </ul>
     </DocsPage>

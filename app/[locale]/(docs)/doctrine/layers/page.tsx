@@ -31,9 +31,9 @@ const LAYERS: L[] = [
     nameEn: "Operational",
     nameFr: "Opérationnelle",
     bodyEn:
-      "Mandate of each agent (card ACF-12), authorised interaction perimeter, categorisation by criticality level (card ACF-02).",
+      "Mandate of each agent (card ACF-13), authorised interaction perimeter, categorisation by criticality level (card ACF-03).",
     bodyFr:
-      "Mandat de chaque agent (fiche ACF-12), périmètre d’interaction autorisé, catégorisation par niveau de criticité (fiche ACF-02).",
+      "Mandat de chaque agent (fiche ACF-13), périmètre d’interaction autorisé, catégorisation par niveau de criticité (fiche ACF-03).",
     ownsEn: "DDAO + agent product owner",
     ownsFr: "DDAO + product owner de l’agent",
   },
@@ -72,7 +72,7 @@ export default async function LayersPage({
       {LAYERS.map((l) => (
         <section key={l.code}>
           <h2 id={l.code.toLowerCase()}>
-            {l.code} — {fr ? l.nameFr : l.nameEn}
+            {l.code}, {fr ? l.nameFr : l.nameEn}
           </h2>
           <p>{fr ? l.bodyFr : l.bodyEn}</p>
           <p>
@@ -85,8 +85,8 @@ export default async function LayersPage({
       <h2 id="information-flow">{fr ? "Flux d’information entre couches" : "Cross-layer information flow"}</h2>
       <p>
         {fr
-          ? "C1 produit la charte ; C2 la décline en objectifs ; C3 les instancie en mandats d’agent ; C4 instrumente les KPIs. À l’inverse, C4 remonte les KPIs à C3 pour ajuster les mandats ; C3 remonte les ajustements à C2 pour modifier les seuils ; C2 escalade à C1 quand un seuil de la charte est mis sous pression. C’est cette boucle qui rend le cadre vivant — P4."
-          : "C1 produces the charter; C2 turns it into objectives; C3 instances them into agent mandates; C4 instruments the KPIs. Conversely, C4 escalates KPIs to C3 to tune mandates; C3 escalates adjustments to C2 to modify thresholds; C2 escalates to C1 when a charter threshold is under pressure. This loop is what keeps the framework alive — P4."}
+          ? "C1 produit la charte ; C2 la décline en objectifs ; C3 les instancie en mandats d’agent ; C4 instrumente les KPIs. À l’inverse, C4 remonte les KPIs à C3 pour ajuster les mandats ; C3 remonte les ajustements à C2 pour modifier les seuils ; C2 escalade à C1 quand un seuil de la charte est mis sous pression. C’est cette boucle qui rend le cadre vivant : P4."
+          : "C1 produces the charter; C2 turns it into objectives; C3 instances them into agent mandates; C4 instruments the KPIs. Conversely, C4 escalates KPIs to C3 to tune mandates; C3 escalates adjustments to C2 to modify thresholds; C2 escalates to C1 when a charter threshold is under pressure. This loop is what keeps the framework alive: P4."}
       </p>
     </DocsPage>
   );

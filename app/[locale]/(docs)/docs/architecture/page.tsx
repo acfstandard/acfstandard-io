@@ -27,10 +27,10 @@ const PIPELINE_FLOW = `client (Claude Desktop, Cursor, ...)
    v
 deterministic, signed JSON output`;
 
-const RESOURCE_URI_EXAMPLE = `acf://principles/p1-traceability
-acf://fiches/acf-08-decision-register
-acf://glossary/ddao
-acf://regulator/eu-ai-act/article-26`;
+const RESOURCE_URI_EXAMPLE = `acf://framework/principle/P4
+acf://fiche/ACF-09
+acf://glossary/DDAO
+acf://guide/ai-act`;
 
 export default async function ArchitecturePage({
   params,
@@ -46,8 +46,8 @@ export default async function ArchitecturePage({
       title={fr ? "Architecture" : "Architecture"}
       description={
         fr
-          ? "acf-mcp est un serveur stdio local-first, déterministe, sans appel LLM interne. Base de connaissances versionnée et signée Ed25519. Le traitement est entièrement local (validation, moteur de règles, signature) — aucun appel réseau, aucun modèle : la sortie est produite de façon déterministe et signée."
-          : "acf-mcp is a local-first stdio server, deterministic, with no internal LLM call. Versioned and Ed25519-signed knowledge base. Processing is fully local (validation, rule engine, signing) — no network call, no model: output is produced deterministically and signed."
+          ? "acf-mcp est un serveur stdio local-first, déterministe, sans appel LLM interne. Base de connaissances versionnée et signée Ed25519. Le traitement est entièrement local (validation, moteur de règles, signature), aucun appel réseau, aucun modèle : la sortie est produite de façon déterministe et signée."
+          : "acf-mcp is a local-first stdio server, deterministic, with no internal LLM call. Versioned and Ed25519-signed knowledge base. Processing is fully local (validation, rule engine, signing), no network call, no model: output is produced deterministically and signed."
       }
       badge={fr ? "Démarrer" : "Get started"}
     >
@@ -57,7 +57,7 @@ export default async function ArchitecturePage({
             <strong>acf-mcp n’appelle aucun LLM en interne.</strong> Chaque
             sortie est produite par un moteur de règles déterministe sur une base
             de connaissances signée. C’est la garantie d’<em>auditabilité</em>{" "}
-            qui rend le standard opposable à un auditeur ou un tribunal.
+            qui rend le raisonnement vérifiable par un auditeur.
           </>
         ) : (
           <>
@@ -74,25 +74,25 @@ export default async function ArchitecturePage({
       </h2>
       <ul>
         <li>
-          <strong>{fr ? "Local-first" : "Local-first"}</strong> —{" "}
+          <strong>{fr ? "Local-first" : "Local-first"}</strong>{": "}
           {fr
             ? "transport stdio par défaut, lancé par le client à la demande, aucun appel réseau sortant en fonctionnement nominal."
             : "stdio transport by default, launched by the client on demand, no outbound network call in nominal operation."}
         </li>
         <li>
-          <strong>{fr ? "Déterministe" : "Deterministic"}</strong> —{" "}
+          <strong>{fr ? "Déterministe" : "Deterministic"}</strong>{": "}
           {fr
             ? "même entrée + même version de doctrine ⇒ même sortie, byte-pour-byte. Pas de température, pas de seed aléatoire, pas de LLM."
             : "same input + same doctrine version ⇒ same output, byte-for-byte. No temperature, no random seed, no LLM."}
         </li>
         <li>
-          <strong>{fr ? "Signé bout-en-bout" : "End-to-end signed"}</strong> —{" "}
+          <strong>{fr ? "Signé bout-en-bout" : "End-to-end signed"}</strong>{": "}
           {fr
             ? "chaque sortie embarque doctrine_hash, doctrine_signature (Ed25519) et doctrine_public_key. Vérification hors-ligne possible."
             : "every output embeds doctrine_hash, doctrine_signature (Ed25519) and doctrine_public_key. Verifiable offline."}
         </li>
         <li>
-          <strong>{fr ? "Versionné" : "Versioned"}</strong> —{" "}
+          <strong>{fr ? "Versionné" : "Versioned"}</strong>{": "}
           {fr
             ? "la base de connaissances est figée par release (doctrine_version + doctrine_hash). Aucune dérive silencieuse possible."
             : "the knowledge base is frozen per release (doctrine_version + doctrine_hash). No silent drift possible."}
@@ -104,8 +104,8 @@ export default async function ArchitecturePage({
       </h2>
       <p>
         {fr
-          ? "Chaque appel d’outil traverse un pipeline de traitement déterministe, dans cet ordre strict : validation d’entrée, moteur de règles, puis signature. Tout s’exécute localement (lecture disque mise en cache, index lunr en mémoire, signature Ed25519) — aucun appel réseau, aucun modèle."
-          : "Every tool call goes through a deterministic processing pipeline, in this strict order: input validation, rule engine, then signing. Everything runs locally (cached disk reads, in-memory lunr index, Ed25519 signing) — no network call, no model."}
+          ? "Chaque appel d’outil traverse un pipeline de traitement déterministe, dans cet ordre strict : validation d’entrée, moteur de règles, puis pied de page de la doctrine signée. Tout s’exécute localement (lecture disque mise en cache, index lunr en mémoire, signature Ed25519), aucun appel réseau, aucun modèle."
+          : "Every tool call goes through a deterministic processing pipeline, in this strict order: input validation, rule engine, then the signed doctrine footer. Everything runs locally (cached disk reads, in-memory lunr index, Ed25519 signing), no network call, no model."}
       </p>
       <CodeBlock language="text" code={PIPELINE_FLOW} />
 
@@ -114,8 +114,8 @@ export default async function ArchitecturePage({
       </h3>
       <p>
         {fr
-          ? "Chaque outil déclare un schéma zod. Les champs enum (par exemple autonomy_level ∈ {N0,N1,N2,N3}) sont validés contre la liste canonique de la doctrine. Une description ou un domaine d’usage trop court (< 20 caractères) est rejeté immédiatement, sans appel au moteur."
-          : "Every tool declares a zod schema. Enum fields (e.g. autonomy_level ∈ {N0,N1,N2,N3}) are validated against the doctrine’s canonical list. A description or use-case domain shorter than 20 characters is rejected immediately, with no engine call."}
+          ? "Chaque outil déclare un schéma zod. Les champs enum (par exemple autonomy_level ∈ {suggestive, co_decision, supervised_autonomous, autonomous}) sont validés contre la liste canonique de la doctrine. Une entrée hors bornes (description trop courte, valeur hors énumération) est rejetée immédiatement, sans appel au moteur."
+          : "Every tool declares a zod schema. Enum fields (e.g. autonomy_level ∈ {suggestive, co_decision, supervised_autonomous, autonomous}) are validated against the doctrine’s canonical list. An out-of-bounds input (description too short, value outside an enum) is rejected immediately, with no engine call."}
       </p>
 
       <h3 id="module-engine">
@@ -132,8 +132,8 @@ export default async function ArchitecturePage({
       </h3>
       <p>
         {fr
-          ? "Le résultat du moteur est sérialisé canoniquement (JCS — RFC 8785), hashé SHA-256, signé Ed25519 avec la clé de doctrine, puis enveloppé dans un objet qui embarque doctrine_version, doctrine_hash, doctrine_signature, doctrine_public_key, regulatory_snapshot et generated_at."
-          : "The engine result is serialised canonically (JCS — RFC 8785), SHA-256 hashed, Ed25519-signed with the doctrine key, then wrapped in an object embedding doctrine_version, doctrine_hash, doctrine_signature, doctrine_public_key, regulatory_snapshot and generated_at."}
+          ? "Le résultat du moteur est sérialisé canoniquement (JCS : RFC 8785), hashé SHA-256, signé Ed25519 avec la clé de doctrine, puis enveloppé dans un objet qui embarque doctrine_version, doctrine_hash, doctrine_signature, doctrine_public_key, regulatory_snapshot et generated_at."
+          : "The engine result is serialised canonically (JCS: RFC 8785), SHA-256 hashed, Ed25519-signed with the doctrine key, then wrapped in an object embedding doctrine_version, doctrine_hash, doctrine_signature, doctrine_public_key, regulatory_snapshot and generated_at."}
       </p>
       <p>
         {fr ? (
@@ -167,8 +167,8 @@ export default async function ArchitecturePage({
       <ul>
         <li>
           {fr
-            ? "Traitement entièrement local et déterministe : validation, lookup de règles ou requête lunr, puis signature — sans appel réseau ni modèle sur le chemin nominal."
-            : "Fully local, deterministic processing: validation, rule lookup or lunr query, then signing — no network call or model on the nominal path."}
+            ? "Traitement entièrement local et déterministe : validation, lookup de règles ou requête lunr, puis pied de page de la doctrine signée, sans appel réseau ni modèle sur le chemin nominal."
+            : "Fully local, deterministic processing: validation, rule lookup or lunr query, then the signed doctrine footer, no network call or model on the nominal path."}
         </li>
         <li>
           {fr
@@ -187,8 +187,8 @@ export default async function ArchitecturePage({
       </h2>
       <p>
         {fr
-          ? "acf-mcp produit une qualification préliminaire opposable, pas un avis juridique. Le serveur ne valide pas la conformité d’un agent — il fournit la base de connaissances signée, les outils de raisonnement et la trace cryptographique. La décision finale reste celle du DDAO (Designated Deployer of Autonomous Operations) ou du juriste compétent."
-          : "acf-mcp produces a defensible preliminary qualification, not legal advice. The server does not certify an agent’s compliance — it provides the signed knowledge base, the reasoning tools and the cryptographic trace. The final decision belongs to the DDAO (Designated Deployer of Autonomous Operations) or the competent counsel."}
+          ? "acf-mcp produit une qualification préliminaire, pas un avis juridique. Le serveur ne valide pas la conformité d’un agent, il fournit la base de connaissances signée, les outils de raisonnement et l’empreinte signée de la doctrine utilisée. La décision finale reste celle du DDAO (Delegated Decision Agent Officer) ou du juriste compétent."
+          : "acf-mcp produces a preliminary qualification, not legal advice. The server does not certify an agent’s compliance, it provides the signed knowledge base, the reasoning tools and the signed hash of the doctrine used. The final decision belongs to the DDAO (Delegated Decision Agent Officer) or the competent counsel."}
       </p>
     </DocsPage>
   );

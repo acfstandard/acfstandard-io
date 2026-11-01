@@ -87,8 +87,8 @@ export default async function VerifyGoPage({
       title={fr ? "Vérifier en Go" : "Verify in Go"}
       description={
         fr
-          ? "Vérifiez la signature Ed25519 d’une sortie acf-mcp en Go avec uniquement la bibliothèque standard — crypto/ed25519 et crypto/x509. Aucune dépendance externe."
-          : "Verify the Ed25519 signature of an acf-mcp output in Go using only the standard library — crypto/ed25519 and crypto/x509. No external dependency."
+          ? "Vérifiez la signature Ed25519 d’une sortie acf-mcp en Go avec uniquement la bibliothèque standard, crypto/ed25519 et crypto/x509. Aucune dépendance externe."
+          : "Verify the Ed25519 signature of an acf-mcp output in Go using only the standard library, crypto/ed25519 and crypto/x509. No external dependency."
       }
       badge={fr ? "Signatures" : "Signatures"}
     >
@@ -124,19 +124,19 @@ echo "exit=$?"`}
       <h2 id="failure-modes">{fr ? "Modes d’échec" : "Failure modes"}</h2>
       <ul>
         <li>
-          <code>signature INVALID</code> + exit 1 —{" "}
+          <code>signature INVALID</code> + exit 1{": "}
           {fr
             ? "altération de contenu ou mauvaise clé publique. Rejouer la sortie de bout en bout."
             : "content tampered with or wrong public key. Re-run the output end to end."}
         </li>
         <li>
-          <code>public key is not Ed25519</code> —{" "}
+          <code>public key is not Ed25519</code>{": "}
           {fr
             ? "la chaîne SPKI passée n’encode pas une clé Ed25519. Vérifier la version d’acf-mcp et la copie de la clé."
             : "the SPKI string does not encode an Ed25519 key. Check the acf-mcp version and the copy of the key."}
         </li>
         <li>
-          <code>cannot parse public key</code> —{" "}
+          <code>cannot parse public key</code>{": "}
           {fr
             ? "le base64 n’est pas du DER valide. Vérifier qu’aucun retour à la ligne n’a été inséré."
             : "the base64 is not valid DER. Check that no newline was inserted."}

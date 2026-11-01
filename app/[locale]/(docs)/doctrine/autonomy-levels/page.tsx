@@ -1,71 +1,74 @@
 import { setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { DocsPage } from "@/components/DocsPage";
 import { Callout } from "@/components/Callout";
 
-type Lvl = {
-  level: string;
-  nameEn: string;
-  nameFr: string;
-  shortEn: string;
-  shortFr: string;
-  controlsEn: string;
-  controlsFr: string;
-};
+type Row = { code: string; nameEn: string; nameFr: string; en: string; fr: string };
 
-const LEVELS: Lvl[] = [
+// Delegated autonomy: set decision by decision (codes returned by the MCP tools).
+const AUTONOMY: Row[] = [
   {
-    level: "N0",
-    nameEn: "Classical automation",
-    nameFr: "Automatisation classique",
-    shortEn:
-      "Fixed rules, no learning. Every change goes through a human change request.",
-    shortFr:
-      "Règles fixes, aucun apprentissage. Toute modification passe par un changement humain.",
-    controlsEn:
-      "Static config diff review · change management · no log requirement beyond classical IT operations.",
-    controlsFr:
-      "Revue de diff config statique · gestion du changement · aucune obligation de journalisation au-delà de l’ITSM classique.",
+    code: "suggestive",
+    nameEn: "Suggestive",
+    nameFr: "Suggestif",
+    en: "The agent suggests, the human decides. The human keeps hold of every executing action.",
+    fr: "L’agent suggère, l’humain décide. L’humain garde la main sur chaque action exécutoire.",
   },
   {
-    level: "N1",
-    nameEn: "Assisted agents",
-    nameFr: "Agents assistés",
-    shortEn:
-      "The agent analyses, ranks, and recommends. The final decision remains systematically human.",
-    shortFr:
-      "L’agent analyse, hiérarchise et recommande. La décision finale reste systématiquement humaine.",
-    controlsEn:
-      "Signed recommendation log · human accept/reject capture · monthly drift review · DDAO designated but light cadence.",
-    controlsFr:
-      "Journal signé des recommandations · capture accept/reject humain · revue mensuelle de dérive · DDAO désigné mais cadence légère.",
+    code: "co_decision",
+    nameEn: "Co-decision",
+    nameFr: "Co-décision",
+    en: "The agent proposes a reasoned option, the human validates or rejects it before anything is executed.",
+    fr: "L’agent propose une option argumentée, l’humain la valide ou la rejette avant toute exécution.",
   },
   {
-    level: "N2",
-    nameEn: "Governed agents",
-    nameFr: "Agents gouvernés",
-    shortEn:
-      "The agent decides within a strict frame (agentic constitution + locked non-delegable zones + tested kill switch + signed register). This is the default target for production agentic commerce in 2026-2027.",
-    shortFr:
-      "L’agent décide dans un cadre strict (constitution agentique + zones non-déléguables verrouillées + kill switch testé + registre signé). C’est le niveau visé par défaut pour le commerce agentique en production en 2026-2027.",
-    controlsEn:
-      "Full ACF-04/06/08/12 stack · quarterly simulation (ACF-15) · 30-day audit (ACF-10) · DDAO with veto authority.",
-    controlsFr:
-      "Pile ACF-04/06/08/12 complète · simulation trimestrielle (ACF-15) · audit 30 jours (ACF-10) · DDAO avec autorité de veto.",
+    code: "supervised_autonomous",
+    nameEn: "Supervised autonomous",
+    nameFr: "Autonome supervisé",
+    en: "The agent decides and executes within a bounded perimeter, under supervision. Beyond the thresholds of its mandate (ACF-13), it must escalate to a human.",
+    fr: "L’agent décide et exécute dans un périmètre borné, sous supervision. Au-delà des seuils de son mandat (ACF-13), il remonte obligatoirement la décision à un humain.",
   },
   {
-    level: "N3",
-    nameEn: "Supervised autonomy",
-    nameFr: "Autonomie supervisée",
-    shortEn:
-      "The agent decides AND learns. Reserved for specific cases. Requires the most mature governance: monthly review, dual DDAO, biannual external audit, embedded model board approval before any model swap.",
-    shortFr:
-      "L’agent décide ET apprend. Réservé à des cas spécifiques. Exige la gouvernance la plus mature : revue mensuelle, double DDAO, audit externe semestriel, validation par un comité modèle avant tout changement de modèle.",
-    controlsEn:
-      "Everything from N2 + continuous model evaluation pipeline + biannual external audit + dual-control kill switch + canary deployments.",
-    controlsFr:
-      "Tout N2 + pipeline d’évaluation modèle continue + audit externe semestriel + kill switch à double contrôle + déploiements canary.",
+    code: "autonomous",
+    nameEn: "Autonomous",
+    nameFr: "Autonome",
+    en: "The agent decides and executes without prior human validation, within its mandate. Human control remains possible after the fact and the kill switch (ACF-07) stays active.",
+    fr: "L’agent décide et exécute sans validation humaine préalable, dans son mandat. Le contrôle humain reste possible a posteriori et le kill switch (ACF-07) reste actif.",
   },
 ];
+
+// Agent maturity: one value per agent.
+const MATURITY: Row[] = [
+  { code: "N0", nameEn: "Classic automation", nameFr: "Automatisation classique", en: "Fixed rules, no learning.", fr: "Règles fixes, aucun apprentissage." },
+  { code: "N1", nameEn: "Assisted agent", nameFr: "Agent assisté", en: "The agent analyses and recommends; the final decision remains human.", fr: "L’agent analyse et recommande ; la décision finale reste humaine." },
+  { code: "N2", nameEn: "Governed agent", nameFr: "Agent gouverné", en: "The agent acts within a defined framework, under active supervision. This is the default target.", fr: "L’agent agit dans un cadre défini, sous supervision active. C’est la cible par défaut." },
+  { code: "N3", nameEn: "Supervised autonomy", nameFr: "Autonomie supervisée", en: "The most mature governance, reserved for specific cases.", fr: "La gouvernance la plus mature, réservée à des cas spécifiques." },
+];
+
+function Table({ rows, fr, head }: { rows: Row[]; fr: boolean; head: [string, string, string] }) {
+  return (
+    <div className="not-prose my-6 overflow-x-auto rounded-xl border border-bd-neutral">
+      <table className="w-full border-collapse text-sm">
+        <thead>
+          <tr className="border-b border-bd-neutral bg-white/[0.03]">
+            {head.map((h) => (
+              <th key={h} className="px-4 py-3 text-left font-mono text-[10px] uppercase tracking-widest text-gold">{h}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r) => (
+            <tr key={r.code} className="border-b border-bd-neutral/50 last:border-0">
+              <td className="px-4 py-3 align-top font-mono text-[12px] text-white">{r.code}</td>
+              <td className="px-4 py-3 align-top font-display text-[13px] font-bold text-white">{fr ? r.nameFr : r.nameEn}</td>
+              <td className="px-4 py-3 align-top text-[13px] text-gr-2">{fr ? r.fr : r.en}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
 
 export default async function AutonomyLevelsPage({
   params,
@@ -78,64 +81,65 @@ export default async function AutonomyLevelsPage({
 
   return (
     <DocsPage
-      title={fr ? "Les 4 niveaux d’autonomie N0–N3" : "The 4 autonomy levels N0–N3"}
+      title={fr ? "Autonomie déléguée et maturité de l’agent" : "Delegated autonomy and agent maturity"}
       description={
         fr
-          ? "ACF® classe les agents par niveau d’autonomie. La progression recommandée est N0 → N1 → N2 → N3. Chaque passage à un niveau supérieur déclenche les contrôles de la fiche ACF-00 (Score de Souveraineté)."
-          : "ACF® classifies agents by autonomy level. The recommended progression is N0 → N1 → N2 → N3. Each upgrade triggers the controls of card ACF-00 (ACF Sovereignty Score)."
+          ? "ACF® distingue deux échelles. L’autonomie déléguée se fixe décision par décision, sur 4 niveaux : suggestif, co-décision, autonome supervisé, autonome. La maturité de l’agent, de N0 à N3, qualifie l’agent dans son ensemble."
+          : "ACF® separates two scales. Delegated autonomy is set decision by decision, on 4 levels: suggestive, co-decision, supervised autonomous, autonomous. Agent maturity, from N0 to N3, qualifies the agent as a whole."
       }
       badge={fr ? "Doctrine" : "Doctrine"}
     >
-      <Callout variant="warning" locale={fr ? "fr" : "en"}>
-        {fr ? (
-          <>
-            <strong>N2 est la cible par défaut</strong> pour la majorité des cas d’usage
-            en production en 2026-2027. N3 est l’exception, pas la règle. Sauter N1 pour
-            arriver directement à N2 est acceptable ; sauter N2 pour arriver à N3 ne
-            l’est pas, sauf cas de figure documentés.
-          </>
-        ) : (
-          <>
-            <strong>N2 is the default target</strong> for the majority of production use
-            cases in 2026-2027. N3 is the exception, not the rule. Skipping N1 to land
-            directly at N2 is acceptable; skipping N2 to reach N3 is not, save for
-            documented edge cases.
-          </>
-        )}
+      <Callout variant="tip" locale={fr ? "fr" : "en"}>
+        {fr
+          ? "On ne délègue pas un agent, on délègue des décisions. Un même agent peut être autonome pour reclasser un ticket et rester en co-décision pour accorder un remboursement : la maturité dit où en est l’agent, l’autonomie dit ce qu’on lui confie pour chaque décision."
+          : "You do not delegate an agent, you delegate decisions. The same agent can be autonomous to re-route a ticket and stay in co-decision to grant a refund: maturity says where the agent stands, autonomy says what it is entrusted with for each decision."}
       </Callout>
 
-      {LEVELS.map((l) => (
-        <section key={l.level}>
-          <h2 id={l.level.toLowerCase()}>
-            {l.level} — {fr ? l.nameFr : l.nameEn}
-          </h2>
-          <p>{fr ? l.shortFr : l.shortEn}</p>
-          <p>
-            <strong>{fr ? "Contrôles attendus" : "Expected controls"} :</strong>{" "}
-            {fr ? l.controlsFr : l.controlsEn}
-          </p>
-        </section>
-      ))}
+      <h2 id="delegated-autonomy">{fr ? "Les 4 niveaux d’autonomie déléguée" : "The 4 delegated autonomy levels"}</h2>
+      <p>
+        {fr
+          ? "Ils se fixent pour chaque décision, dans la Carte Décisionnelle (ACF-02) et s’écrivent dans le mandat de l’agent (ACF-13). Les outils du serveur MCP les renvoient sous ces codes, dans le champ autonomy_level."
+          : "They are set for each decision, in the Decision Map (ACF-02), and written into the agent's mandate (ACF-13). The MCP server tools return them under these codes, in the autonomy_level field."}
+      </p>
+      <Table rows={AUTONOMY} fr={fr} head={[fr ? "Code" : "Code", fr ? "Niveau" : "Level", fr ? "Ce que l'agent fait" : "What the agent does"]} />
 
-      <h2 id="transitions">{fr ? "Règles de transition" : "Transition rules"}</h2>
+      <h2 id="criticality">{fr ? "Ce qui borne le niveau : la criticité" : "What bounds the level: criticality"}</h2>
+      <p>
+        {fr
+          ? "La Matrice de Criticité (ACF-03) note chaque décision : criticité = (impact × fréquence × irréversibilité) ÷ 10. En dessous de 15, l’agent peut décider seul ; de 15 à 25, il décide sous supervision ; au-dessus de 25, la décision finale reste humaine. La criticité délimite la zone de délégation acceptable, elle ne fixe pas le niveau à elle seule : à l’intérieur, le choix dépend encore du mandat, de la réversibilité réelle, des seuils chiffrés et de la qualité de la supervision. Certaines décisions relèvent enfin de la zone non délégable, qui interdit sans calculer."
+          : "The Criticality Matrix (ACF-03) scores each decision: criticality = (impact × frequency × irreversibility) ÷ 10. Below 15, the agent may decide alone; from 15 to 25, it decides under supervision; above 25, the final decision stays human. Criticality bounds the acceptable delegation zone, it does not set the level on its own: within it, the choice still depends on the mandate, actual reversibility, numeric thresholds and the quality of supervision. Some decisions finally belong to the non-delegable zone, which forbids without calculating."}
+      </p>
+
+      <h2 id="maturity">{fr ? "La maturité de l’agent, de N0 à N3" : "Agent maturity, from N0 to N3"}</h2>
+      <p>
+        {fr
+          ? "Une seule valeur par agent, qui mesure le niveau de gouvernance qui l’entoure. Elle ne dit rien du pouvoir délégué sur une décision donnée."
+          : "One value per agent, measuring the level of governance around it. It says nothing about the power delegated on a given decision."}
+      </p>
+      <Table rows={MATURITY} fr={fr} head={["", fr ? "Maturité" : "Maturity", fr ? "Description" : "Description"]} />
+
+      <h2 id="in-practice">{fr ? "En pratique" : "In practice"}</h2>
       <ul>
         <li>
-          <strong>N0 → N1</strong> —{" "}
-          {fr
-            ? "fiche ACF-04 produite, DDAO désigné, registre des recommandations activé."
-            : "card ACF-04 produced, DDAO designated, recommendation register active."}
+          {fr ? (
+            <>Avant tout passage en autonome supervisé ou autonome : mandat signé par le DDAO (ACF-13), kill switch testé (ACF-07, éprouvé avec ACF-P7) et registre des décisions tenu (ACF-09).</>
+          ) : (
+            <>Before any move to supervised autonomous or autonomous: mandate signed by the DDAO (ACF-13), tested kill switch (ACF-07, drilled with ACF-P7) and a maintained decision register (ACF-09).</>
+          )}
         </li>
         <li>
-          <strong>N1 → N2</strong> —{" "}
-          {fr
-            ? "ACF-06 testé, ACF-08 signé Ed25519, ACF-15 simulation passée, audit ACF-10 vert à 30 jours."
-            : "ACF-06 tested, ACF-08 Ed25519-signed, ACF-15 simulation passed, ACF-10 30-day audit green."}
+          {fr ? (
+            <>Les seuils d’escalade et de confiance se fixent avec la fiche ACF-P6 ; la Revue de Validité (ACF-17) dit quand un mandat ne tient plus.</>
+          ) : (
+            <>Escalation and trust thresholds are set with card ACF-P6; the Validity Review (ACF-17) tells when a mandate no longer holds.</>
+          )}
         </li>
         <li>
-          <strong>N2 → N3</strong> —{" "}
-          {fr
-            ? "double DDAO en place, audit externe initial passé, pipeline d’évaluation continue du modèle opérationnel, board signs off."
-            : "dual DDAO in place, initial external audit passed, continuous model evaluation pipeline operational, board signs off."}
+          {fr ? (
+            <>L'outil <Link href="/tools/acf.assess-autonomy">acf.assess-autonomy</Link> recommande un niveau pour une décision ; <Link href="/tools/acf.assign-ddao-controls">acf.assign-ddao-controls</Link> en déduit les contrôles.</>
+          ) : (
+            <>The <Link href="/tools/acf.assess-autonomy">acf.assess-autonomy</Link> tool recommends a level for a decision; <Link href="/tools/acf.assign-ddao-controls">acf.assign-ddao-controls</Link> derives the controls from it.</>
+          )}
         </li>
       </ul>
     </DocsPage>

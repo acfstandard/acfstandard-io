@@ -18,7 +18,7 @@ await client.connect(transport);
 const result = await client.callTool({
   name: "acf.fiche.lookup",
   arguments: {
-    code: "ACF-06",
+    code: "ACF-07",
     locale: "en",
   },
 });
@@ -37,7 +37,7 @@ async def main():
             result = await session.call_tool(
                 "acf.fiche.lookup",
                 arguments={
-                    "code": "ACF-06",
+                    "code": "ACF-07",
                     "locale": "en",
                 },
             )
@@ -46,26 +46,29 @@ async def main():
 asyncio.run(main())`;
 
 const RESPONSE_SAMPLE = `{
-  "code": "ACF-06",
-  "uri": "acf://fiche/ACF-06",
-  "served_locale": "en",
-  "is_fallback": false,
-  "frontmatter": {
-    "code": "ACF-06",
-    "title": "Kill switch and degraded modes",
-    "version": "1.0",
-    "keywords": ["kill switch", "degraded mode", "escalation", "DDAO", "reversibility"],
-    "related_principles": ["P-04", "P-07"],
-    "related_dimensions": ["D-03", "D-05"],
-    "related_fiches": ["ACF-04", "ACF-08", "ACF-12"]
+  "code": "ACF-07",
+  "title": "Kill Switch",
+  "markdown": "\\n# Kill Switch\\n\\n*Emergency shutdown protocol*\\n\\n## Purpose of this card\\n\\nBe able to immediately shut down an agent or agentic system in the event of drift, incident, loss of control, or critical risk.\\n\\n## What the card asks you to fill in\\n\\n1. Agent concerned\\n2. Agent risk level\\n3.…",
+  "metadata": {
+    "code": "ACF-07",
+    "slug": "kill-switch",
+    "title": "Kill Switch",
+    "title_en": "Kill Switch",
+    "family": "decide",
+    "order": 7,
+    "related_fiches": [],
+    "keywords": [
+      "kill",
+      "switch",
+      "decide"
+    ],
+    "version": "2026-09",
+    "pdf_url": "/toolkit/en/ACF-07_kill-switch.pdf"
   },
-  "body": "## Purpose\\n\\nThis card defines the mandatory shutdown path for any agent operating at autonomy level N2 or above. The kill switch is the last line of defence: any DDAO must be able to fire it at any time, without prior sign-off, and the agent must stop within the bounded recovery window.\\n\\n## Required elements\\n\\n1. **Trigger surface** — a documented endpoint, button or runbook command the DDAO can fire in under 60 seconds.\\n2. **Stop semantics** — the agent must commit no further external action after the trigger fires, and ongoing operations must roll back to a safe state.\\n3. **Degraded mode** — a fallback that keeps the business function alive at a lower autonomy (typically N1 with human approval per decision).\\n4. **Quarterly test** — the DDAO runs a documented kill-switch test every 90 days; the signed register records the test result.\\n\\n## Example\\n\\nA fraud-scoring agent (N2) has a Slack /kill-fraud-agent command bound to the DDAO group. Firing it switches the agent to N1 degraded mode where every score is queued for human review. The quarterly test is run in production with a synthetic transaction and recorded in ACF-08.\\n\\n## Anti-patterns\\n\\n- A kill switch that requires the deployer’s sign-off to fire (defeats the purpose).\\n- A degraded mode that simply stops the function (the business stops too — kill switches must not be all-or-nothing).\\n- A kill switch that was never tested in production (untested switch ≈ no switch).",
-  "doctrine_version": "ACF framework v1.0 / rules 2026-06",
-  "doctrine_hash": "sha256:bf0b6d8e4731ebdc58f6d6338702c5b74af47874cf0ad3dc958cde5c5b30b9dc",
-  "doctrine_signature": "ed25519:…",
-  "doctrine_archive_url": "https://acfstandard.io/doctrine/v1.0/archive.json",
-  "generated_at": "2026-06-14T11:47:22.318Z",
-  "disclaimer": "Canonical ACF® card content — quote verbatim or paraphrase, always cite the code and version."
+  "pdf_url": "/toolkit/en/ACF-07_kill-switch.pdf",
+  "uri": "acf://fiche/ACF-07",
+  "served_locale": "en",
+  "is_fallback": false
 }`;
 
 export default async function FicheLookupToolPage({
@@ -82,8 +85,8 @@ export default async function FicheLookupToolPage({
       title="acf.fiche.lookup"
       description={
         fr
-          ? "Récupère le contenu signé d’une fiche méthodologique ACF® (ACF-00 à ACF-16) — frontmatter (principes, dimensions, fiches liées), corps markdown, exemple et anti-patterns. Aucune interprétation, le texte canonique tel qu’archivé."
-          : "Fetch the signed content of an ACF® methodological card (ACF-00 to ACF-16) — frontmatter (related principles, dimensions, cards), markdown body, example and anti-patterns. No interpretation, the canonical archived text."
+          ? "Récupère le contenu d’une des 45 fiches du toolkit ACF® (ACF-01 à ACF-20, ACF-O1 à ACF-O10, ACF-P1 à ACF-P15) : titre, objectif, sections à remplir, famille et lien de la fiche imprimable. Aucune interprétation, le texte de la doctrine signée."
+          : "Fetch the content of one of the 45 ACF® toolkit cards (ACF-01 to ACF-20, ACF-O1 to ACF-O10, ACF-P1 to ACF-P15): title, purpose, sections to fill in, family and link to the printable card. No interpretation, the text of the signed doctrine."
       }
       badge="READ"
     >
@@ -92,16 +95,17 @@ export default async function FicheLookupToolPage({
           <>
             Les outils <strong>READ</strong> renvoient le contenu signé du corpus,
             sans couche d’inférence. <code>acf.fiche.lookup</code> sert la fiche{" "}
-            <strong>verbatim</strong> avec son hash et sa signature : si vous la
-            citez à un régulateur, vous citez exactement ce que le standard
-            publie.
+            <strong>verbatim</strong>, telle que contenue dans la doctrine signée
+            Ed25519 et vérifiable hors ligne : si vous la citez, vous citez
+            exactement ce que le standard publie.
           </>
         ) : (
           <>
             <strong>READ</strong> tools return signed corpus content with no
             inference layer. <code>acf.fiche.lookup</code> serves the card{" "}
-            <strong>verbatim</strong> with its hash and signature — if you quote
-            it to a regulator, you quote exactly what the standard publishes.
+            <strong>verbatim</strong>, as contained in the Ed25519-signed doctrine,
+            verifiable offline: if you quote it, you quote exactly what the
+            standard publishes.
           </>
         )}
       </Callout>
@@ -114,106 +118,82 @@ export default async function FicheLookupToolPage({
       </p>
       <p>
         {fr
-          ? "Citez toujours le code (ACF-06), pas le titre traduit. Les fiches sont la couche opérationnelle de la doctrine — chaque fiche mappe vers un ou plusieurs principes (P-XX) et une ou plusieurs dimensions (D-XX) que l’utilisateur peut explorer ensuite."
-          : "Always cite the code (ACF-06), not the translated title. Cards are the operational layer of the doctrine — each card maps to one or more principles (P-XX) and one or more dimensions (D-XX) the user can explore next."}
+          ? "Citez toujours le code (ACF-07), pas le titre traduit. Les fiches sont la couche opérationnelle de la doctrine ; leur correspondance avec les principes et les référentiels se lit avec acf.map-to-standards et acf.regulation.article."
+          : "Always cite the code (ACF-07), not the translated title. Cards are the operational layer of the doctrine; their mapping to the principles and the standards is available through acf.map-to-standards and acf.regulation.article."}
       </p>
 
       <h2 id="inputs">{fr ? "Paramètres d’entrée" : "Input parameters"}</h2>
       <p>
         {fr
-          ? "Deux champs. Le code est strictement validé contre /^ACF-(0[0-9]|1[0-6])$/ — pas de path traversal possible."
-          : "Two fields. The code is strictly validated against /^ACF-(0[0-9]|1[0-6])$/ — no path traversal possible."}
+          ? "Trois champs. Le code est strictement validé contre /^ACF-(0[1-9]|1[0-9]|20|O([1-9]|10)|P([1-9]|1[0-5]))$/, aucun chemin arbitraire n’est possible."
+          : "Three fields. The code is strictly validated against /^ACF-(0[1-9]|1[0-9]|20|O([1-9]|10)|P([1-9]|1[0-5]))$/, so no arbitrary path is possible."}
       </p>
       <ParamGroup>
-        <Param name="code" type='"ACF-00" .. "ACF-16"' required>
+        <Param name="code" type='"ACF-01" .. "ACF-20" | "ACF-O1" .. "ACF-O10" | "ACF-P1" .. "ACF-P15"' required>
           {fr
-            ? "Code canonique de la fiche, sur 6 caractères, casse exacte. Toute autre forme (« acf-6 », « ACF6 », « ACF-006 ») est rejetée."
-            : "Canonical six-char card code, exact case. Any other form (“acf-6”, “ACF6”, “ACF-006”) is rejected."}
+            ? "Code canonique de la fiche, sur 6 caractères, casse exacte. Toute autre forme (« acf-7 », « ACF7 », « ACF-007 », « ACF-00 ») est rejetée."
+            : "Canonical six-char card code, exact case. Any other form (“acf-7”, “ACF7”, “ACF-007”, “ACF-00”) is rejected."}
         </Param>
         <Param name="locale" type='"en" | "fr"' defaultValue='"en"'>
           {fr
             ? "Langue demandée. Si la fiche n’existe pas dans cette langue, la chaîne de fallback est appliquée et served_locale + is_fallback le signalent dans la sortie."
             : "Requested locale. If the card is not available in that locale, the fallback chain kicks in and served_locale + is_fallback flag it in the output."}
         </Param>
+        <Param name="include_frontmatter" type="boolean" defaultValue="false">
+          {fr
+            ? "Ajoute dans metadata les métadonnées de la fiche (slug, famille, ordre, fiches liées, mots-clés, version)."
+            : "Adds the card metadata (slug, family, order, related cards, keywords, version) under metadata."}
+        </Param>
       </ParamGroup>
 
       <h2 id="output">{fr ? "Schéma de sortie" : "Output schema"}</h2>
       <p>
         {fr
-          ? "Le frontmatter structuré + le corps markdown + le pied-de-page signé. La sortie est un objet JSON ; le corps est une string markdown que vous pouvez rendre tel quel."
-          : "Structured frontmatter + markdown body + signed footer. The output is a JSON object; the body is a markdown string you can render as-is."}
+          ? "Un objet JSON : identité de la fiche, contenu en markdown à rendre tel quel, lien de la fiche imprimable et langue servie."
+          : "A JSON object: card identity, markdown content to render as-is, link to the printable card and served locale."}
       </p>
       <ParamGroup>
         <Param name="code" type="string">
+          {fr ? "Le code de la fiche servie." : "The code of the served card."}
+        </Param>
+        <Param name="title" type="string">
+          {fr ? "Titre de la fiche dans la langue servie." : "Card title in the served locale."}
+        </Param>
+        <Param name="markdown" type="string (markdown)">
           {fr
-            ? "Le code demandé, renvoyé tel quel pour faciliter le tracing."
-            : "The requested code, echoed back for tracing."}
+            ? "Contenu de la fiche : sous-titre, objectif, sections que la fiche fait remplir, famille, lien de téléchargement."
+            : "Card content: subtitle, purpose, sections the card asks you to fill in, family, download link."}
+        </Param>
+        <Param name="metadata" type="object">
+          {fr
+            ? "Métadonnées de la fiche si include_frontmatter vaut true, sinon objet vide."
+            : "Card metadata when include_frontmatter is true, otherwise an empty object."}
+        </Param>
+        <Param name="pdf_url" type="string">
+          {fr
+            ? "Chemin de la fiche imprimable sur acfstandard.com (ex. /toolkit/ACF-07_kill-switch.pdf)."
+            : "Path of the printable card on acfstandard.com (e.g. /toolkit/en/ACF-07_kill-switch.pdf)."}
         </Param>
         <Param name="uri" type="string">
-          {fr
-            ? "URI canonique de la ressource (acf://fiche/ACF-XX)."
-            : "Canonical resource URI (acf://fiche/ACF-XX)."}
+          {fr ? "URI de la ressource MCP (acf://fiche/ACF-XX)." : "MCP resource URI (acf://fiche/ACF-XX)."}
         </Param>
         <Param name="served_locale" type='"en" | "fr"'>
           {fr
-            ? "Langue effectivement servie après application de la chaîne de fallback."
+            ? "Langue effectivement servie après application de la chaîne de repli."
             : "Locale actually served after applying the fallback chain."}
         </Param>
         <Param name="is_fallback" type="boolean">
           {fr
-            ? "true si served_locale ≠ locale demandée — signaler à l’utilisateur que la traduction n’est pas disponible."
-            : "true if served_locale ≠ requested locale — signal to the user that the translation is not available."}
-        </Param>
-        <Param
-          name="frontmatter"
-          type="{ code, title, version, keywords[], related_principles[], related_dimensions[], related_fiches[] }"
-        >
-          {fr
-            ? "Métadonnées structurées de la fiche. related_principles, related_dimensions et related_fiches sont des codes que vous pouvez résoudre via acf.search ou resources/read."
-            : "Structured card metadata. related_principles, related_dimensions and related_fiches are codes you can resolve via acf.search or resources/read."}
-        </Param>
-        <Param name="body" type="string (markdown)">
-          {fr
-            ? "Corps complet de la fiche : objectif, éléments requis, exemple, anti-patterns. Markdown standard, rendu prêt à l’emploi."
-            : "Full card body: purpose, required elements, example, anti-patterns. Standard markdown, ready to render."}
-        </Param>
-        <Param name="doctrine_version" type="string">
-          {fr
-            ? "Version doctrinale figée pour cet appel."
-            : "Doctrine version frozen for this call."}
-        </Param>
-        <Param name="doctrine_hash" type="string">
-          {fr
-            ? "Hash SHA-256 du corpus servi."
-            : "SHA-256 hash of the served corpus."}
-        </Param>
-        <Param name="doctrine_signature" type="string">
-          {fr
-            ? "Signature Ed25519 du hash + version."
-            : "Ed25519 signature of hash + version."}
-        </Param>
-        <Param name="doctrine_archive_url" type="string">
-          {fr
-            ? "URL de l’archive immuable correspondant à doctrine_hash."
-            : "URL of the immutable archive matching doctrine_hash."}
-        </Param>
-        <Param name="generated_at" type="string (ISO-8601)">
-          {fr
-            ? "Horodatage UTC de la réponse."
-            : "UTC timestamp of the response."}
-        </Param>
-        <Param name="disclaimer" type="string">
-          {fr
-            ? "Rappel constant : citez le code et la version quand vous reprenez le contenu."
-            : "Constant reminder: cite the code and version when reusing the content."}
+            ? "true si la langue servie diffère de la langue demandée : signalez-le à l’utilisateur."
+            : "true if the served locale differs from the requested one: tell the user."}
         </Param>
       </ParamGroup>
 
       <h2 id="example">{fr ? "Exemple d’appel" : "Example call"}</h2>
       <p>
         {fr
-          ? "L’agent récupère la fiche ACF-06 (kill switch) pour rédiger une réponse à l’audit DORA :"
-          : "The agent fetches ACF-06 (kill switch) while drafting a DORA audit answer:"}
+          ? "L’agent récupère la fiche ACF-07 (Kill Switch) pour rédiger une réponse à l’audit DORA :"
+          : "The agent fetches ACF-07 (Kill Switch) while drafting a DORA audit answer:"}
       </p>
       <Tabs
         tabs={[
@@ -238,22 +218,14 @@ export default async function FicheLookupToolPage({
       <h2 id="errors">{fr ? "Erreurs courantes" : "Common errors"}</h2>
       <ul>
         <li>
-          <code>InvalidFicheCode</code> —{" "}
           {fr
-            ? "code hors regex /^ACF-(0[0-9]|1[0-6])$/. Vérifiez le format : préfixe ACF-, deux chiffres entre 00 et 16, casse exacte."
-            : "code out of /^ACF-(0[0-9]|1[0-6])$/. Check format: ACF- prefix, two digits between 00 and 16, exact case."}
+            ? "Code invalide : toute valeur hors du format des 45 fiches (y compris l’ancien ACF-00) fait échouer la validation des paramètres ; l’erreur JSON-RPC indique le champ code."
+            : "Invalid code: any value outside the format of the 45 cards (including the former ACF-00) fails parameter validation; the JSON-RPC error names the code field."}
         </li>
         <li>
-          <code>FicheNotFound</code> —{" "}
           {fr
-            ? "le code est valide mais la fiche n’existe ni dans la locale demandée ni dans aucune locale de la chaîne de fallback. Le corpus V1.0 publie ACF-00 à ACF-16 ; ACF-17+ est V1.1."
-            : "the code is valid but the card exists in neither the requested locale nor any fallback locale. The V1.0 corpus publishes ACF-00 to ACF-16; ACF-17+ is V1.1."}
-        </li>
-        <li>
-          <code>DoctrineSnapshotMismatch</code> —{" "}
-          {fr
-            ? "le doctrine_hash demandé n’est pas chargé. Mettez acf-mcp à jour ou pointez vers la version archivée."
-            : "the requested doctrine_hash is not loaded. Update acf-mcp or point at the archived version."}
+            ? "« Fiche ACF-XX not found in any locale chain » : le code est valide mais la fiche n’est servie dans aucune langue de la chaîne de repli. Vérifiez la version installée d’acf-mcp."
+            : "“Fiche ACF-XX not found in any locale chain”: the code is valid but the card is not served in any locale of the fallback chain. Check the installed acf-mcp version."}
         </li>
       </ul>
 
@@ -262,8 +234,8 @@ export default async function FicheLookupToolPage({
         <li>
           <a href={fr ? "/fr/tools/acf.search" : "/tools/acf.search"}>
             <code>acf.search</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "trouver le code de la fiche pertinente avant de la lire en détail."
             : "find the relevant card code before fetching it in detail."}
@@ -273,8 +245,8 @@ export default async function FicheLookupToolPage({
             href={fr ? "/fr/tools/acf.regulation.article" : "/tools/acf.regulation.article"}
           >
             <code>acf.regulation.article</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "remonter du texte réglementaire vers les fiches qui l’opérationnalisent."
             : "trace from regulatory text back to the cards that operationalise it."}
@@ -282,8 +254,8 @@ export default async function FicheLookupToolPage({
         <li>
           <a href={fr ? "/fr/tools/acf.classify-agent" : "/tools/acf.classify-agent"}>
             <code>acf.classify-agent</code>
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "obtenir la liste des fiches applicables à un agent à qualifier (applicable_fiches dans la sortie)."
             : "get the list of cards applicable to an agent (applicable_fiches in the output)."}

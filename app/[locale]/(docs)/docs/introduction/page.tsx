@@ -16,8 +16,8 @@ export default async function IntroductionPage({
       title={fr ? "Introduction" : "Introduction"}
       description={
         fr
-          ? "ACF® (Agentic Commerce Framework®) est le standard européen ouvert de gouvernance des systèmes agentiques en production. acf-mcp est l’implémentation officielle de référence, exposée comme serveur Model Context Protocol."
-          : "ACF® (Agentic Commerce Framework®) is the open European standard for governing agentic systems in production. acf-mcp is the official reference implementation, exposed as a Model Context Protocol server."
+          ? "ACF® (Agentic Commerce Framework®) est le standard ouvert de gouvernance des systèmes agentiques en production. acf-mcp est l’implémentation officielle de référence, exposée comme serveur Model Context Protocol."
+          : "ACF® (Agentic Commerce Framework®) is the open standard for governing agentic systems in production. acf-mcp is the official reference implementation, exposed as a Model Context Protocol server."
       }
       badge={fr ? "Démarrer" : "Get started"}
     >
@@ -26,16 +26,16 @@ export default async function IntroductionPage({
         {fr ? (
           <>
             <code>acf-mcp</code> est un serveur <strong>Model Context Protocol</strong> qui
-            expose la doctrine ACF® — 4 principes fondateurs, 4 niveaux d’autonomie
-            (N0–N3), le rôle DDAO et les 17 fiches méthodologiques — comme ressources et
+            expose la doctrine ACF® (4 principes fondateurs, 4 niveaux d’autonomie
+            déléguée, le rôle DDAO et les 45 fiches du toolkit) comme ressources et
             outils natifs consommables par n’importe quel client MCP (Claude Desktop,
             Cursor, Windsurf, Continue, Zed, ou un client custom).
           </>
         ) : (
           <>
             <code>acf-mcp</code> is a <strong>Model Context Protocol</strong> server that
-            exposes the ACF® doctrine — 4 founding principles, 4 autonomy levels (N0–N3),
-            the DDAO role and the 17 methodological cards — as resources and tools that
+            exposes the ACF® doctrine (4 founding principles, 4 delegated autonomy levels,
+            the DDAO role and the 45 toolkit cards) as resources and tools that
             any MCP client (Claude Desktop, Cursor, Windsurf, Continue, Zed, or a custom
             client) can consume natively.
           </>
@@ -44,15 +44,15 @@ export default async function IntroductionPage({
       <h2 id="why-it-matters">{fr ? "Pourquoi ça compte" : "Why it matters"}</h2>
       <p>
         {fr
-          ? "À partir du 2 décembre 2027, les obligations haut-risque de l’EU AI Act entrent en application. Les organisations qui exploitent des agents IA en production sans cadre de gouvernance opérationnel devront produire, sur demande d’un auditeur, la trace cryptographique complète de chaque décision agentique. acf-mcp donne à votre agent l’accès direct à un standard qui rend cette trace opposable."
+          ? "À partir du 2 décembre 2027, les obligations haut-risque de l’EU AI Act entrent en application. Les organisations qui exploitent des agents IA en production sans cadre de gouvernance opérationnel devront produire, sur demande d’un auditeur, la trace cryptographique complète de chaque décision agentique. acf-mcp donne à votre agent l’accès direct au standard qui organise cette trace."
           : "From December 2, 2027, the high-risk obligations of the EU AI Act enter into force. Organisations operating AI agents in production without an operational governance framework will have to produce, on request from an auditor, the complete cryptographic trace of every agentic decision. acf-mcp gives your agent direct access to a standard that makes this trace defensible."}
       </p>
       <h2 id="what-you-get">{fr ? "Ce que vous obtenez" : "What you get"}</h2>
       <ul>
         <li>
           {fr
-            ? "8 outils REASON déterministes (classification, gap analysis, mapping AI Act, etc.) — sans appel LLM interne, output entièrement signé Ed25519"
-            : "8 deterministic REASON tools (classification, gap analysis, AI Act mapping, etc.) — no internal LLM call, every output is Ed25519-signed"}
+            ? "8 outils REASON déterministes (classification, gap analysis, mapping AI Act, etc.), sans appel LLM interne, output entièrement signé Ed25519"
+            : "8 deterministic REASON tools (classification, gap analysis, AI Act mapping, etc.), no internal LLM call, every output is Ed25519-signed"}
         </li>
         <li>
           {fr
@@ -61,8 +61,8 @@ export default async function IntroductionPage({
         </li>
         <li>
           {fr
-            ? "34 ressources MCP signées (whitepaper, 17 fiches, 5 guides régulateurs, glossaire)"
-            : "34 signed MCP resources (whitepaper, 17 cards, 5 regulator guides, glossary)"}
+            ? "79 ressources MCP (livre blanc, 45 fiches, 5 guides réglementaires, manuel, deck, glossaire), issues d’une doctrine signée Ed25519"
+            : "79 MCP resources (white paper, 45 cards, 5 regulatory guides, manual, deck, glossary), from an Ed25519-signed doctrine"}
         </li>
         <li>
           {fr

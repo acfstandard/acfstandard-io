@@ -16,8 +16,8 @@ export default async function AiActMappingPage({
       title={fr ? "ACF® × EU AI Act" : "ACF® × EU AI Act"}
       description={
         fr
-          ? "Mapping conservateur des 17 fiches méthodologiques ACF® sur l’article principal de l’EU AI Act qu’elles opérationnalisent. Pour la vue multi-référentiel et le filtre interactif, voir /mappings."
-          : "Conservative mapping of the 17 ACF® methodological cards to the principal EU AI Act article they operationalise. For the multi-standard view and interactive filter, see /mappings."
+          ? "Mapping conservateur des 17 fiches ACF® de la famille Décider sur l’article principal de l’EU AI Act qu’elles opérationnalisent. Pour la vue multi-référentiel et le filtre interactif, voir /mappings."
+          : "Conservative mapping of the 17 ACF® cards of the Decide family to the principal EU AI Act article they operationalise. For the multi-standard view and interactive filter, see /mappings."
       }
       badge={fr ? "Correspondance" : "Mapping"}
     >

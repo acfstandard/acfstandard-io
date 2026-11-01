@@ -59,7 +59,7 @@ export default async function QuickstartPage({
       description={
         fr
           ? "Installez acf-mcp dans votre client IA en 30 secondes. Aucune clé API, aucun compte, aucun service distant : tout tourne en local via npx."
-          : "Install acf-mcp in your AI client in 30 seconds. No API key, no account, no remote service — everything runs locally via npx."
+          : "Install acf-mcp in your AI client in 30 seconds. No API key, no account, no remote service, everything runs locally via npx."
       }
       badge={fr ? "Démarrer" : "Get started"}
     >
@@ -253,8 +253,8 @@ export default async function QuickstartPage({
         <li>
           <a href={fr ? "/fr/tools" : "/tools"}>
             {fr ? "Explorez les 13 outils MCP" : "Explore the 13 MCP tools"}
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "8 REASON (raisonnement déterministe signé) + 5 READ (lecture des ressources)."
             : "8 REASON (deterministic signed reasoning) + 5 READ (resource lookup)."}
@@ -262,8 +262,8 @@ export default async function QuickstartPage({
         <li>
           <a href={fr ? "/fr/docs/architecture" : "/docs/architecture"}>
             {fr ? "Comprenez l’architecture" : "Understand the architecture"}
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "comment chaque outil produit une sortie déterministe et signée sans appel LLM interne."
             : "how each tool produces deterministic, signed output without an internal LLM call."}
@@ -271,8 +271,8 @@ export default async function QuickstartPage({
         <li>
           <a href={fr ? "/fr/signatures" : "/signatures"}>
             {fr ? "Vérifiez la signature de doctrine" : "Verify the doctrine signature"}
-          </a>{" "}
-          —{" "}
+          </a>
+          {": "}
           {fr
             ? "épinglez la clé publique Ed25519 et vérifiez chaque réponse hors-ligne."
             : "pin the Ed25519 public key and verify every reply offline."}

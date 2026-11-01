@@ -14,17 +14,6 @@ const CURSOR_CONFIG = `{
   }
 }`;
 
-const CURSOR_HTTP_CONFIG = `{
-  "mcpServers": {
-    "acf": {
-      "url": "https://your-acf-mcp.example.com/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR_ACF_API_KEY"
-      }
-    }
-  }
-}`;
-
 const CURSOR_PROJECT_CONFIG = `{
   "mcpServers": {
     "acf": {
@@ -78,7 +67,7 @@ export default async function CursorPage({
           ({fr ? "vérifiez avec" : "check with"} <code>node --version</code>)
         </li>
         <li>
-          <strong>Cursor</strong> —{" "}
+          <strong>Cursor</strong>{": "}
           <a href="https://cursor.com" target="_blank" rel="noopener noreferrer">
             cursor.com
           </a>{" "}
@@ -243,31 +232,6 @@ export default async function CursorPage({
       </Steps>
 
       <h2 id="advanced-config">{fr ? "Configuration avancée" : "Advanced config"}</h2>
-      <h3 id="http-transport">{fr ? "Transport HTTP" : "HTTP transport"}</h3>
-      <p>
-        {fr
-          ? "Cursor accepte un endpoint HTTP distant. Utile pour mutualiser acf-mcp côté serveur ou enforcer une clé API par utilisateur."
-          : "Cursor accepts a remote HTTP endpoint. Useful to share acf-mcp server-side or enforce a per-user API key."}
-      </p>
-      <CodeBlock
-        code={CURSOR_HTTP_CONFIG}
-        language="json"
-        filename="~/.cursor/mcp.json"
-      />
-      <p>
-        {fr ? (
-          <>
-            Voir <a href="/fr/docs/authentication">/docs/authentication</a> pour déployer
-            acf-mcp en HTTP avec authentification par clé.
-          </>
-        ) : (
-          <>
-            See <a href="/docs/authentication">/docs/authentication</a> for deploying
-            acf-mcp over HTTP with API-key auth.
-          </>
-        )}
-      </p>
-
       <h3 id="approval">{fr ? "Auto-approbation" : "Auto-approval"}</h3>
       <p>
         {fr

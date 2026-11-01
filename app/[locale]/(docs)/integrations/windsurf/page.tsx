@@ -70,7 +70,7 @@ export default async function WindsurfPage({
           ({fr ? "vérifiez avec" : "check with"} <code>node --version</code>)
         </li>
         <li>
-          <strong>Windsurf</strong> —{" "}
+          <strong>Windsurf</strong>{": "}
           <a href="https://windsurf.com" target="_blank" rel="noopener noreferrer">
             windsurf.com
           </a>{" "}
@@ -209,8 +209,8 @@ export default async function WindsurfPage({
       <h3 id="transport">{fr ? "Transport" : "Transport"}</h3>
       <p>
         {fr
-          ? "Windsurf supporte uniquement stdio à date. Pour un endpoint HTTP partagé en équipe, utilisez Cursor ou Continue côté client et déployez acf-mcp en HTTP — voir "
-          : "Windsurf only supports stdio today. For a shared HTTP endpoint, use Cursor or Continue on the client side and deploy acf-mcp over HTTP — see "}
+          ? "Windsurf lance acf-mcp en stdio, le mode dans lequel le serveur est distribué : aucun point d’accès réseau à prévoir, voir "
+          : "Windsurf starts acf-mcp over stdio, the mode the server ships in: no network endpoint to plan for, see "}
         <a href={fr ? "/fr/docs/authentication" : "/docs/authentication"}>
           /docs/authentication
         </a>

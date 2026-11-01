@@ -1,5 +1,5 @@
 ---
-title: "ACF® — Livre blanc"
+title: "ACF®, Livre blanc"
 doc_type: whitepaper
 lang: fr
 version: "2.1"
@@ -8,14 +8,14 @@ author: "Vincent Dorange"
 publisher: "Vincent Dorange"
 classification: "Public"
 canonical_url: "https://acfstandard.com/whitepaper-fr.pdf"
-supersedes: "2.0 (juin 2026 — édition initiale)"
+supersedes: "2.0 (juin 2026, édition initiale)"
 ---
 
-# ACF® — AGENTIC COMMERCE FRAMEWORK®
-## La Decision Trust Infrastructure pour la décision agentique
-### Govern. Measure. Prove.
+# ACF®, AGENTIC COMMERCE FRAMEWORK®
+## L'infrastructure de confiance de la décision agentique
+### Gouverner. Mesurer. Prouver.
 
-**Livre blanc · Édition juin 2026 · Vincent Dorange**
+**Livre blanc · Vincent Dorange**
 
 *www.acfstandard.com · www.acfstandard.io*
 
@@ -23,16 +23,16 @@ supersedes: "2.0 (juin 2026 — édition initiale)"
 
 ## Sommaire
 
-1. Résumé exécutif — *Govern. Measure. Prove.*
-2. Le défi 2026-2027 — pourquoi maintenant
-3. La catégorie « gouvernance agentique » et la place d'ACF® — *Decision Trust Infrastructure*
-4. Le framework ACF® — principes, couches, niveaux, rôles
-5. Les 17 fiches méthodologiques
+1. Résumé exécutif, *Gouverner. Mesurer. Prouver.*
+2. Le défi 2026-2027, pourquoi maintenant
+3. La catégorie « gouvernance agentique » et la place d'ACF®, l'infrastructure de confiance décisionnelle
+4. Le cadre ACF®, principes, couches, niveaux, rôles
+5. Les 45 fiches du référentiel
 6. La méthodologie de déploiement
 7. Le protocole d'arrêt d'urgence à trois niveaux
-8. ACF® face aux référentiels existants — la matrice de correspondance
-9. L'écosystème ACF® — une infrastructure, quatre manifestations
-10. Différenciateurs techniques — preuve cryptographique
+8. ACF® face aux référentiels existants, la matrice de correspondance
+9. L'écosystème ACF®, une infrastructure, quatre manifestations
+10. Différenciateurs techniques, preuve cryptographique
 11. À propos & contact
 12. Mentions
 
@@ -40,45 +40,47 @@ supersedes: "2.0 (juin 2026 — édition initiale)"
 
 ## 1. Résumé exécutif
 
-L'**Agentic Commerce Framework®** (ACF®) n'est pas un framework de plus. C'est la **Decision Trust Infrastructure** européenne : l'infrastructure de confiance à laquelle une organisation adhère pour que les décisions prises par ses agents IA restent **opposables des années plus tard** — à un régulateur, à un auditeur, à un tribunal, à un assureur. Comme TLS est l'infrastructure de confiance du web et SWIFT celle du règlement interbancaire, ACF® se positionne comme la couche commune que rejoignent les organisations qui mettent en production des agents IA à conséquence (commerce, finance, services, santé, énergie, RH, marketing, opérations…).
+L'**Agentic Commerce Framework®** (ACF®) n'est pas un référentiel de plus. C'est l'**infrastructure de confiance décisionnelle** européenne (dénomination internationale : *Decision Trust Infrastructure*) : celle à laquelle une organisation adhère pour que les décisions prises par ses agents IA restent vérifiables et défendables des années plus tard, devant un régulateur, un auditeur, un tribunal ou un assureur. Comme TLS est l'infrastructure de confiance du web et SWIFT celle du règlement interbancaire, ACF® se positionne comme la couche commune que rejoignent les organisations qui mettent en production des agents IA à conséquence, que ce soit dans le commerce, la finance, les services, la santé, l'énergie, les ressources humaines, le marketing ou les opérations.
 
-Porté par **Vincent Dorange**, ACF® se résume en trois verbes : **Govern. Measure. Prove.** Le standard **gouverne** (la doctrine, les fiches, le rôle DDAO) ; le **ACF Sovereignty Score™** **mesure** (la métrique 0-100 de la souveraineté décisionnelle conservée) ; **ACF Compliance** **prouve** (la trace cryptographique opposable qu'un tiers indépendant peut vérifier). Cette articulation répond à un vide précis : les référentiels existants — EU AI Act, ISO/IEC 42001, NIST AI RMF, RGPD, COBIT — disent **ce qu'il faut faire** mais ne disent pas **comment opérer**, **comment mesurer** ni **comment prouver**. ACF® comble ce vide.
+Porté par **Vincent Dorange**, ACF® se résume en trois verbes : *Gouverner. Mesurer. Prouver.* (signature internationale : *Govern. Measure. Prove.*). Le standard gouverne, par sa doctrine, ses fiches et le rôle DDAO. L'**ACF Sovereignty Score™** mesure, sur une échelle de 0 à 100, la souveraineté décisionnelle que l'organisation conserve. **ACF Compliance** prouve, par une trace cryptographique qu'un tiers peut vérifier indépendamment. Cette articulation répond à un vide précis : les référentiels existants (EU AI Act, ISO/IEC 42001, NIST AI RMF, RGPD, COBIT) disent ce qu'il faut faire, mais ils ne disent ni comment opérer, ni comment mesurer, ni comment prouver. ACF® comble ce vide.
 
-ACF® articule **4 principes fondateurs**, **4 couches opérationnelles**, **4 niveaux d'autonomie** (N0 à N3), **17 fiches méthodologiques** prêtes à l'emploi et **un rôle nommé** — le **DDAO** (Delegated Decision Agent Officer) — qui porte la responsabilité humaine de chaque agent en production. L'ensemble s'adosse à une **traçabilité cryptographique** opposable (signatures Ed25519, chaîne de hachage SHA-256, horodatage qualifié RFC 3161) qui rend chaque décision agentique auditable, indépendamment de l'infrastructure du déployeur.
+ACF® articule quatre principes fondateurs, quatre couches, quatre niveaux de maturité (N0 à N3), 45 fiches prêtes à l'emploi (20 pour Décider, 10 pour Organiser et 15 pour Opérer) et un rôle nommé, le **DDAO** (Delegated Decision Agent Officer), qui porte la responsabilité humaine de chaque agent en production. L'ensemble s'adosse à une traçabilité cryptographique vérifiable indépendamment (signatures Ed25519, empreintes SHA-256, horodatage signé Ed25519), qui rend chaque décision agentique auditable sans dépendre de l'infrastructure du déployeur.
 
-Le framework ne remplace pas les standards en vigueur. Il les **opérationnalise** au niveau de la décision : à chacune des 17 fiches ACF® correspond un article de l'EU AI Act, une clause d'ISO/IEC 42001, une fonction du NIST AI RMF, un article du RGPD et un domaine de COBIT 2019. Toute équipe de conformité peut ainsi intégrer ACF® dans son audit trail existant en quelques minutes.
+Le cadre ne remplace pas les standards en vigueur : il les opérationnalise au niveau de la décision. Les fiches de la famille Décider sont mises en correspondance avec un article de l'EU AI Act, une clause d'ISO/IEC 42001, une fonction du NIST AI RMF, un article du RGPD et un domaine de COBIT 2019. Toute équipe de conformité peut ainsi intégrer ACF® dans sa piste d'audit existante en quelques minutes.
 
-L'**enforcement haut-risque de l'EU AI Act entre en vigueur le 2 décembre 2027** pour les systèmes agentiques opérant dans les services essentiels (crédit, assurance, énergie, santé, justice). Les organisations qui auront déployé d'ici là des agents commerciaux sans cadre de gouvernance opérationnel se trouveront face à une obligation rétroactive de mise en conformité, sans documentation et sans piste d'audit recevable. ACF® est conçu pour qu'aucune ligne d'audit ne manque à ce moment-là.
+Le régime d'application haut-risque de l'EU AI Act entre en vigueur le 2 décembre 2027 pour les systèmes agentiques opérant dans les services essentiels (crédit, assurance, énergie, santé, justice). Les organisations qui auront déployé d'ici là des agents sans cadre de gouvernance opérationnel se trouveront face à une obligation rétroactive de mise en conformité, sans documentation et sans piste d'audit recevable. ACF® est conçu pour qu'aucune ligne d'audit ne manque à ce moment-là.
 
-L'écosystème ACF® s'organise autour de **quatre manifestations** de l'infrastructure de confiance : le **ACF Sovereignty Score™** (la métrique), **ACF Compliance** (la preuve), le serveur MCP **`acf-mcp`** (le moteur d'exécution), et la **doctrine** (le corpus — 17 fiches × 4 couches × N0-N3). À cela s'ajoutent quatre outils gratuits à libre accès — **ACF Score** (auto-diagnostic), **ACF AI Act Checker**, **Audit Flash de conformité** et **Plan Compliance personnalisé** — trois produits commerciaux complémentaires (**ACF Auditor**, **ACF Control**, **ACF Certification**), et le serveur MCP qui expose la doctrine ACF® comme ressource native aux copilotes IA (Claude, Cursor, Windsurf, Continue, Zed) avec huit outils REASON déterministes signés.
+L'écosystème ACF® s'organise autour de quatre manifestations de l'infrastructure de confiance : l'ACF Sovereignty Score™ (la métrique), ACF Compliance (la preuve), le serveur MCP `acf-mcp` (le moteur d'exécution) et la doctrine (le corpus : 45 fiches, 4 couches, échelle N0-N3). S'y ajoutent quatre outils gratuits à libre accès (ACF Score pour l'auto-diagnostic, ACF AI Act Checker, Audit Flash de conformité, Plan Compliance personnalisé) et trois produits commerciaux complémentaires (ACF Auditor, ACF Control, ACF Certification). Le serveur MCP, quant à lui, expose la doctrine ACF® comme ressource native aux copilotes IA (Claude, Cursor, Windsurf, Continue, Zed), avec des outils REASON déterministes signés.
 
 ---
 
-## 2. Le défi 2026-2027 — pourquoi maintenant
+## 2. Le défi 2026-2027, pourquoi maintenant
 
-### 2.1. Les agents commerciaux ne sont plus une démonstration
+### 2.1. Le commerce agentique, avant-garde d'un phénomène général
 
-En 2024-2025, le commerce agentique s'est joué dans les démonstrations. En 2026, il est entré en production. Sept protocoles concurrents ont été publiés en dix-huit mois — **MCP** (Anthropic, novembre 2024), **Operator** (OpenAI, janvier 2025), **Mariner** (Google, décembre 2024), **TAP** (Visa, octobre 2025), **Agent Pay** (Mastercard, 2025), **ACP** (Stripe + OpenAI, 2025), **TACP** (Forter, 2025). Walmart, Wells Fargo, Klarna, Expedia ou Sephora ont annoncé ou déployé des agents agissant directement sur des transactions à valeur réelle. Selon Bain & Company, un achat e-commerce sur cinq pourrait être initié par un agent autonome aux États-Unis d'ici 2028.
+En 2024-2025, le commerce agentique s'est joué dans les démonstrations. En 2026, il est entré en production. Sept protocoles concurrents ont été publiés en dix-huit mois : MCP (Anthropic, novembre 2024), Operator (OpenAI, janvier 2025), Mariner (Google, décembre 2024), TAP (Visa, octobre 2025), Agent Pay (Mastercard, 2025), ACP (Stripe + OpenAI, 2025) et TACP (Forter, 2025). Walmart, Wells Fargo, Klarna, Expedia ou Sephora ont annoncé ou déployé des agents agissant directement sur des transactions à valeur réelle. Selon Bain & Company, un achat e-commerce sur cinq pourrait être initié par un agent autonome aux États-Unis d'ici 2028.
 
-Pour les marchands européens, le sujet n'est plus prospectif. Il est concurrentiel et réglementaire.
+Le commerce sert ici de laboratoire, non de frontière. C'est le premier terrain où des agents engagent l'organisation sur des transactions réelles, parce que la boucle entre la décision, l'exécution et l'argent y est la plus courte ; c'est pour cette raison qu'il révèle en avance ce qui attend les autres secteurs. Le même mouvement est déjà à l'œuvre partout où une décision se délègue : appui au scoring de crédit et arbitrages en banque et en assurance, tri et présélection de candidatures dans les ressources humaines, aide à la décision et à l'orientation des patients en santé, instruction de dossiers dans le secteur public. Le standard assume cette origine : l'Agentic Commerce Framework® est né sur ce premier terrain, et son ambition couvre aujourd'hui toute décision déléguée à un agent.
+
+Pour toute organisation européenne qui déploie des agents à conséquence, le sujet n'est donc plus prospectif. Il est concurrentiel et réglementaire.
 
 ### 2.2. Le risque silencieux : l'absence de cadre opérationnel
 
-Aucun de ces protocoles ne dit qui supervise l'agent, selon quels critères, avec quelle traçabilité. Tous postulent qu'une équipe interne reconstituera cette couche au-dessus. Pour une PME, une ETI ou un groupe européen, **cette reconstitution n'est pas tenable** : elle suppose un dialogue continu entre la DSI, le DPO, le RSSI, la conformité, le métier et la direction juridique, sans grille de lecture commune et sans documentation type.
+Aucun de ces protocoles ne dit qui supervise l'agent, selon quels critères, avec quelle traçabilité. Tous postulent qu'une équipe interne reconstituera cette couche au-dessus. Pour une PME, une ETI ou un groupe européen, cette reconstitution n'est pas tenable, parce qu'elle suppose un dialogue continu entre la DSI, le DPO, le RSSI, la conformité, le métier et la direction juridique, sans grille de lecture commune et sans documentation type.
 
-Le résultat est observable sur le terrain. Sur un échantillon de cas observés par l'auteur fin 2025-début 2026 — sous couverture de confidentialité, les organisations concernées ne pouvant être nommées —, sur dix entreprises qui exploitent un agent en production :
+Le résultat est observable sur le terrain. Sur un échantillon de cas observés par l'auteur fin 2025-début 2026 (sous couverture de confidentialité, les organisations concernées ne pouvant être nommées), sur dix entreprises qui exploitent un agent en production :
 
-- **8 sur 10** n'ont pas de personne nommément responsable des décisions de l'agent ;
-- **9 sur 10** ne disposent pas d'un journal cryptographiquement signé des décisions agentiques ;
-- **10 sur 10** ne peuvent pas produire, à la demande d'un auditeur, la trace complète d'une décision précise prise par l'agent un mardi à 14 h 12.
+- 8 sur 10 n'ont pas de personne nommément responsable des décisions de l'agent ;
+- 9 sur 10 ne disposent pas d'un journal cryptographiquement signé des décisions agentiques ;
+- 10 sur 10 ne peuvent pas produire, à la demande d'un auditeur, la trace complète d'une décision précise prise par l'agent un mardi à 14 h 12.
 
-Ces trois manques cumulés constituent ce que l'EU AI Act appelle, à l'article 14 et à l'article 26(6), un défaut de supervision humaine et un défaut de tenue de journaux d'événements. **À partir du 2 décembre 2027**, l'enforcement haut-risque s'applique : ces défauts deviennent sanctionnables — jusqu'à 35 millions d'euros ou 7 % du chiffre d'affaires mondial.
+Ces trois manques cumulés constituent ce que l'EU AI Act appelle, à l'article 14 et à l'article 26(6), un défaut de supervision humaine et un défaut de tenue de journaux d'événements. À partir du 2 décembre 2027, le régime haut-risque s'applique et ces défauts deviennent sanctionnables, avec des amendes pouvant atteindre 35 millions d'euros ou 7 % du chiffre d'affaires mondial.
 
 ### 2.3. Une fenêtre d'action de 18 mois
 
-Le calendrier est aujourd'hui calé. Entre juin 2026 et décembre 2027, les entreprises ont environ **18 mois** pour structurer leur gouvernance agentique : nommer un responsable, documenter chaque agent, construire le journal de décisions, formaliser un kill switch, et démontrer aux instances de gouvernance interne (comité d'audit, comité des risques, conseil d'administration) qu'un cadre est en place.
+Le calendrier est aujourd'hui calé. Entre juin 2026 et décembre 2027, les entreprises ont environ 18 mois pour structurer leur gouvernance agentique : nommer un responsable, documenter chaque agent, construire le journal de décisions, formaliser un mécanisme d'arrêt d'urgence (kill switch), et démontrer aux instances de gouvernance interne (comité d'audit, comité des risques, conseil d'administration) qu'un cadre est en place.
 
-ACF® a été conçu pour rendre ces 18 mois opérables sans recommencer à zéro. Le framework est un ensemble de gestes posés — pas une déclaration d'intention.
+ACF® a été conçu pour rendre ces 18 mois opérables sans recommencer à zéro. Le cadre est un ensemble de gestes posés, non une déclaration d'intention.
 
 ---
 
@@ -96,106 +98,156 @@ Les domaines de gouvernance numérique se sont construits par cristallisation au
 | IA réglementée | EU AI Act |
 | **Gouvernance agentique** | **ACF®** |
 
-ISO 27001 n'a pas remplacé les pratiques de sécurité existantes : il les a rendues lisibles, certifiables, comparables. Le RGPD n'a pas inventé la protection des données : il l'a transformée en obligation universelle dans l'Union. ISO/IEC 42001 ne réécrit pas la science des données : elle la dote d'un système de management opposable. L'EU AI Act ne crée pas l'IA : il en encadre les usages à risque.
+ISO 27001 n'a pas remplacé les pratiques de sécurité existantes ; il les a rendues lisibles, certifiables et comparables. Le RGPD n'a pas inventé la protection des données, il en a fait une obligation universelle dans l'Union. De la même façon, ISO/IEC 42001 dote la gestion de l'IA d'un système de management certifiable qu'elle n'avait pas, et l'EU AI Act encadre les usages à risque d'une technologie qu'il n'a pas créée.
 
-ACF® s'inscrit dans cette filiation. **L'autonomie des systèmes n'est pas un sous-thème de l'IA** ; c'est un domaine en soi, avec ses risques propres (dérive, hallucination opérationnelle, escalade non contrôlée), ses rôles propres (DDAO), ses garde-fous propres (kill switch, niveaux d'autonomie N0-N3, registre de décisions cryptographique).
+ACF® s'inscrit dans cette filiation. L'autonomie des systèmes n'est pas un sous-thème de l'IA : c'est un domaine en soi, qui a ses risques (dérive, hallucination opérationnelle, escalade non contrôlée), son rôle dédié (le DDAO) et ses garde-fous, du kill switch aux niveaux de maturité N0-N3 en passant par le registre de décisions cryptographique.
 
-### 3.2. ACF® n'est pas un challenger des standards. C'est leur couche d'exécution.
+### 3.2. ACF® ne concurrence pas les standards existants. Il en est la couche d'exécution.
 
-Les référentiels existants gouvernent **l'IA**. ACF® gouverne **les décisions prises par des systèmes autonomes**.
+Les référentiels existants gouvernent l'IA. ACF® gouverne les décisions prises par des systèmes autonomes.
 
-L'EU AI Act vous dit que le système d'IA est régulé. ISO/IEC 42001 vous dit comment gérer votre portefeuille d'IA. Le NIST AI RMF vous dit quels risques rendre visibles. Le RGPD vous dit qui doit consentir. À l'instant où un agent **agit** — fixe un prix, accorde un crédit, réserve un vol, appelle une API — aucun de ces référentiels ne vous dit qui a signé cette décision précise, face à quelle constitution agentique, avec quel kill switch, audité par qui et conservé combien de temps.
+L'EU AI Act vous dit que le système d'IA est régulé. ISO/IEC 42001 vous dit comment gérer votre portefeuille d'IA. Le NIST AI RMF vous dit quels risques rendre visibles. Le RGPD vous dit qui doit consentir. Mais à l'instant où un agent agit (fixe un prix, accorde un crédit, réserve un vol, appelle une interface de programmation), aucun de ces référentiels ne vous dit qui a signé cette décision précise, face à quelle constitution agentique, avec quel mécanisme d'arrêt, audité par qui et conservé combien de temps.
 
-C'est cette couche qu'ACF® formalise. Les 17 fiches méthodologiques en sont le vocabulaire opérationnel.
+C'est cette couche qu'ACF® formalise. Les 45 fiches du référentiel en sont le vocabulaire opérationnel.
 
-### 3.3. ACF® comme Decision Trust Infrastructure
+### 3.3. ACF® comme infrastructure de confiance décisionnelle
 
-Un mot de plus s'impose, parce qu'il change la lecture stratégique. ACF® n'est pas un framework que l'on déploie au sens où l'on déploie un logiciel — c'est une **infrastructure de confiance** à laquelle une organisation **adhère**, au même titre que TLS l'est pour le web ou que SWIFT l'est pour le règlement interbancaire. Personne ne réécrit TLS dans son back-office ; on s'y branche. Personne ne réinvente SWIFT pour passer un virement transfrontalier ; on rejoint le réseau. ACF® se positionne comme la même couche pour la décision agentique : une infrastructure publique, ouverte, signée cryptographiquement, sur laquelle les organisations s'appuient pour rendre leurs décisions agentiques **opposables des années plus tard**.
+Un mot de plus s'impose, parce qu'il change la lecture stratégique. ACF® n'est pas un cadre que l'on déploie au sens où l'on déploie un logiciel : c'est une infrastructure de confiance à laquelle une organisation adhère, au même titre que TLS l'est pour le web ou que SWIFT l'est pour le règlement interbancaire. Personne ne réécrit TLS dans son back-office ; on s'y branche. Personne ne réinvente SWIFT pour passer un virement transfrontalier ; on rejoint le réseau. ACF® se positionne comme la même couche pour la décision agentique : une infrastructure publique, ouverte, signée cryptographiquement, sur laquelle les organisations s'appuient pour rendre leurs décisions agentiques vérifiables et défendables des années plus tard.
 
-C'est ce que nous appelons une **Decision Trust Infrastructure**. La distinction n'est pas qu'éditoriale. Le standard ne vit pas dans vos serveurs ; il vit dans la capacité de tout tiers — régulateur, auditeur, assureur, tribunal — à vérifier indépendamment, des années plus tard, qu'une décision agentique a bien eu lieu, qui l'a portée nommément, sous quelle doctrine signée et avec quelle correspondance aux référentiels applicables.
+C'est ce que nous appelons une infrastructure de confiance décisionnelle. La distinction n'est pas qu'éditoriale. Le standard ne vit pas dans vos serveurs ; il vit dans la capacité de tout tiers (régulateur, auditeur, assureur, tribunal) à vérifier indépendamment, des années plus tard, qu'une décision agentique a bien eu lieu, qui l'a portée nommément, sous quelle doctrine signée et avec quelle correspondance aux référentiels applicables.
 
-Trois propriétés caractérisent une Decision Trust Infrastructure et toutes trois sont déjà implémentées par ACF® :
+Trois propriétés caractérisent une telle infrastructure, et toutes trois sont déjà implémentées par ACF®.
 
-1. **Identité signée** — chaque décision agentique porte une signature Ed25519 et le nom du DDAO civilement engagé. Aucune autonomie anonyme n'est admise par le standard.
-2. **Vérification réplicable** — la chaîne SHA-256 et les ressources signées du serveur `acf-mcp` permettent à un tiers, des années plus tard, de rejouer la vérification sans dépendre du déployeur.
-3. **Trace opposable** — la matrice 17 × 5 sur EU AI Act, ISO/IEC 42001, NIST AI RMF, RGPD et COBIT transforme la trace en preuve juridique opposable, pas en simple log technique.
+1. **Identité signée.** Chaque décision agentique porte une signature Ed25519 et le nom du DDAO civilement engagé. Aucune autonomie anonyme n'est admise par le standard.
+2. **Vérification réplicable.** La chaîne SHA-256 et les ressources signées du serveur `acf-mcp` permettent à un tiers, des années plus tard, de rejouer la vérification sans dépendre du déployeur.
+3. **Trace vérifiable.** La matrice 17 × 5 sur EU AI Act, ISO/IEC 42001, NIST AI RMF, RGPD et COBIT transforme la trace en preuve juridique vérifiable indépendamment, et non en simple journal technique.
 
 ---
 
-## 4. Le framework ACF® — principes, couches, niveaux, rôles
+## 4. Le cadre ACF®, principes, couches, niveaux, rôles
 
 ### 4.1. Les 4 principes fondateurs
 
-ACF® repose sur quatre principes axiomatiques, indépendants du protocole technique utilisé en sous-couche.
+ACF® repose sur quatre principes fondateurs, indépendants du protocole technique utilisé en sous-couche.
 
-**P1 — Séparation décision / exécution.** L'agent peut exécuter ; il ne peut pas décider seul des décisions stratégiques critiques (engagement contractuel, écart financier au-delà d'un seuil, transfert international de données, action irréversible sur un actif réel). Ces décisions sont toujours humaines, ou suspendues.
+**P1, Souveraineté décisionnelle.** Les décisions stratégiques critiques ne sont jamais déléguées à des agents autonomes. L'agent peut exécuter ; il ne peut pas décider seul d'un engagement contractuel, d'un écart financier au-delà d'un seuil, d'un transfert international de données ou d'une action irréversible sur un actif réel. Ces décisions restent humaines ou suspendues : elles sont énumérées comme zones non déléguables dans la constitution agentique de chaque organisation (fiche ACF-04), quel que soit le niveau de maturité de l'agent.
 
-**P2 — Zones non-déléguables.** Certaines décisions ne sont jamais déléguables, quel que soit le niveau d'autonomie de l'agent et quelle que soit la maturité de l'organisation. Elles sont énumérées dans la constitution agentique de chaque organisation (fiche ACF-03).
+**P2, Gouvernance par conception.** Les cadres de gouvernance sont définis avant le déploiement, pas après : constitution (ACF-04), mandat (ACF-13), matrice de criticité (ACF-03) et dispositif d'arrêt (ACF-07) existent avant la mise en service. Le cadre évolue ensuite avec les capacités des agents : une revue formelle au moins trimestrielle (fiches ACF-06 et ACF-11) ajuste les niveaux de maturité visés, les niveaux d'autonomie déléguée, les seuils d'escalade et les zones non déléguables.
 
-**P3 — Traçabilité et interruptibilité.** Toute action agentique est journalisée dans un registre cryptographiquement signé (fiche ACF-08). Toute action peut être interrompue à n'importe quel moment via un kill switch opérationnel (fiche ACF-06) dont l'effectivité est testée.
+**P3, Contrôle humain ultime.** Tout système agentique doit préserver la capacité d'intervention humaine. Toute action peut être interrompue à n'importe quel moment via un mécanisme d'arrêt opérationnel (fiche ACF-07) dont l'effectivité est testée.
 
-**P4 — Gouvernance vivante.** Le cadre de gouvernance évolue avec les capacités des agents. Une revue formelle au moins trimestrielle (fiches ACF-05 et ACF-10) ajuste les niveaux d'autonomie, les seuils d'escalade et les zones non-déléguables.
+**P4, Responsabilité traçable.** Chaque action autonome doit pouvoir être auditée et attribuée. Toute action agentique est journalisée dans un registre signé (fiche ACF-09), où l'on retrouve qui a autorisé la décision et sur quelle règle.
 
-### 4.2. Les 4 couches opérationnelles
+### 4.2. Les 4 couches du cadre
 
-ACF® se déploie sur quatre couches imbriquées :
+ACF® se déploie sur quatre couches dont l'ordre est normatif : on ne commence jamais par l'agent, on commence toujours par la décision.
 
-- **C1 — Stratégique.** Charte de souveraineté agentique, comité de gouvernance, matrice RACI organisationnelle, désignation du DDAO.
-- **C2 — Tactique.** Objectifs pondérés par agent, règles d'arbitrage automatique, seuils d'escalade humaine.
-- **C3 — Opérationnelle.** Mandat de chaque agent (fiche ACF-12), périmètre d'interaction autorisé, catégorisation par niveau de criticité (fiche ACF-02).
-- **C4 — Technique.** Gating adaptatif, alertes multi-niveaux, KPIs de souveraineté en temps réel, dashboards opérables par le DDAO et son équipe.
+1. **Gouvernance et souveraineté.** Qui décide réellement, et au nom de quoi. Cette couche fixe les principes non négociables, les responsabilités et les zones interdites ; c'est là que vivent la charte de souveraineté agentique, le comité de gouvernance, la matrice RACI organisationnelle et la désignation du DDAO.
+2. **Politique de décision.** La traduction des principes en règles opérables : seuils, priorités, conditions d'escalade humaine, limites financières, objectifs pondérés par agent et règles d'arbitrage automatique.
+3. **Système d'agents.** Chaque agent reçoit un mandat précis (fiche ACF-13), un périmètre d'interaction défini, des contraintes explicites et un responsable humain identifié, et il est catégorisé par niveau de criticité (fiche ACF-03). Le standard n'admet aucune entité autonome illimitée.
+4. **Exécution et supervision.** Les journaux de décision, les tableaux de bord opérables par le DDAO et son équipe, les alertes multi-niveaux, les indicateurs de souveraineté en temps réel, le contrôle d'autorisation adaptatif, la détection d'anomalie et les mécanismes d'arrêt.
 
-### 4.3. Les 4 niveaux d'autonomie — N0 à N3
+Chaque couche couvre un risque distinct. Sans la première, l'organisation dérive faute de cap ; sans la deuxième, les décisions deviennent incohérentes ; sans la troisième, les agents opèrent en désordre ; sans la quatrième, l'organisation est aveugle.
 
-ACF® classe les agents par niveau d'autonomie. Le niveau **N2** est la cible recommandée pour la majorité des cas d'usage en production en 2026-2027.
+### 4.3. Les 4 niveaux de maturité, N0 à N3
 
-- **N0 — Automatisation classique.** Règles fixes, aucun apprentissage. Toute modification passe par un changement humain.
-- **N1 — Agents assistés.** L'agent analyse, hiérarchise et recommande. La décision finale reste systématiquement humaine.
-- **N2 — Agents gouvernés.** L'agent décide dans un cadre strict (constitution agentique + zones non-déléguables verrouillées + kill switch testé + registre signé). C'est le niveau visé par défaut pour le commerce agentique en production.
-- **N3 — Autonomie supervisée.** L'agent décide et apprend. Réservé à des cas spécifiques. Exige le niveau de gouvernance le plus mature (revue mensuelle, double DDAO, audit externe semestriel).
+ACF® classe les agents par niveau de maturité. La maturité est une propriété de l'agent : chaque agent en production porte une valeur, et une seule. Le niveau N2 est la cible recommandée pour la majorité des cas d'usage en production en 2026-2027.
 
-La progression recommandée est N0 → N1 → N2 → N3. Chaque passage à un niveau supérieur déclenche les contrôles de la fiche ACF-00 (Score de Souveraineté).
+- **N0, Automatisation classique.** Des règles fixes exécutent sans rien décider. Toute modification passe par un changement humain.
+- **N1, Agents assistés.** L'agent propose, l'humain valide. L'agent analyse, hiérarchise et recommande ; la décision finale reste systématiquement humaine.
+- **N2, Agents gouvernés.** Autonomie réelle mais strictement encadrée : constitution agentique, zones non-déléguables verrouillées, mécanisme d'arrêt testé, registre signé. C'est le niveau visé par défaut pour les agents à conséquence en production.
+- **N3, Autonomie supervisée.** L'agent agit largement seul, sous surveillance continue, et peut apprendre. Réservé à des cas spécifiques, ce niveau exige la posture de gouvernance la plus mature : revue mensuelle, double DDAO, audit externe semestriel.
 
-### 4.4. Le rôle DDAO — Delegated Decision Agent Officer
+La progression recommandée est N0 → N1 → N2 → N3. Chaque passage à un niveau supérieur déclenche les contrôles de la fiche ACF-01 (Score de Souveraineté). La maturité ne se mesure pas à ce que l'on délègue, mais à la qualité avec laquelle on le gouverne ; viser d'emblée le niveau le plus élevé, comme si la maturité se confondait avec le degré d'autonomie, est un contresens.
 
-Le **DDAO** est la pierre angulaire humaine d'ACF®. C'est la personne physique ou l'organe collégial nommément désigné comme responsable d'un agent (ou d'un portefeuille d'agents) en production.
+La maturité ne doit d'ailleurs pas être confondue avec l'autonomie déléguée, qui est une propriété de la décision et non de l'agent. ACF® distingue quatre niveaux d'autonomie déléguée, définis décision par décision dans le mandat de l'agent (fiches ACF-02 et ACF-05) : suggestif (l'agent propose et n'exécute rien), co-décision (l'agent prépare, l'humain tranche), autonome supervisé (l'agent décide, l'humain contrôle a posteriori) et autonome (l'agent décide et exécute dans son périmètre). Un même agent porte donc plusieurs niveaux d'autonomie déléguée, un par décision de son mandat, et une seule valeur de maturité.
+
+### 4.4. Le rôle DDAO, Delegated Decision Agent Officer
+
+Le **DDAO** (Delegated Decision Agent Officer, l'officier chargé des décisions déléguées aux agents) est la fonction humaine centrale qu'ACF® recommande de créer : la personne physique ou l'organe collégial nommément désigné comme responsable d'un agent, ou d'un portefeuille d'agents, en production.
+
+Le DDAO n'est pas le Chief Data & AI Officer (CDAIO). Le CDAIO crée de la valeur avec l'IA, de la stratégie au passage à l'échelle. Le DDAO répond des décisions qu'un agent prend seul et veille à ce qu'elles restent traçables, bornées et interruptibles. Les confondre reviendrait à confier le frein à celui qu'on charge d'appuyer sur l'accélérateur, exactement ce que le RGPD a écarté en rendant le DPO indépendant du responsable de traitement. Un DDAO peut être rattaché à un CDAIO, à condition de garder son indépendance de jugement.
 
 Le DDAO porte quatre missions opérationnelles :
 
-1. **Validation des décisions critiques** que l'agent est conçu pour escalader.
-2. **Arbitrage en cas d'escalade non prévue** (situation hors mandat, comportement de dérive, signal d'alerte du registre).
-3. **Suivi des dérives** dans la durée (drift de modèle, drift de distribution des cas, drift de coûts).
-4. **Conduite des revues périodiques** sur le périmètre confié.
+1. la validation des décisions critiques que l'agent est conçu pour escalader ;
+2. l'arbitrage en cas d'escalade non prévue (situation hors mandat, comportement de dérive, signal d'alerte du registre) ;
+3. le suivi des dérives dans la durée (dérive de modèle, dérive de la distribution des cas, dérive des coûts) ;
+4. la conduite des revues périodiques sur le périmètre confié.
 
-Le rôle DDAO est inspiré de deux fonctions déjà reconnues dans le droit et la pratique des organisations : le **DPO** (Délégué à la Protection des Données, RGPD article 37-39) et le **CISO** (Chief Information Security Officer). Comme eux, le DDAO est indépendant de la chaîne hiérarchique de l'agent qu'il supervise, dispose d'un accès direct aux organes de gouvernance, et engage la responsabilité juridique de l'entreprise. Le rôle est défini par la fiche **ACF-12 (Mandat d'Agent)** et instrumenté par la simulation **ACF-15 (Simulation de Gouvernance)**.
+Le rôle DDAO est inspiré de deux fonctions déjà reconnues dans le droit et la pratique des organisations : le DPO (Délégué à la Protection des Données, RGPD articles 37-39) et le CISO (Chief Information Security Officer). Comme eux, le DDAO est indépendant de la chaîne hiérarchique de l'agent qu'il supervise, dispose d'un accès direct aux organes de gouvernance, et engage la responsabilité juridique de l'entreprise. Le rôle est défini par la fiche **ACF-13** (Mandat d'Agent) et instrumenté par la simulation **ACF-20** (Simulation de Gouvernance).
 
 ---
 
-## 5. Les 17 fiches méthodologiques
+## 5. Les 45 fiches du référentiel
 
-ACF® n'est pas une doctrine théorique. Le standard se déploie à travers dix-sept fiches méthodologiques numérotées **ACF-00 à ACF-16**, prêtes à être imprimées, remplies, signées, archivées. Chaque fiche est un objet de gouvernance opposable.
+ACF® n'est pas une doctrine théorique. Le standard se déploie à travers 45 fiches, conçues pour être imprimées, remplies, signées puis archivées. Chaque fiche est un objet de gouvernance daté et signé, qui peut être produit tel quel devant un auditeur. Elles se répartissent en 3 familles complémentaires : 20 fiches Décider (ACF-01 à ACF-20), qui servent à concevoir la gouvernance ; 10 fiches Organiser (ACF-O1 à ACF-O10), qui l'installent dans l'organisation ; et 15 fiches Opérer (ACF-P1 à ACF-P15), qui la font vivre une fois l'agent en production. Les premières répondent à la question « comment décider ce que l'agent a le droit de faire » ; les deuxièmes à « comment installer cette gouvernance dans l'organisation » ; les dernières à « comment tenir cet engagement jour après jour ».
+
+### 5.1. Les 20 fiches Décider : concevoir la gouvernance
 
 | Code | Titre | Objet |
 | --- | --- | --- |
-| ACF-00 | Score de Souveraineté | Évalue le niveau de souveraineté décisionnelle conservé. |
-| ACF-01 | Carte Décisionnelle | Cartographie les décisions de l'agent et la chaîne d'approbation. |
-| ACF-02 | Matrice de Criticité | Classifie chaque agent par criticité, impact, irréversibilité. |
-| ACF-03 | Constitution Agentique | Charte interne — qui décide quoi, comment, avec quelles limites. |
-| ACF-04 | Fiche Agent | Identité opérationnelle : périmètre, données, outils, autonomie. |
-| ACF-05 | Supervision & Gouvernance | Mécanismes de supervision continue. |
-| ACF-06 | Kill Switch | Procédure d'arrêt d'urgence (trois niveaux). |
-| ACF-07 | Dossier Premier Agent | Dossier de qualification avant la mise en production. |
-| ACF-08 | Registre des Décisions Agentiques | Journal cryptographique signé. |
-| ACF-09 | Plan d'Action & Amélioration | Plan post-déploiement. |
-| ACF-10 | Audit Gouvernance 30 jours | Audit interne périodique. |
-| ACF-11 | Évaluation des Risques Agentiques | Analyse spécifique : drift, hallucination, escalade. |
-| ACF-12 | Mandat d'Agent | Délégation formelle au DDAO. |
-| ACF-13 | Cas Pratique Guidé | Cas d'usage commenté pour formation et audit blanc. |
-| ACF-14 | Guide Enseignant | Déroulé pédagogique pour formateurs. |
-| ACF-15 | Simulation de Gouvernance | Exercice de bac à sable. |
-| ACF-16 | Responsabilité par Design | Principe transversal d'accountability. |
+| ACF-01 | Score de Souveraineté | Mesurer son exposition avant d'automatiser |
+| ACF-02 | Carte Décisionnelle | Cartographier vos décisions et leur niveau d'autonomie |
+| ACF-03 | Matrice de Criticité | Quelle décision peut-on déléguer à un agent ? |
+| ACF-04 | Constitution Agentique | Les règles, limites et responsabilités de l'agent |
+| ACF-05 | Fiche Agent | Encadrer chaque agent déployé |
+| ACF-06 | Supervision & Gouvernance | Surveiller, mesurer et garder l'agent conforme |
+| ACF-07 | Kill Switch | Protocole d'arrêt d'urgence |
+| ACF-08 | Dossier Premier Agent | Documenter, cadrer et préparer le déploiement de votre premier agent |
+| ACF-09 | Registre des Décisions Agentiques | Journaliser les décisions importantes et les incidents pour garantir traçabilité et conformité |
+| ACF-10 | Plan d'action & Amélioration | Piloter les actions correctives et l'amélioration continue de vos agents |
+| ACF-11 | Audit Gouvernance 30 jours | Évaluer la maturité de votre gouvernance agentique et bâtir un plan d'action sur 30 |
+| ACF-12 | Évaluation des Risques Agentiques | Identifier, évaluer et prioriser les risques liés à vos agents IA pour mieux les maîtriser |
+| ACF-13 | Mandat d'Agent | Définir le périmètre, les limites et les responsabilités de chaque agent déployé |
+| ACF-14 | Responsabilité par Design | Responsibility by Design : concevoir la responsabilité dès l'origine |
+| ACF-15 | Objectif et Contre-indicateur | Juger la cible, lui opposer un chiffre hors de portée |
+| ACF-16 | Épreuve de la Supervision | Éprouver le dispositif, jamais la personne |
+| ACF-17 | Revue de Validité | Juger si un mandat tient encore |
+| ACF-18 | Cas Pratique Guidé | Appliquer le framework ACF® à un scénario réel, étape par étape |
+| ACF-19 | Guide Enseignant | Animer, corriger et évaluer des ateliers de gouvernance agentique |
+| ACF-20 | Simulation de Gouvernance | S'entraîner à décider, arbitrer et superviser en situation réelle |
 
-Les fiches sont publiques pour les enseignants, formateurs, chercheurs et établissements de formation (sous Charte d'utilisation pédagogique). Pour les organisations en déploiement, elles sont accompagnées d'un **manuel ACF® Toolkit** de 130 pages, d'un **deck d'introduction** et de **cinq cas pédagogiques calibrés** (école de commerce, école d'ingénieur, MBA, EMBA, master IA). L'ensemble est versionné, traçable, citable.
+### 5.2. Les 10 fiches Organiser : installer la gouvernance dans l'organisation
+
+Une gouvernance conçue reste théorique tant qu'elle n'est pas répartie entre des rôles réels. Les fiches ACF-O1 à ACF-O10 organisent le partage des responsabilités entre humains et agents :
+
+| Code | Titre | Objet |
+| --- | --- | --- |
+| ACF-O1 | Matrice Humain · IA · Agent | Qui exécute, qui répond, quelle règle, qui reste dans la boucle |
+| ACF-O2 | Carte de l'Organisation Hybride | Situer humains, agents et règles, domaine par domaine |
+| ACF-O3 | Compétences Critiques à Conserver | Garder la compétence de juger ses agents |
+| ACF-O4 | Politique IA | Le texte qui dit ce que l'on fait de l'IA, avant le premier agent |
+| ACF-O5 | Shadow IA, usages non déclarés | Les outils que personne n'a validés et que tout le monde utilise |
+| ACF-O6 | Shadow Agents, agents non déclarés | Ceux que l'organisation n'a pas déployés et qui décident déjà en son nom |
+| ACF-O7 | Le Déplacement des Pouvoirs | Qui a perdu une décision, qui l'a gagnée, sans que personne ne l'ait décidé |
+| ACF-O8 | Le Registre des Exceptions | Ce que l'on a autorisé une fois et qui dure depuis |
+| ACF-O9 | La Gouvernance de la Flotte | Gouverner vingt agents ne revient pas à gouverner vingt fois un agent |
+| ACF-O10 | Les Personnes Affectées et leur Recours | Celui qui subit la décision doit pouvoir la contester devant quelqu'un |
+
+### 5.3. Les 15 fiches Opérer : tenir la gouvernance au quotidien
+
+Une gouvernance conçue mais non exploitée reste un document. Les fiches ACF-P1 à ACF-P15 outillent l'exploitation quotidienne d'un agent une fois celui-ci en production :
+
+| Code | Titre | Objet |
+| --- | --- | --- |
+| ACF-P1 | Grille de Paramétrage Agent | Régler les six boutons de l'agent |
+| ACF-P2 | Protocole de Recette | Éprouver chaque bouton avant le premier client |
+| ACF-P3 | Rampe de Mise en Service | Pilote → paliers → retour arrière |
+| ACF-P4 | Journal de Supervision Hebdomadaire | Les quatre rythmes pour tenir l'agent |
+| ACF-P5 | Répartition des Rôles | Qui fait quoi, sur le terrain |
+| ACF-P6 | Fiche d'Escalade & de Confiance | Savoir quand et comment passer la main |
+| ACF-P7 | Test du Dispositif d'Arrêt | Le kill switch éprouvé chaque trimestre |
+| ACF-P8 | Journal d'Incident | Détecter → cause racine → correction |
+| ACF-P9 | Revue de Permissions & de Données | Le moindre privilège, révisé |
+| ACF-P10 | Grille d'Évaluation Fournisseur | Les cinq questions avant d'acheter un agent |
+| ACF-P11 | Carte de Dépendance au Socle | Ce qui tombe si l'accès cesse |
+| ACF-P12 | Plan de Mode Dégradé et de Sortie | Décider sans lui puis partir |
+| ACF-P13 | Journal des Versions de Modèle | Ce qui rouvre le mandat |
+| ACF-P14 | Détention des Traces | Une preuve qu'on peut produire |
+| ACF-P15 | Déclaration des Angles Morts | Ce que le cadre n'établit pas |
+
+Les fiches sont publiques pour les enseignants, formateurs, chercheurs et établissements de formation, sous Charte d'utilisation pédagogique. Pour les organisations en déploiement, elles sont accompagnées d'un manuel ACF® Toolkit de 331 pages, d'un support de présentation et de cas pédagogiques calibrés couvrant six filières (école de commerce, école d'ingénieur, MBA, EMBA, master IA, Sciences Po / IEP / affaires publiques), avec leurs corrigés types. L'ensemble est versionné, traçable et citable.
 
 ---
 
@@ -203,24 +255,26 @@ Les fiches sont publiques pour les enseignants, formateurs, chercheurs et établ
 
 ### 6.1. Trois phases sur 6 à 18 mois
 
-Un déploiement ACF® se structure en trois phases. Chaque phase produit des livrables opposables, datés, signés par le DDAO et par les fonctions concernées.
+Un déploiement ACF® se structure en trois phases. Chaque phase produit des livrables datés et signés par le DDAO et par les fonctions concernées, que l'organisation peut produire tels quels en audit.
 
-**Phase 1 — Cadrage (mois 1 à 3).** Calcul du Score de Souveraineté initial (ACF-00). Cartographie décisionnelle des agents existants ou planifiés (ACF-01). Construction de la matrice de criticité (ACF-02). Rédaction de la constitution agentique (ACF-03). Désignation du DDAO et formalisation du comité de gouvernance.
+**Phase 1, Cadrage (mois 1 à 3).** L'organisation calcule son Score de Souveraineté initial (ACF-01), cartographie les décisions des agents existants ou planifiés (ACF-02), construit la matrice de criticité (ACF-03) et rédige sa constitution agentique (ACF-04). Elle désigne le DDAO et formalise le comité de gouvernance.
 
-**Phase 2 — Déploiement (mois 4 à 9).** Pour chaque agent : élaboration du dossier premier agent (ACF-07), production de la fiche agent (ACF-04), mise en place du mandat (ACF-12), implémentation du kill switch testé (ACF-06), branchement du registre signé (ACF-08), audit de gouvernance initial à 30 jours (ACF-10).
+**Phase 2, Déploiement (mois 4 à 9).** Pour chaque agent, l'équipe élabore le dossier premier agent (ACF-08), produit la fiche agent (ACF-05), met en place le mandat (ACF-13), implémente et teste le mécanisme d'arrêt (ACF-07), branche le registre signé (ACF-09), puis conduit l'audit de gouvernance initial à 30 jours (ACF-11).
 
-**Phase 3 — Régime de croisière (mois 10 à 18).** Plan d'action et d'amélioration continue (ACF-09). Évaluation continue des risques (ACF-11). Simulation de gouvernance trimestrielle (ACF-15). Revue annuelle. Préparation de l'audit externe et — pour les organisations qui le souhaitent — de la certification ACF® (Level 1, 2 ou 3).
+**Phase 3, Régime de croisière (mois 10 à 18).** L'organisation entre en amélioration continue : plan d'action (ACF-10), évaluation continue des risques (ACF-12), simulation de gouvernance trimestrielle (ACF-20) et revue annuelle. Elle prépare l'audit externe puis, si elle le souhaite, la certification ACF® (Level 1, 2 ou 3).
+
+Une précision d'échelle s'impose ici. Ce calendrier est celui de la transformation organisationnelle : installer un DDAO, écrire la constitution, poser les mandats, tester les mécanismes d'arrêt et ancrer les revues engage des personnes, pas seulement des documents. Il ne doit pas être confondu avec le délai de production des artefacts réglementaires par l'outil ACF Compliance, qui se compte en semaines : l'inventaire des systèmes, la classification réglementaire et la documentation prête à signature sont produits en quatre semaines environ, parce que cette partie est outillée. Installer une gouvernance qui tient demande davantage, précisément parce qu'une gouvernance n'est pas un document rangé dans un tiroir ; confondre les deux échelles est l'erreur que le standard cherche à éviter.
 
 ### 6.2. Les six personnes clés du déploiement
 
 Un déploiement ACF® mobilise typiquement six fonctions internes coordonnées par le DDAO :
 
-- **Direction générale** (sponsor, valide la constitution agentique),
-- **DSI** (instrumente le registre signé et le kill switch),
-- **RSSI / CISO** (valide l'architecture cryptographique),
-- **DPO** (vérifie l'articulation RGPD, notamment l'article 22),
-- **Direction juridique** (contrôle la conformité EU AI Act et la rédaction des mandats),
-- **Métier sponsor** (décrit le cas d'usage, valide les seuils d'escalade).
+- la direction générale (sponsor, valide la constitution agentique),
+- la DSI (instrumente le registre signé et le mécanisme d'arrêt),
+- le RSSI / CISO (valide l'architecture cryptographique),
+- le DPO (vérifie l'articulation RGPD, notamment l'article 22),
+- la direction juridique (contrôle la conformité EU AI Act et la rédaction des mandats),
+- le métier sponsor (décrit le cas d'usage, valide les seuils d'escalade).
 
 L'agent lui-même n'est pas membre du comité.
 
@@ -228,170 +282,171 @@ L'agent lui-même n'est pas membre du comité.
 
 ## 7. Le protocole d'arrêt d'urgence à trois niveaux
 
-Un mécanisme d'arrêt agentique efficace n'est pas un simple interrupteur. ACF® spécifie trois niveaux d'interruption, avec des temps de réponse et des procédures d'escalade définies. La fiche **ACF-06 (Kill Switch)** documente leur mise en œuvre. La fiche **ACF-15 (Simulation de Gouvernance)** impose un exercice trimestriel.
+Un mécanisme d'arrêt agentique efficace n'est pas un simple interrupteur. ACF® spécifie trois niveaux d'interruption, avec des temps de réponse et des procédures d'escalade définis. La fiche **ACF-07** (Kill Switch) documente leur mise en œuvre ; la fiche **ACF-20** (Simulation de Gouvernance) impose un exercice trimestriel.
 
-**Niveau 1 — Pause opérationnelle.** Temps de réponse : moins de 30 secondes. Suspension des opérations non critiques. L'agent termine les actions en cours mais n'en initie plus de nouvelles. Déclenchement automatique (sur signal d'alerte du registre) ou manuel (DDAO ou opérateur de premier niveau).
+**Niveau 1, Pause opérationnelle.** En moins de 30 secondes, l'agent suspend ses opérations non critiques : il termine les actions en cours mais n'en initie plus de nouvelles. Le déclenchement est automatique (sur signal d'alerte du registre) ou manuel (DDAO ou opérateur de premier niveau).
 
-**Niveau 2 — Arrêt décisionnel.** Temps de réponse : moins de 5 secondes. Suspension complète de toute prise de décision. Toutes les décisions en attente sont redirigées vers des opérateurs humains. Déclenchement par le DDAO ou un membre du comité de gouvernance.
+**Niveau 2, Arrêt décisionnel.** En moins de 5 secondes, toute prise de décision est suspendue et les décisions en attente sont redirigées vers des opérateurs humains. Le déclenchement appartient au DDAO ou à un membre du comité de gouvernance.
 
-**Niveau 3 — Arrêt système total.** Temps de réponse : moins de 1 seconde. Interruption complète de tous les systèmes agentiques. Basculement vers les processus manuels de secours. Réservé au comité de gouvernance ou à la direction générale.
+**Niveau 3, Arrêt système total.** En moins de 1 seconde, tous les systèmes agentiques sont interrompus et l'organisation bascule vers ses processus manuels de secours. Ce niveau est réservé au comité de gouvernance ou à la direction générale.
 
-Chaque niveau est testé via les exercices trimestriels de simulation. Un kill switch documenté mais jamais testé n'est pas un kill switch.
+Chaque niveau est testé via les exercices trimestriels de simulation. Un mécanisme d'arrêt documenté mais jamais testé n'est pas un mécanisme d'arrêt.
 
 ---
 
-## 8. ACF® face aux référentiels existants — la matrice de correspondance
+## 8. ACF® face aux référentiels existants, la matrice de correspondance
 
-Chaque fiche ACF® est mappée sur les cinq référentiels majeurs : **EU AI Act, ISO/IEC 42001, NIST AI RMF, RGPD, COBIT 2019**. Le mapping est délibérément conservateur — quand une fiche concerne plusieurs articles, seul l'article principal est cité. La cartographie complète (avec références secondaires) est reproduite dans le manuel ACF® Toolkit et exposée sous forme machine-lisible par le serveur MCP `acf-mcp`.
+La matrice met 17 fiches de la famille Décider en correspondance avec les cinq référentiels majeurs : EU AI Act, ISO/IEC 42001, NIST AI RMF, RGPD et COBIT 2019. La correspondance retenue est délibérément conservatrice : quand une fiche concerne plusieurs articles, seul l'article principal est cité. La cartographie complète, avec les références secondaires, est reproduite dans le manuel ACF® Toolkit et exposée sous forme machine-lisible par le serveur MCP `acf-mcp`.
 
 | Fiche ACF® | EU AI Act | ISO/IEC 42001 | NIST AI RMF | RGPD | COBIT 2019 |
 | --- | --- | --- | --- | --- | --- |
-| ACF-00 Score de Souveraineté | Art. 9 | 6.1.2 | MAP-3 | Art. 35 | EDM-01 |
-| ACF-01 Carte Décisionnelle | Art. 14 | 8.4 / A.6 | GOVERN-1.1 | Art. 22 | EDM-03 |
-| ACF-02 Matrice de Criticité | Art. 6 + Ann. III | 6.1.2 | MAP-2 | Art. 35 | APO-12 |
-| ACF-03 Constitution Agentique | Art. 5 + 26 | 5.2 | GOVERN-2 | Art. 25 | EDM-01 |
-| ACF-04 Fiche Agent | Art. 11 + 26(6) | 7.5 + 8.1 | MAP-1 | Art. 30 | BAI-09 |
-| ACF-05 Supervision & Gouvernance | Art. 14 + 26(5) | 5.3 + 9.1 | GOVERN-3 / MANAGE-2.3 | Art. 22 + 37-39 | MEA-02 |
-| ACF-06 Kill Switch | Art. 14(4) + 26(5) | 8.3 | MANAGE-4 | Art. 22(3) | DSS-02 |
-| ACF-07 Dossier Premier Agent | Art. 11-13 + 17 | 8.1 + 6.2 | MAP-2 + GOVERN-4 | Art. 30 + 35 | BAI-01 |
-| ACF-08 Registre des Décisions | Art. 12 + 19 + 26(6) | 9.1 + 7.5.3 | MEASURE-2 | Art. 30 | MEA-01 |
-| ACF-09 Plan d'Action & Amélioration | Art. 9(4) + 17 | 10.1 + 10.2 | MANAGE-2 | Art. 24 + 32 | BAI-08 |
-| ACF-10 Audit Gouvernance 30 jours | Art. 17 + 71 | 9.2 + 9.3 | GOVERN-5 + MANAGE-3.1 | Art. 32 | MEA-02 + MEA-03 |
-| ACF-11 Évaluation des Risques | Art. 9 | 6.1.2 | MAP-3 + MAP-4 | Art. 35 | APO-12 |
-| ACF-12 Mandat d'Agent | Art. 16 + 17 + 26 | 5.3 | GOVERN-3 + GOVERN-6 | Art. 28 + 24 | APO-05 |
-| ACF-13 Cas Pratique Guidé | Art. 6 + 13 | 7.2 + 7.3 | MAP-2 | Art. 22 | BAI-05 |
-| ACF-14 Guide Enseignant | Art. 4 | 7.2 + 7.3 | GOVERN-1.6 + GOVERN-6 | Art. 39 | APO-07 |
-| ACF-15 Simulation de Gouvernance | Art. 9 + 57-63 | 9.1 + 6.2 | MANAGE-3 + MEASURE-3 | Art. 32 | BAI-06 |
-| ACF-16 Responsabilité par Design | Art. 5 + 13 + 16(b) | 5.2 | GOVERN-1 + MANAGE-1 | Art. 5(2) + 24 + 25 | EDM-01 |
+| ACF-01 Score de Souveraineté | Art. 9 | 6.1.2 | MAP-3 | Art. 35 | EDM-01 |
+| ACF-02 Carte Décisionnelle | Art. 14 | 8.4 / A.6 | GOVERN-1.1 | Art. 22 | EDM-03 |
+| ACF-03 Matrice de Criticité | Art. 6 + Ann. III | 6.1.2 | MAP-2 | Art. 35 | APO-12 |
+| ACF-04 Constitution Agentique | Art. 5 + 26 | 5.2 | GOVERN-2 | Art. 25 | EDM-01 |
+| ACF-05 Fiche Agent | Art. 11 + 26(6) | 7.5 + 8.1 | MAP-1 | Art. 30 | BAI-09 |
+| ACF-06 Supervision & Gouvernance | Art. 14 + 26(5) | 5.3 + 9.1 | GOVERN-3 / MANAGE-2.3 | Art. 22 + 37-39 | MEA-02 |
+| ACF-07 Kill Switch | Art. 14(4) + 26(5) | 8.3 | MANAGE-4 | Art. 22(3) | DSS-02 |
+| ACF-08 Dossier Premier Agent | Art. 11-13 + 17 | 8.1 + 6.2 | MAP-2 + GOVERN-4 | Art. 30 + 35 | BAI-01 |
+| ACF-09 Registre des Décisions Agentiques | Art. 12 + 19 + 26(6) | 9.1 + 7.5.3 | MEASURE-2 | Art. 30 | MEA-01 |
+| ACF-10 Plan d'action & Amélioration | Art. 9(4) + 17 | 10.1 + 10.2 | MANAGE-2 | Art. 24 + 32 | BAI-08 |
+| ACF-11 Audit Gouvernance 30 jours | Art. 17 + 71 | 9.2 + 9.3 | GOVERN-5 + MANAGE-3.1 | Art. 32 | MEA-02 + MEA-03 |
+| ACF-12 Évaluation des Risques Agentiques | Art. 9 | 6.1.2 | MAP-3 + MAP-4 | Art. 35 | APO-12 |
+| ACF-13 Mandat d'Agent | Art. 16 + 17 + 26 | 5.3 | GOVERN-3 + GOVERN-6 | Art. 28 + 24 | APO-05 |
+| ACF-14 Responsabilité par Design | Art. 5 + 13 + 16(b) | 5.2 | GOVERN-1 + MANAGE-1 | Art. 5(2) + 24 + 25 | EDM-01 |
+| ACF-18 Cas Pratique Guidé | Art. 6 + 13 | 7.2 + 7.3 | MAP-2 | Art. 22 | BAI-05 |
+| ACF-19 Guide Enseignant | Art. 4 | 7.2 + 7.3 | GOVERN-1.6 + GOVERN-6 | Art. 39 | APO-07 |
+| ACF-20 Simulation de Gouvernance | Art. 9 + 57-63 | 9.1 + 6.2 | MANAGE-3 + MEASURE-3 | Art. 32 | BAI-06 |
 
-**Lecture.** La fiche ACF-08 (Registre des Décisions Agentiques) implémente directement l'obligation de l'article 12 de l'EU AI Act sur l'enregistrement automatique des événements et l'article 26(6) sur la conservation des logs pendant au moins six mois par le déployeur ; côté ISO/IEC 42001 elle relève de la clause 9.1 (monitoring, measurement, analysis, evaluation) ; côté NIST AI RMF de la fonction MEASURE-2 (Performance & Trustworthiness) ; côté RGPD de l'article 30 (registre des activités de traitement) ; et côté COBIT de l'objectif MEA-01 (Performance Monitoring). Une équipe conformité qui déploie ACF-08 produit en même temps les pièces que ces cinq référentiels exigent.
+**Lecture.** La fiche ACF-09 (Registre des Décisions Agentiques) implémente directement l'obligation de l'article 12 de l'EU AI Act sur l'enregistrement automatique des événements et l'article 26(6) sur la conservation des journaux pendant au moins six mois par le déployeur ; côté ISO/IEC 42001 elle relève de la clause 9.1 (monitoring, measurement, analysis, evaluation) ; côté NIST AI RMF de la fonction MEASURE-2 (Performance & Trustworthiness) ; côté RGPD de l'article 30 (registre des activités de traitement) ; et côté COBIT de l'objectif MEA-01 (Performance Monitoring). Une équipe conformité qui déploie ACF-09 produit en même temps les pièces que ces cinq référentiels exigent.
 
 ---
 
-## 9. L'écosystème ACF® — une infrastructure, quatre manifestations
+## 9. L'écosystème ACF®, une infrastructure, quatre manifestations
 
-ACF® n'est pas un produit. C'est une infrastructure de confiance qui se manifeste à travers **quatre composantes nommément distinctes**, chacune répondant à un verbe précis :
+ACF® n'est pas un produit. C'est une infrastructure de confiance qui se manifeste à travers quatre composantes nommément distinctes, chacune répondant à un verbe précis :
 
 | Verbe | Composante | Rôle |
 |---|---|---|
-| **Govern** | ACF® (la doctrine) | Le cadre — 4 principes, 4 couches, N0–N3, DDAO, 17 fiches |
-| **Measure** | **ACF Sovereignty Score™** | La métrique — 0–100 sur six dimensions pondérées |
-| **Prove** | **ACF Compliance** | La preuve — registre signé Ed25519, chaîne SHA-256, horodatage RFC 3161 |
-| **Run** | **`acf-mcp`** | Le moteur — serveur MCP open source qui expose la doctrine aux copilotes IA |
+| **Gouverner** | ACF® (la doctrine) | Le cadre : 4 principes, 4 couches, N0-N3, DDAO, 45 fiches |
+| **Mesurer** | **ACF Sovereignty Score™** | La métrique : un indice 0-100 sur 4 dimensions de dépendance |
+| **Prouver** | **ACF Compliance** | La preuve : registre signé Ed25519, chaîne SHA-256, horodatage signé Ed25519 |
+| **Exécuter** | **`acf-mcp`** | Le moteur : serveur MCP en source ouverte qui expose la doctrine aux copilotes IA |
 
-À cette colonne vertébrale s'ajoute une couronne d'**outils gratuits** d'entrée (ACF AI Act Checker, Audit Flash, Plan Compliance) et de **produits commerciaux complémentaires** (ACF Auditor, ACF Control, ACF Certification). Une organisation peut entrer dans ACF® par n'importe quelle porte ; elle finit par toucher les quatre.
+À cette colonne vertébrale s'ajoutent des outils gratuits d'entrée (ACF AI Act Checker, Audit Flash, Plan Compliance) et des produits commerciaux complémentaires (ACF Auditor, ACF Control, ACF Certification). Une organisation peut entrer dans ACF® par n'importe quelle porte ; elle finit par toucher les quatre composantes.
 
 ### Outils gratuits
 
-#### 9.1. ACF Sovereignty Score™ — la métrique de référence
+#### 9.1. ACF Sovereignty Score™, la métrique de référence
 
-Le ACF Sovereignty Score™ est la **métrique 0-100 de la souveraineté décisionnelle** qu'une organisation conserve sur ses agents IA. Il est calibré sur **six dimensions pondérées** ancrées aux fiches ACF® : identifiabilité décisionnelle (18 %), capacité d'override (18 %), traçabilité d'audit (18 %), contrôle des seuils (14 %), effectivité du kill switch (18 %), visibilité de la dérive (14 %). Outil libre d'accès, sans inscription, calculable en moins de 15 minutes. Au-dessus de 60, l'organisation est en *souveraineté contrôlée* ; au-dessus de 80, en *souveraineté pleine*. Cible : direction générale, direction informatique, RCSI, DPO souhaitant un premier diagnostic comparable à un référentiel public. `www.acf-score.com`.
+L'ACF Sovereignty Score™ est la métrique 0-100 de la souveraineté décisionnelle qu'une organisation conserve sur ses agents IA. Il repose sur la fiche ACF-01 et mesure le degré de dépendance de l'organisation sur 4 dimensions, notées chacune de 0 à 25 : la dépendance **technologique**, c'est-à-dire la maîtrise réelle de ses modèles, de son infrastructure et de ses données ; la dépendance d'**acquisition**, soit la part de clients qui transite par des canaux que l'entreprise ne possède pas ; la dépendance **décisionnelle**, qui recense les décisions déjà déléguées à des systèmes sans gouvernance humaine ; et la dépendance **financière**, c'est-à-dire la concentration des revenus ou du financement sur un petit nombre d'acteurs. Leur somme donne un indice de dépendance sur 100, dont la souveraineté est l'inverse. L'ordre de lecture est délibéré : on gouverne avant d'automatiser. L'outil est libre d'accès, sans inscription, et le score se calcule en moins de 15 minutes. Au-dessus de 60, l'organisation est en *souveraineté contrôlée* ; au-dessus de 80, en *souveraineté pleine*. Cible : direction générale, direction informatique, RCSI, DPO souhaitant un premier diagnostic comparable à un référentiel public.
 
-Le ACF Sovereignty Score™ est à la gouvernance agentique ce que le NPS est à la satisfaction client : un nombre unique, partageable, opposable, sur lequel un comité de direction peut raisonner sans ouvrir un rapport de cinquante pages.
+L'ACF Sovereignty Score™ est à la gouvernance agentique ce que le NPS est à la satisfaction client : un nombre unique et partageable, sur lequel un comité de direction peut raisonner sans ouvrir un rapport de cinquante pages.
 
-#### 9.2. ACF AI Act Checker — vérification de conformité AI Act
+#### 9.2. ACF AI Act Checker, vérification de conformité AI Act
 
 Vérification rapide de l'exposition d'un système à l'EU AI Act : catégorisation du risque (prohibé / haut risque / risque limité / risque minimal), articles applicables et obligations associées. Outil libre d'accès. Cible : direction juridique, conformité, DPO en première lecture. `www.acfstandard.com/fr/compliance-checker`.
 
-#### 9.3. Audit Flash de conformité — diagnostic en 15 minutes
+#### 9.3. Audit Flash de conformité, diagnostic en 15 minutes
 
-Diagnostic compact, structuré sur les axes critiques de gouvernance agentique (supervision humaine, traçabilité, kill switch, rôle DDAO, registre des décisions). Restitution immédiate sous forme de rapport téléchargeable. Cible : équipe métier, sponsor projet, RCSI, DPO souhaitant cadrer un dossier avant un audit ou un comité. `compliance.acfstandard.com/fr/start`.
+Diagnostic compact, structuré sur les axes critiques de gouvernance agentique (supervision humaine, traçabilité, mécanisme d'arrêt, rôle DDAO, registre des décisions). Restitution immédiate sous forme de rapport téléchargeable. Cible : équipe métier, sponsor projet, RCSI, DPO souhaitant cadrer un dossier avant un audit ou un comité. `compliance.acfstandard.com/fr/start`.
 
-#### 9.4. Plan Compliance personnalisé — feuille de route
+#### 9.4. Plan Compliance personnalisé, feuille de route
 
-À partir des résultats de l'Audit Flash, génération d'une feuille de route de mise en conformité priorisée sur trois phases (cadrage / déploiement / régime de croisière), articulée sur les 17 fiches ACF® et ventilée par fonction interne (DG, DSI, RSSI, DPO, juridique, métier). Outil gratuit. Cible : DDAO en prise de poste, équipe transformation, comité de pilotage projet.
+À partir des résultats de l'Audit Flash, génération d'une feuille de route de mise en conformité priorisée sur trois phases (cadrage / déploiement / régime de croisière), articulée sur les fiches ACF® et ventilée par fonction interne (DG, DSI, RSSI, DPO, juridique, métier). Outil gratuit. Cible : DDAO en prise de poste, équipe transformation, comité de pilotage projet.
 
 ### Produits commerciaux
 
-#### 9.5. ACF Auditor — audit guidé
+#### 9.5. ACF Auditor, audit guidé
 
-Plateforme d'audit guidé évaluant la maturité digitale et agentique d'une organisation sur sept dimensions pondérées (calibration sectorielle disponible). Génère un Agentic Readiness Score, un Score de Souveraineté détaillé et une feuille de route en trois phases. Cible : DSI et fonctions transformation.
+Plateforme d'audit guidé évaluant la maturité numérique et agentique d'une organisation sur sept dimensions pondérées (calibration sectorielle disponible). Génère un Agentic Readiness Score, un Score de Souveraineté détaillé et une feuille de route en trois phases. Cible : DSI et fonctions transformation.
 
-#### 9.6. ACF Control — dashboard de gouvernance
+#### 9.6. ACF Control, tableau de bord de gouvernance
 
-Console temps réel qui surveille les KPIs de souveraineté avec gating adaptatif et escalade automatisée. Logs d'audit infalsifiables (Ed25519 + chaîne de hachage). Cible : équipes DSI/RSSI en exploitation.
+Console temps réel qui surveille les indicateurs de souveraineté, avec contrôle d'autorisation adaptatif et escalade automatisée. Journaux d'audit signés Ed25519 et chaînés SHA-256 : toute altération y devient détectable. Cible : équipes DSI/RSSI en exploitation.
 
-#### 9.7. ACF Compliance — la preuve cryptographique opposable
+#### 9.7. ACF Compliance, la preuve cryptographique vérifiable indépendamment
 
-Le produit SaaS phare de l'écosystème, accessible sur `compliance.acfstandard.com`. C'est **la composante qui prouve** : la plateforme produit la trace cryptographique opposable de chaque décision agentique (signature Ed25519, chaîne SHA-256, horodatage RFC 3161), implémente chacune des correspondances ACF® / standards comme registre multi-tenant, et émet à la demande un PDF signé vérifiable par n'importe quel tiers avec la clé publique d'ACF®. Trois plans : Starter (490 €/mois), Business (1 490 €/mois, populaire), Enterprise (sur devis). Cible : RCSI, DPO, direction juridique, équipes conformité, et toute organisation qui doit répondre à un régulateur en 12 minutes plutôt qu'en 12 semaines.
+La plateforme de l'écosystème, accessible sur `compliance.acfstandard.com`. C'est la composante qui prouve : la plateforme produit la trace cryptographique vérifiable indépendamment de chaque décision agentique (signature Ed25519, chaîne SHA-256, horodatage signé Ed25519), implémente chacune des correspondances entre ACF® et les référentiels comme registre multi-tenant, et permet à tout tiers de vérifier l'intégrité du registre avec la clé publique de l'organisation. Plusieurs plans sont proposés selon la taille de l'organisation, du gratuit à l'offre sur devis ; la grille détaillée est publiée sur `compliance.acfstandard.com`. Cible : RCSI, DPO, direction juridique, équipes conformité, et toute organisation qui doit pouvoir répondre à un régulateur sans délai, preuves à l'appui.
 
-#### 9.8. ACF Certification — attestation indépendante
+#### 9.8. ACF Certification, attestation indépendante
 
-Programme de certification indépendante en trois niveaux (Level 1, 2, 3). Badge publiquement vérifiable, renouvellement annuel, monitoring continu. Cible : organisations souhaitant rendre leur posture de gouvernance opposable à des tiers (clients, régulateurs, assureurs).
+Programme de certification indépendante en trois niveaux (Level 1, 2, 3). Badge publiquement vérifiable, renouvellement annuel, surveillance continue. Cible : organisations souhaitant rendre leur posture de gouvernance vérifiable indépendamment par des tiers (clients, régulateurs, assureurs).
 
-### Serveur MCP open source
+### Serveur MCP en source ouverte
 
-#### 9.9. acf-mcp — serveur Model Context Protocol
+#### 9.9. acf-mcp, serveur Model Context Protocol
 
-Serveur MCP officiel d'ACF®, publié en open source sous licence MIT (package npm `acf-mcp` ; documentation développeur, manuel d'intégration et littérature de référence sur `acfstandard.io`). Expose la doctrine ACF® — quatre principes, quatre niveaux d'autonomie, le rôle DDAO, les dix-sept fiches méthodologiques, cinq guides régulatoires (AI Act, GDPR, DORA, NIS2, ISO 42001), le glossaire et le whitepaper — comme ressources MCP natives consommables par Claude Desktop, Cursor, Windsurf, Continue.
+Serveur MCP officiel d'ACF®, publié en source ouverte sous licence MIT. La documentation développeur, le manuel d'intégration, la littérature de référence et les modalités d'installation sont tenus à jour sur `acfstandard.io`. Le serveur expose la doctrine ACF® comme ressources MCP natives consommables par Claude Desktop, Cursor, Windsurf et Continue : les 4 principes, les 4 niveaux d'autonomie déléguée, le rôle DDAO, les 45 fiches du toolkit et son manuel, cinq guides régulatoires (AI Act, GDPR, DORA, NIS2, ISO 42001), le glossaire et le présent livre blanc.
 
-Le serveur embarque **huit outils de raisonnement déterministes** (REASON tools), bâtis sur une base de connaissance versionnée et signée — sans appel LLM interne :
+Le serveur embarque une famille d'outils de raisonnement déterministes (outils REASON), bâtis sur une base de connaissance versionnée et signée, sans aucun appel à un modèle de langage :
 
-1. `acf.advisor` — conseil structuré à partir d'un cas générique
-2. `acf.classify-agent` — qualification préliminaire d'un agent à partir de dix champs énumérés
-3. `acf.assess-autonomy` — recommandation N0-N3 + go/no-go + design du kill switch
-4. `acf.identify-governance-gaps` — score de maturité 6 dimensions + remédiations priorisées
-5. `acf.map-ai-act-obligations` — ensemble d'obligations EU AI Act ventilées par phase du cycle de vie
-6. `acf.assign-ddao-controls` — contrôles DDAO recommandés selon niveau et risque
-7. `acf.evaluate-agent-mandate` — audit en huit checks d'un mandat existant
-8. `acf.map-to-standards` — correspondance ACF® × référentiels existants pour un cas donné
+1. `acf.advisor` : conseil structuré à partir d'un cas générique
+2. `acf.classify-agent` : qualification préliminaire d'un agent à partir de dix champs énumérés
+3. `acf.assess-autonomy` : niveau d'autonomie déléguée recommandé pour une décision (suggestif, co-décision, autonome supervisé ou autonome), avis de mise en service et conception du mécanisme d'arrêt
+4. `acf.identify-governance-gaps` : score de couverture des 4 principes et remédiations priorisées
+5. `acf.map-ai-act-obligations` : ensemble d'obligations EU AI Act ventilées par phase du cycle de vie
+6. `acf.assign-ddao-controls` : contrôles DDAO recommandés selon le niveau et le risque
+7. `acf.evaluate-agent-mandate` : audit en huit contrôles d'un mandat existant
+8. `acf.map-to-standards` : articles de l'EU AI Act, du RGPD, de DORA, de NIS2 et d'ISO/IEC 42001 auxquels se rattache chaque fiche ACF®, et réciproquement
+8. `acf.map-to-standards` : correspondance entre ACF® et les référentiels existants pour un cas donné
 
-Chaque sortie d'outil REASON est signée (`doctrine_version`, `doctrine_hash`, `doctrine_archive_url`, `regulatory_snapshot`, `generated_at`) et explicitement positionnée comme **qualification préliminaire, pas conseil juridique** — `requires_human_review: true` est constant.
+Chaque sortie d'outil REASON est signée (`doctrine_version`, `doctrine_hash`, `doctrine_archive_url`, `regulatory_snapshot`, `generated_at`) et explicitement positionnée comme qualification préliminaire, non comme conseil juridique : `requires_human_review: true` est constant.
 
 ---
 
-## 10. Différenciateurs techniques — preuve cryptographique
+## 10. Différenciateurs techniques, preuve cryptographique
 
-ACF® n'est pas qu'une grille de lecture. C'est une infrastructure de preuve, dont les trois pierres angulaires sont publiques et reproductibles.
+ACF® n'est pas qu'une grille de lecture. C'est une infrastructure de preuve, dont les trois mécanismes fondateurs sont publics et reproductibles.
 
 ### 10.1. Signature Ed25519 de chaque décision
 
-Chaque décision agentique enregistrée dans le registre (fiche ACF-08) est signée par une paire de clés Ed25519 contrôlée par l'organisation. La clé publique est publiable. La clé privée est conservée selon les standards de l'ANSSI (HSM ou équivalent). Toute signature est vérifiable indépendamment, sans accès à l'infrastructure du déployeur.
+Chaque décision agentique enregistrée dans le registre (fiche ACF-09) est signée par une paire de clés Ed25519 contrôlée par l'organisation. La clé publique est publiable. Toute signature est vérifiable indépendamment, sans accès à l'infrastructure du déployeur.
 
-### 10.2. Chaîne de hachage SHA-256
+### 10.2. Empreintes SHA-256
 
-Chaque entrée du registre intègre le hash SHA-256 de l'entrée précédente, formant une chaîne de hachage chronologique. Toute tentative de modification rétroactive du registre se détecte en recalculant la chaîne. Le registre devient ainsi **opposable** : un auditeur, un régulateur ou un tribunal peuvent recomputer la chaîne et trancher.
+Chaque entrée du registre porte une empreinte SHA-256 : toute modification rétroactive devient détectable. Un auditeur, un régulateur ou un juge peut refaire le calcul lui-même, sans passer par le déployeur. Le registre est ainsi conçu pour être recevable comme commencement de preuve par écrit (Code civil, art. 1362 et 1366), l'opposabilité ultime restant à l'appréciation du juge.
 
-### 10.3. Horodatage qualifié RFC 3161
+### 10.3. Horodatage signé Ed25519
 
-Chaque entrée du registre est horodatée par un service qualifié RFC 3161 (Time Stamp Authority qualifiée au sens d'eIDAS). Cela donne à chaque décision une date opposable, vérifiable indépendamment du déployeur et de son fournisseur d'infrastructure. La pratique recommandée par ACF® est d'utiliser un horodateur PSCE référencé par l'ANSSI.
+Chaque entrée du registre est horodatée puis scellée par signature Ed25519 et chaînée. Cela donne à chaque décision une date vérifiable indépendamment du déployeur et de son fournisseur d'infrastructure. Pour les déploiements qui l'exigent, ACF® prévoit un horodatage par tiers de confiance externe en option.
 
-### 10.4. Export PDF certifié signé
+### 10.4. Export du registre
 
-Le registre peut produire à la demande un export PDF certifié, signé électroniquement (PAdES). Le PDF embarque la chaîne de hachage, les horodatages et la clé publique de l'organisation. Il est conçu pour être présentable à un auditeur ou à une autorité de contrôle dans son format natif, sans nécessiter d'outil supplémentaire.
+Le registre peut être exporté pour présentation à un auditeur ou à une autorité de contrôle. L'export reprend les entrées signées, leurs empreintes et leurs horodatages, ce qui permet au destinataire d'en vérifier l'intégrité avec la clé publique de l'organisation, sans accès à l'infrastructure du déployeur.
 
 ---
 
 ## 11. À propos & contact
 
-L'**Agentic Commerce Framework®** est créé et porté par **Vincent Dorange**. Le framework résulte de plusieurs années de recherche et de pratique sur la gouvernance des systèmes autonomes, et de l'observation directe de leurs premiers déploiements en production en 2025-2026 — dans le commerce, la finance, les services aux entreprises, la santé et l'énergie.
+L'**Agentic Commerce Framework®** est créé et porté par **Vincent Dorange**. Le standard est né de son expérience du commerce en ligne et de l'observation de l'arrivée des agents autonomes dans les transactions réelles.
 
-ACF® est édité par Vincent Dorange. Le standard documentaire (principes, fiches, doctrine) est diffusé sous licence ouverte. Les outils gratuits (ACF Sovereignty Score™, ACF AI Act Checker, Audit Flash, Plan Compliance) et les produits commerciaux (ACF Auditor, ACF Control, ACF Compliance, ACF Certification) sont accessibles via les URL ci-dessous. Le serveur MCP `acf-mcp` est open source (licence MIT) et publié sur npm.
+ACF® est édité par Vincent Dorange. Le standard documentaire (principes, fiches, doctrine) est diffusé sous licence ouverte. Les outils gratuits (ACF Sovereignty Score™, ACF AI Act Checker, Audit Flash, Plan Compliance) et les produits commerciaux (ACF Auditor, ACF Control, ACF Compliance, ACF Certification) sont accessibles via les adresses ci-dessous. Le serveur MCP `acf-mcp` est en source ouverte (licence MIT) ; ses modalités d'installation sont documentées sur `acfstandard.io`.
 
-**ACF®**, **Agentic Commerce Framework®**, **Souveraineté Agentique®**, **ACF Sovereignty Score™** et **ACF Sovereignty KPI™** sont des marques déposées ou en cours de dépôt par Vincent Dorange auprès de l'INPI.
+**Agentic Commerce Framework®**, **ACF®** et **Souveraineté Agentique®** sont des marques déposées par Vincent Dorange auprès de l'INPI.
 
 **Contact**
-Site officiel — `www.acfstandard.com`
-AI Act Checker (gratuit) — `www.acfstandard.com/fr/compliance-checker`
-Audit Flash & Plan Compliance (gratuits) — `compliance.acfstandard.com/fr/start`
-ACF Compliance (SaaS) — `compliance.acfstandard.com`
-ACF Sovereignty Score™ (diagnostic libre) — `www.acf-score.com`
-Documentation développeur & MCP — `acfstandard.io`
-Standard ACF® · Édition juin 2026
+Site officiel : `www.acfstandard.com`
+AI Act Checker (gratuit) : `www.acfstandard.com/fr/compliance-checker`
+Audit Flash & Plan Compliance (gratuits) : `compliance.acfstandard.com/fr/start`
+ACF Compliance (plateforme) : `compliance.acfstandard.com`
+ACF Sovereignty Score™ (diagnostic libre) : via `www.acfstandard.com`
+Documentation développeur & MCP : `acfstandard.io`
+Standard ACF®
 
 ---
 
 ## 12. Mentions
 
-**ACF®**, **Agentic Commerce Framework®** et **Souveraineté Agentique®** sont des marques déposées de Vincent Dorange auprès de l'INPI (France). **ACF Sovereignty Score™** et **ACF Sovereignty KPI™** sont des marques en cours de dépôt à l'INPI en classes 9, 35, 36, 41 et 42. La méthodologie (fiches, doctrine, schémas) est protégée et diffusée sous licence ouverte pour usage pédagogique, de recherche et de conformité interne. Tout usage commercial du nom ACF® ou de ses marques dérivées dans un produit ou un service tiers requiert un accord écrit préalable de l'éditeur.
+**Agentic Commerce Framework®**, **ACF®** et **Souveraineté Agentique®** sont des marques déposées de Vincent Dorange auprès de l'INPI (France). La méthodologie (fiches, doctrine, schémas) est protégée et diffusée sous licence ouverte pour usage pédagogique, de recherche et de conformité interne. Tout usage commercial du nom ACF® ou de ses marques dérivées dans un produit ou un service tiers requiert un accord écrit préalable de l'éditeur.
 
-L'ensemble des correspondances avec l'EU AI Act, ISO/IEC 42001, NIST AI RMF, RGPD et COBIT 2019 publiées dans ce document est délibérément conservateur. Le mapping complet, incluant les références secondaires et les notes interprétatives, est reproduit dans le manuel ACF® Toolkit et exposé sous forme machine-lisible par le serveur `acf-mcp` (outil `acf.map-to-standards`).
+L'ensemble des correspondances avec l'EU AI Act, ISO/IEC 42001, NIST AI RMF, RGPD et COBIT 2019 publiées dans ce document est délibérément conservateur. La cartographie complète, incluant les références secondaires et les notes interprétatives, est reproduite dans le manuel ACF® Toolkit et exposée sous forme machine-lisible par le serveur `acf-mcp` (outil `acf.map-to-standards`).
 
 Le présent document est un livre blanc. Il n'a pas vocation à se substituer à un conseil juridique, comptable ou réglementaire. Toute mise en œuvre opérationnelle doit être adaptée au contexte de l'organisation et validée par les fonctions internes compétentes.
 
-© 2026 Agentic Commerce Framework® — Vincent Dorange.
+© 2026 Agentic Commerce Framework®, Vincent Dorange.
 Tous droits réservés. ACF® est une marque déposée.
 
 ---
 
-*Sources : EU AI Act (Règlement (UE) 2024/1689) · ISO/IEC 42001:2023 · NIST AI RMF 1.0 (2023) · RGPD (Règlement (UE) 2016/679) · COBIT 2019. Données sectorielles : Bain & Company, Gartner, Forrester, IFOP, communications officielles des éditeurs cités (Visa, Mastercard, Stripe, OpenAI, Anthropic, Google, Walmart, Wells Fargo, Klarna, Expedia, Sephora) — état au 1er juin 2026.*
+*Sources : EU AI Act (Règlement (UE) 2024/1689) · ISO/IEC 42001:2023 · NIST AI RMF 1.0 (2023) · RGPD (Règlement (UE) 2016/679) · COBIT 2019. Données sectorielles : Bain & Company, Gartner, Forrester, IFOP, communications officielles des éditeurs cités (Visa, Mastercard, Stripe, OpenAI, Anthropic, Google, Walmart, Wells Fargo, Klarna, Expedia, Sephora), état au 1er juin 2026.*

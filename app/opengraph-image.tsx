@@ -81,7 +81,7 @@ export default async function OG() {
             color: "rgba(244,246,250,0.6)",
           }}
         >
-          <span>acf-mcp@1.1.0 · 8 REASON tools · Ed25519-signed</span>
+          <span>acf-mcp@2.0.1 · 13 tools · 45 cards · Ed25519-signed</span>
           <span style={{ color: "#c9a84c" }}>MIT licence</span>
         </div>
       </div>

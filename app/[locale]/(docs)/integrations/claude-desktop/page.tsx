@@ -73,7 +73,7 @@ export default async function ClaudeDesktopPage({
           ({fr ? "vérifiez avec" : "check with"} <code>node --version</code>)
         </li>
         <li>
-          <strong>Claude Desktop</strong> —{" "}
+          <strong>Claude Desktop</strong>{": "}
           <a
             href="https://claude.ai/download"
             target="_blank"
@@ -224,7 +224,7 @@ export default async function ClaudeDesktopPage({
       />
       <ul>
         <li>
-          <code>ACF_LOG_LEVEL</code> —{" "}
+          <code>ACF_LOG_LEVEL</code>{": "}
           {fr
             ? "verbosité des logs (debug | info | warn | error). Par défaut info."
             : "log verbosity (debug | info | warn | error). Defaults to info."}
@@ -234,8 +234,8 @@ export default async function ClaudeDesktopPage({
       <h3 id="transport">{fr ? "Transport" : "Transport"}</h3>
       <p>
         {fr
-          ? "Claude Desktop ne supporte que le transport stdio. Pour HTTP (multi-utilisateurs, auth API key), déployez acf-mcp derrière un proxy et utilisez un autre client (Cursor, Continue) — voir "
-          : "Claude Desktop only supports stdio transport. For HTTP (multi-user, API-key auth), deploy acf-mcp behind a proxy and use another client (Cursor, Continue) — see "}
+          ? "Claude Desktop lance acf-mcp en stdio, le mode dans lequel le serveur est distribué : aucun point d’accès réseau à prévoir, voir "
+          : "Claude Desktop starts acf-mcp over stdio, the mode the server ships in: no network endpoint to plan for, see "}
         <a href={fr ? "/fr/docs/authentication" : "/docs/authentication"}>
           /docs/authentication
         </a>

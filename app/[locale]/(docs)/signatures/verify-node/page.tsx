@@ -9,7 +9,7 @@ import { readFileSync } from "node:fs";
 // 1. Load the public key embedded in the acf-mcp release.
 //    (For Node.js apps consuming the npm package, this lives at
 //    node_modules/acf-mcp/dist/archive/doctrine-v1.0.json under
-//    .meta.doctrine_public_key — the SPKI base64 form.)
+//    .meta.doctrine_public_key, the SPKI base64 form.)
 const PUBLIC_KEY_SPKI_B64 =
   "MCowBQYDK2VwAyEAojtKfh20SGGV63LMETjZBXRWo2tY0viAYziG/y3/L0s=";
 
@@ -60,8 +60,8 @@ export default async function VerifyNodePage({
       title={fr ? "Vérifier en Node.js" : "Verify in Node.js"}
       description={
         fr
-          ? "Vérifiez la signature Ed25519 d’une sortie acf-mcp avec uniquement le module crypto standard de Node — zéro dépendance externe."
-          : "Verify the Ed25519 signature of an acf-mcp output using only Node’s standard crypto module — zero external dependencies."
+          ? "Vérifiez la signature Ed25519 d’une sortie acf-mcp avec uniquement le module crypto standard de Node, zéro dépendance externe."
+          : "Verify the Ed25519 signature of an acf-mcp output using only Node’s standard crypto module, zero external dependencies."
       }
       badge={fr ? "Signatures" : "Signatures"}
     >
@@ -107,19 +107,19 @@ export default async function VerifyNodePage({
       <h2 id="failure-modes">{fr ? "Modes d’échec" : "Failure modes"}</h2>
       <ul>
         <li>
-          <code>signature INVALID</code> —{" "}
+          <code>signature INVALID</code>{": "}
           {fr
             ? "le contenu a été altéré OU la clé publique fournie n’est pas la bonne (mauvaise version d’acf-mcp). Re-télécharger la sortie de bout en bout et reverifier."
             : "the content was tampered with OR the wrong public key is in use (wrong acf-mcp version). Re-download the output end to end and re-verify."}
         </li>
         <li>
-          <code>ERR_OSSL_EVP_DECODE_ERROR</code> —{" "}
+          <code>ERR_OSSL_EVP_DECODE_ERROR</code>{": "}
           {fr
             ? "la signature ou la clé n’est pas du base64 valide. Vérifier qu’aucun caractère n’a été perdu en copier-coller."
             : "the signature or key is not valid base64. Check that no character was lost on copy-paste."}
         </li>
         <li>
-          <code>UnsupportedKeyType</code> —{" "}
+          <code>UnsupportedKeyType</code>{": "}
           {fr
             ? "Node < 12. Mettre à jour vers une version supportée par notre engine (node ≥ 18)."
             : "Node < 12. Upgrade to a supported version (node ≥ 18 per our engine)."}

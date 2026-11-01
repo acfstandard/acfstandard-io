@@ -17,7 +17,7 @@ PUBLIC_KEY_SPKI_B64 = (
 spki = base64.b64decode(PUBLIC_KEY_SPKI_B64)
 public_key = load_der_public_key(spki)
 assert isinstance(public_key, Ed25519PublicKey), (
-    "Unexpected key type — acf-mcp uses Ed25519"
+    "Unexpected key type, acf-mcp uses Ed25519"
 )
 
 # 2. Load the signed tool output.
@@ -104,19 +104,19 @@ export default async function VerifyPythonPage({
       <h2 id="failure-modes">{fr ? "Modes d’échec" : "Failure modes"}</h2>
       <ul>
         <li>
-          <code>InvalidSignature</code> —{" "}
+          <code>InvalidSignature</code>{": "}
           {fr
             ? "le contenu a été altéré OU la clé publique fournie n’est pas la bonne."
             : "the content was tampered with OR the wrong public key is in use."}
         </li>
         <li>
-          <code>UnsupportedAlgorithm</code> —{" "}
+          <code>UnsupportedAlgorithm</code>{": "}
           {fr
             ? "version de cryptography &lt; 2.6. Mettre à jour."
             : "cryptography &lt; 2.6. Upgrade."}
         </li>
         <li>
-          <code>ValueError</code> sur base64 —{" "}
+          <code>ValueError</code> sur base64{" : "}
           {fr
             ? "la signature a perdu des caractères en copier-coller (paddings = manquants)."
             : "signature lost characters on copy-paste (missing = padding)."}

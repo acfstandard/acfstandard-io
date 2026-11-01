@@ -34,8 +34,8 @@ export default async function WhitepaperPage({
       title={fr ? "Livre blanc ACF® V2.1" : "ACF® Whitepaper V2.1"}
       description={
         fr
-          ? "Édition juin 2026 — Govern. Measure. Prove. Decision Trust Infrastructure pour la décision agentique. 4 principes, 4 couches, N0–N3, DDAO, 17 fiches méthodologiques, matrice 17×5, ACF Sovereignty Score™, preuve cryptographique Ed25519."
-          : "June 2026 edition — Govern. Measure. Prove. Decision Trust Infrastructure for agentic decisions. 4 principles, 4 layers, N0–N3, DDAO, 17 methodological cards, 17×5 standards mapping matrix, ACF Sovereignty Score™, Ed25519 cryptographic proof."
+          ? "Govern. Measure. Prove. Decision Trust Infrastructure pour la décision agentique : 4 principes, 4 couches, autonomie déléguée et maturité N0 à N3, DDAO, 45 fiches, correspondance avec cinq référentiels, ACF Sovereignty Score™, signature Ed25519."
+          : "Govern. Measure. Prove. Decision Trust Infrastructure for agentic decisions: 4 principles, 4 layers, delegated autonomy and N0 to N3 maturity, DDAO, 45 cards, mapping to five standards, ACF Sovereignty Score™, Ed25519 signature."
       }
       badge={fr ? "Document" : "Document"}
     >
@@ -44,30 +44,30 @@ export default async function WhitepaperPage({
           <>
             Cette page rend la version Markdown source du livre blanc, telle qu’elle est
             servie par le serveur MCP <code>acf-mcp</code> à la ressource{" "}
-            <code>acf://whitepaper/fr</code>. Le hash de contenu de cette ressource est
-            signé Ed25519 et embarqué dans chaque release npm — voir{" "}
-            <a href="/signatures">Signatures</a>.{" "}
+            <code>acf://whitepaper?lang=fr</code>. Il fait partie de la doctrine dont
+            l’empreinte est signée Ed25519 dans chaque version npm : voir{" "}
+            <a href="/fr/signatures">Signatures</a>.{" "}
             <a
-              href="https://github.com/acfstandard/acf-mcp/blob/main/content/whitepaper/fr.md"
+              href="https://acfstandard.com/fr/whitepaper"
               target="_blank"
               rel="noopener"
             >
-              Source Markdown sur GitHub ↗
+              Le livre blanc sur acfstandard.com ↗
             </a>
           </>
         ) : (
           <>
             This page renders the source Markdown of the whitepaper, exactly as the{" "}
             <code>acf-mcp</code> MCP server serves it at the resource{" "}
-            <code>acf://whitepaper/fr</code>. The content hash of this resource is
-            Ed25519-signed and embedded in every npm release — see{" "}
+            <code>acf://whitepaper?lang=en</code>. It is part of the doctrine whose hash
+            is Ed25519-signed in every npm release: see{" "}
             <a href="/signatures">Signatures</a>.{" "}
             <a
-              href="https://github.com/acfstandard/acf-mcp/blob/main/content/whitepaper/fr.md"
+              href="https://acfstandard.com/en/whitepaper"
               target="_blank"
               rel="noopener"
             >
-              Markdown source on GitHub ↗
+              The white paper on acfstandard.com ↗
             </a>
           </>
         )}

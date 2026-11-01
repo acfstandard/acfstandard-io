@@ -16,8 +16,8 @@ export default async function Iso42001MappingPage({
       title={fr ? "ACF® × ISO/IEC 42001" : "ACF® × ISO/IEC 42001"}
       description={
         fr
-          ? "Mapping des 17 fiches ACF® sur la clause ou l’annexe ISO/IEC 42001:2023 correspondante. Pour les organisations visant la certification, ACF® fournit le matériau opérationnel qui alimente le système de management AI."
-          : "Mapping of the 17 ACF® cards to the corresponding ISO/IEC 42001:2023 clause or annex. For organisations targeting certification, ACF® provides the operational material that feeds the AI management system."
+          ? "Mapping des 17 fiches ACF® de la famille Décider sur la clause ou l’annexe ISO/IEC 42001:2023 correspondante. Pour les organisations visant la certification, ACF® fournit le matériau opérationnel qui alimente le système de management AI."
+          : "Mapping of the 17 ACF® cards of the Decide family to the corresponding ISO/IEC 42001:2023 clause or annex. For organisations targeting certification, ACF® provides the operational material that feeds the AI management system."
       }
       badge={fr ? "Correspondance" : "Mapping"}
     >

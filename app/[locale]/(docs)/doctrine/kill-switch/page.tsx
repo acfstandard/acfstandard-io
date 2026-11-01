@@ -52,9 +52,9 @@ const LEVELS: Level[] = [
     bodyFr:
       "Interruption complète de tous les systèmes agentiques. Basculement vers les processus manuels de secours. Réservé à des situations catastrophiques : fuite de modèle, comportement déviant à grande échelle, injonction régulatoire.",
     triggerEn:
-      "Restricted to the governance committee or general management. Two-key required (P1 — non-delegable).",
+      "Restricted to the governance committee or general management. Two-key required (P1, non-delegable).",
     triggerFr:
-      "Réservé au comité de gouvernance ou à la direction générale. Double clé requise (P1 — non-délégable).",
+      "Réservé au comité de gouvernance ou à la direction générale. Double clé requise (P1, non-délégable).",
   },
 ];
 
@@ -72,8 +72,8 @@ export default async function KillSwitchPage({
       title={fr ? "Protocole d’arrêt à trois niveaux" : "Three-level kill switch protocol"}
       description={
         fr
-          ? "Un mécanisme d’arrêt agentique efficace n’est pas un simple interrupteur. ACF® spécifie trois niveaux d’interruption avec des temps de réponse mesurés et des procédures d’escalade définies. La fiche ACF-06 documente leur mise en œuvre. La fiche ACF-15 impose un exercice trimestriel."
-          : "An effective agentic shutdown mechanism is not a single switch. ACF® specifies three interruption levels with measured response times and defined escalation procedures. Card ACF-06 documents implementation. Card ACF-15 mandates a quarterly exercise."
+          ? "Un mécanisme d’arrêt agentique efficace n’est pas un simple interrupteur. ACF® spécifie trois niveaux d’interruption avec des temps de réponse mesurés et des procédures d’escalade définies. La fiche ACF-07 (Kill Switch) documente leur mise en œuvre. La fiche ACF-P7 (Test du Dispositif d’Arrêt) l’éprouve chaque trimestre."
+          : "An effective agentic shutdown mechanism is not a single switch. ACF® specifies three interruption levels with measured response times and defined escalation procedures. Card ACF-07 (Kill Switch) documents implementation. Card ACF-P7 (Stop Mechanism Test) tests it every quarter."
       }
       badge={fr ? "Doctrine" : "Doctrine"}
     >
@@ -81,17 +81,17 @@ export default async function KillSwitchPage({
         {fr ? (
           <>
             <strong>Un kill switch documenté mais jamais testé n’est pas un kill
-            switch.</strong> Les exercices trimestriels ne sont pas optionnels — c’est
+            switch.</strong> Les exercices trimestriels ne sont pas optionnels, c’est
             ce qui distingue un cadre de gouvernance d’une déclaration d’intention. Le
-            résultat de chaque exercice est consigné dans le registre signé (ACF-08) et
-            audité (ACF-10).
+            résultat de chaque exercice est consigné dans le registre des décisions (ACF-09) et
+            revu lors de l’audit de gouvernance (ACF-11).
           </>
         ) : (
           <>
             <strong>A kill switch documented but never tested is not a kill switch.</strong>{" "}
-            Quarterly drills are not optional — that is what separates a governance
-            framework from a statement of intent. Every drill result lands in the signed
-            register (ACF-08) and is audited (ACF-10).
+            Quarterly drills are not optional, that is what separates a governance
+            framework from a statement of intent. Every drill result lands in the decision
+            register (ACF-09) and is reviewed in the governance audit (ACF-11).
           </>
         )}
       </Callout>
@@ -113,8 +113,8 @@ export default async function KillSwitchPage({
       <h2 id="design-pattern">{fr ? "Patron d’implémentation" : "Implementation pattern"}</h2>
       <p>
         {fr
-          ? "Les trois niveaux ne sont pas trois interrupteurs distincts mais un même mécanisme avec trois modes. L’implémentation canonique ACF® place un broker entre l’agent et ses outils — toute action de l’agent passe par ce broker, qui peut être basculé en mode L1/L2/L3 par un appel API authentifié (ou un signal système pour L3). Cette architecture permet à la fois la rapidité (le broker ne fait pas de logique métier) et la testabilité (le broker expose une métrique du nombre d’actions en cours)."
-          : "The three levels are not three distinct switches but the same mechanism with three modes. The canonical ACF® implementation places a broker between the agent and its tools — every agent action goes through this broker, which can be flipped to L1/L2/L3 mode via an authenticated API call (or a system signal for L3). This architecture delivers both speed (the broker carries no business logic) and testability (the broker exposes a metric of in-flight actions)."}
+          ? "Les trois niveaux ne sont pas trois interrupteurs distincts mais un même mécanisme avec trois modes. L’implémentation canonique ACF® place un broker entre l’agent et ses outils, toute action de l’agent passe par ce broker, qui peut être basculé en mode L1/L2/L3 par un appel API authentifié (ou un signal système pour L3). Cette architecture permet à la fois la rapidité (le broker ne fait pas de logique métier) et la testabilité (le broker expose une métrique du nombre d’actions en cours)."
+          : "The three levels are not three distinct switches but the same mechanism with three modes. The canonical ACF® implementation places a broker between the agent and its tools, every agent action goes through this broker, which can be flipped to L1/L2/L3 mode via an authenticated API call (or a system signal for L3). This architecture delivers both speed (the broker carries no business logic) and testability (the broker exposes a metric of in-flight actions)."}
       </p>
 
       <h2 id="quarterly-drill">{fr ? "Exercice trimestriel" : "Quarterly drill"}</h2>
@@ -125,7 +125,7 @@ export default async function KillSwitchPage({
             Un test L3 est planifié annuellement, en accord avec le comité de
             gouvernance, et donne lieu à une simulation grandeur réelle qui mesure le
             temps de redémarrage des processus manuels de secours. Pour l’instrumenter,
-            voir la fiche <strong>ACF-15</strong> et l’outil MCP{" "}
+            voir la fiche <strong>ACF-P7</strong> et l’outil MCP{" "}
             <code>acf.assign-ddao-controls</code>.
           </>
         ) : (
@@ -133,7 +133,7 @@ export default async function KillSwitchPage({
             The DDAO schedules an L1 test every quarter and an L2 test every semester. An
             L3 test is planned annually, agreed with the governance committee, and runs
             as a full-scale simulation measuring the recovery time of the manual backup
-            processes. For instrumentation, see card <strong>ACF-15</strong> and the MCP
+            processes. For instrumentation, see card <strong>ACF-P7</strong> and the MCP
             tool <code>acf.assign-ddao-controls</code>.
           </>
         )}
