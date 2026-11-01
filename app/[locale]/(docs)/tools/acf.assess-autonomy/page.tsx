@@ -166,7 +166,7 @@ export default async function AssessAutonomyToolPage({
       description={
         fr
           ? "Décision d’autonomie isolée : faut-il que l’agent propose, décide ou exécute ? Quatre champs en entrée, un niveau d’autonomie déléguée en sortie (suggestif, co-décision, autonome supervisé ou autonome), avec critères go/no-go, seuils de gating, et conception du kill switch."
-          : "Standalone autonomy decision: should the agent propose, decide or execute? Four input fields, one delegated autonomy level out (suggestive, co-decision, supervised autonomous or autonomous), with go/no-go criteria, gating thresholds, and kill switch design."
+          : "Standalone autonomy decision: should the agent propose, decide or execute? Four input fields, one delegated autonomy level out (advisory, co-decision, supervised autonomous or autonomous), with go/no-go criteria, gating thresholds, and kill switch design."
       }
       badge="REASON"
     >
@@ -193,7 +193,7 @@ export default async function AssessAutonomyToolPage({
       <p>
         {fr
           ? "Utilisez cet outil quand la seule question qui bloque est : « quel niveau d’autonomie ACF® donner à cet agent ? ». Vous savez déjà ce qu’il fait, vous savez ce qui se passe en cas d’erreur, vous voulez un verdict structuré sur le niveau d’autonomie déléguée (suggestif, co-décision, autonome supervisé, autonome) avec critères go/no-go associés. C’est la version chirurgicale de classify-agent quand seul l’axe autonomie est en débat."
-          : "Use this tool when the only blocking question is: “what ACF® autonomy level should this agent have?”. You already know what it does, you know what happens on error, you want a structured verdict on the delegated autonomy level (suggestive, co-decision, supervised autonomous, autonomous) with the associated go/no-go criteria. It is the surgical version of classify-agent when only the autonomy axis is in debate."}
+          : "Use this tool when the only blocking question is: “what ACF® autonomy level should this agent have?”. You already know what it does, you know what happens on error, you want a structured verdict on the delegated autonomy level (advisory, co-decision, supervised autonomous, autonomous) with the associated go/no-go criteria. It is the surgical version of classify-agent when only the autonomy axis is in debate."}
       </p>
       <p>
         {fr
@@ -216,7 +216,7 @@ export default async function AssessAutonomyToolPage({
         <Param name="intended_actions" type="string[] (1-20)" required>
           {fr
             ? "Liste des actions prévues. Les verbes comptent : « search », « summari* », « propose », « suggest » donnent le niveau suggestif quand l’audit est interne et la réversibilité totale."
-            : "List of intended actions. Verbs matter: “search”, “summari*”, “propose”, “suggest” give the suggestive level when audit is internal and reversibility is full."}
+            : "List of intended actions. Verbs matter: “search”, “summari*”, “propose”, “suggest” give the advisory level (suggestive) when audit is internal and reversibility is full."}
         </Param>
         <Param
           name="reversibility"

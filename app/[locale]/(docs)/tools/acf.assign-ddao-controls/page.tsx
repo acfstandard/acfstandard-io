@@ -204,7 +204,7 @@ export default async function AssignDdaoControlsToolPage({
         <Param name="autonomy_level" type='"suggestive" | "co_decision" | "supervised_autonomous" | "autonomous"' required>
           {fr
             ? "Niveau d’autonomie déléguée pour la décision : suggestif (l’agent suggère, un humain décide), co-décision (l’agent propose, un humain valide), autonome supervisé (l’agent décide sous supervision), autonome (l’agent décide seul dans son mandat). Pilote la sévérité du jeu de contrôles. Renommé depuis acf_level en 2.0.0."
-            : "Delegated autonomy level for the decision: suggestive (the agent suggests, a human decides), co-decision (the agent proposes, a human validates), supervised autonomous (the agent decides under supervision), autonomous (the agent decides alone within its mandate). Drives the severity of the control set. Renamed from acf_level in 2.0.0."}
+            : "Delegated autonomy level for the decision: suggestive, i.e. advisory (the agent suggests, a human decides), co-decision (the agent proposes, a human validates), supervised autonomous (the agent decides under supervision), autonomous (the agent decides alone within its mandate). Drives the severity of the control set. Renamed from acf_level in 2.0.0."}
         </Param>
         <Param
           name="risk_level"

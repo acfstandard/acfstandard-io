@@ -9,7 +9,7 @@ type Row = { code: string; nameEn: string; nameFr: string; en: string; fr: strin
 const AUTONOMY: Row[] = [
   {
     code: "suggestive",
-    nameEn: "Suggestive",
+    nameEn: "Advisory",
     nameFr: "Suggestif",
     en: "The agent suggests, the human decides. The human keeps hold of every executing action.",
     fr: "L’agent suggère, l’humain décide. L’humain garde la main sur chaque action exécutoire.",
@@ -85,7 +85,7 @@ export default async function AutonomyLevelsPage({
       description={
         fr
           ? "ACF® distingue deux échelles. L’autonomie déléguée se fixe décision par décision, sur 4 niveaux : suggestif, co-décision, autonome supervisé, autonome. La maturité de l’agent, de N0 à N3, qualifie l’agent dans son ensemble."
-          : "ACF® separates two scales. Delegated autonomy is set decision by decision, on 4 levels: suggestive, co-decision, supervised autonomous, autonomous. Agent maturity, from N0 to N3, qualifies the agent as a whole."
+          : "ACF® separates two scales. Delegated autonomy is set decision by decision, on 4 levels: advisory, co-decision, supervised autonomous, autonomous. Agent maturity, from N0 to N3, qualifies the agent as a whole."
       }
       badge={fr ? "Doctrine" : "Doctrine"}
     >

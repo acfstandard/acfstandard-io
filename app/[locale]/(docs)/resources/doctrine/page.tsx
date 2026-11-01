@@ -64,7 +64,7 @@ const PRINCIPLES: Row[] = [
 const LEVELS: Row[] = [
   {
     uri: "acf://framework/autonomy-level/suggestive",
-    titleEn: "Suggestive",
+    titleEn: "Advisory",
     titleFr: "Suggestif",
     mime: "application/json",
     locales: "both",

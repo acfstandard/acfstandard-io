@@ -160,7 +160,7 @@ ACF® classifies agents by maturity level. Maturity is a property of the agent: 
 
 The recommended progression is N0 → N1 → N2 → N3. Each step up triggers the controls of card ACF-01 (Sovereignty Score). Maturity is not measured by what you delegate, but by the quality with which you govern it; aiming straight for the highest level, as if maturity were the same thing as the degree of autonomy, is a misreading.
 
-Maturity must not be confused with delegated autonomy, which is a property of the decision, not of the agent. ACF® distinguishes four levels of delegated autonomy, defined decision by decision in the agent's mandate (cards ACF-02 and ACF-05): suggestive (the agent proposes and executes nothing), co-decision (the agent prepares, the human decides), supervised autonomous (the agent decides, the human controls after the fact) and autonomous (the agent decides and executes within its perimeter). A single agent therefore carries several levels of delegated autonomy, one per decision in its mandate, and a single maturity value.
+Maturity must not be confused with delegated autonomy, which is a property of the decision, not of the agent. ACF® distinguishes four levels of delegated autonomy, defined decision by decision in the agent's mandate (cards ACF-02 and ACF-05): advisory (the agent proposes and executes nothing), co-decision (the agent prepares, the human decides), supervised autonomous (the agent decides, the human controls after the fact) and autonomous (the agent decides and executes within its perimeter). A single agent therefore carries several levels of delegated autonomy, one per decision in its mandate, and a single maturity value.
 
 ### 4.4. The DDAO role, Delegated Decision Agent Officer
 
@@ -383,7 +383,7 @@ The server ships with a family of deterministic reasoning tools (REASON tools), 
 
 1. `acf.advisor`: structured advice from a generic case
 2. `acf.classify-agent`: preliminary qualification of an agent from ten enumerated fields
-3. `acf.assess-autonomy`: recommended delegated autonomy level for a decision (suggestive, co-decision, supervised autonomous or autonomous), go/no-go opinion and stop mechanism design
+3. `acf.assess-autonomy`: recommended delegated autonomy level for a decision (advisory, co-decision, supervised autonomous or autonomous), go/no-go opinion and stop mechanism design
 4. `acf.identify-governance-gaps`: coverage score across the 4 principles and prioritised remediations
 5. `acf.map-ai-act-obligations`: set of EU AI Act obligations distributed by lifecycle phase
 6. `acf.assign-ddao-controls`: recommended DDAO controls per level and risk
